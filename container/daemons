@@ -1,0 +1,12 @@
+# Standard frrcommon.sh supports the DAEMONS variable; no FRR source patch.
+DAEMONS="mgmtd zebra bgpd ospfd"
+FRR_NO_ROOT=yes
+mgmtd=yes
+zebra=yes
+bgpd=yes
+ospfd=yes
+vtysh_enable=yes
+mgmtd_options="-A 127.0.0.1 --log stdout"
+zebra_options="-A 127.0.0.1 --log stdout"
+bgpd_options="-A 127.0.0.1 --log stdout"
+ospfd_options="-A 127.0.0.1 --log stdout"

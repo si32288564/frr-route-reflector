@@ -1,0 +1,14 @@
+case=default
+before=1
+proc /proc/sys proc ro,nosuid,nodev,noexec,relatime 0 0
+sysctl: error setting key 'net.ipv4.ip_forward': Read-only file system
+STOP: cannot disable IPv4 forwarding in this network namespace
+gate_exit=1
+after=1
+case_exit=1
+case=zero
+before=0
+proc /proc/sys proc ro,nosuid,nodev,noexec,relatime 0 0
+gate_exit=0
+after=0
+case_exit=0

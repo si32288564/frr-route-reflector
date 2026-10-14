@@ -1,0 +1,107 @@
+{
+  "securityProfile": "lab-sysadmin",
+  "image": "example.invalid/frr-route-reflector@sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "cluster": {
+    "bgpAsn": 64512,
+    "clusterId": "192.0.2.254",
+    "ospfArea": "0.0.0.0"
+  },
+  "clients": [
+    {
+      "name": "client1",
+      "loopback": "192.0.2.11/32"
+    },
+    {
+      "name": "client2",
+      "loopback": "192.0.2.12/32"
+    },
+    {
+      "name": "client3",
+      "loopback": "192.0.2.13/32"
+    },
+    {
+      "name": "client4",
+      "loopback": "192.0.2.14/32"
+    }
+  ],
+  "routers": [
+    {
+      "name": "rr01",
+      "routerId": "192.0.2.1",
+      "loopback": "192.0.2.1/32",
+      "nodeSelector": {
+        "kubernetes.io/hostname": "worker-1.example.invalid"
+      },
+      "vlanMaster": "trunk0",
+      "links": [
+        {
+          "client": "client1",
+          "interface": "net1",
+          "vlanId": 1101,
+          "localAddress": "198.51.100.0/31",
+          "remoteAddress": "198.51.100.1"
+        },
+        {
+          "client": "client2",
+          "interface": "net2",
+          "vlanId": 1102,
+          "localAddress": "198.51.100.2/31",
+          "remoteAddress": "198.51.100.3"
+        },
+        {
+          "client": "client3",
+          "interface": "net3",
+          "vlanId": 1103,
+          "localAddress": "198.51.100.4/31",
+          "remoteAddress": "198.51.100.5"
+        },
+        {
+          "client": "client4",
+          "interface": "net4",
+          "vlanId": 1104,
+          "localAddress": "198.51.100.6/31",
+          "remoteAddress": "198.51.100.7"
+        }
+      ]
+    },
+    {
+      "name": "rr02",
+      "routerId": "192.0.2.2",
+      "loopback": "192.0.2.2/32",
+      "nodeSelector": {
+        "kubernetes.io/hostname": "worker-2.example.invalid"
+      },
+      "vlanMaster": "trunk0",
+      "links": [
+        {
+          "client": "client1",
+          "interface": "net1",
+          "vlanId": 1105,
+          "localAddress": "198.51.100.8/31",
+          "remoteAddress": "198.51.100.9"
+        },
+        {
+          "client": "client2",
+          "interface": "net2",
+          "vlanId": 1106,
+          "localAddress": "198.51.100.10/31",
+          "remoteAddress": "198.51.100.11"
+        },
+        {
+          "client": "client3",
+          "interface": "net3",
+          "vlanId": 1107,
+          "localAddress": "198.51.100.12/31",
+          "remoteAddress": "198.51.100.13"
+        },
+        {
+          "client": "client4",
+          "interface": "net4",
+          "vlanId": 1108,
+          "localAddress": "198.51.100.14/31",
+          "remoteAddress": "198.51.100.15"
+        }
+      ]
+    }
+  ]
+}

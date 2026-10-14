@@ -1,0 +1,6 @@
+# Intentionally incomplete: bind the reviewed lab explicitly.
+securityProfile: ""
+image: ""
+cluster: {}
+clients: []
+routers: []
