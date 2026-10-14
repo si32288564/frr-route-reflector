@@ -1,6 +1,6 @@
 # Requirements — frr-route-reflector
 
-> **Authority status:** This content is a proposal on a non-merged PR branch. It becomes accepted requirements only when reviewed and merged to `main`.  
+> **Authority:** Only the reviewed version merged into `main` is authoritative; changes on a PR branch remain proposals.  
 > **Scope:** an IPv4 BGP Route Reflector CNF for Kubernetes, plus the external lab behavior required to prove its function.  
 > **Governance:** [PROJECT_GOVERNANCE.md](PROJECT_GOVERNANCE.md). Architecture: [architecture.md](architecture.md).
 
@@ -64,7 +64,7 @@ IDs here retain the numbering used during architecture discussions. This PR prop
 
 ## 3. Derived and additional requirements
 
-The following make explicit other decisions from the conversations. They are not a license to decide the pending parameters in section 5.
+The following make explicit earlier decisions and, for R-041–R-043, further Architecture proposals in the current PR. Parameter binding remains limited by section 5.
 
 | ID | Requirement |
 |---|---|
@@ -73,10 +73,14 @@ The following make explicit other decisions from the conversations. They are not
 | R-034 | Each RR has **four distinct VLAN-backed /31 secondary interfaces** to the four clients, giving **eight RR-to-client VLANs/links total** across the two Workers. |
 | R-035 | Use the **VLAN CNI plugin through Multus**, without requiring a macvlan/ipvlan layer for the initial one-Pod-per-Worker topology. |
 | R-036 | Each Client i has a **separate L3 segment and eBGP session** with its respective Test i; the four Client-to-Test segments are independent from each other and from the client transit segment. Test peers do not participate in OSPF. |
-| R-037 | RR clients connect over an independent **client-to-client data-plane transit network** that provides reachability to BGP NEXT_HOPs without RR packet forwarding. The exact transit topology and OSPF network type remain open. |
+| R-037 | RR clients connect over an independent **client-to-client data-plane transit network** that provides reachability to BGP NEXT_HOPs without RR packet forwarding. For the initial lab, this transit is a single shared client-only VLAN with IPv4 /29 and OSPF broadcast; no RR or Test peer joins it. |
 | R-038 | Assign network, BGP, OSPF, and Pod configuration from a **single declared source** (Helm values or a canonical input rendered into Helm values); do not independently hand-maintain contradictory NAD, Pod, and FRR mappings. |
 | R-039 | Keep the public OSS portable and **exclude private organization-specific topology, addresses, credentials, and logs** from commits and release artifacts. |
 | R-040 | Do not allow stale/orphaned Pod interfaces, configuration mutation, or Worker failure to silently change an RR's **logical identity**. Define and validate the lifecycle behavior before claiming recovery support. |
+
+| R-041 | The four external RR clients attach to **one independent common transit VLAN** using an IPv4 **/29** and **OSPFv2 broadcast**, in the same OSPF area as the RR-facing links; this does not change the required P2P type on RR-facing /31 links. |
+| R-042 | Each external RR client sets the **NEXT_HOP of eBGP-learned Test prefixes** to its own reachable **loopback** when advertising those routes via iBGP to both RRs; an RR must preserve that received NEXT_HOP. |
+| R-043 | Each RR enforces **IPv4 forwarding disabled inside its Pod network namespace** and advertises itself as an OSPF **max-metric/stub router**. Prefer FRR **bgp no-rib** for control-only BGP operation, subject to proof of route reflection compatibility. On lost Client Transit, dropping traffic is allowed; RR forwarding is not. |
 
 ## 4. Non-goals for the initial target
 
@@ -95,10 +99,10 @@ The following make explicit other decisions from the conversations. They are not
 |---|---|
 | Addressing | RR/Client/Test loopback addresses; link CIDRs; actual VLAN IDs; non-overlap policy. |
 | AS / BGP | Internal ASN, external peer ASNs, cluster ID value, route policies, maximum prefixes, authentication if required. |
-| OSPF | Area ID, cost/metric model, stub-router / max-metric policy, link failure convergence, authentication if required. |
-| Client transit | One shared VLAN vs P2P topology, whether/how OSPF runs there, and loss-of-transit behavior. |
-| NEXT_HOP | Where and how a client makes eBGP-learned route NEXT_HOP reachable by all other clients (candidate: next-hop-self toward the RRs using the client loopback). Verify actual FRR behavior. |
-| RR forwarding prohibition | Exact kernel sysctl, FRR route-install and OSPF constraints, and packet-test proof for normal and failure states. |
+| OSPF | Single-area use on RR links and Client Transit is selected; RR max-metric policy is selected. Actual area ID, cost/metric values, link failure convergence and authentication remain to be bound. |
+| Client transit | **Resolved architecturally:** client-only shared IPv4 /29 VLAN, OSPF broadcast; data-plane loss is allowed on failure, but never fallback forwarding through RR. Actual VLAN ID/subnet remain unassigned. |
+| NEXT_HOP | **Resolved architecturally:** Client-side NEXT_HOP becomes that Client's loopback for Test-eBGP-learned routes advertised toward both RRs. Specific FRR command/version and route policy require implementation evidence. |
+| RR forwarding prohibition | **Resolved architecturally:** Pod-local IPv4 forwarding = 0, permanent OSPF max-metric Router-LSA; prefer bgp no-rib. Startup enforcement/admission details and runtime/failure packet-test proof remain to be implemented. |
 | Kubernetes / VLAN | Actual Worker labels, physical master interface names, plugin versions, requested capabilities, IPAM and interface lifecycle/recovery actions. |
 | Container / Helm | Image base/version, FRR daemon lifecycle, health checks, configuration update mechanism, chart validation schema, security context. |
 | Operations | Bootstrap sequence, upgrade/downgrade, deletion/recovery, rollback, expected convergence timing, observability. |

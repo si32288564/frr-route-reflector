@@ -1,6 +1,6 @@
 # Architecture — frr-route-reflector
 
-> **Authority status:** On an unmerged PR branch this is a proposal; after Owner review and merge to `main`, it is the accepted initial Architecture authority.  
+> **Authority:** The reviewed `main` version is the accepted Architecture; changes on a PR branch remain proposals.  
 > Normative requirements: [requirements.md](requirements.md). Topology authority: [network-design.md](network-design.md). Proof obligations: [acceptance-criteria.md](acceptance-criteria.md). Governance: [PROJECT_GOVERNANCE.md](PROJECT_GOVERNANCE.md).
 
 ## 1. System boundary and objective
@@ -19,7 +19,7 @@ The **RR Helm release** owns the RR Pods, RR-attached Multus NADs, and the RR co
 | Test peer | 4 | Test i ↔ Client i via a dedicated eBGP segment; no test-peer OSPF |
 | RR↔Client logical P2P link | 8 | Each of the 2 × 4 relationships has its own /31 and VLAN |
 | RR-side Multus interface / NAD | 8 / 8 | Four secondary interfaces per RR, backed by VLAN CNI |
-| Client-to-client transit network | 1 logical function | RR-free data-plane reachability; actual L2/L3 topology pending |
+| Client-to-client transit network | 1 logical function | One independent shared client-only IPv4 /29 VLAN, OSPFv2 broadcast (ADR 0005) |
 | Client↔Test network | 4 | Independent eBGP segments outside the RR Chart's responsibility |
 
 This cardinality is **about different object classes**. One VLAN is not necessarily one BGP session: iBGP endpoints are loopbacks, and OSPF adjacencies are established over the /31-connected links.
@@ -31,7 +31,7 @@ This cardinality is **about different object classes**. One VLAN is not necessar
 - The initial RR-to-client IGP is **OSPFv2 point-to-point** on every VLAN-backed /31 link.
 - OSPF advertises router loopback /32 prefixes sufficient to establish loopback-sourced iBGP and resolve BGP NEXT_HOPs.
 - It does **not** carry the distinct service/test prefixes that the clients advertise through BGP.
-- The external client transit fabric also needs usable loopback/NEXT_HOP reachability. Its IGP shape (shared broadcast segment or P2P topology) has **not** yet been selected.
+- The external four-client transit fabric is one IPv4 /29 shared VLAN with **OSPFv2 broadcast**. This is distinct from the eight RR↔Client OSPF P2P /31 links; both participate in the same initial OSPF area, and all clients advertise their loopbacks /32.
 - The OSPF graph **must not create a usable client-to-client data path through either RR**. Specify constraints and verify this under failures as well as during steady state.
 
 ### 3.2 BGP — control plane
@@ -57,9 +57,9 @@ Data-plane packets:
 Test 1 --> Client 1 --> [client-to-client Transit] --> Client 2 --> Test 2
 ```
 
-The iBGP route's NEXT_HOP must resolve via the client transit network, without entering an RR Pod. A candidate is **client-side next-hop-self** toward both RRs using the client loopback; that specific mechanism requires configuration and test confirmation before being promoted to implementation binding.
+For eBGP-learned Test routes, each originating Client sets outbound iBGP NEXT_HOP to **its own loopback** toward both RR peers; each RR reflects the attribute unchanged. The receiving client resolves the originating client's loopback through OSPF using the **client-only transit VLAN**. The FRR implementation must prove the advertised NEXT_HOP and actual FIB recursion.
 
-**Hard invariant:** forwarding of client↔client/test↔test transit packets by any RR is prohibited. A useful implementation safeguard is to disable IPv4 forwarding **inside the RR Pod network namespace** (not as a global Worker setting), but this alone does not prove OSPF/FIB reachability correctness. An OSPF policy that prevents selection of RR as transit and explicit packet-level acceptance tests are also required.
+**Hard invariant:** forwarding of client↔client/test↔test transit packets by any RR is prohibited. Enforce and verify `net.ipv4.ip_forward = 0` **inside the RR Pod network namespace**, independent of Worker-host forwarding. Also advertise `max-metric router-lsa administrative` from each RR and prefer `bgp no-rib` to avoid a service-prefix FIB. OSPF max-metric is a preference, **not a guarantee** that no client ever selects RR as its next hop. If client transit disappears, traffic loss / blackholing is acceptable **fail-closed** behavior, but RR must never forward the packets. Verify both normal and failure conditions by packet observation.
 
 ## 4. Kubernetes CNF realization
 
@@ -124,12 +124,13 @@ For each `(RR, Client)` relation, the VLAN ID, master, Pod-side interface, /31 a
 
 Before building features that depend on them, close only the relevant decisions below:
 
-1. **Client transit L2/L3 topology**, OSPF mode, metrics and prohibitions on transit via RR.
-2. **NEXT_HOP semantics** for eBGP-learned routes entering iBGP, and BGP policy needed to reach the eBGP test peers.
-3. **BGP/OSPF parameterization:** ASN(s), area, identities, authentication and route policy.
-4. **RR enforcement mechanics:** namespace forwarding policy, FRR behavior, capabilities and nontransit tests.
-5. **Kubernetes/Helm lifecycle:** node selection, restart/recovery, CNI interface cleanup and configuration changes.
-6. **Publishing:** license, dependency versions, image/Chart delivery and reproducible releases.
+1. **Resolved in ADR 0005–0007 (subject to this PR's acceptance):** shared Client Transit VLAN /29 with OSPF broadcast; client-side next-hop-self for Test-eBGP routes; RR Pod-local IP forwarding disabled with OSPF administrative max-metric, plus `bgp no-rib` as default control-only mode. **Loss of Client Transit may cause fail-closed traffic loss.**
+2. **BGP/OSPF parameterization:** actual ASN(s), OSPF area ID and metrics, router addresses, authentication, prefix/route policies and failure timers.
+3. **Runtime proof and permissions:** safe Pod-local sysctl enforcement, Linux capabilities/security context, FRR command behavior in selected version, nontransit packet evidence.
+4. **Kubernetes/Helm lifecycle:** node selection, restart/recovery, CNI interface cleanup and configuration changes.
+5. **Publishing:** license, dependency versions, image/Chart delivery and reproducible releases.
+
+Architecture decisions [ADR 0005](adr/0005-client-transit-broadcast.md), [ADR 0006](adr/0006-client-next-hop-self.md), and [ADR 0007](adr/0007-rr-nontransit-enforcement.md) hold rationale; topology facts live in [network-design.md](network-design.md).
 
 Proposals and examples may be written to support discussion, but must be labelled as such. The exact IPs, VLAN IDs, master names, ASN values, and timing targets are **not** agreed here.
 
