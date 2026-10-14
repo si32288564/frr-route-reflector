@@ -1,0 +1,210 @@
+container_name=frr-diag-41dfb0ac-266b-448e-8a9c-61242e6f59de image=sha256:cc34cc1b8b4d93d8834472085f7d53792ad28cd97416319808a0fc3c1cd4f9ca
+host_net=net:[4026531833]
+host_pid=pid:[4026531836]
+host_ipc=ipc:[4026531839]
+a3f30dfebaf59b63380167e316cda9e6272a6b7683debc4648de51c8668e62ef
+{"Binds":null,"ContainerIDFile":"","LogConfig":{"Type":"json-file","Config":{}},"NetworkMode":"none","PortBindings":{},"RestartPolicy":{"Name":"no","MaximumRetryCount":0},"AutoRemove":false,"VolumeDriver":"","VolumesFrom":null,"ConsoleSize":[0,0],"CapAdd":["CAP_CHOWN","CAP_FOWNER","CAP_NET_ADMIN","CAP_NET_BIND_SERVICE","CAP_NET_RAW","CAP_SETGID","CAP_SETUID","CAP_SYS_ADMIN"],"CapDrop":["ALL"],"CgroupnsMode":"private","Dns":null,"DnsOptions":[],"DnsSearch":[],"ExtraHosts":null,"GroupAdd":null,"IpcMode":"private","Cgroup":"","Links":null,"OomScoreAdj":0,"PidMode":"","Privileged":false,"PublishAllPorts":false,"ReadonlyRootfs":false,"SecurityOpt":["no-new-privileges"],"UTSMode":"","UsernsMode":"","ShmSize":67108864,"Sysctls":{"net.ipv4.ip_forward":"0"},"Runtime":"runc","Isolation":"","CpuShares":0,"Memory":268435456,"NanoCpus":0,"CgroupParent":"","BlkioWeight":0,"BlkioWeightDevice":[],"BlkioDeviceReadBps":[],"BlkioDeviceWriteBps":[],"BlkioDeviceReadIOps":[],"BlkioDeviceWriteIOps":[],"CpuPeriod":0,"CpuQuota":0,"CpuRealtimePeriod":0,"CpuRealtimeRuntime":0,"CpusetCpus":"","CpusetMems":"","Devices":[],"DeviceCgroupRules":null,"DeviceRequests":null,"MemoryReservation":0,"MemorySwap":268435456,"MemorySwappiness":null,"OomKillDisable":false,"PidsLimit":64,"Ulimits":[],"CpuCount":0,"CpuPercent":0,"IOMaximumIOps":0,"IOMaximumBandwidth":0,"MaskedPaths":["/proc/acpi","/proc/asound","/proc/interrupts","/proc/kcore","/proc/keys","/proc/latency_stats","/proc/sched_debug","/proc/scsi","/proc/timer_list","/proc/timer_stats","/sys/devices/virtual/powercap","/sys/firmware"],"ReadonlyPaths":["/proc/bus","/proc/fs","/proc/irq","/proc/sys","/proc/sysrq-trigger"]}
+uid=0(root) gid=0(root) groups=0(root),0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel),11(floppy),20(dialout),26(tape),27(video)
+aarch64
+net=net:[4026532887]
+pid=pid:[4026532885]
+ipc=ipc:[4026532884]
+mnt=mnt:[4026532880]
+user=user:[4026531837]
+uts=uts:[4026532882]
+CapInh:	0000000000000000
+CapPrm:	00000000002034c9
+CapEff:	00000000002034c9
+CapBnd:	00000000002034c9
+CapAmb:	0000000000000000
+NoNewPrivs:	1
+Seccomp:	2
+Seccomp_filters:	1
+forwarding_before=0
+mgmtd version 10.6.1
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+configured with:
+	'--prefix=/usr' '--localstatedir=/run/frr' '--sbindir=/usr/lib/frr' '--sysconfdir=/etc/frr' '--libdir=/usr/lib/frr' '--with-moduledir=/usr/lib/frr/modules' '--disable-dependency-tracking' '--enable-rpki' '--with-libpam' '--enable-doc' '--enable-doc-html' '--enable-snmp' '--enable-fpm' '--disable-protobuf' '--disable-zeromq' '--enable-ospfapi' '--enable-bgp-vnc' '--enable-multipath=256' '--enable-user=frr' '--enable-group=frr' '--enable-vty-group=frrvty' '--enable-configfile-mask=0640' '--enable-logfile-mask=0640' 'CC=cc' 'CXX=c++' 'PYTHON=python3'
+command=/usr/lib/frr/mgmtd -d --log stdout
+mgmtd_launch_exit=0
+2026/10/14 22:58:55 MGMTD: [T83RR-8SM5G] mgmtd 10.6.1 starting: vty@2623
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//zebra.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//zebra.conf]
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//ripd.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//ripd.conf]
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//ripngd.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//ripngd.conf]
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//staticd.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//staticd.conf]
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//mgmtd.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//mgmtd.conf]
+forwarding_after_mgmtd=0
+zebra version 10.6.1
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+configured with:
+	'--prefix=/usr' '--localstatedir=/run/frr' '--sbindir=/usr/lib/frr' '--sysconfdir=/etc/frr' '--libdir=/usr/lib/frr' '--with-moduledir=/usr/lib/frr/modules' '--disable-dependency-tracking' '--enable-rpki' '--with-libpam' '--enable-doc' '--enable-doc-html' '--enable-snmp' '--enable-fpm' '--disable-protobuf' '--disable-zeromq' '--enable-ospfapi' '--enable-bgp-vnc' '--enable-multipath=256' '--enable-user=frr' '--enable-group=frr' '--enable-vty-group=frrvty' '--enable-configfile-mask=0640' '--enable-logfile-mask=0640' 'CC=cc' 'CXX=c++' 'PYTHON=python3'
+command=/usr/lib/frr/zebra -d --log stdout
+zebra_launch_exit=0
+2026/10/14 22:58:55 ZEBRA: [QBKSZ-0KHCW][EC 4043309138] Disabling MPLS support (no kernel support)
+2026/10/14 22:58:55 ZEBRA: [QBKSZ-0KHCW][EC 4043309138] Disabling MPLS support (no kernel support)
+2026/10/14 22:58:55 ZEBRA: [T83RR-8SM5G] zebra 10.6.1 starting: vty@2601
+forwarding_after_zebra=0
+ospfd version 10.6.1
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+configured with:
+	'--prefix=/usr' '--localstatedir=/run/frr' '--sbindir=/usr/lib/frr' '--sysconfdir=/etc/frr' '--libdir=/usr/lib/frr' '--with-moduledir=/usr/lib/frr/modules' '--disable-dependency-tracking' '--enable-rpki' '--with-libpam' '--enable-doc' '--enable-doc-html' '--enable-snmp' '--enable-fpm' '--disable-protobuf' '--disable-zeromq' '--enable-ospfapi' '--enable-bgp-vnc' '--enable-multipath=256' '--enable-user=frr' '--enable-group=frr' '--enable-vty-group=frrvty' '--enable-configfile-mask=0640' '--enable-logfile-mask=0640' 'CC=cc' 'CXX=c++' 'PYTHON=python3'
+command=/usr/lib/frr/ospfd -d --log stdout
+ospfd_launch_exit=0
+2026/10/14 22:58:56 OSPF: [T6R80-M44RP] RI (ospf_router_info_init): Initialize Router Information
+2026/10/14 22:58:56 OSPF: [MBAWE-XHKA3] EXT (ospf_ext_init): Register Extended Link Opaque LSA
+2026/10/14 22:58:56 OSPF: [SW3EZ-RAMP9] EXT (ospf_ext_init): Register Extended Prefix Opaque LSA
+2026/10/14 22:58:56 OSPF: [T83RR-8SM5G] ospfd 10.6.1 starting: vty@2604
+forwarding_after_ospfd=0
+bgpd version 10.6.1
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+configured with:
+	'--prefix=/usr' '--localstatedir=/run/frr' '--sbindir=/usr/lib/frr' '--sysconfdir=/etc/frr' '--libdir=/usr/lib/frr' '--with-moduledir=/usr/lib/frr/modules' '--disable-dependency-tracking' '--enable-rpki' '--with-libpam' '--enable-doc' '--enable-doc-html' '--enable-snmp' '--enable-fpm' '--disable-protobuf' '--disable-zeromq' '--enable-ospfapi' '--enable-bgp-vnc' '--enable-multipath=256' '--enable-user=frr' '--enable-group=frr' '--enable-vty-group=frrvty' '--enable-configfile-mask=0640' '--enable-logfile-mask=0640' 'CC=cc' 'CXX=c++' 'PYTHON=python3'
+command=/usr/lib/frr/bgpd -d --log stdout
+bgpd_launch_exit=0
+2026/10/14 22:58:56 BGP: [T83RR-8SM5G] bgpd 10.6.1 starting: vty@2605, bgp@<all>:179
+forwarding_after_bgpd=0
+forwarding_during_1=0
+forwarding_during_2=0
+forwarding_during_3=0
+mgmtd_process=22
+State:	S (sleeping)
+Uid:	100	100	100	100
+Gid:	101	101	101	101
+CapInh:	0000000000000000
+CapPrm:	0000000000203400
+CapEff:	0000000000000000
+CapBnd:	00000000002034c9
+CapAmb:	0000000000000000
+NoNewPrivs:	1
+Seccomp:	2
+Seccomp_filters:	1
+mgmtd_present=1
+2026/10/14 22:58:55 MGMTD: [T83RR-8SM5G] mgmtd 10.6.1 starting: vty@2623
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//zebra.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//zebra.conf]
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//ripd.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//ripd.conf]
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//ripngd.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//ripngd.conf]
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//staticd.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//staticd.conf]
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//mgmtd.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//mgmtd.conf]
+2026/10/14 22:58:55 MGMTD: [G7SRG-ASAYW] mgmtd: finished reading config files
+2026/10/14 22:58:55 MGMTD: [TKR4Z-MFN07] Backend daemon: mgmtd registers with mgmtd (client-id: 0)
+2026/10/14 22:58:55 MGMTD: [TKR4Z-MFN07] Backend daemon: zebra registers with mgmtd (client-id: 1)
+zebra_process=27
+State:	S (sleeping)
+Uid:	100	100	100	100
+Gid:	101	101	101	101
+CapInh:	0000000000000000
+CapPrm:	0000000000203000
+CapEff:	0000000000000000
+CapBnd:	00000000002034c9
+CapAmb:	0000000000000000
+NoNewPrivs:	1
+Seccomp:	2
+Seccomp_filters:	1
+zebra_present=1
+2026/10/14 22:58:55 ZEBRA: [QBKSZ-0KHCW][EC 4043309138] Disabling MPLS support (no kernel support)
+2026/10/14 22:58:55 ZEBRA: [QBKSZ-0KHCW][EC 4043309138] Disabling MPLS support (no kernel support)
+2026/10/14 22:58:55 ZEBRA: [T83RR-8SM5G] zebra 10.6.1 starting: vty@2601
+2026/10/14 22:58:55 ZEBRA: [K55SV-YMF8X] Sweeping the RIB for stale routes...
+2026/10/14 22:58:56 ZEBRA: [V98V0-MTWPF] client 33 says hello and bids fair to announce only ospf routes vrf=0
+2026/10/14 22:58:56 ZEBRA: [V98V0-MTWPF] client 39 says hello and bids fair to announce only bgp routes vrf=0
+2026/10/14 22:58:56 ZEBRA: [V98V0-MTWPF] client 43 says hello and bids fair to announce only vnc routes vrf=0
+2026/10/14 22:58:57 ZEBRA: [V98V0-MTWPF] client 51 says hello and bids fair to announce only bgp routes vrf=0
+ospfd_process=35
+State:	S (sleeping)
+Uid:	100	100	100	100
+Gid:	101	101	101	101
+CapInh:	0000000000000000
+CapPrm:	0000000000203400
+CapEff:	0000000000000000
+CapBnd:	00000000002034c9
+CapAmb:	0000000000000000
+NoNewPrivs:	1
+Seccomp:	2
+Seccomp_filters:	1
+ospfd_present=1
+2026/10/14 22:58:56 OSPF: [T6R80-M44RP] RI (ospf_router_info_init): Initialize Router Information
+2026/10/14 22:58:56 OSPF: [MBAWE-XHKA3] EXT (ospf_ext_init): Register Extended Link Opaque LSA
+2026/10/14 22:58:56 OSPF: [SW3EZ-RAMP9] EXT (ospf_ext_init): Register Extended Prefix Opaque LSA
+2026/10/14 22:58:56 OSPF: [T83RR-8SM5G] ospfd 10.6.1 starting: vty@2604
+bgpd_process=41
+State:	S (sleeping)
+Uid:	100	100	100	100
+Gid:	101	101	101	101
+CapInh:	0000000000000000
+CapPrm:	0000000000203400
+CapEff:	0000000000000000
+CapBnd:	00000000002034c9
+CapAmb:	0000000000000000
+NoNewPrivs:	1
+Seccomp:	2
+Seccomp_filters:	1
+bgpd_present=1
+2026/10/14 22:58:56 BGP: [T83RR-8SM5G] bgpd 10.6.1 starting: vty@2605, bgp@<all>:179
+term_sent=22
+term_sent=27
+term_sent=35
+term_sent=41
+2026/10/14 22:58:55 MGMTD: [T83RR-8SM5G] mgmtd 10.6.1 starting: vty@2623
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//zebra.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//zebra.conf]
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//ripd.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//ripd.conf]
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//ripngd.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//ripngd.conf]
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//staticd.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//staticd.conf]
+2026/10/14 22:58:55 MGMTD: [RQT05-4D0H5][EC 100663319] vty_open_config: failed to open configuration file /etc/frr//mgmtd.conf: No such file or directory, checking backup
+2026/10/14 22:58:55 MGMTD: [VDWX6-W8CNF][EC 100663304] vty_open_config: can't open configuration file [/etc/frr//mgmtd.conf]
+2026/10/14 22:58:55 MGMTD: [G7SRG-ASAYW] mgmtd: finished reading config files
+2026/10/14 22:58:55 MGMTD: [TKR4Z-MFN07] Backend daemon: mgmtd registers with mgmtd (client-id: 0)
+2026/10/14 22:58:55 MGMTD: [TKR4Z-MFN07] Backend daemon: zebra registers with mgmtd (client-id: 1)
+2026/10/14 22:58:59 MGMTD: [J2RAS-MZ95C] Terminating on signal
+2026/10/14 22:58:55 ZEBRA: [QBKSZ-0KHCW][EC 4043309138] Disabling MPLS support (no kernel support)
+2026/10/14 22:58:55 ZEBRA: [QBKSZ-0KHCW][EC 4043309138] Disabling MPLS support (no kernel support)
+2026/10/14 22:58:55 ZEBRA: [T83RR-8SM5G] zebra 10.6.1 starting: vty@2601
+2026/10/14 22:58:55 ZEBRA: [K55SV-YMF8X] Sweeping the RIB for stale routes...
+2026/10/14 22:58:56 ZEBRA: [V98V0-MTWPF] client 33 says hello and bids fair to announce only ospf routes vrf=0
+2026/10/14 22:58:56 ZEBRA: [V98V0-MTWPF] client 39 says hello and bids fair to announce only bgp routes vrf=0
+2026/10/14 22:58:56 ZEBRA: [V98V0-MTWPF] client 43 says hello and bids fair to announce only vnc routes vrf=0
+2026/10/14 22:58:57 ZEBRA: [V98V0-MTWPF] client 51 says hello and bids fair to announce only bgp routes vrf=0
+2026/10/14 22:58:59 ZEBRA: [VD0EC-3NZGB] BE-client: mgmt_msg_read: got EOF/disconnect on fd 19
+2026/10/14 22:58:59 ZEBRA: [XVBTQ-5QTVQ] Terminating on signal
+2026/10/14 22:58:59 ZEBRA: [YDZ55-W3VM6] release_daemon_table_chunks: Released 0 table chunks
+2026/10/14 22:58:59 ZEBRA: [JPSA8-5KYEA] client 33 disconnected 0 ospf routes removed from the rib
+2026/10/14 22:58:59 ZEBRA: [S929C-NZR3N] client 33 disconnected 0 ospf nhgs removed from the rib
+2026/10/14 22:58:59 ZEBRA: [YDZ55-W3VM6] release_daemon_table_chunks: Released 0 table chunks
+2026/10/14 22:58:59 ZEBRA: [JPSA8-5KYEA] client 39 disconnected 0 bgp routes removed from the rib
+2026/10/14 22:58:59 ZEBRA: [S929C-NZR3N] client 39 disconnected 0 bgp nhgs removed from the rib
+2026/10/14 22:58:59 ZEBRA: [YDZ55-W3VM6] release_daemon_table_chunks: Released 0 table chunks
+2026/10/14 22:58:59 ZEBRA: [JPSA8-5KYEA] client 43 disconnected 0 vnc routes removed from the rib
+2026/10/14 22:58:59 ZEBRA: [S929C-NZR3N] client 43 disconnected 0 vnc nhgs removed from the rib
+2026/10/14 22:58:59 ZEBRA: [YDZ55-W3VM6] release_daemon_table_chunks: Released 0 table chunks
+2026/10/14 22:58:59 ZEBRA: [M6GBJ-2NV1J][EC 4043309121] zebra/zebra_ptm.c:1282 failed to find process pid registration
+2026/10/14 22:58:59 ZEBRA: [JPSA8-5KYEA] client 51 disconnected 0 bgp routes removed from the rib
+2026/10/14 22:58:59 ZEBRA: [S929C-NZR3N] client 51 disconnected 0 bgp nhgs removed from the rib
+2026/10/14 22:58:59 ZEBRA: [QS0NJ-H5QKJ] Zebra final shutdown
+2026/10/14 22:58:56 OSPF: [T6R80-M44RP] RI (ospf_router_info_init): Initialize Router Information
+2026/10/14 22:58:56 OSPF: [MBAWE-XHKA3] EXT (ospf_ext_init): Register Extended Link Opaque LSA
+2026/10/14 22:58:56 OSPF: [SW3EZ-RAMP9] EXT (ospf_ext_init): Register Extended Prefix Opaque LSA
+2026/10/14 22:58:56 OSPF: [T83RR-8SM5G] ospfd 10.6.1 starting: vty@2604
+2026/10/14 22:58:59 OSPF: [W9T04-QWK6B] Terminating on signal
+2026/10/14 22:58:56 BGP: [T83RR-8SM5G] bgpd 10.6.1 starting: vty@2605, bgp@<all>:179
+2026/10/14 22:58:59 BGP: [ZW1GY-R46JE] Terminating on signal
+forwarding_final=0
+diagnostic_exit=0
+container_exit=0 running=false oom=false
+frr-diag-41dfb0ac-266b-448e-8a9c-61242e6f59de
+cleanup_exit=0
+container_absent=PASS
+total_elapsed_seconds=6
+script_exit=0
