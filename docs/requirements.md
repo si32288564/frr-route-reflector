@@ -1,6 +1,6 @@
 # Requirements — frr-route-reflector
 
-> **Status: Proposed / awaiting Owner acceptance.** This document becomes an accepted requirements authority only after its PR is approved and merged to `main`.  
+> **Authority status:** This content is a proposal on a non-merged PR branch. It becomes accepted requirements only when reviewed and merged to `main`.  
 > **Scope:** an IPv4 BGP Route Reflector CNF for Kubernetes, plus the external lab behavior required to prove its function.  
 > **Governance:** [PROJECT_GOVERNANCE.md](PROJECT_GOVERNANCE.md). Architecture: [architecture.md](architecture.md).
 
