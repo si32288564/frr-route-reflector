@@ -10,9 +10,9 @@ An open-source FRRouting-based BGP Route Reflector CNF for Kubernetes.
 
 The initial target is an IPv4-only Route Reflector implemented with FRRouting, deployed as Kubernetes Pods and connected to external networks through Multus. Detailed, accepted requirements and architecture will be maintained under `docs/`; implementation must not infer architecture from this introduction.
 
-## Proposed architecture documents
+## Design authorities
 
-The following documents record the initial architecture proposal; they become authoritative only after the relevant PR is approved and merged:
+The following documents record the accepted architecture on `main`. Changes in unmerged PRs remain proposals:
 
 - [Requirements](docs/requirements.md)
 - [Architecture](docs/architecture.md)
@@ -20,7 +20,11 @@ The following documents record the initial architecture proposal; they become au
 - [Acceptance criteria](docs/acceptance-criteria.md)
 - Architecture Decision Records: [ADR 0001](docs/adr/0001-two-rr-one-cluster.md), [ADR 0002](docs/adr/0002-fixed-bare-pods.md), [ADR 0003](docs/adr/0003-multus-vlan-cni.md), [ADR 0004](docs/adr/0004-no-rr-ip-transit.md), [ADR 0005](docs/adr/0005-client-transit-broadcast.md), [ADR 0006](docs/adr/0006-client-next-hop-self.md), [ADR 0007](docs/adr/0007-rr-nontransit-enforcement.md)
 
-These files describe agreed intent and open technical decisions; they are **not** evidence of an implemented or tested CNF.
+The design documents do **not** establish that a CNF has been built, deployed, or tested.
+
+## Proposed implementation contract
+
+The next design PR proposes [Implementation Contract](docs/implementation-contract.md), [ADR 0008](docs/adr/0008-config-ownership.md), [ADR 0009](docs/adr/0009-bare-pod-updates.md), and [Codex task 0001](docs/tasks/0001-bootstrap-container-chart.md). On `main` these become accepted only after the relevant PR is approved and merged.
 
 ## Development and governance
 
