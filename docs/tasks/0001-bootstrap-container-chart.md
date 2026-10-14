@@ -1,6 +1,6 @@
 # Codex task 0001 — Bootstrap container and Helm render
 
-> **Authority / state:** Task 0001 was authorized by merged PR #4 and Issue #5. It is **currently BLOCKED** by the FRR capability STOP in Draft PR #6. This branch proposes a bounded change to the container/base image selection; implementation cannot resume from this proposal until its own PR is reviewed and merged.  
+> **Authority / state:** Task 0001 was authorized by merged PR #4 and Issue #5. Alpine 3.24 / FRR 10.6.1-r0 passed one authorized SYS_ADMIN-assisted startup diagnostic in Draft PR #6 (commit f7d36f6), **not** a Kubernetes or routing test. Implementation remains **BLOCKED pending an explicit Owner security decision** on proposed ADR 0011; only after its acceptance and merge may Codex adopt the lab-only SYS_ADMIN profile.  
 > **Work location:** Owner's local clone. **Push:** GitHub working branch, Pull Request for Chat + Owner review.  
 > **Architecture sources:** `docs/PROJECT_GOVERNANCE.md`, `docs/requirements.md`, `docs/architecture.md`, `docs/network-design.md`, `docs/acceptance-criteria.md`, `docs/implementation-contract.md`, ADR 0001–0010 (ADR 0010 becomes binding only after the design PR merges).
 
@@ -45,6 +45,18 @@ Build **one narrow, verifiable vertical slice**: a reusable FRR RR container and
 - A test result or config requires disclosing non-public company data to GitHub.
 
 When STOP occurs, submit **a minimal reproducible fact, affected requirement/invariant, candidate finite remedy, and whether it blocks this task**. Do not create a new general-purpose state machine/controller.
+
+## Capability decision and new completion boundary (proposed ADR 0011)
+
+The approved Alpine candidate's `zebra`, `ospfd`, `bgpd`, `mgmtd` startup feasibility **with** `CAP_SYS_ADMIN` is now documented by [commit f7d36f6](https://github.com/si32288564/frr-route-reflector/commit/f7d36f681c4c3ae449e58d1e04c2b20ffd51633f). This does **not** prove integrated FRR configuration, functional SYS_ADMIN necessity, or Kubernetes admission.
+
+**Only if [ADR 0011](../adr/0011-lab-frr-capability-profile.md) is accepted and merged**:
+- Implement **one** explicit opt-in `lab-sysadmin` profile for the accepted Alpine runtime. Reject absent profile selection; do not quietly grant SYS_ADMIN by default.
+- Drop ALL; use a justified minimal addition set including SYS_ADMIN. Keep `privileged: false`, non-host namespaces, no host mounts, default runtime seccomp, and disabled automatic service account token. If the profile cannot honor these boundaries, STOP with exact evidence.
+- Make no changes to the host, kubelet, admission policy or namespace labels. Expose external prerequisites and mark any blocked Kubernetes test as NOT RUN rather than bypassing policy.
+- Preserve the Pod-local no-forwarding gate and verify it with executable negative tests; do not mistake Readiness for packet-drop enforcement.
+- Complete the existing fixed-scope Container, Chart, static rendering, and validation. Do not reopen distro shopping or run the one-time SYS_ADMIN diagnostic again without authorization.
+- Retain PR #6 as Draft and Issue #5 as Open until implementation and acceptance evidence are actually complete.
 
 ## Existing STOP evidence and next bounded action
 
