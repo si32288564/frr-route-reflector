@@ -1,7 +1,7 @@
 # Implementation contract — FRR CNF and Helm Chart
 
-> **Status:** Proposal on `design/implementation-contract`; not authoritative until Owner approval and merge to `main`.  
-> Governing sources: [Governance](PROJECT_GOVERNANCE.md), [requirements](requirements.md), [architecture](architecture.md), [network design](network-design.md), [acceptance criteria](acceptance-criteria.md), and ADRs 0001–0007. This contract **binds their implementation projection**, not a new routing architecture.
+> **Authority:** The reviewed `main` version is binding. Changes in this branch are proposed until accepted and merged.  
+> Governing sources: [Governance](PROJECT_GOVERNANCE.md), [requirements](requirements.md), [architecture](architecture.md), [network design](network-design.md), [acceptance criteria](acceptance-criteria.md), and ADRs 0001–0010 (ADR 0010 proposed until merged). This contract **binds their implementation projection**, not a new routing architecture.
 
 ## 1. Explicit implementation boundary
 
@@ -72,7 +72,8 @@ Required validation:
 
 ## 3. FRR process contract
 
-- Use a **version-pinned FRRouting** distribution/image; no floating `latest` or unreviewed external build inputs in a published release. Image digest/provenance is established during the implementation task.
+- **Build this project's own RR runtime image**. Use **Alpine Linux 3.24** pinned by immutable base digest as the first candidate, installing a signed/version-fixed `frr` package from Alpine `v3.24/community` (initial candidate: `10.6.1-r0`, subject to actual repo/architecture verification). This is a package-based FRR image, **not a FRRouting-source fork** and not a thin derivative of the upstream FRR Quay image. Debian Slim with pinned FRR is the sole alternate candidate if the Alpine candidate cannot meet the requirements. See [ADR 0010](adr/0010-minimal-frr-runtime.md).
+- Inspect the final package/dependency/daemon inventory; omit optional components and build-time tooling **only when compatible with upstream package/dependency integrity**. The core `frr` package may contain additional disabled daemons; do not claim that only three binaries are installed without a file-inventory check. Record immutable base digest, FRR package revision, resolved dependency versions, SBOM/scan and final image digest. **Version pinning alone is not a guarantee of reproducible builds** when package repositories update/evict revisions.
 - Use FRR's **integrated** `/etc/frr/frr.conf` as the single startup configuration, generated from Helm values. Enable routing roles `zebra`, `ospfd`, and `bgpd` only, plus whichever FRR **configuration/process supervisor** services the chosen distribution requires (for example `watchfrr` / `mgmtd`). Do not invent a parallel routing daemon manager.
 - All daemon processes share **the RR Pod network namespace**. No per-peer child Pods and no node-wide FRR.
 - The container startup path must materialize the projected configuration in a **writable, Pod-private runtime directory** if FRR tooling requires mutable configuration/pid/socket files. A read-only ConfigMap file must not be overwritten. The canonical input remains Helm values; runtime files are derived.
@@ -90,7 +91,7 @@ Every RR Pod:
 - Has `restartPolicy: Always` for container-process crashes but **no** application controller recreating a deleted/evicted Pod.
 - Has one Calico primary `eth0` reserved for ordinary Kubernetes control-plane management (not the FRR's external BGP/OSPF path), and exactly four Multus secondary interfaces named by the release values.
 - Sets `hostNetwork: false`, disables automatic service-account token mounting, uses dedicated ConfigMap/emptyDir volumes, and does not require a Node hostPath for FRR state.
-- Requests only the minimum Linux capabilities and Pod privileges proven necessary for FRR, packet sockets, stable loopback and namespace-local safety gate. **Privileged mode and `SYS_ADMIN` are not the default.** If the chosen FRR image/cluster constraints require wider privileges, stop and present a security decision to Owner.
+- Requests only the Linux capabilities and Pod permissions demonstrated necessary for FRR, packet sockets, stable loopback and namespace-local safety gate. **Neither automatic `SYS_ADMIN` grant nor categorical `SYS_ADMIN` rejection is the policy.** A minimal-profile trial comes first; if required by FRR, a narrowly controlled isolated diagnostic trial with `SYS_ADMIN` may be proposed/evaluated with the Owner's authorization and safeguards. **A release Pod manifest granting `SYS_ADMIN`, `privileged` or expanded host access requires a distinct Owner security approval.** Never silently change the Worker or cluster security policy.
 - Must guard against client-facing operation if `net.ipv4.ip_forward` is not verified as `0` in the **Pod netns**. Do not edit Worker host sysctls or weaken kubelet security policy as a hidden workaround.
 
 Every NAD:
@@ -100,6 +101,14 @@ Every NAD:
 - Has a lifecycle tied to its RR release, with explicit deletion/cleanup checks for stale VLAN interfaces after Pod removal.
 
 The Worker physical NIC and external switch trunk **must already be configured**; the Chart must not mutate them.
+
+### 4.1 Capability and image security decision gate
+
+- The earlier FRR 10.3.1 upstream-image probe is a genuine STOP for **that candidate under the tested capability profile**, not a finding that all FRR images require `SYS_ADMIN`.
+- Evaluate **one Alpine 3.24 package-based build** first (pin base image digest, package version/revision, effective runtime architecture and dependencies). Compare a pinned Debian Slim variant **once only if necessary**.
+- Reproduce `zebra`, `ospfd`, `bgpd` privilege initialization and start behavior; record the exact `CAP_*` set, user/group, Linux seccomp profile and effective netns `ip_forward`. A successful daemon startup is not proof of BGP/OSPF functional behavior.
+- The requirement is a security-reviewed capability contract, **not maximally few capabilities at any cost**. `CAP_SYS_ADMIN` presents a broad attack surface; assess necessity and mitigations before proposing it for a production-like Pod manifest.
+- Security exceptions and source-level FRR privilege changes are explicit Architecture/Owner decisions, not routine Codex implementation freedoms.
 
 ## 5. Safety, probes, and runtime observability
 
@@ -130,7 +139,7 @@ See [ADR 0009](adr/0009-bare-pod-updates.md).
 ## 7. Scope of first Codex work
 
 The first task is not a complete network-validated CNF. Implement a **minimum coherent, statically verifiable vertical slice**:
-- Reproducible FRR container skeleton and integrated FRR config startup path.
+- Project-owned FRR runtime container skeleton based on a pinned **Alpine 3.24** package installation (candidate `frr 10.6.1-r0`), integrated config startup path and package/capability provenance evidence. Debian Slim remains a single fallback candidate, not a mandatory second implementation.
 - Helm chart rendering two independently addressed bare Pods, two FRR ConfigMaps, eight NADs and deterministic annotations.
 - Schema and targeted failure tests for invalid cardinality, duplicate VLAN/interface/address and invalid IP combinations.
 - Non-transit configuration and **explicitly isolated runtime enforcement** with a fail-closed startup path.
@@ -145,7 +154,7 @@ The proposed Codex handoff is [tasks/0001-bootstrap-container-chart.md](tasks/00
 | Item | Owner decision now? | Reason |
 |---|---|---|
 | Helm values → generated per-RR FRR config; fixed bare-Pod lifecycle | **Yes: by approving this contract PR** | Architecture interface and operational semantics |
-| Runtime permissions to enforce namespace forwarding gate | **Only if minimal-capability approach fails** | Security boundary; collect test evidence first |
+| Runtime capabilities, including `SYS_ADMIN` if requested by the selected FRR build | **Owner approval for any shipped exception** | Do not presume that routing requires `SYS_ADMIN`; gather exact daemon/kernel evidence first. A disposable trial does not authorize the shipped manifest. |
 | Actual NIC names, VLAN IDs, CIDRs, ASN, OSPF area | **Not required for public code skeleton** | Provide by local binding; never commit internal details |
 | OSS LICENSE choice (e.g. Apache-2.0 or MIT) | **Before public distribution/release** | Legal/copyright/redistribution rights |
 | Docker Hub vs GHCR; public chart OCI endpoint | **Before publishing release artifacts** | Independent release policy, not needed for local build |
@@ -153,6 +162,8 @@ The proposed Codex handoff is [tasks/0001-bootstrap-container-chart.md](tasks/00
 
 ## References (implementation constraints; not test evidence)
 
+- [ADR 0010 — minimal FRR runtime and capability policy](adr/0010-minimal-frr-runtime.md)
+- [Alpine 3.24 package index](https://pkgs.alpinelinux.org/packages?branch=v3.24&name=frr)
 - [FRRouting integrated configuration](https://docs.frrouting.org/en/latest/basic.html)
 - [FRRouting BGP no-rib and RR](https://docs.frrouting.org/en/latest/bgp.html)
 - [FRRouting OSPF max-metric](https://docs.frrouting.org/en/latest/ospfd.html)
