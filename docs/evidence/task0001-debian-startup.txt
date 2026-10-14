@@ -1,0 +1,45 @@
+uid=0(root) gid=0(root) groups=0(root)
+aarch64
+0
+CapInh:	0000000000000000
+CapPrm:	00000000000034c9
+CapEff:	00000000000034c9
+CapBnd:	00000000000034c9
+CapAmb:	0000000000000000
+NoNewPrivs:	1
+Seccomp:	2
+Seccomp_filters:	1
+zebra version 10.3
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+configured with:
+	'--build=aarch64-linux-gnu' '--prefix=/usr' '--includedir=${prefix}/include' '--mandir=${prefix}/share/man' '--infodir=${prefix}/share/info' '--sysconfdir=/etc' '--localstatedir=/var' '--disable-option-checking' '--disable-silent-rules' '--libdir=${prefix}/lib/aarch64-linux-gnu' '--runstatedir=/run' '--disable-maintainer-mode' '--sbindir=/usr/lib/frr' '--with-vtysh-pager=/usr/bin/pager' '--libdir=/usr/lib/aarch64-linux-gnu/frr' '--with-moduledir=/usr/lib/aarch64-linux-gnu/frr/modules' '--disable-dependency-tracking' '--enable-rpki' '--enable-scripting' '--enable-pim6d' '--with-libpam' '--enable-doc' '--enable-doc-html' '--enable-snmp' '--enable-fpm' '--disable-protobuf' '--disable-zeromq' '--enable-ospfapi' '--enable-bgp-vnc' '--enable-multipath=256' '--enable-user=frr' '--enable-group=frr' '--enable-vty-group=frrvty' '--enable-configfile-mask=0640' '--enable-logfile-mask=0640' 'build_alias=aarch64-linux-gnu' 'LIBS= -latomic' 'PYTHON=python3'
+privs_init: initial cap_set_proc failed: Operation not permitted
+Wanted caps: cap_net_admin,cap_net_raw,cap_sys_admin=p
+Have   caps: cap_chown,cap_fowner,cap_setgid,cap_setuid,cap_net_bind_service,cap_net_admin,cap_net_raw=p
+zebra_exit=1
+ospfd version 10.3
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+configured with:
+	'--build=aarch64-linux-gnu' '--prefix=/usr' '--includedir=${prefix}/include' '--mandir=${prefix}/share/man' '--infodir=${prefix}/share/info' '--sysconfdir=/etc' '--localstatedir=/var' '--disable-option-checking' '--disable-silent-rules' '--libdir=${prefix}/lib/aarch64-linux-gnu' '--runstatedir=/run' '--disable-maintainer-mode' '--sbindir=/usr/lib/frr' '--with-vtysh-pager=/usr/bin/pager' '--libdir=/usr/lib/aarch64-linux-gnu/frr' '--with-moduledir=/usr/lib/aarch64-linux-gnu/frr/modules' '--disable-dependency-tracking' '--enable-rpki' '--enable-scripting' '--enable-pim6d' '--with-libpam' '--enable-doc' '--enable-doc-html' '--enable-snmp' '--enable-fpm' '--disable-protobuf' '--disable-zeromq' '--enable-ospfapi' '--enable-bgp-vnc' '--enable-multipath=256' '--enable-user=frr' '--enable-group=frr' '--enable-vty-group=frrvty' '--enable-configfile-mask=0640' '--enable-logfile-mask=0640' 'build_alias=aarch64-linux-gnu' 'LIBS= -latomic' 'PYTHON=python3'
+privs_init: initial cap_set_proc failed: Operation not permitted
+Wanted caps: cap_net_bind_service,cap_net_admin,cap_net_raw,cap_sys_admin=p
+Have   caps: cap_chown,cap_fowner,cap_setgid,cap_setuid,cap_net_bind_service,cap_net_admin,cap_net_raw=p
+ospfd_exit=1
+bgpd version 10.3
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+configured with:
+	'--build=aarch64-linux-gnu' '--prefix=/usr' '--includedir=${prefix}/include' '--mandir=${prefix}/share/man' '--infodir=${prefix}/share/info' '--sysconfdir=/etc' '--localstatedir=/var' '--disable-option-checking' '--disable-silent-rules' '--libdir=${prefix}/lib/aarch64-linux-gnu' '--runstatedir=/run' '--disable-maintainer-mode' '--sbindir=/usr/lib/frr' '--with-vtysh-pager=/usr/bin/pager' '--libdir=/usr/lib/aarch64-linux-gnu/frr' '--with-moduledir=/usr/lib/aarch64-linux-gnu/frr/modules' '--disable-dependency-tracking' '--enable-rpki' '--enable-scripting' '--enable-pim6d' '--with-libpam' '--enable-doc' '--enable-doc-html' '--enable-snmp' '--enable-fpm' '--disable-protobuf' '--disable-zeromq' '--enable-ospfapi' '--enable-bgp-vnc' '--enable-multipath=256' '--enable-user=frr' '--enable-group=frr' '--enable-vty-group=frrvty' '--enable-configfile-mask=0640' '--enable-logfile-mask=0640' 'build_alias=aarch64-linux-gnu' 'LIBS= -latomic' 'PYTHON=python3'
+privs_init: initial cap_set_proc failed: Operation not permitted
+Wanted caps: cap_net_bind_service,cap_net_admin,cap_net_raw,cap_sys_admin=p
+Have   caps: cap_chown,cap_fowner,cap_setgid,cap_setuid,cap_net_bind_service,cap_net_admin,cap_net_raw=p
+bgpd_exit=1
+mgmtd version 10.3
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+configured with:
+	'--build=aarch64-linux-gnu' '--prefix=/usr' '--includedir=${prefix}/include' '--mandir=${prefix}/share/man' '--infodir=${prefix}/share/info' '--sysconfdir=/etc' '--localstatedir=/var' '--disable-option-checking' '--disable-silent-rules' '--libdir=${prefix}/lib/aarch64-linux-gnu' '--runstatedir=/run' '--disable-maintainer-mode' '--sbindir=/usr/lib/frr' '--with-vtysh-pager=/usr/bin/pager' '--libdir=/usr/lib/aarch64-linux-gnu/frr' '--with-moduledir=/usr/lib/aarch64-linux-gnu/frr/modules' '--disable-dependency-tracking' '--enable-rpki' '--enable-scripting' '--enable-pim6d' '--with-libpam' '--enable-doc' '--enable-doc-html' '--enable-snmp' '--enable-fpm' '--disable-protobuf' '--disable-zeromq' '--enable-ospfapi' '--enable-bgp-vnc' '--enable-multipath=256' '--enable-user=frr' '--enable-group=frr' '--enable-vty-group=frrvty' '--enable-configfile-mask=0640' '--enable-logfile-mask=0640' 'build_alias=aarch64-linux-gnu' 'LIBS= -latomic' 'PYTHON=python3'
+privs_init: initial cap_set_proc failed: Operation not permitted
+Wanted caps: cap_net_bind_service,cap_net_admin,cap_net_raw,cap_sys_admin=p
+Have   caps: cap_chown,cap_fowner,cap_setgid,cap_setuid,cap_net_bind_service,cap_net_admin,cap_net_raw=p
+mgmtd_exit=1
+sh
+0

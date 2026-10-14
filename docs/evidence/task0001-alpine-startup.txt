@@ -1,0 +1,45 @@
+uid=0(root) gid=0(root) groups=0(root),0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel),11(floppy),20(dialout),26(tape),27(video)
+aarch64
+0
+CapInh:	0000000000000000
+CapPrm:	00000000000034c9
+CapEff:	00000000000034c9
+CapBnd:	00000000000034c9
+CapAmb:	0000000000000000
+NoNewPrivs:	1
+Seccomp:	2
+Seccomp_filters:	1
+zebra version 10.6.1
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+configured with:
+	'--prefix=/usr' '--localstatedir=/run/frr' '--sbindir=/usr/lib/frr' '--sysconfdir=/etc/frr' '--libdir=/usr/lib/frr' '--with-moduledir=/usr/lib/frr/modules' '--disable-dependency-tracking' '--enable-rpki' '--with-libpam' '--enable-doc' '--enable-doc-html' '--enable-snmp' '--enable-fpm' '--disable-protobuf' '--disable-zeromq' '--enable-ospfapi' '--enable-bgp-vnc' '--enable-multipath=256' '--enable-user=frr' '--enable-group=frr' '--enable-vty-group=frrvty' '--enable-configfile-mask=0640' '--enable-logfile-mask=0640' 'CC=cc' 'CXX=c++' 'PYTHON=python3'
+zebra_exit=1
+privs_init: initial cap_set_proc failed: Operation not permitted
+Wanted caps: cap_net_admin,cap_net_raw,cap_sys_admin=p
+Have   caps: cap_chown,cap_fowner,cap_setgid,cap_setuid,cap_net_bind_service,cap_net_admin,cap_net_raw=p
+ospfd version 10.6.1
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+configured with:
+	'--prefix=/usr' '--localstatedir=/run/frr' '--sbindir=/usr/lib/frr' '--sysconfdir=/etc/frr' '--libdir=/usr/lib/frr' '--with-moduledir=/usr/lib/frr/modules' '--disable-dependency-tracking' '--enable-rpki' '--with-libpam' '--enable-doc' '--enable-doc-html' '--enable-snmp' '--enable-fpm' '--disable-protobuf' '--disable-zeromq' '--enable-ospfapi' '--enable-bgp-vnc' '--enable-multipath=256' '--enable-user=frr' '--enable-group=frr' '--enable-vty-group=frrvty' '--enable-configfile-mask=0640' '--enable-logfile-mask=0640' 'CC=cc' 'CXX=c++' 'PYTHON=python3'
+privs_init: initial cap_set_proc failed: Operation not permitted
+Wanted caps: cap_net_bind_service,cap_net_admin,cap_net_raw,cap_sys_admin=p
+Have   caps: cap_chown,cap_fowner,cap_setgid,cap_setuid,cap_net_bind_service,cap_net_admin,cap_net_raw=p
+ospfd_exit=1
+bgpd version 10.6.1
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+configured with:
+	'--prefix=/usr' '--localstatedir=/run/frr' '--sbindir=/usr/lib/frr' '--sysconfdir=/etc/frr' '--libdir=/usr/lib/frr' '--with-moduledir=/usr/lib/frr/modules' '--disable-dependency-tracking' '--enable-rpki' '--with-libpam' '--enable-doc' '--enable-doc-html' '--enable-snmp' '--enable-fpm' '--disable-protobuf' '--disable-zeromq' '--enable-ospfapi' '--enable-bgp-vnc' '--enable-multipath=256' '--enable-user=frr' '--enable-group=frr' '--enable-vty-group=frrvty' '--enable-configfile-mask=0640' '--enable-logfile-mask=0640' 'CC=cc' 'CXX=c++' 'PYTHON=python3'
+privs_init: initial cap_set_proc failed: Operation not permitted
+Wanted caps: cap_net_bind_service,cap_net_admin,cap_net_raw,cap_sys_admin=p
+Have   caps: cap_chown,cap_fowner,cap_setgid,cap_setuid,cap_net_bind_service,cap_net_admin,cap_net_raw=p
+bgpd_exit=1
+mgmtd version 10.6.1
+Copyright 1996-2005 Kunihiro Ishiguro, et al.
+configured with:
+	'--prefix=/usr' '--localstatedir=/run/frr' '--sbindir=/usr/lib/frr' '--sysconfdir=/etc/frr' '--libdir=/usr/lib/frr' '--with-moduledir=/usr/lib/frr/modules' '--disable-dependency-tracking' '--enable-rpki' '--with-libpam' '--enable-doc' '--enable-doc-html' '--enable-snmp' '--enable-fpm' '--disable-protobuf' '--disable-zeromq' '--enable-ospfapi' '--enable-bgp-vnc' '--enable-multipath=256' '--enable-user=frr' '--enable-group=frr' '--enable-vty-group=frrvty' '--enable-configfile-mask=0640' '--enable-logfile-mask=0640' 'CC=cc' 'CXX=c++' 'PYTHON=python3'
+privs_init: initial cap_set_proc failed: Operation not permitted
+Wanted caps: cap_net_bind_service,cap_net_admin,cap_net_raw,cap_sys_admin=p
+Have   caps: cap_chown,cap_fowner,cap_setgid,cap_setuid,cap_net_bind_service,cap_net_admin,cap_net_raw=p
+mgmtd_exit=1
+sh
+0
