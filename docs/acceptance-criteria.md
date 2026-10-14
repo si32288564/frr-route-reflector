@@ -1,6 +1,6 @@
 # Acceptance criteria and verification plan — frr-route-reflector
 
-> **Status: Proposed. No test has been executed by Chat as part of this document.**  
+> **Authority status:** Proposed on an unmerged PR branch; accepted as a verification contract only after Owner review and merge to `main`. No test has been executed by Chat as part of this document.  
 > Requirements: [requirements.md](requirements.md). Architecture: [architecture.md](architecture.md). Topology: [network-design.md](network-design.md).
 
 ## 1. Verification contract
