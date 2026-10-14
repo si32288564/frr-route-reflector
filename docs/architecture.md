@@ -1,6 +1,6 @@
 # Architecture — frr-route-reflector
 
-> **Status: Proposed (PR under Owner review).** Acceptance and merge to `main` make this the initial Architecture authority.  
+> **Authority status:** On an unmerged PR branch this is a proposal; after Owner review and merge to `main`, it is the accepted initial Architecture authority.  
 > Normative requirements: [requirements.md](requirements.md). Topology authority: [network-design.md](network-design.md). Proof obligations: [acceptance-criteria.md](acceptance-criteria.md). Governance: [PROJECT_GOVERNANCE.md](PROJECT_GOVERNANCE.md).
 
 ## 1. System boundary and objective
