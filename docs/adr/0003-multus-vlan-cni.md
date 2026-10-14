@@ -1,6 +1,6 @@
 # ADR 0003 — Multus with VLAN CNI
 
-- **Status:** Proposed; becomes accepted with the Architecture PR.
+- **Authority status:** Proposed on an unmerged PR branch; accepted only after Owner review and merge to `main`.
 - **Context:** Each Worker provides one trunk-capable physical NIC; its RR needs four distinct external VLAN segments, each dedicated to one /31 P2P client link.
 - **Decision:** Use Multus secondary interfaces backed by **VLAN CNI** and Helm-managed NADs. Each Worker receives one RR Pod with four independently assigned VLANs; eight RR↔Client links/NADs in total.
 - **Rationale:** VLAN CNI directly attaches VLAN interfaces without a second macvlan/ipvlan abstraction in this one-Pod-per-Worker topology.
