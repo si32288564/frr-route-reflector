@@ -49,7 +49,7 @@ If a workload demands `privileged`, host networking, altered FRR privilege handl
 
 ## References
 
-- [Task 0001 diagnostic](../tasks/0001-sysadmin-diagnostic.md) (in Draft PR #6 until merged)
-- [Task 0001 runtime evaluation](../tasks/0001-runtime-evaluation.md) (in Draft PR #6 until merged)
+- [Task 0001 diagnostic](https://github.com/si32288564/frr-route-reflector/blob/f7d36f681c4c3ae449e58d1e04c2b20ffd51633f/docs/tasks/0001-sysadmin-diagnostic.md) (Draft PR #6 evidence, not accepted main)
+- [Task 0001 runtime evaluation](https://github.com/si32288564/frr-route-reflector/blob/f7d36f681c4c3ae449e58d1e04c2b20ffd51633f/docs/tasks/0001-runtime-evaluation.md) (Draft PR #6 evidence, not accepted main)
 - [Kubernetes Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
 - [Kubernetes sysctl safe/unsafe classification](https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/)
