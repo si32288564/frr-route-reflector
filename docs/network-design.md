@@ -1,6 +1,6 @@
 # Network design — frr-route-reflector
 
-> **Status: Proposed; values are not assigned.** This document is the proposed topology authority.  
+> **Authority status:** On an unmerged PR branch this is a proposal; after Owner review and merge to `main`, it is the accepted topology authority. Actual environment values remain unassigned.  
 > Requirements: [requirements.md](requirements.md). System behavior: [architecture.md](architecture.md). Acceptance: [acceptance-criteria.md](acceptance-criteria.md).
 
 ## 1. Topology and interface sets
