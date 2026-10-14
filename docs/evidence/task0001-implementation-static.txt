@@ -1,0 +1,47 @@
+negative missing-profile=PASS
+negative bad-profile=PASS
+negative too-few-RRs=PASS
+negative too-many-RRs=PASS
+negative too-few-clients=PASS
+negative too-many-clients=PASS
+negative duplicate-RR=PASS
+negative invalid-RR-name=PASS
+negative duplicate-client=PASS
+negative duplicate-routerid=PASS
+negative duplicate-loopback=PASS
+negative client-RR-collision=PASS
+negative duplicate-worker=PASS
+negative missing-link=PASS
+negative duplicate-pair=PASS
+negative unknown-client=PASS
+negative duplicate-vlan=PASS
+negative zero-vlan=PASS
+negative high-vlan=PASS
+negative duplicate-if=PASS
+negative primary-if=PASS
+negative wrong-mask=PASS
+negative invalid-octet=PASS
+negative overlapping-network=PASS
+negative loopback-network-collision=PASS
+negative wrong-remote=PASS
+negative multicast=PASS
+negative per-RR-clusterId=PASS
+negative forwarding-policy=PASS
+negative extra-peer=PASS
+negative next-hop-policy=PASS
+negative arbitrary-FRR=PASS
+negative floating-image=PASS
+lint/schema/determinism/cardinality/mapping=PASS negatives=33
+case=default
+before=1
+proc /proc/sys proc ro,nosuid,nodev,noexec,relatime 0 0
+STOP: IPv4 forwarding safety readback failed
+gate_exit=1
+after=1
+case_exit=1
+case=zero
+before=0
+proc /proc/sys proc ro,nosuid,nodev,noexec,relatime 0 0
+gate_exit=0
+after=0
+case_exit=0
