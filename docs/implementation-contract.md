@@ -110,6 +110,18 @@ The Worker physical NIC and external switch trunk **must already be configured**
 - The requirement is a security-reviewed capability contract, **not maximally few capabilities at any cost**. `CAP_SYS_ADMIN` presents a broad attack surface; assess necessity and mitigations before proposing it for a production-like Pod manifest.
 - Security exceptions and source-level FRR privilege changes are explicit Architecture/Owner decisions, not routine Codex implementation freedoms.
 
+### 4.2 Lab-only `CAP_SYS_ADMIN` profile — proposed Owner decision
+
+**Authority:** [ADR 0011](adr/0011-lab-frr-capability-profile.md) is a **proposal** until accepted and merged. The one-off capability-enabled Alpine diagnostic recorded in Draft PR #6 proves startup feasibility for the selected image, **not** shipped Pod authorization, integrated FRR correctness or ordinary routing dependence on `SYS_ADMIN`.
+
+Upon acceptance of ADR 0011, Codex may produce an **explicitly opt-in lab-only profile** for the project-built Alpine FRR Runtime; absent that operator choice the Chart must **fail validation**, not silently grant `SYS_ADMIN` or deploy a known-nonstarting RR. This is one bounded profile, not a generic entitlement framework.
+
+- Keep `privileged: false`, separate Pod/host namespaces, no host mounts/socket or automatically mounted service-account token. Set explicit `RuntimeDefault` seccomp and `allowPrivilegeEscalation: false` when proved compatible with the actual daemon startup, and fail rather than loosen them silently.
+- Drop ALL capabilities; add back the proved least set including `SYS_ADMIN` **only in this chosen lab profile**. The disposable diagnostic's entire eight-capability list is **not automatically canonical**; validate setup-only capabilities separately.
+- The accepted Pod objects must not create/update namespace labels, cluster admission exemptions, Worker/kubelet settings, or unsafe sysctl allowlists. Kubernetes Baseline and Restricted Pod Security Standards do not admit `SYS_ADMIN`/the required NET_ADMIN profile. An environmental policy exception, if needed, remains an explicit Owner infrastructure action.
+- `net.ipv4.ip_forward=0` must be established and checked in the Pod's own network namespace before routing startup and after restarts, with ongoing fail-closed observation. Do not presume the Pod sysctl field can set it under default kubelet safe-sysctl policy. Readiness failure alone does not stop packet forwarding. Keep actual negative transit and drift fault-injection acceptance tests.
+- Kubernetes acceptance and support beyond a controlled lab are NOT implied by Docker capability initialization success. Maintain `NOT RUN` distinctions for all unexecuted tests.
+
 ## 5. Safety, probes, and runtime observability
 
 **Mandatory non-transit invariant:** Pod `net.ipv4.ip_forward = 0`. A startup precondition checks and enforces this *inside the Pod namespace*, and recurring verification detects drift. Do not treat Pod readiness alone as an enforcement mechanism: a readiness probe that fails does not stop a BGP daemon or prevent forwarding. A violation must stop routing services/terminate the container **fail-closed**.
