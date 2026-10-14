@@ -28,6 +28,10 @@ A task that needs an unresolved architecture decision must **STOP** and return a
 | A-005 | R-003, R-006 | No configured OSPFv3/IPv6 BGP address family or unintended redistribution of test/customer BGP prefixes into OSPF |
 | A-006 | R-039 | No internal organization secrets/configs/hostnames/credentials, no misleading production values; publishable examples and license/dependency review |
 | A-007 | R-040 | Pod identity and lifecycle plan specifies shutdown, updates, interface cleanup, failure and recovery semantics rather than assuming Deployment-style reconciliation |
+| A-008 | Implementation Contract §2–3 | One schema-validated Helm values input deterministically generates two per-RR integrated FRR configurations; verify image/version pins, daemon activation, RR identities, no RR↔RR session and passive loopback /32 |
+| A-009 | Implementation Contract §4–5 | Pods/NADs meet 2 Pod + 2 ConfigMap + 8 NAD cardinality, four interfaces per RR, node assignment and strict Pod-local non-forwarding gate; privilege requests are justified or explicitly blocked |
+| A-010 | Implementation Contract §6 | ConfigMap-only changes cannot masquerade as applied running state; replacement/rollback is manual, one RR at a time and tracked as NOT RUN until exercised in the lab |
+
 
 The code stage must include repeatable evidence such as `helm lint`, `helm template`, schema validation, rendered-object checks and FRR configuration validation. Exactly which command validates FRR must be demonstrated against the selected FRR version; do not invent PASS output.
 
