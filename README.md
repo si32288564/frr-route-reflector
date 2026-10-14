@@ -22,9 +22,11 @@ The following documents record the accepted architecture on `main`. Changes in u
 
 The design documents do **not** establish that a CNF has been built, deployed, or tested.
 
-## Proposed implementation contract
+## Implementation contract and current STOP
 
-The next design PR proposes [Implementation Contract](docs/implementation-contract.md), [ADR 0008](docs/adr/0008-config-ownership.md), [ADR 0009](docs/adr/0009-bare-pod-updates.md), and [Codex task 0001](docs/tasks/0001-bootstrap-container-chart.md). On `main` these become accepted only after the relevant PR is approved and merged.
+The accepted baseline includes the [Implementation Contract](docs/implementation-contract.md), [ADR 0008](docs/adr/0008-config-ownership.md), [ADR 0009](docs/adr/0009-bare-pod-updates.md), and [Codex Task 0001](docs/tasks/0001-bootstrap-container-chart.md).
+
+[Issue #5](https://github.com/si32288564/frr-route-reflector/issues/5) is the active task; [Draft PR #6](https://github.com/si32288564/frr-route-reflector/pull/6) records the FRR 10.3.1 `CAP_SYS_ADMIN` startup STOP, **not a finished implementation**. The proposed [ADR 0010](docs/adr/0010-minimal-frr-runtime.md) selects a **dedicated Alpine 3.24 + FRR package** runtime as the first candidate. This only becomes accepted after its design PR is merged; it does not automatically grant any expanded Linux capability.
 
 ## Development and governance
 

@@ -31,6 +31,8 @@ A task that needs an unresolved architecture decision must **STOP** and return a
 | A-008 | Implementation Contract §2–3 | One schema-validated Helm values input deterministically generates two per-RR integrated FRR configurations; verify image/version pins, daemon activation, RR identities, no RR↔RR session and passive loopback /32 |
 | A-009 | Implementation Contract §4–5 | Pods/NADs meet 2 Pod + 2 ConfigMap + 8 NAD cardinality, four interfaces per RR, node assignment and strict Pod-local non-forwarding gate; privilege requests are justified or explicitly blocked |
 | A-010 | Implementation Contract §6 | ConfigMap-only changes cannot masquerade as applied running state; replacement/rollback is manual, one RR at a time and tracked as NOT RUN until exercised in the lab |
+| A-011 | ADR 0010 / Task 0001 | Dedicated Alpine 3.24-based runtime records base digest, pinned signed FRR package/version and dependency inventory; evaluates exact capability set for zebra/ospfd/bgpd, and preserves no-IP-transit safety. Any shipped `SYS_ADMIN` exception must have separate Owner approval, not merely a successful disposable startup. |
+
 
 
 The code stage must include repeatable evidence such as `helm lint`, `helm template`, schema validation, rendered-object checks and FRR configuration validation. Exactly which command validates FRR must be demonstrated against the selected FRR version; do not invent PASS output.
@@ -89,6 +91,14 @@ An implementation PR should provide:
 6. **Unverified**: explicit `NOT RUN`, `BLOCKED`, or remaining limitations. **Never report an unexecuted test as PASS.**
 
 When evidence could reveal private lab information, redact or summarize before posting to public GitHub, while keeping the original local evidence accessible to the Owner.
+
+### Minimal runtime STOP regression (PR #6)
+
+- The original `quay.io/frrouting/frr:10.3.1` failure is retained as **candidate-specific FAIL** and is not overwritten by success on a new image.
+- A new Alpine 3.24 build is **NOT RUN** until executed by Codex. The package revision and final installed files must be measured, not inferred.
+- A smaller image or daemon startup alone **does not prove higher security** or route-reflector acceptance.
+- Any `CAP_SYS_ADMIN`-enabled disposable test must document boundaries, exact granted capabilities and host isolation; no permission is imported into the Helm chart without a new Owner decision.
+- Test no forwarding via Pod netns, correct OSPF/BGP and next-hop behavior after the image selection gate.
 
 ## 6. Criteria intentionally not invented
 
