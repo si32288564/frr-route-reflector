@@ -32,6 +32,7 @@ A task that needs an unresolved architecture decision must **STOP** and return a
 | A-009 | Implementation Contract §4–5 | Pods/NADs meet 2 Pod + 2 ConfigMap + 8 NAD cardinality, four interfaces per RR, node assignment and strict Pod-local non-forwarding gate; privilege requests are justified or explicitly blocked |
 | A-010 | Implementation Contract §6 | ConfigMap-only changes cannot masquerade as applied running state; replacement/rollback is manual, one RR at a time and tracked as NOT RUN until exercised in the lab |
 | A-011 | ADR 0010 / Task 0001 | Dedicated Alpine 3.24-based runtime records base digest, pinned signed FRR package/version and dependency inventory; evaluates exact capability set for zebra/ospfd/bgpd, and preserves no-IP-transit safety. Any shipped `SYS_ADMIN` exception must have separate Owner approval, not merely a successful disposable startup. |
+| A-012 | Proposed ADR 0011 / Implementation Contract §4.2 | For a lab-only permission exception, Helm requires explicit `lab-sysadmin` operator selection, does not silently grant SYS_ADMIN, does not create/change cluster security policy, retains `privileged: false`, non-host network and RuntimeDefault seccomp, tests Pod admission, proves fail-closed namespace forwarding with negative cases; all unexecuted checks remain NOT RUN. |
 
 
 
