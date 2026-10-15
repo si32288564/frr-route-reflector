@@ -1,0 +1,820 @@
+{
+  "format": "task0004-apk-inventory-v1",
+  "scanner": "heuristic only; no CVE database",
+  "images": [
+    {
+      "image": "frr-task0003:amd64",
+      "docker_id": "sha256:dbc288be32f2833223262801f287d4ba1be4594059a9a06001d31b963e2d428a",
+      "architecture": "amd64",
+      "os": "linux",
+      "config_sha256": "7affa7841874770a1072a0e13ba497195434c8c2789b311471a53c8c3ab7a1be",
+      "layer_count": 5,
+      "regular_layer_entries_scanned": 336,
+      "disclosure_heuristic_counts": {
+        "private_key": 0,
+        "github_token": 0,
+        "docker_pat": 0,
+        "internal_domain": 9,
+        "credential_assignment": 2,
+        "credential_file_path": 0
+      },
+      "disclosure_locations": [
+        {
+          "path": "sbin/apk",
+          "categories": [
+            "credential_assignment"
+          ],
+          "elf": true
+        },
+        {
+          "path": "usr/lib/frr/fabricd",
+          "categories": [
+            "internal_domain"
+          ],
+          "elf": true
+        },
+        {
+          "path": "usr/lib/frr/isisd",
+          "categories": [
+            "internal_domain"
+          ],
+          "elf": true
+        },
+        {
+          "path": "usr/lib/frr/libfrr.so.0.0.0",
+          "categories": [
+            "internal_domain"
+          ],
+          "elf": true
+        },
+        {
+          "path": "usr/lib/frr/ospfd",
+          "categories": [
+            "internal_domain"
+          ],
+          "elf": true
+        }
+      ],
+      "notice_paths_observed": [],
+      "packages": [
+        {
+          "apk_checksum": "Q18Pz9wvTaBYr2RzvEXE6rYpFiJbI=",
+          "name": "alpine-baselayout",
+          "version": "3.7.2-r1",
+          "architecture": "x86_64",
+          "upstream": "https://gitlab.alpinelinux.org/alpine/aports/-/tree/master/main/alpine-baselayout",
+          "declared_license": "GPL-2.0-only",
+          "origin": "alpine-baselayout",
+          "aports_commit": "60a7585bbab2fa0f762504eb617dbca90216e31f"
+        },
+        {
+          "apk_checksum": "Q1xvm97RfYRLbxsLtXZtLDXA1chQg=",
+          "name": "alpine-baselayout-data",
+          "version": "3.7.2-r1",
+          "architecture": "x86_64",
+          "upstream": "https://gitlab.alpinelinux.org/alpine/aports/-/tree/master/main/alpine-baselayout",
+          "declared_license": "GPL-2.0-only",
+          "origin": "alpine-baselayout",
+          "aports_commit": "60a7585bbab2fa0f762504eb617dbca90216e31f"
+        },
+        {
+          "apk_checksum": "Q12Na4DlPAWad+SRXaeLqWTz/+okA=",
+          "name": "alpine-keys",
+          "version": "2.6-r0",
+          "architecture": "x86_64",
+          "upstream": "https://alpinelinux.org",
+          "declared_license": "MIT",
+          "origin": "alpine-keys",
+          "aports_commit": "b9f23becced4d7b3ccc0fa0f28530243ccd314a0"
+        },
+        {
+          "apk_checksum": "Q1b9G+RpyiNenGLxtz+j5b/6/etrU=",
+          "name": "alpine-release",
+          "version": "3.24.2-r0",
+          "architecture": "x86_64",
+          "upstream": "https://alpinelinux.org",
+          "declared_license": "MIT",
+          "origin": "alpine-base",
+          "aports_commit": "d9d560d5de74ff9a7a73f3c903d6f126a0bf3142"
+        },
+        {
+          "apk_checksum": "Q1eGEwqPLTrGn8MWEYdXt+gVG4uMM=",
+          "name": "apk-tools",
+          "version": "3.0.8-r0",
+          "architecture": "x86_64",
+          "upstream": "https://gitlab.alpinelinux.org/alpine/apk-tools",
+          "declared_license": "GPL-2.0-only",
+          "origin": "apk-tools",
+          "aports_commit": "4588b452722bd4800efdc6cce4f6e980e02a997f"
+        },
+        {
+          "apk_checksum": "Q1LOlgbxwxQ4KXtA31h12862avtnU=",
+          "name": "bash",
+          "version": "5.3.9-r1",
+          "architecture": "x86_64",
+          "upstream": "https://www.gnu.org/software/bash/bash.html",
+          "declared_license": "GPL-3.0-or-later",
+          "origin": "bash",
+          "aports_commit": "1522c3193610902d8493f9790a2755c11f21f26d"
+        },
+        {
+          "apk_checksum": "Q1tUBevAL33YvpW2JlxUskPVRWq48=",
+          "name": "busybox",
+          "version": "1.37.0-r31",
+          "architecture": "x86_64",
+          "upstream": "https://busybox.net/",
+          "declared_license": "GPL-2.0-only",
+          "origin": "busybox",
+          "aports_commit": "c3ef5d10e6ef6528852c51f0564963e2f8c1be19"
+        },
+        {
+          "apk_checksum": "Q1XL0UrMbxgExbrGx33CxJLwELD8c=",
+          "name": "busybox-binsh",
+          "version": "1.37.0-r31",
+          "architecture": "x86_64",
+          "upstream": "https://busybox.net/",
+          "declared_license": "GPL-2.0-only",
+          "origin": "busybox",
+          "aports_commit": "c3ef5d10e6ef6528852c51f0564963e2f8c1be19"
+        },
+        {
+          "apk_checksum": "Q1ZAoo/2JF9wHUZPulOgWxvGV8N6c=",
+          "name": "c-ares",
+          "version": "1.34.8-r0",
+          "architecture": "x86_64",
+          "upstream": "https://c-ares.org/",
+          "declared_license": "MIT",
+          "origin": "c-ares",
+          "aports_commit": "138a6bf9dea5974644e48fef4826b7c474f2f7d8"
+        },
+        {
+          "apk_checksum": "Q1eRI3zuh3mIiTo1S19snETzXU7bk=",
+          "name": "ca-certificates-bundle",
+          "version": "20260909-r0",
+          "architecture": "x86_64",
+          "upstream": "https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/",
+          "declared_license": "MPL-2.0 AND MIT",
+          "origin": "ca-certificates",
+          "aports_commit": "eb7078df3a16d666e8f7723f94bb92e00d4b9236"
+        },
+        {
+          "apk_checksum": "Q1SefuY1VieccfZce4EJlCP/how8I=",
+          "name": "frr",
+          "version": "10.6.1-r0",
+          "architecture": "x86_64",
+          "upstream": "https://frrouting.org/",
+          "declared_license": "GPL-2.0-or-later",
+          "origin": "frr",
+          "aports_commit": "23a7c9f1a27473a1a8a09ad3433d4a7a5b0fb62c"
+        },
+        {
+          "apk_checksum": "Q1LWXI6w8M1cA+is8dZ//Q77TmNBk=",
+          "name": "iproute2",
+          "version": "7.0.0-r0",
+          "architecture": "x86_64",
+          "upstream": "https://wiki.linuxfoundation.org/networking/iproute2",
+          "declared_license": "GPL-2.0-or-later",
+          "origin": "iproute2",
+          "aports_commit": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "apk_checksum": "Q1MaRQoyWVpic2ofJBgD+AXApksGA=",
+          "name": "iproute2-minimal",
+          "version": "7.0.0-r0",
+          "architecture": "x86_64",
+          "upstream": "https://wiki.linuxfoundation.org/networking/iproute2",
+          "declared_license": "GPL-2.0-or-later",
+          "origin": "iproute2",
+          "aports_commit": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "apk_checksum": "Q1cB6JqT09HOrGZE+KTLI74E0xnSA=",
+          "name": "iproute2-ss",
+          "version": "7.0.0-r0",
+          "architecture": "x86_64",
+          "upstream": "https://wiki.linuxfoundation.org/networking/iproute2",
+          "declared_license": "GPL-2.0-or-later",
+          "origin": "iproute2",
+          "aports_commit": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "apk_checksum": "Q1yznODIQTcjOJwULYq4nejoTrIR0=",
+          "name": "iproute2-tc",
+          "version": "7.0.0-r0",
+          "architecture": "x86_64",
+          "upstream": "https://wiki.linuxfoundation.org/networking/iproute2",
+          "declared_license": "GPL-2.0-or-later",
+          "origin": "iproute2",
+          "aports_commit": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "apk_checksum": "Q12w0mSfr4pSQU34qdbkrNtgMDtAM=",
+          "name": "json-c",
+          "version": "0.18-r1",
+          "architecture": "x86_64",
+          "upstream": "https://github.com/json-c/json-c/wiki",
+          "declared_license": "MIT",
+          "origin": "json-c",
+          "aports_commit": "8e0faa63c91abd41feb359ce5fe4299a88a57ef1"
+        },
+        {
+          "apk_checksum": "Q1uTzpVzwdDbPup84yhBrQhXq8SlQ=",
+          "name": "libapk",
+          "version": "3.0.8-r0",
+          "architecture": "x86_64",
+          "upstream": "https://gitlab.alpinelinux.org/alpine/apk-tools",
+          "declared_license": "GPL-2.0-only",
+          "origin": "apk-tools",
+          "aports_commit": "4588b452722bd4800efdc6cce4f6e980e02a997f"
+        },
+        {
+          "apk_checksum": "Q1Vi3y8KkXpS2XsFrXvtM0FK2izUs=",
+          "name": "libcap2",
+          "version": "2.78-r0",
+          "architecture": "x86_64",
+          "upstream": "https://sites.google.com/site/fullycapable/",
+          "declared_license": "BSD-3-Clause OR GPL-2.0-only",
+          "origin": "libcap",
+          "aports_commit": "0c35848136c4c16a1b1672cb812efa88fffef1c2"
+        },
+        {
+          "apk_checksum": "Q1GzufwME29JNpMryy7CFJnwrl39M=",
+          "name": "libcrypto3",
+          "version": "3.5.8-r0",
+          "architecture": "x86_64",
+          "upstream": "https://www.openssl.org/",
+          "declared_license": "Apache-2.0",
+          "origin": "openssl",
+          "aports_commit": "013edf8b29199933e8ea34dde460b5584b979042"
+        },
+        {
+          "apk_checksum": "Q1jDk1so4Fk4hXYTF9Jgu116xuUAA=",
+          "name": "libelf",
+          "version": "0.195-r0",
+          "architecture": "x86_64",
+          "upstream": "https://sourceware.org/elfutils/",
+          "declared_license": "GPL-3.0-or-later AND ( GPL-2.0-or-later OR LGPL-3.0-or-later )",
+          "origin": "elfutils",
+          "aports_commit": "8f13294206888f3dd44ed74a8eb3dd9934499e81"
+        },
+        {
+          "apk_checksum": "Q1JwHVBHl62eyxjUSAYmd61L+OPZ0=",
+          "name": "libmnl",
+          "version": "1.0.5-r2",
+          "architecture": "x86_64",
+          "upstream": "https://www.netfilter.org/projects/libmnl/",
+          "declared_license": "LGPL-2.1-or-later",
+          "origin": "libmnl",
+          "aports_commit": "fc95c59998285564fbcb0bfb2443898c62e10171"
+        },
+        {
+          "apk_checksum": "Q1nzGObjJNaCcnSCkZTPasavut7RI=",
+          "name": "libncursesw",
+          "version": "6.6_p20260516-r0",
+          "architecture": "x86_64",
+          "upstream": "https://invisible-island.net/ncurses/",
+          "declared_license": "X11",
+          "origin": "ncurses",
+          "aports_commit": "2cee8a7328d061418336ad327b512d96bcd7bc5e"
+        },
+        {
+          "apk_checksum": "Q1X5seVdghlT0uKx2zItrXCjtQQeo=",
+          "name": "libssl3",
+          "version": "3.5.8-r0",
+          "architecture": "x86_64",
+          "upstream": "https://www.openssl.org/",
+          "declared_license": "Apache-2.0",
+          "origin": "openssl",
+          "aports_commit": "013edf8b29199933e8ea34dde460b5584b979042"
+        },
+        {
+          "apk_checksum": "Q1UbKLJEBZC4NLU2aZs5zQVZf8F5E=",
+          "name": "libxtables",
+          "version": "1.8.13-r0",
+          "architecture": "x86_64",
+          "upstream": "https://www.netfilter.org/projects/iptables/index.html",
+          "declared_license": "GPL-2.0-or-later",
+          "origin": "iptables",
+          "aports_commit": "8848fb97f5ec1aa887b836cf412d88eaabe312b6"
+        },
+        {
+          "apk_checksum": "Q1lZIS3YmnU/1gCo1v8A5L+apnBT8=",
+          "name": "libyang",
+          "version": "3.13.6-r1",
+          "architecture": "x86_64",
+          "upstream": "https://github.com/CESNET/libyang",
+          "declared_license": "BSD-3-Clause-Clear",
+          "origin": "libyang",
+          "aports_commit": "a9e2a2dc46f377eb25884f7fea9834492de7f518"
+        },
+        {
+          "apk_checksum": "Q1D35YJ+ThpzYxvtont4QxqLokDgU=",
+          "name": "musl",
+          "version": "1.2.6-r2",
+          "architecture": "x86_64",
+          "upstream": "https://musl.libc.org/",
+          "declared_license": "MIT",
+          "origin": "musl",
+          "aports_commit": "f5640d3a10f664c9119720c60515265d3d6f6d01"
+        },
+        {
+          "apk_checksum": "Q1da2jxI1j7F2HxC/fk0o/3REpjcU=",
+          "name": "musl-utils",
+          "version": "1.2.6-r2",
+          "architecture": "x86_64",
+          "upstream": "https://musl.libc.org/",
+          "declared_license": "MIT AND BSD-2-Clause AND GPL-2.0-or-later",
+          "origin": "musl",
+          "aports_commit": "f5640d3a10f664c9119720c60515265d3d6f6d01"
+        },
+        {
+          "apk_checksum": "Q1nVUdgo6cjuUsWAHB1gRoKOvxV1I=",
+          "name": "ncurses-terminfo-base",
+          "version": "6.6_p20260516-r0",
+          "architecture": "x86_64",
+          "upstream": "https://invisible-island.net/ncurses/",
+          "declared_license": "X11",
+          "origin": "ncurses",
+          "aports_commit": "2cee8a7328d061418336ad327b512d96bcd7bc5e"
+        },
+        {
+          "apk_checksum": "Q17JkrALr3G7od2eIXlhP5IzrzXI0=",
+          "name": "pcre2",
+          "version": "10.49-r0",
+          "architecture": "x86_64",
+          "upstream": "https://pcre.org/",
+          "declared_license": "BSD-3-Clause",
+          "origin": "pcre2",
+          "aports_commit": "3d497cbb3217749c4fb85f90f3b6f7908b0c1f95"
+        },
+        {
+          "apk_checksum": "Q1lFsW43i8AORNidTegSS7p2R/300=",
+          "name": "readline",
+          "version": "8.3.3-r1",
+          "architecture": "x86_64",
+          "upstream": "https://tiswww.cwru.edu/php/chet/readline/rltop.html",
+          "declared_license": "GPL-3.0-or-later",
+          "origin": "readline",
+          "aports_commit": "a854c03acdac188901fb012f7acbee70a36e8041"
+        },
+        {
+          "apk_checksum": "Q1AT+QPQuiGWc6673QT3S7XtgrAfA=",
+          "name": "scanelf",
+          "version": "1.3.9-r1",
+          "architecture": "x86_64",
+          "upstream": "https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities",
+          "declared_license": "GPL-2.0-only",
+          "origin": "pax-utils",
+          "aports_commit": "c61801eeacb3ffcd9c2025b09e402153bb93fb39"
+        },
+        {
+          "apk_checksum": "Q1wiD0pRJaMTr3M+mN75QTK7Hp1A0=",
+          "name": "ssl_client",
+          "version": "1.37.0-r31",
+          "architecture": "x86_64",
+          "upstream": "https://busybox.net/",
+          "declared_license": "GPL-2.0-only",
+          "origin": "busybox",
+          "aports_commit": "c3ef5d10e6ef6528852c51f0564963e2f8c1be19"
+        },
+        {
+          "apk_checksum": "Q1T0uNmaVCPuxXU/fN0KlNKRvIt4I=",
+          "name": "tini",
+          "version": "0.19.0-r3",
+          "architecture": "x86_64",
+          "upstream": "https://github.com/krallin/tini",
+          "declared_license": "MIT",
+          "origin": "tini",
+          "aports_commit": "494a61016db8d643534788c47f074935ef2e6035"
+        },
+        {
+          "apk_checksum": "Q13Uw9ECrK7ypxoUlZUdVfq8hoBhM=",
+          "name": "zlib",
+          "version": "1.3.2-r0",
+          "architecture": "x86_64",
+          "upstream": "https://zlib.net/",
+          "declared_license": "Zlib",
+          "origin": "zlib",
+          "aports_commit": "f248b33b5943c7dc69bf691031d7612ab2e8ed93"
+        },
+        {
+          "apk_checksum": "Q1lWnOOpfEEJ6OU93enz4b0nJhNUA=",
+          "name": "zstd-libs",
+          "version": "1.5.7-r2",
+          "architecture": "x86_64",
+          "upstream": "https://facebook.github.io/zstd/",
+          "declared_license": "BSD-3-Clause OR GPL-2.0-or-later",
+          "origin": "zstd",
+          "aports_commit": "3c6e2ee2b16f403d53eab39c4426eb61f003c322"
+        }
+      ]
+    },
+    {
+      "image": "frr-task0003:arm64",
+      "docker_id": "sha256:dea86108c2812d9891674e0291af3b59872925e6c462e189a08acf0b3f61f096",
+      "architecture": "arm64",
+      "os": "linux",
+      "config_sha256": "0bcae28f7ee60b01039bce6e402c89f3e2215859ac1e340ee5a16d8b57b57112",
+      "layer_count": 5,
+      "regular_layer_entries_scanned": 335,
+      "disclosure_heuristic_counts": {
+        "private_key": 0,
+        "github_token": 0,
+        "docker_pat": 0,
+        "internal_domain": 9,
+        "credential_assignment": 2,
+        "credential_file_path": 0
+      },
+      "disclosure_locations": [
+        {
+          "path": "sbin/apk",
+          "categories": [
+            "credential_assignment"
+          ],
+          "elf": true
+        },
+        {
+          "path": "usr/lib/frr/fabricd",
+          "categories": [
+            "internal_domain"
+          ],
+          "elf": true
+        },
+        {
+          "path": "usr/lib/frr/isisd",
+          "categories": [
+            "internal_domain"
+          ],
+          "elf": true
+        },
+        {
+          "path": "usr/lib/frr/libfrr.so.0.0.0",
+          "categories": [
+            "internal_domain"
+          ],
+          "elf": true
+        },
+        {
+          "path": "usr/lib/frr/ospfd",
+          "categories": [
+            "internal_domain"
+          ],
+          "elf": true
+        }
+      ],
+      "notice_paths_observed": [],
+      "packages": [
+        {
+          "apk_checksum": "Q17hOhjufinXWHIBdAPVnASE2s2WM=",
+          "name": "alpine-baselayout",
+          "version": "3.7.2-r1",
+          "architecture": "aarch64",
+          "upstream": "https://gitlab.alpinelinux.org/alpine/aports/-/tree/master/main/alpine-baselayout",
+          "declared_license": "GPL-2.0-only",
+          "origin": "alpine-baselayout",
+          "aports_commit": "60a7585bbab2fa0f762504eb617dbca90216e31f"
+        },
+        {
+          "apk_checksum": "Q1MzfIPSHI6xFODUuydeVh3TSTvbg=",
+          "name": "alpine-baselayout-data",
+          "version": "3.7.2-r1",
+          "architecture": "aarch64",
+          "upstream": "https://gitlab.alpinelinux.org/alpine/aports/-/tree/master/main/alpine-baselayout",
+          "declared_license": "GPL-2.0-only",
+          "origin": "alpine-baselayout",
+          "aports_commit": "60a7585bbab2fa0f762504eb617dbca90216e31f"
+        },
+        {
+          "apk_checksum": "Q1ZEDSgayIcU2W6hJkHMark83sG4w=",
+          "name": "alpine-keys",
+          "version": "2.6-r0",
+          "architecture": "aarch64",
+          "upstream": "https://alpinelinux.org",
+          "declared_license": "MIT",
+          "origin": "alpine-keys",
+          "aports_commit": "b9f23becced4d7b3ccc0fa0f28530243ccd314a0"
+        },
+        {
+          "apk_checksum": "Q1tH9vSL07Dtx6XeOS8n1bskUv+1M=",
+          "name": "alpine-release",
+          "version": "3.24.2-r0",
+          "architecture": "aarch64",
+          "upstream": "https://alpinelinux.org",
+          "declared_license": "MIT",
+          "origin": "alpine-base",
+          "aports_commit": "d9d560d5de74ff9a7a73f3c903d6f126a0bf3142"
+        },
+        {
+          "apk_checksum": "Q1EfOebJKtWJwE97O8Tajr7Rhu+8o=",
+          "name": "apk-tools",
+          "version": "3.0.8-r0",
+          "architecture": "aarch64",
+          "upstream": "https://gitlab.alpinelinux.org/alpine/apk-tools",
+          "declared_license": "GPL-2.0-only",
+          "origin": "apk-tools",
+          "aports_commit": "4588b452722bd4800efdc6cce4f6e980e02a997f"
+        },
+        {
+          "apk_checksum": "Q1Tmocg1FubGlvWQ6+OAUIG9yLWko=",
+          "name": "bash",
+          "version": "5.3.9-r1",
+          "architecture": "aarch64",
+          "upstream": "https://www.gnu.org/software/bash/bash.html",
+          "declared_license": "GPL-3.0-or-later",
+          "origin": "bash",
+          "aports_commit": "1522c3193610902d8493f9790a2755c11f21f26d"
+        },
+        {
+          "apk_checksum": "Q1cc/8KYHy1Us5N8Jb4vUWmz+wRTI=",
+          "name": "busybox",
+          "version": "1.37.0-r31",
+          "architecture": "aarch64",
+          "upstream": "https://busybox.net/",
+          "declared_license": "GPL-2.0-only",
+          "origin": "busybox",
+          "aports_commit": "c3ef5d10e6ef6528852c51f0564963e2f8c1be19"
+        },
+        {
+          "apk_checksum": "Q1ax93IqPnu5fQTo75Bv1ywGZ7pdA=",
+          "name": "busybox-binsh",
+          "version": "1.37.0-r31",
+          "architecture": "aarch64",
+          "upstream": "https://busybox.net/",
+          "declared_license": "GPL-2.0-only",
+          "origin": "busybox",
+          "aports_commit": "c3ef5d10e6ef6528852c51f0564963e2f8c1be19"
+        },
+        {
+          "apk_checksum": "Q1pxEWaTTJhJYN8jU07J9ARNwDAoU=",
+          "name": "c-ares",
+          "version": "1.34.8-r0",
+          "architecture": "aarch64",
+          "upstream": "https://c-ares.org/",
+          "declared_license": "MIT",
+          "origin": "c-ares",
+          "aports_commit": "138a6bf9dea5974644e48fef4826b7c474f2f7d8"
+        },
+        {
+          "apk_checksum": "Q1FGTYu4SxbeFGQyIqvXBBZvKmLPY=",
+          "name": "ca-certificates-bundle",
+          "version": "20260909-r0",
+          "architecture": "aarch64",
+          "upstream": "https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/",
+          "declared_license": "MPL-2.0 AND MIT",
+          "origin": "ca-certificates",
+          "aports_commit": "eb7078df3a16d666e8f7723f94bb92e00d4b9236"
+        },
+        {
+          "apk_checksum": "Q1Mi4U4QcWS3/+77Owc4LrjDZsfQk=",
+          "name": "frr",
+          "version": "10.6.1-r0",
+          "architecture": "aarch64",
+          "upstream": "https://frrouting.org/",
+          "declared_license": "GPL-2.0-or-later",
+          "origin": "frr",
+          "aports_commit": "23a7c9f1a27473a1a8a09ad3433d4a7a5b0fb62c"
+        },
+        {
+          "apk_checksum": "Q1kG2xyd9s6vfCyb09MDOCwKqAYK4=",
+          "name": "iproute2",
+          "version": "7.0.0-r0",
+          "architecture": "aarch64",
+          "upstream": "https://wiki.linuxfoundation.org/networking/iproute2",
+          "declared_license": "GPL-2.0-or-later",
+          "origin": "iproute2",
+          "aports_commit": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "apk_checksum": "Q11L7WmvnQpHyyKOpSSVZpBwm9oT8=",
+          "name": "iproute2-minimal",
+          "version": "7.0.0-r0",
+          "architecture": "aarch64",
+          "upstream": "https://wiki.linuxfoundation.org/networking/iproute2",
+          "declared_license": "GPL-2.0-or-later",
+          "origin": "iproute2",
+          "aports_commit": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "apk_checksum": "Q14o2RfkImoWkXzhDVjYb+uRK3vBM=",
+          "name": "iproute2-ss",
+          "version": "7.0.0-r0",
+          "architecture": "aarch64",
+          "upstream": "https://wiki.linuxfoundation.org/networking/iproute2",
+          "declared_license": "GPL-2.0-or-later",
+          "origin": "iproute2",
+          "aports_commit": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "apk_checksum": "Q17SEWvvRDT31CS3dgbJtnMgKiSys=",
+          "name": "iproute2-tc",
+          "version": "7.0.0-r0",
+          "architecture": "aarch64",
+          "upstream": "https://wiki.linuxfoundation.org/networking/iproute2",
+          "declared_license": "GPL-2.0-or-later",
+          "origin": "iproute2",
+          "aports_commit": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "apk_checksum": "Q1gzT6UPtMBS5pi2S6756O2bqVMx8=",
+          "name": "json-c",
+          "version": "0.18-r1",
+          "architecture": "aarch64",
+          "upstream": "https://github.com/json-c/json-c/wiki",
+          "declared_license": "MIT",
+          "origin": "json-c",
+          "aports_commit": "8e0faa63c91abd41feb359ce5fe4299a88a57ef1"
+        },
+        {
+          "apk_checksum": "Q1Ry4Nq4useKoU061sRzfPYEhlGXQ=",
+          "name": "libapk",
+          "version": "3.0.8-r0",
+          "architecture": "aarch64",
+          "upstream": "https://gitlab.alpinelinux.org/alpine/apk-tools",
+          "declared_license": "GPL-2.0-only",
+          "origin": "apk-tools",
+          "aports_commit": "4588b452722bd4800efdc6cce4f6e980e02a997f"
+        },
+        {
+          "apk_checksum": "Q1D7Zbhf6Z1RNJmW3yLAyqdd+IIxw=",
+          "name": "libcap2",
+          "version": "2.78-r0",
+          "architecture": "aarch64",
+          "upstream": "https://sites.google.com/site/fullycapable/",
+          "declared_license": "BSD-3-Clause OR GPL-2.0-only",
+          "origin": "libcap",
+          "aports_commit": "0c35848136c4c16a1b1672cb812efa88fffef1c2"
+        },
+        {
+          "apk_checksum": "Q1yBbnEKxht37PmWjI99NQMTTPTe0=",
+          "name": "libcrypto3",
+          "version": "3.5.8-r0",
+          "architecture": "aarch64",
+          "upstream": "https://www.openssl.org/",
+          "declared_license": "Apache-2.0",
+          "origin": "openssl",
+          "aports_commit": "013edf8b29199933e8ea34dde460b5584b979042"
+        },
+        {
+          "apk_checksum": "Q1RCjq5C/BE4wYYYUjB33eFah9qj4=",
+          "name": "libelf",
+          "version": "0.195-r0",
+          "architecture": "aarch64",
+          "upstream": "https://sourceware.org/elfutils/",
+          "declared_license": "GPL-3.0-or-later AND ( GPL-2.0-or-later OR LGPL-3.0-or-later )",
+          "origin": "elfutils",
+          "aports_commit": "8f13294206888f3dd44ed74a8eb3dd9934499e81"
+        },
+        {
+          "apk_checksum": "Q1hEKvOZvv8fBWUp+l57eRAPiG1T4=",
+          "name": "libmnl",
+          "version": "1.0.5-r2",
+          "architecture": "aarch64",
+          "upstream": "https://www.netfilter.org/projects/libmnl/",
+          "declared_license": "LGPL-2.1-or-later",
+          "origin": "libmnl",
+          "aports_commit": "fc95c59998285564fbcb0bfb2443898c62e10171"
+        },
+        {
+          "apk_checksum": "Q1wNl5+kek1M3VEWlcXl8M4+jPHqI=",
+          "name": "libncursesw",
+          "version": "6.6_p20260516-r0",
+          "architecture": "aarch64",
+          "upstream": "https://invisible-island.net/ncurses/",
+          "declared_license": "X11",
+          "origin": "ncurses",
+          "aports_commit": "2cee8a7328d061418336ad327b512d96bcd7bc5e"
+        },
+        {
+          "apk_checksum": "Q1PH/y0GXoooWZHJVNhDry3HE8zVk=",
+          "name": "libssl3",
+          "version": "3.5.8-r0",
+          "architecture": "aarch64",
+          "upstream": "https://www.openssl.org/",
+          "declared_license": "Apache-2.0",
+          "origin": "openssl",
+          "aports_commit": "013edf8b29199933e8ea34dde460b5584b979042"
+        },
+        {
+          "apk_checksum": "Q16bRNkqc+NZI1wx+jQCnzNalwuLk=",
+          "name": "libxtables",
+          "version": "1.8.13-r0",
+          "architecture": "aarch64",
+          "upstream": "https://www.netfilter.org/projects/iptables/index.html",
+          "declared_license": "GPL-2.0-or-later",
+          "origin": "iptables",
+          "aports_commit": "8848fb97f5ec1aa887b836cf412d88eaabe312b6"
+        },
+        {
+          "apk_checksum": "Q1UTwbvFOIJbMZQVIDrpinGPk8fBQ=",
+          "name": "libyang",
+          "version": "3.13.6-r1",
+          "architecture": "aarch64",
+          "upstream": "https://github.com/CESNET/libyang",
+          "declared_license": "BSD-3-Clause-Clear",
+          "origin": "libyang",
+          "aports_commit": "a9e2a2dc46f377eb25884f7fea9834492de7f518"
+        },
+        {
+          "apk_checksum": "Q1JNQts+O/Z+jaJ4QHLMXQ5svftIU=",
+          "name": "musl",
+          "version": "1.2.6-r2",
+          "architecture": "aarch64",
+          "upstream": "https://musl.libc.org/",
+          "declared_license": "MIT",
+          "origin": "musl",
+          "aports_commit": "f5640d3a10f664c9119720c60515265d3d6f6d01"
+        },
+        {
+          "apk_checksum": "Q1hGTPIwkax/QcCU2jiheeLotaa38=",
+          "name": "musl-utils",
+          "version": "1.2.6-r2",
+          "architecture": "aarch64",
+          "upstream": "https://musl.libc.org/",
+          "declared_license": "MIT AND BSD-2-Clause AND GPL-2.0-or-later",
+          "origin": "musl",
+          "aports_commit": "f5640d3a10f664c9119720c60515265d3d6f6d01"
+        },
+        {
+          "apk_checksum": "Q1/MzFElM7Tf9vRK02sG+bQ+iEjR8=",
+          "name": "ncurses-terminfo-base",
+          "version": "6.6_p20260516-r0",
+          "architecture": "aarch64",
+          "upstream": "https://invisible-island.net/ncurses/",
+          "declared_license": "X11",
+          "origin": "ncurses",
+          "aports_commit": "2cee8a7328d061418336ad327b512d96bcd7bc5e"
+        },
+        {
+          "apk_checksum": "Q10e5Tm6BjCkQImS9ju5aGYjeAfu4=",
+          "name": "pcre2",
+          "version": "10.49-r0",
+          "architecture": "aarch64",
+          "upstream": "https://pcre.org/",
+          "declared_license": "BSD-3-Clause",
+          "origin": "pcre2",
+          "aports_commit": "3d497cbb3217749c4fb85f90f3b6f7908b0c1f95"
+        },
+        {
+          "apk_checksum": "Q1GPvWxvOSv5J0EQfi4YdIeWwjGK8=",
+          "name": "readline",
+          "version": "8.3.3-r1",
+          "architecture": "aarch64",
+          "upstream": "https://tiswww.cwru.edu/php/chet/readline/rltop.html",
+          "declared_license": "GPL-3.0-or-later",
+          "origin": "readline",
+          "aports_commit": "a854c03acdac188901fb012f7acbee70a36e8041"
+        },
+        {
+          "apk_checksum": "Q13IwcpjYtZI8DZAGEuviRS2K2Q/s=",
+          "name": "scanelf",
+          "version": "1.3.9-r1",
+          "architecture": "aarch64",
+          "upstream": "https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities",
+          "declared_license": "GPL-2.0-only",
+          "origin": "pax-utils",
+          "aports_commit": "c61801eeacb3ffcd9c2025b09e402153bb93fb39"
+        },
+        {
+          "apk_checksum": "Q1QQfD9w3aMC4MPtRimUGSRaiigLQ=",
+          "name": "ssl_client",
+          "version": "1.37.0-r31",
+          "architecture": "aarch64",
+          "upstream": "https://busybox.net/",
+          "declared_license": "GPL-2.0-only",
+          "origin": "busybox",
+          "aports_commit": "c3ef5d10e6ef6528852c51f0564963e2f8c1be19"
+        },
+        {
+          "apk_checksum": "Q1YSWSOws6R/P5xVCuiTpT3w9EXSs=",
+          "name": "tini",
+          "version": "0.19.0-r3",
+          "architecture": "aarch64",
+          "upstream": "https://github.com/krallin/tini",
+          "declared_license": "MIT",
+          "origin": "tini",
+          "aports_commit": "494a61016db8d643534788c47f074935ef2e6035"
+        },
+        {
+          "apk_checksum": "Q1qeG8MrsxW/2sYiT5J4Xk2aM0vyk=",
+          "name": "zlib",
+          "version": "1.3.2-r0",
+          "architecture": "aarch64",
+          "upstream": "https://zlib.net/",
+          "declared_license": "Zlib",
+          "origin": "zlib",
+          "aports_commit": "f248b33b5943c7dc69bf691031d7612ab2e8ed93"
+        },
+        {
+          "apk_checksum": "Q1UrGFE6B78rsNBjRohoH37c42uco=",
+          "name": "zstd-libs",
+          "version": "1.5.7-r2",
+          "architecture": "aarch64",
+          "upstream": "https://facebook.github.io/zstd/",
+          "declared_license": "BSD-3-Clause OR GPL-2.0-or-later",
+          "origin": "zstd",
+          "aports_commit": "3c6e2ee2b16f403d53eab39c4426eb61f003c322"
+        }
+      ]
+    }
+  ]
+}
