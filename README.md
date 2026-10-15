@@ -4,9 +4,13 @@ An open-source FRRouting-based BGP Route Reflector CNF for Kubernetes.
 
 ## Status
 
-**Task 0001 implementation under review in Draft PR #6.** A project-owned Alpine
-FRR container and deterministic Helm Chart are available in the working branch.
-Kubernetes deployment, routing and packet/lifecycle acceptance remain NOT RUN.
+**Experimental / lab-only; not production-ready.** Task 0001's Alpine FRR
+container and deterministic Helm Chart were accepted through merged PR #6;
+Issue #5 is closed. Native ARM64 G-2 evidence does not establish native AMD64
+runtime acceptance. Historical AMD64 build/static evidence remains in closed,
+unmerged PR #11; it is not part of accepted main. Native AMD64 execution and
+G-3 Kubernetes deployment, routing, actual non-transit packet and lifecycle
+acceptance remain NOT RUN / BLOCKED. No public image is authorized by this PR.
 
 ## Offline build and checks
 
@@ -53,9 +57,9 @@ The design documents do **not** establish that a CNF has been built, deployed, o
 
 The accepted baseline includes the [Implementation Contract](docs/implementation-contract.md), [ADR 0008](docs/adr/0008-config-ownership.md), [ADR 0009](docs/adr/0009-bare-pod-updates.md), and [Codex Task 0001](docs/tasks/0001-bootstrap-container-chart.md).
 
-[Issue #5](https://github.com/si32288564/frr-route-reflector/issues/5) is active;
-[Draft PR #6](https://github.com/si32288564/frr-route-reflector/pull/6) retains the
-old STOP/diagnostic evidence alongside implementation. Accepted ADRs
+[Issue #5](https://github.com/si32288564/frr-route-reflector/issues/5) is closed;
+[merged PR #6](https://github.com/si32288564/frr-route-reflector/pull/6) retains the
+old STOP/diagnostic evidence alongside the accepted implementation. Accepted ADRs
 [0010](docs/adr/0010-minimal-frr-runtime.md) and
 [0011](docs/adr/0011-lab-frr-capability-profile.md) authorize the Alpine package
 runtime and explicit lab-only profile. They do not authorize cluster policy
@@ -68,4 +72,14 @@ The project is developed publicly with GitHub as the Git source of truth. Archit
 
 ## Usage and licensing
 
-This repository is not yet released for production use. Distribution terms and the OSS license are pending an explicit project decision. No internal employer-specific configurations or secrets belong in this public repository.
+Original project scripts, Helm templates, tests and original documentation are
+licensed under the [MIT License](LICENSE), with Owner-confirmed attribution
+`Copyright (c) 2026 si32288564`. This grant does not relicense third-party files,
+FRRouting, Alpine packages or dependencies bundled in container images.
+
+See [third-party inventory and notice gaps](THIRD_PARTY_NOTICES.md) and
+[publication preflight / source-delivery proposal](docs/publishing-preflight.md).
+Public distribution is BLOCKED pending corresponding source, complete notices,
+security review and separate Owner authorization after this preparation PR is
+reviewed and merged. A lab-only warning does not waive redistribution duties.
+No internal employer-specific configurations or secrets belong in this repository.

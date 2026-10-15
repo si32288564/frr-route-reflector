@@ -1,0 +1,2535 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "properties": [
+      {
+        "name": "scope",
+        "value": "70 APK component instances across two local images; hand-built inventory, not a scanner verdict; completeness beyond APK NOT VERIFIED"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "amd64:alpine-baselayout@3.7.2-r1",
+      "name": "alpine-baselayout",
+      "version": "3.7.2-r1",
+      "purl": "pkg:apk/alpine/alpine-baselayout@3.7.2-r1?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://gitlab.alpinelinux.org/alpine/aports/-/tree/master/main/alpine-baselayout"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "alpine-baselayout"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "60a7585bbab2fa0f762504eb617dbca90216e31f"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q18Pz9wvTaBYr2RzvEXE6rYpFiJbI="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:alpine-baselayout-data@3.7.2-r1",
+      "name": "alpine-baselayout-data",
+      "version": "3.7.2-r1",
+      "purl": "pkg:apk/alpine/alpine-baselayout-data@3.7.2-r1?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://gitlab.alpinelinux.org/alpine/aports/-/tree/master/main/alpine-baselayout"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "alpine-baselayout"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "60a7585bbab2fa0f762504eb617dbca90216e31f"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1xvm97RfYRLbxsLtXZtLDXA1chQg="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:alpine-keys@2.6-r0",
+      "name": "alpine-keys",
+      "version": "2.6-r0",
+      "purl": "pkg:apk/alpine/alpine-keys@2.6-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://alpinelinux.org"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "alpine-keys"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "b9f23becced4d7b3ccc0fa0f28530243ccd314a0"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q12Na4DlPAWad+SRXaeLqWTz/+okA="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:alpine-release@3.24.2-r0",
+      "name": "alpine-release",
+      "version": "3.24.2-r0",
+      "purl": "pkg:apk/alpine/alpine-release@3.24.2-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://alpinelinux.org"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "alpine-base"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "d9d560d5de74ff9a7a73f3c903d6f126a0bf3142"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1b9G+RpyiNenGLxtz+j5b/6/etrU="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:apk-tools@3.0.8-r0",
+      "name": "apk-tools",
+      "version": "3.0.8-r0",
+      "purl": "pkg:apk/alpine/apk-tools@3.0.8-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://gitlab.alpinelinux.org/alpine/apk-tools"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "apk-tools"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "4588b452722bd4800efdc6cce4f6e980e02a997f"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1eGEwqPLTrGn8MWEYdXt+gVG4uMM="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:bash@5.3.9-r1",
+      "name": "bash",
+      "version": "5.3.9-r1",
+      "purl": "pkg:apk/alpine/bash@5.3.9-r1?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-3.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.gnu.org/software/bash/bash.html"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "bash"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "1522c3193610902d8493f9790a2755c11f21f26d"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1LOlgbxwxQ4KXtA31h12862avtnU="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:busybox@1.37.0-r31",
+      "name": "busybox",
+      "version": "1.37.0-r31",
+      "purl": "pkg:apk/alpine/busybox@1.37.0-r31?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://busybox.net/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "busybox"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "c3ef5d10e6ef6528852c51f0564963e2f8c1be19"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1tUBevAL33YvpW2JlxUskPVRWq48="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:busybox-binsh@1.37.0-r31",
+      "name": "busybox-binsh",
+      "version": "1.37.0-r31",
+      "purl": "pkg:apk/alpine/busybox-binsh@1.37.0-r31?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://busybox.net/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "busybox"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "c3ef5d10e6ef6528852c51f0564963e2f8c1be19"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1XL0UrMbxgExbrGx33CxJLwELD8c="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:c-ares@1.34.8-r0",
+      "name": "c-ares",
+      "version": "1.34.8-r0",
+      "purl": "pkg:apk/alpine/c-ares@1.34.8-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://c-ares.org/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "c-ares"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "138a6bf9dea5974644e48fef4826b7c474f2f7d8"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1ZAoo/2JF9wHUZPulOgWxvGV8N6c="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:ca-certificates-bundle@20260909-r0",
+      "name": "ca-certificates-bundle",
+      "version": "20260909-r0",
+      "purl": "pkg:apk/alpine/ca-certificates-bundle@20260909-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MPL-2.0 AND MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "ca-certificates"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "eb7078df3a16d666e8f7723f94bb92e00d4b9236"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1eRI3zuh3mIiTo1S19snETzXU7bk="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:frr@10.6.1-r0",
+      "name": "frr",
+      "version": "10.6.1-r0",
+      "purl": "pkg:apk/alpine/frr@10.6.1-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://frrouting.org/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "frr"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "23a7c9f1a27473a1a8a09ad3433d4a7a5b0fb62c"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1SefuY1VieccfZce4EJlCP/how8I="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:iproute2@7.0.0-r0",
+      "name": "iproute2",
+      "version": "7.0.0-r0",
+      "purl": "pkg:apk/alpine/iproute2@7.0.0-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://wiki.linuxfoundation.org/networking/iproute2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "iproute2"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1LWXI6w8M1cA+is8dZ//Q77TmNBk="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:iproute2-minimal@7.0.0-r0",
+      "name": "iproute2-minimal",
+      "version": "7.0.0-r0",
+      "purl": "pkg:apk/alpine/iproute2-minimal@7.0.0-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://wiki.linuxfoundation.org/networking/iproute2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "iproute2"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1MaRQoyWVpic2ofJBgD+AXApksGA="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:iproute2-ss@7.0.0-r0",
+      "name": "iproute2-ss",
+      "version": "7.0.0-r0",
+      "purl": "pkg:apk/alpine/iproute2-ss@7.0.0-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://wiki.linuxfoundation.org/networking/iproute2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "iproute2"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1cB6JqT09HOrGZE+KTLI74E0xnSA="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:iproute2-tc@7.0.0-r0",
+      "name": "iproute2-tc",
+      "version": "7.0.0-r0",
+      "purl": "pkg:apk/alpine/iproute2-tc@7.0.0-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://wiki.linuxfoundation.org/networking/iproute2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "iproute2"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1yznODIQTcjOJwULYq4nejoTrIR0="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:json-c@0.18-r1",
+      "name": "json-c",
+      "version": "0.18-r1",
+      "purl": "pkg:apk/alpine/json-c@0.18-r1?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/json-c/json-c/wiki"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "json-c"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "8e0faa63c91abd41feb359ce5fe4299a88a57ef1"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q12w0mSfr4pSQU34qdbkrNtgMDtAM="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:libapk@3.0.8-r0",
+      "name": "libapk",
+      "version": "3.0.8-r0",
+      "purl": "pkg:apk/alpine/libapk@3.0.8-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://gitlab.alpinelinux.org/alpine/apk-tools"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "apk-tools"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "4588b452722bd4800efdc6cce4f6e980e02a997f"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1uTzpVzwdDbPup84yhBrQhXq8SlQ="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:libcap2@2.78-r0",
+      "name": "libcap2",
+      "version": "2.78-r0",
+      "purl": "pkg:apk/alpine/libcap2@2.78-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "BSD-3-Clause OR GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://sites.google.com/site/fullycapable/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "libcap"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "0c35848136c4c16a1b1672cb812efa88fffef1c2"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1Vi3y8KkXpS2XsFrXvtM0FK2izUs="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:libcrypto3@3.5.8-r0",
+      "name": "libcrypto3",
+      "version": "3.5.8-r0",
+      "purl": "pkg:apk/alpine/libcrypto3@3.5.8-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.openssl.org/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "openssl"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "013edf8b29199933e8ea34dde460b5584b979042"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1GzufwME29JNpMryy7CFJnwrl39M="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:libelf@0.195-r0",
+      "name": "libelf",
+      "version": "0.195-r0",
+      "purl": "pkg:apk/alpine/libelf@0.195-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-3.0-or-later AND ( GPL-2.0-or-later OR LGPL-3.0-or-later )"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://sourceware.org/elfutils/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "elfutils"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "8f13294206888f3dd44ed74a8eb3dd9934499e81"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1jDk1so4Fk4hXYTF9Jgu116xuUAA="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:libmnl@1.0.5-r2",
+      "name": "libmnl",
+      "version": "1.0.5-r2",
+      "purl": "pkg:apk/alpine/libmnl@1.0.5-r2?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "LGPL-2.1-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.netfilter.org/projects/libmnl/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "libmnl"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "fc95c59998285564fbcb0bfb2443898c62e10171"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1JwHVBHl62eyxjUSAYmd61L+OPZ0="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:libncursesw@6.6_p20260516-r0",
+      "name": "libncursesw",
+      "version": "6.6_p20260516-r0",
+      "purl": "pkg:apk/alpine/libncursesw@6.6_p20260516-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "X11"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://invisible-island.net/ncurses/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "ncurses"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "2cee8a7328d061418336ad327b512d96bcd7bc5e"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1nzGObjJNaCcnSCkZTPasavut7RI="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:libssl3@3.5.8-r0",
+      "name": "libssl3",
+      "version": "3.5.8-r0",
+      "purl": "pkg:apk/alpine/libssl3@3.5.8-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.openssl.org/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "openssl"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "013edf8b29199933e8ea34dde460b5584b979042"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1X5seVdghlT0uKx2zItrXCjtQQeo="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:libxtables@1.8.13-r0",
+      "name": "libxtables",
+      "version": "1.8.13-r0",
+      "purl": "pkg:apk/alpine/libxtables@1.8.13-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.netfilter.org/projects/iptables/index.html"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "iptables"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "8848fb97f5ec1aa887b836cf412d88eaabe312b6"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1UbKLJEBZC4NLU2aZs5zQVZf8F5E="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:libyang@3.13.6-r1",
+      "name": "libyang",
+      "version": "3.13.6-r1",
+      "purl": "pkg:apk/alpine/libyang@3.13.6-r1?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "BSD-3-Clause-Clear"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/CESNET/libyang"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "libyang"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "a9e2a2dc46f377eb25884f7fea9834492de7f518"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1lZIS3YmnU/1gCo1v8A5L+apnBT8="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:musl@1.2.6-r2",
+      "name": "musl",
+      "version": "1.2.6-r2",
+      "purl": "pkg:apk/alpine/musl@1.2.6-r2?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://musl.libc.org/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "musl"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "f5640d3a10f664c9119720c60515265d3d6f6d01"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1D35YJ+ThpzYxvtont4QxqLokDgU="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:musl-utils@1.2.6-r2",
+      "name": "musl-utils",
+      "version": "1.2.6-r2",
+      "purl": "pkg:apk/alpine/musl-utils@1.2.6-r2?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MIT AND BSD-2-Clause AND GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://musl.libc.org/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "musl"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "f5640d3a10f664c9119720c60515265d3d6f6d01"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1da2jxI1j7F2HxC/fk0o/3REpjcU="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:ncurses-terminfo-base@6.6_p20260516-r0",
+      "name": "ncurses-terminfo-base",
+      "version": "6.6_p20260516-r0",
+      "purl": "pkg:apk/alpine/ncurses-terminfo-base@6.6_p20260516-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "X11"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://invisible-island.net/ncurses/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "ncurses"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "2cee8a7328d061418336ad327b512d96bcd7bc5e"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1nVUdgo6cjuUsWAHB1gRoKOvxV1I="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:pcre2@10.49-r0",
+      "name": "pcre2",
+      "version": "10.49-r0",
+      "purl": "pkg:apk/alpine/pcre2@10.49-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "BSD-3-Clause"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://pcre.org/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "pcre2"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "3d497cbb3217749c4fb85f90f3b6f7908b0c1f95"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q17JkrALr3G7od2eIXlhP5IzrzXI0="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:readline@8.3.3-r1",
+      "name": "readline",
+      "version": "8.3.3-r1",
+      "purl": "pkg:apk/alpine/readline@8.3.3-r1?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-3.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://tiswww.cwru.edu/php/chet/readline/rltop.html"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "readline"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "a854c03acdac188901fb012f7acbee70a36e8041"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1lFsW43i8AORNidTegSS7p2R/300="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:scanelf@1.3.9-r1",
+      "name": "scanelf",
+      "version": "1.3.9-r1",
+      "purl": "pkg:apk/alpine/scanelf@1.3.9-r1?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "pax-utils"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "c61801eeacb3ffcd9c2025b09e402153bb93fb39"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1AT+QPQuiGWc6673QT3S7XtgrAfA="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:ssl_client@1.37.0-r31",
+      "name": "ssl_client",
+      "version": "1.37.0-r31",
+      "purl": "pkg:apk/alpine/ssl_client@1.37.0-r31?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://busybox.net/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "busybox"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "c3ef5d10e6ef6528852c51f0564963e2f8c1be19"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1wiD0pRJaMTr3M+mN75QTK7Hp1A0="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:tini@0.19.0-r3",
+      "name": "tini",
+      "version": "0.19.0-r3",
+      "purl": "pkg:apk/alpine/tini@0.19.0-r3?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/krallin/tini"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "tini"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "494a61016db8d643534788c47f074935ef2e6035"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1T0uNmaVCPuxXU/fN0KlNKRvIt4I="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:zlib@1.3.2-r0",
+      "name": "zlib",
+      "version": "1.3.2-r0",
+      "purl": "pkg:apk/alpine/zlib@1.3.2-r0?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "Zlib"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://zlib.net/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "zlib"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "f248b33b5943c7dc69bf691031d7612ab2e8ed93"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q13Uw9ECrK7ypxoUlZUdVfq8hoBhM="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "amd64:zstd-libs@1.5.7-r2",
+      "name": "zstd-libs",
+      "version": "1.5.7-r2",
+      "purl": "pkg:apk/alpine/zstd-libs@1.5.7-r2?arch=x86_64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "BSD-3-Clause OR GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://facebook.github.io/zstd/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "zstd"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "3c6e2ee2b16f403d53eab39c4426eb61f003c322"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1lWnOOpfEEJ6OU93enz4b0nJhNUA="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:alpine-baselayout@3.7.2-r1",
+      "name": "alpine-baselayout",
+      "version": "3.7.2-r1",
+      "purl": "pkg:apk/alpine/alpine-baselayout@3.7.2-r1?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://gitlab.alpinelinux.org/alpine/aports/-/tree/master/main/alpine-baselayout"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "alpine-baselayout"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "60a7585bbab2fa0f762504eb617dbca90216e31f"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q17hOhjufinXWHIBdAPVnASE2s2WM="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:alpine-baselayout-data@3.7.2-r1",
+      "name": "alpine-baselayout-data",
+      "version": "3.7.2-r1",
+      "purl": "pkg:apk/alpine/alpine-baselayout-data@3.7.2-r1?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://gitlab.alpinelinux.org/alpine/aports/-/tree/master/main/alpine-baselayout"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "alpine-baselayout"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "60a7585bbab2fa0f762504eb617dbca90216e31f"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1MzfIPSHI6xFODUuydeVh3TSTvbg="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:alpine-keys@2.6-r0",
+      "name": "alpine-keys",
+      "version": "2.6-r0",
+      "purl": "pkg:apk/alpine/alpine-keys@2.6-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://alpinelinux.org"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "alpine-keys"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "b9f23becced4d7b3ccc0fa0f28530243ccd314a0"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1ZEDSgayIcU2W6hJkHMark83sG4w="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:alpine-release@3.24.2-r0",
+      "name": "alpine-release",
+      "version": "3.24.2-r0",
+      "purl": "pkg:apk/alpine/alpine-release@3.24.2-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://alpinelinux.org"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "alpine-base"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "d9d560d5de74ff9a7a73f3c903d6f126a0bf3142"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1tH9vSL07Dtx6XeOS8n1bskUv+1M="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:apk-tools@3.0.8-r0",
+      "name": "apk-tools",
+      "version": "3.0.8-r0",
+      "purl": "pkg:apk/alpine/apk-tools@3.0.8-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://gitlab.alpinelinux.org/alpine/apk-tools"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "apk-tools"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "4588b452722bd4800efdc6cce4f6e980e02a997f"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1EfOebJKtWJwE97O8Tajr7Rhu+8o="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:bash@5.3.9-r1",
+      "name": "bash",
+      "version": "5.3.9-r1",
+      "purl": "pkg:apk/alpine/bash@5.3.9-r1?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-3.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.gnu.org/software/bash/bash.html"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "bash"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "1522c3193610902d8493f9790a2755c11f21f26d"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1Tmocg1FubGlvWQ6+OAUIG9yLWko="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:busybox@1.37.0-r31",
+      "name": "busybox",
+      "version": "1.37.0-r31",
+      "purl": "pkg:apk/alpine/busybox@1.37.0-r31?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://busybox.net/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "busybox"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "c3ef5d10e6ef6528852c51f0564963e2f8c1be19"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1cc/8KYHy1Us5N8Jb4vUWmz+wRTI="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:busybox-binsh@1.37.0-r31",
+      "name": "busybox-binsh",
+      "version": "1.37.0-r31",
+      "purl": "pkg:apk/alpine/busybox-binsh@1.37.0-r31?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://busybox.net/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "busybox"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "c3ef5d10e6ef6528852c51f0564963e2f8c1be19"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1ax93IqPnu5fQTo75Bv1ywGZ7pdA="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:c-ares@1.34.8-r0",
+      "name": "c-ares",
+      "version": "1.34.8-r0",
+      "purl": "pkg:apk/alpine/c-ares@1.34.8-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://c-ares.org/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "c-ares"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "138a6bf9dea5974644e48fef4826b7c474f2f7d8"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1pxEWaTTJhJYN8jU07J9ARNwDAoU="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:ca-certificates-bundle@20260909-r0",
+      "name": "ca-certificates-bundle",
+      "version": "20260909-r0",
+      "purl": "pkg:apk/alpine/ca-certificates-bundle@20260909-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MPL-2.0 AND MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "ca-certificates"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "eb7078df3a16d666e8f7723f94bb92e00d4b9236"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1FGTYu4SxbeFGQyIqvXBBZvKmLPY="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:frr@10.6.1-r0",
+      "name": "frr",
+      "version": "10.6.1-r0",
+      "purl": "pkg:apk/alpine/frr@10.6.1-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://frrouting.org/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "frr"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "23a7c9f1a27473a1a8a09ad3433d4a7a5b0fb62c"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1Mi4U4QcWS3/+77Owc4LrjDZsfQk="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:iproute2@7.0.0-r0",
+      "name": "iproute2",
+      "version": "7.0.0-r0",
+      "purl": "pkg:apk/alpine/iproute2@7.0.0-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://wiki.linuxfoundation.org/networking/iproute2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "iproute2"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1kG2xyd9s6vfCyb09MDOCwKqAYK4="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:iproute2-minimal@7.0.0-r0",
+      "name": "iproute2-minimal",
+      "version": "7.0.0-r0",
+      "purl": "pkg:apk/alpine/iproute2-minimal@7.0.0-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://wiki.linuxfoundation.org/networking/iproute2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "iproute2"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q11L7WmvnQpHyyKOpSSVZpBwm9oT8="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:iproute2-ss@7.0.0-r0",
+      "name": "iproute2-ss",
+      "version": "7.0.0-r0",
+      "purl": "pkg:apk/alpine/iproute2-ss@7.0.0-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://wiki.linuxfoundation.org/networking/iproute2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "iproute2"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q14o2RfkImoWkXzhDVjYb+uRK3vBM="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:iproute2-tc@7.0.0-r0",
+      "name": "iproute2-tc",
+      "version": "7.0.0-r0",
+      "purl": "pkg:apk/alpine/iproute2-tc@7.0.0-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://wiki.linuxfoundation.org/networking/iproute2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "iproute2"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "3ee752ad0c8445c8105177cd5cebdd730789bcd8"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q17SEWvvRDT31CS3dgbJtnMgKiSys="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:json-c@0.18-r1",
+      "name": "json-c",
+      "version": "0.18-r1",
+      "purl": "pkg:apk/alpine/json-c@0.18-r1?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/json-c/json-c/wiki"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "json-c"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "8e0faa63c91abd41feb359ce5fe4299a88a57ef1"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1gzT6UPtMBS5pi2S6756O2bqVMx8="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:libapk@3.0.8-r0",
+      "name": "libapk",
+      "version": "3.0.8-r0",
+      "purl": "pkg:apk/alpine/libapk@3.0.8-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://gitlab.alpinelinux.org/alpine/apk-tools"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "apk-tools"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "4588b452722bd4800efdc6cce4f6e980e02a997f"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1Ry4Nq4useKoU061sRzfPYEhlGXQ="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:libcap2@2.78-r0",
+      "name": "libcap2",
+      "version": "2.78-r0",
+      "purl": "pkg:apk/alpine/libcap2@2.78-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "BSD-3-Clause OR GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://sites.google.com/site/fullycapable/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "libcap"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "0c35848136c4c16a1b1672cb812efa88fffef1c2"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1D7Zbhf6Z1RNJmW3yLAyqdd+IIxw="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:libcrypto3@3.5.8-r0",
+      "name": "libcrypto3",
+      "version": "3.5.8-r0",
+      "purl": "pkg:apk/alpine/libcrypto3@3.5.8-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.openssl.org/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "openssl"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "013edf8b29199933e8ea34dde460b5584b979042"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1yBbnEKxht37PmWjI99NQMTTPTe0="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:libelf@0.195-r0",
+      "name": "libelf",
+      "version": "0.195-r0",
+      "purl": "pkg:apk/alpine/libelf@0.195-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-3.0-or-later AND ( GPL-2.0-or-later OR LGPL-3.0-or-later )"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://sourceware.org/elfutils/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "elfutils"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "8f13294206888f3dd44ed74a8eb3dd9934499e81"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1RCjq5C/BE4wYYYUjB33eFah9qj4="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:libmnl@1.0.5-r2",
+      "name": "libmnl",
+      "version": "1.0.5-r2",
+      "purl": "pkg:apk/alpine/libmnl@1.0.5-r2?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "LGPL-2.1-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.netfilter.org/projects/libmnl/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "libmnl"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "fc95c59998285564fbcb0bfb2443898c62e10171"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1hEKvOZvv8fBWUp+l57eRAPiG1T4="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:libncursesw@6.6_p20260516-r0",
+      "name": "libncursesw",
+      "version": "6.6_p20260516-r0",
+      "purl": "pkg:apk/alpine/libncursesw@6.6_p20260516-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "X11"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://invisible-island.net/ncurses/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "ncurses"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "2cee8a7328d061418336ad327b512d96bcd7bc5e"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1wNl5+kek1M3VEWlcXl8M4+jPHqI="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:libssl3@3.5.8-r0",
+      "name": "libssl3",
+      "version": "3.5.8-r0",
+      "purl": "pkg:apk/alpine/libssl3@3.5.8-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.openssl.org/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "openssl"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "013edf8b29199933e8ea34dde460b5584b979042"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1PH/y0GXoooWZHJVNhDry3HE8zVk="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:libxtables@1.8.13-r0",
+      "name": "libxtables",
+      "version": "1.8.13-r0",
+      "purl": "pkg:apk/alpine/libxtables@1.8.13-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.netfilter.org/projects/iptables/index.html"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "iptables"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "8848fb97f5ec1aa887b836cf412d88eaabe312b6"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q16bRNkqc+NZI1wx+jQCnzNalwuLk="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:libyang@3.13.6-r1",
+      "name": "libyang",
+      "version": "3.13.6-r1",
+      "purl": "pkg:apk/alpine/libyang@3.13.6-r1?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "BSD-3-Clause-Clear"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/CESNET/libyang"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "libyang"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "a9e2a2dc46f377eb25884f7fea9834492de7f518"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1UTwbvFOIJbMZQVIDrpinGPk8fBQ="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:musl@1.2.6-r2",
+      "name": "musl",
+      "version": "1.2.6-r2",
+      "purl": "pkg:apk/alpine/musl@1.2.6-r2?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://musl.libc.org/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "musl"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "f5640d3a10f664c9119720c60515265d3d6f6d01"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1JNQts+O/Z+jaJ4QHLMXQ5svftIU="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:musl-utils@1.2.6-r2",
+      "name": "musl-utils",
+      "version": "1.2.6-r2",
+      "purl": "pkg:apk/alpine/musl-utils@1.2.6-r2?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MIT AND BSD-2-Clause AND GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://musl.libc.org/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "musl"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "f5640d3a10f664c9119720c60515265d3d6f6d01"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1hGTPIwkax/QcCU2jiheeLotaa38="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:ncurses-terminfo-base@6.6_p20260516-r0",
+      "name": "ncurses-terminfo-base",
+      "version": "6.6_p20260516-r0",
+      "purl": "pkg:apk/alpine/ncurses-terminfo-base@6.6_p20260516-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "X11"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://invisible-island.net/ncurses/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "ncurses"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "2cee8a7328d061418336ad327b512d96bcd7bc5e"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1/MzFElM7Tf9vRK02sG+bQ+iEjR8="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:pcre2@10.49-r0",
+      "name": "pcre2",
+      "version": "10.49-r0",
+      "purl": "pkg:apk/alpine/pcre2@10.49-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "BSD-3-Clause"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://pcre.org/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "pcre2"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "3d497cbb3217749c4fb85f90f3b6f7908b0c1f95"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q10e5Tm6BjCkQImS9ju5aGYjeAfu4="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:readline@8.3.3-r1",
+      "name": "readline",
+      "version": "8.3.3-r1",
+      "purl": "pkg:apk/alpine/readline@8.3.3-r1?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-3.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://tiswww.cwru.edu/php/chet/readline/rltop.html"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "readline"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "a854c03acdac188901fb012f7acbee70a36e8041"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1GPvWxvOSv5J0EQfi4YdIeWwjGK8="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:scanelf@1.3.9-r1",
+      "name": "scanelf",
+      "version": "1.3.9-r1",
+      "purl": "pkg:apk/alpine/scanelf@1.3.9-r1?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "pax-utils"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "c61801eeacb3ffcd9c2025b09e402153bb93fb39"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q13IwcpjYtZI8DZAGEuviRS2K2Q/s="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:ssl_client@1.37.0-r31",
+      "name": "ssl_client",
+      "version": "1.37.0-r31",
+      "purl": "pkg:apk/alpine/ssl_client@1.37.0-r31?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "GPL-2.0-only"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://busybox.net/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "busybox"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "c3ef5d10e6ef6528852c51f0564963e2f8c1be19"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1QQfD9w3aMC4MPtRimUGSRaiigLQ="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:tini@0.19.0-r3",
+      "name": "tini",
+      "version": "0.19.0-r3",
+      "purl": "pkg:apk/alpine/tini@0.19.0-r3?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/krallin/tini"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "tini"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "494a61016db8d643534788c47f074935ef2e6035"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1YSWSOws6R/P5xVCuiTpT3w9EXSs="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:zlib@1.3.2-r0",
+      "name": "zlib",
+      "version": "1.3.2-r0",
+      "purl": "pkg:apk/alpine/zlib@1.3.2-r0?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "Zlib"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://zlib.net/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "zlib"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "f248b33b5943c7dc69bf691031d7612ab2e8ed93"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1qeG8MrsxW/2sYiT5J4Xk2aM0vyk="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "arm64:zstd-libs@1.5.7-r2",
+      "name": "zstd-libs",
+      "version": "1.5.7-r2",
+      "purl": "pkg:apk/alpine/zstd-libs@1.5.7-r2?arch=aarch64&distro=alpine-3.24",
+      "licenses": [
+        {
+          "expression": "BSD-3-Clause OR GPL-2.0-or-later"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://facebook.github.io/zstd/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alpine:origin",
+          "value": "zstd"
+        },
+        {
+          "name": "alpine:aports-commit",
+          "value": "3c6e2ee2b16f403d53eab39c4426eb61f003c322"
+        },
+        {
+          "name": "alpine:apk-checksum",
+          "value": "Q1UrGFE6B78rsNBjRohoH37c42uco="
+        },
+        {
+          "name": "qualification:license-status",
+          "value": "APK declared; file-level obligations NOT VERIFIED"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+JSON/package/SBOM/recipe-version/source-sample/License/AST consistency=PASS
+Limited new-artifact/scoped-source-history heuristic counts={"credential_assignment": 0, "docker_pat": 0, "github_token": 0, "internal_domain": 0, "private_key": 0}
+Legal compliance/CVE scan/CycloneDX schema/native runtime=NOT RUN or BLOCKED
+.env

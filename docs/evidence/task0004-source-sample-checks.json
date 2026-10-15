@@ -1,0 +1,48 @@
+{
+  "source_checks": [
+    {
+      "name": "apk-tools-v3.0.8.tar.gz",
+      "url": "https://gitlab.alpinelinux.org/alpine/apk-tools/-/archive/v3.0.8/apk-tools-v3.0.8.tar.gz",
+      "expected": "3616435508dead5240f8d9fe74e87e2aa93262f9e466f50af8f60100e166403393b1e491c115395864d4179b219699831ecb61dc60960b5dfb1f10816d75f95f",
+      "actual_sha512": "3616435508dead5240f8d9fe74e87e2aa93262f9e466f50af8f60100e166403393b1e491c115395864d4179b219699831ecb61dc60960b5dfb1f10816d75f95f",
+      "checksum_match": true,
+      "size": 390114
+    },
+    {
+      "name": "frr-10.6.1.tar.gz",
+      "url": "https://github.com/FRRouting/frr/archive/frr-10.6.1.tar.gz",
+      "expected": "c591055fc29c237f16f337835268515685872876e6f6abf82f91226543a22068c4e169904780a7ad08e383a31509b93a14fbfce26170186e64b9af3799e8f271",
+      "actual_sha512": "c591055fc29c237f16f337835268515685872876e6f6abf82f91226543a22068c4e169904780a7ad08e383a31509b93a14fbfce26170186e64b9af3799e8f271",
+      "checksum_match": true,
+      "size": 11999229
+    },
+    {
+      "name": "frr.initd",
+      "url": "https://raw.githubusercontent.com/alpinelinux/aports/23a7c9f1a27473a1a8a09ad3433d4a7a5b0fb62c/community/frr/frr.initd",
+      "expected": "f86bdf8f6dd89ba69d03a69bbe645b3b752d3fbb38913c5155536b8043b0493901ab078b7acb6ac463d3473c6492900d8a695582f66610955246052b19c0d70c",
+      "actual_sha512": "f86bdf8f6dd89ba69d03a69bbe645b3b752d3fbb38913c5155536b8043b0493901ab078b7acb6ac463d3473c6492900d8a695582f66610955246052b19c0d70c",
+      "checksum_match": true,
+      "size": 430
+    },
+    {
+      "name": "allow-invalid-nlri-attributes.patch",
+      "url": "https://raw.githubusercontent.com/alpinelinux/aports/23a7c9f1a27473a1a8a09ad3433d4a7a5b0fb62c/community/frr/allow-invalid-nlri-attributes.patch",
+      "expected": "5b2d735da13ea469c07b254d870fa67f36edb8ccf9eb7073f8858a830e5ec6356a6a9ebe304523ced475ad49beadf09666212eedb65b41edde2d12043ff4b900",
+      "actual_sha512": "5b2d735da13ea469c07b254d870fa67f36edb8ccf9eb7073f8858a830e5ec6356a6a9ebe304523ced475ad49beadf09666212eedb65b41edde2d12043ff4b900",
+      "checksum_match": true,
+      "size": 931
+    }
+  ],
+  "candidate_comparison": [
+    {
+      "image": "frr-task0003:amd64",
+      "candidates": 2,
+      "matches_found_verbatim_in_checksum_verified_upstream_source": 0
+    },
+    {
+      "image": "frr-task0003:arm64",
+      "candidates": 2,
+      "matches_found_verbatim_in_checksum_verified_upstream_source": 0
+    }
+  ]
+}
