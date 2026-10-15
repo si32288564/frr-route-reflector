@@ -1,0 +1,57 @@
+2026-10-16 JST (execution records use UTC)
+
+Current authority: Issue #12 comment 6195095706.
+CVE scan NOT RUN — Owner explicitly omitted.
+No Grype execution/DB refresh/replacement scanner or image build occurred.
+
+Initial source materialization: FAIL, OSError 122 Disk quota exceeded.
+Initial filesystem free-space check passed, but did not establish writable quota.
+Four exact task-owned canceled-scanner payload hashes checked OK, then removed:
+raw vulnerability.db, db.tar.zst, Grype download archive, extracted Grype binary.
+No FRR export, signature/checksum record, other user's file or host setting removed.
+Free filesystem space after cleanup: 3,540,258,816 bytes.
+
+Completed materialization in the same task workspace:
+timeout 420 python3 stage_source_bundle.py <task-workspace>
+exit 0; 173 inputs + 180 recipe files; 112,063,647 bytes; all pinned hashes match.
+124 already valid cache files reused; missing/incomplete files materialized only.
+No new origin/version discovery or repeat of the source-probe study.
+
+python3 inventory_source_files.py <inventory> <existing-exports> <output-json>
+exit 0; APK-owned paths AMD64=363, ARM64=362; non-APK-recorded paths=318 each.
+No executable launch; configuration/log contents not published.
+
+timeout 90 python3 review_source_notices.py <task-workspace>
+exit 0 final; 23 selected source facts; 29 additional notice/source materials.
+Two fixed root COPYING probes HTTP 404, recorded as unresolved attribution.
+Original first targeted attempt failed at HTTP 404; later categorized the gap
+instead of stopping unrelated local preparation. No missing text fabricated.
+
+timeout 180 python3 assemble_source_bundle.py <task-workspace>
+exit 0; technical_archive_validation=PASS; source_legal_completeness=BLOCKED.
+554 manifest file/link records + MANIFEST = 555 validated non-directory members.
+Safe paths, duplicate absence and all data/link hashes and sizes checked by reopening.
+
+sha256sum -c frr-route-reflector-v0.1.0-lab.1-sources.1-staging.tar.gz.sha256
+frr-route-reflector-v0.1.0-lab.1-sources.1-staging.tar.gz: OK
+exit 0
+Archive 112,542,493 bytes; SHA256 b0b3e96b6d023485559eb5d348593a2d1356595bf2a41257357bc0012273f1d5.
+Local-only artifact, no Git binary, GitHub Release/source upload or Docker Hub Push.
+
+Both local image IDs and existing archive hashes rechecked unchanged.
+Container/Chart diff against accepted main: none.
+Project source binding 2920cfaed358f7166900eade1771acb1321be9e9 is PROVISIONAL.
+
+python3 tests/test_prepublish.py
+exit 0; JSON/AST/package/SBOM/recipe/source/notice and new bundle-record consistency PASS.
+Limited scoped disclosure heuristic: all five recorded category counts zero.
+This is not a comprehensive secret scan or legal/security clearance.
+python3 -m py_compile tests/stage_source_bundle.py tests/inventory_source_files.py tests/review_source_notices.py tests/assemble_source_bundle.py
+exit 0
+git diff --check
+exit 0
+
+Earlier formal CycloneDX schema PASS retained; no new schema/SBOM change this turn.
+Native AMD64/G-3/recipient public download/final binary build: NOT RUN.
+Legal/source completeness, final notice placement and custody/delivery: BLOCKED.
+Main merge, release/signing, Docker Hub login/Push, Kubernetes changes: NOT RUN.

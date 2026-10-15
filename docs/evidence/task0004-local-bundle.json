@@ -1,0 +1,40 @@
+{
+  "artifact": "frr-route-reflector-v0.1.0-lab.1-sources.1-staging.tar.gz",
+  "sha256": "b0b3e96b6d023485559eb5d348593a2d1356595bf2a41257357bc0012273f1d5",
+  "bytes": 112542493,
+  "manifest_sha256": "6ce159c134cf2fb09f489c3aaae4f803e1feb7c516580c371d7781fc164ee025",
+  "file_records": 554,
+  "checked_members": 555,
+  "payload_bytes_with_manifest": 116825985,
+  "materialization": {
+    "free_bytes_before": 3540254720,
+    "required_payload_and_packaging_bytes": 324790590,
+    "reserve_bytes": 201326592,
+    "inputs": 173,
+    "recipes": 180,
+    "materialized_bytes": 112063647,
+    "source_cache": "Only existing frozen URLs/hashes; prior probes held payloads in memory, not on disk",
+    "result": "PASS materialization only; not source/legal completeness"
+  },
+  "project_source_commit": "2920cfaed358f7166900eade1771acb1321be9e9",
+  "project_binding": "PROVISIONAL",
+  "images": [
+    {
+      "architecture": "amd64",
+      "local_id": "sha256:dbc288be32f2833223262801f287d4ba1be4594059a9a06001d31b963e2d428a",
+      "config_sha256": "7affa7841874770a1072a0e13ba497195434c8c2789b311471a53c8c3ab7a1be"
+    },
+    {
+      "architecture": "arm64",
+      "local_id": "sha256:dea86108c2812d9891674e0291af3b59872925e6c462e189a08acf0b3f61f096",
+      "config_sha256": "0bcae28f7ee60b01039bce6e402c89f3e2215859ac1e340ee5a16d8b57b57112"
+    }
+  ],
+  "original_notice_members": 52,
+  "additional_notice_files": 29,
+  "technical_archive_validation": "PASS",
+  "source_legal_completeness": "BLOCKED",
+  "publication": "NOT AUTHORIZED / LOCAL ONLY",
+  "cve": "CVE scan NOT RUN — Owner explicitly omitted",
+  "timestamp_utc": "2026-10-15T15:15:45.701650+00:00"
+}

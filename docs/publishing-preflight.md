@@ -7,6 +7,9 @@ Date: 2026-10-15 JST. Accepted source base:
 Authority: [Issue #12 assignment](https://github.com/si32288564/frr-route-reflector/issues/12#issuecomment-6191574930)
 and [Owner rights confirmation](https://github.com/si32288564/frr-route-reflector/issues/12#issuecomment-6191673478).
 Continuation authority: [confirmed destination and finite checks](https://github.com/si32288564/frr-route-reflector/issues/12#issuecomment-6192262441).
+Current continuation: [Owner cancelled scanner / local source preparation](https://github.com/si32288564/frr-route-reflector/issues/12#issuecomment-6195095706).
+See [actual local staging archive](source-bundle-plan.md) and the
+[compact per-origin review / finite remaining gates](third-party-distribution-review.md).
 Owner approved `Copyright (c) 2026 si32288564`, MIT for original work, and
 represented no employer/third-party rights conflict. This is not an independent
 legal audit. Third-party code/text retains its own terms; no blanket MIT grant
@@ -22,6 +25,7 @@ is applied to the image, FRR, Alpine or imported material.
 | Machine-readable APK SBOM | Produced; JSON/component consistency and formal CycloneDX 1.6 schema PASS; non-APK completeness NOT VERIFIED |
 | Fixed source-recipe traceability | PASS, 25 origin recipes HTTP 200; pkgver/pkgrel match installed versions |
 | Source material verification | PASS, 173 recipe-listed input SHA512 and 180 fixed recipe-file identities; not full legal/source-delivery clearance |
+| Local source/notice staging archive | PASS creation/checksum/555-member integrity validation; explicitly partial, source/legal completeness BLOCKED |
 | All corresponding source, notice texts and recipient access | BLOCKED, incomplete/not delivered; do not publish |
 | CVE / independent license scanner | CVE scan NOT RUN — Owner explicitly omitted; vulnerabilities unknown. Independent license scan NOT RUN |
 | Recorded disclosure candidates | PASS scoped classification: all 22 matches across both arches are unchanged official APK binary static content; not whole-image security clearance |
@@ -105,7 +109,12 @@ and [itemized licence/source delivery plan](source-bundle-plan.md). This closes
 recipe-listed source availability, not file-level licensing, external helper
 completeness, final archive assembly or recipient delivery.
 
-## Corresponding-source delivery proposal — NOT implemented
+## Recipient source delivery proposal — NOT published
+
+Current local preparation produced a real **partial staging archive**, not a
+complete recipient bundle or source offer. The [measured artifact and current
+finite gaps](source-bundle-plan.md) supersede earlier not-assembled statements.
+The following describes proposed recipient delivery, which remains NOT RUN.
 
 Prefer actual source delivery over issuing an unverified written offer. Proposed
 delivery is a versioned, distributor-controlled source asset accompanying each

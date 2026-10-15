@@ -1,0 +1,1749 @@
+[
+  {
+    "origin": "alpine-baselayout",
+    "version": "3.7.2-r1",
+    "aports_commit": "60a7585bbab2fa0f762504eb617dbca90216e31f",
+    "packages": [
+      "alpine-baselayout",
+      "alpine-baselayout-data"
+    ],
+    "declared_expressions": [
+      "GPL-2.0-only"
+    ],
+    "installed_file_paths": [
+      "etc/crontabs/root",
+      "etc/fstab",
+      "etc/group",
+      "etc/hostname",
+      "etc/hosts",
+      "etc/inittab",
+      "etc/modprobe.d/aliases.conf",
+      "etc/modprobe.d/blacklist.conf",
+      "etc/modprobe.d/i386.conf",
+      "etc/modules",
+      "etc/motd",
+      "etc/mtab",
+      "etc/nsswitch.conf",
+      "etc/passwd",
+      "etc/profile",
+      "etc/profile.d/20locale.sh",
+      "etc/profile.d/README",
+      "etc/profile.d/color_prompt.sh.disabled",
+      "etc/protocols",
+      "etc/services",
+      "etc/shadow",
+      "etc/shells",
+      "etc/sysctl.conf",
+      "usr/lib/sysctl.d/00-alpine.conf",
+      "var/lock",
+      "var/run",
+      "var/spool/cron/crontabs",
+      "var/spool/mail"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/alpine-baselayout/3.7.2-r1",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/alpine-baselayout/3.7.2-r1/inputs/crontab",
+        "sha256": "575d810a9fae5f2f0671c9b2c0ce973e46c7207fbe5cb8d1b0d1836a6a0470e3"
+      },
+      {
+        "path": "origins/alpine-baselayout/3.7.2-r1/inputs/color_prompt.sh.disabled",
+        "sha256": "ba24425c6864a5d17fa0fdaf914c4d21419e47c4d62080c33830af059fe46617"
+      },
+      {
+        "path": "origins/alpine-baselayout/3.7.2-r1/inputs/20locale.sh",
+        "sha256": "284a6ef56ab97a13a777c6b01ae14f2cc3d2b7a29c19e750e622e70cc3c73186"
+      },
+      {
+        "path": "origins/alpine-baselayout/3.7.2-r1/inputs/usr_merge_nag.sh",
+        "sha256": "ffab41e32add88a13483309172c22da013f50a82bc552b488765254a6e92115c"
+      },
+      {
+        "path": "origins/alpine-baselayout/3.7.2-r1/inputs/aliases.conf",
+        "sha256": "3ebaba946f213670170c7d69949f690a3854553bd0b1560f1d980cba4c83a942"
+      },
+      {
+        "path": "origins/alpine-baselayout/3.7.2-r1/inputs/blacklist.conf",
+        "sha256": "0e9ab848289bfb20b9b066d05c8b1383a7c92b97ff8072a50806054b5d3fd739"
+      },
+      {
+        "path": "origins/alpine-baselayout/3.7.2-r1/inputs/i386.conf",
+        "sha256": "6c46c4cbfb8b7594f19eb94801a350fa2221ae9ac5239a8819d15555caa76ae8"
+      },
+      {
+        "path": "origins/alpine-baselayout/3.7.2-r1/inputs/group",
+        "sha256": "6fb6ab5a5526e6f4896b70c7e3c350fd475158a1f0d7b5fc0f3f9bd57f1c3be8"
+      },
+      {
+        "path": "origins/alpine-baselayout/3.7.2-r1/inputs/inittab",
+        "sha256": "7326d8ad56bf5fea63b1ca516a747ff6e6723e25ae84a93c31620b03de6c001d"
+      },
+      {
+        "path": "origins/alpine-baselayout/3.7.2-r1/inputs/passwd",
+        "sha256": "31a94f06f17bc3b9085fccab1d0fa6ee9e79c4a1e4d91f617fa5de95863be015"
+      },
+      {
+        "path": "origins/alpine-baselayout/3.7.2-r1/inputs/profile",
+        "sha256": "87e8643d3ce156de0c09370d4d39446f30bd00d264bea248abc191c4d7b9df3e"
+      },
+      {
+        "path": "origins/alpine-baselayout/3.7.2-r1/inputs/protocols-6.4",
+        "sha256": "4959498abbadaa1e50894a266f8d0d94500101cfe5b5f09dcad82e9d5bdfab46"
+      },
+      {
+        "path": "origins/alpine-baselayout/3.7.2-r1/inputs/services-6.4",
+        "sha256": "f6183055fd949f9c53d49ee620f85d0150123ea691d25ed1bba0c641b4ee2f48"
+      },
+      {
+        "path": "origins/alpine-baselayout/3.7.2-r1/inputs/hier.7",
+        "sha256": "8a91913d8a05ad57316355ee74d966210a6eae7bd850d46dac53e799d3981cc2"
+      }
+    ],
+    "recipe_count": 17,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": []
+  },
+  {
+    "origin": "alpine-keys",
+    "version": "2.6-r0",
+    "aports_commit": "b9f23becced4d7b3ccc0fa0f28530243ccd314a0",
+    "packages": [
+      "alpine-keys"
+    ],
+    "declared_expressions": [
+      "MIT"
+    ],
+    "installed_file_paths": [
+      "etc/apk/keys/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+      "etc/apk/keys/alpine-devel@lists.alpinelinux.org-5261cecb.rsa.pub",
+      "etc/apk/keys/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+      "etc/apk/keys/alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub",
+      "etc/apk/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+      "usr/share/apk/keys/aarch64/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+      "usr/share/apk/keys/aarch64/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5243ef4b.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5261cecb.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58cbb476.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58e4f17d.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5e69ca50.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-60ac2099.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-61666e3f.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616abc23.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616ac3bc.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616db30d.rsa.pub",
+      "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-66ba20fe.rsa.pub",
+      "usr/share/apk/keys/armhf/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+      "usr/share/apk/keys/armhf/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub",
+      "usr/share/apk/keys/armv7/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+      "usr/share/apk/keys/armv7/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
+      "usr/share/apk/keys/loongarch64/alpine-devel@lists.alpinelinux.org-66ba20fe.rsa.pub",
+      "usr/share/apk/keys/mips64/alpine-devel@lists.alpinelinux.org-5e69ca50.rsa.pub",
+      "usr/share/apk/keys/ppc64le/alpine-devel@lists.alpinelinux.org-58cbb476.rsa.pub",
+      "usr/share/apk/keys/ppc64le/alpine-devel@lists.alpinelinux.org-616abc23.rsa.pub",
+      "usr/share/apk/keys/riscv64/alpine-devel@lists.alpinelinux.org-60ac2099.rsa.pub",
+      "usr/share/apk/keys/riscv64/alpine-devel@lists.alpinelinux.org-616db30d.rsa.pub",
+      "usr/share/apk/keys/s390x/alpine-devel@lists.alpinelinux.org-58e4f17d.rsa.pub",
+      "usr/share/apk/keys/s390x/alpine-devel@lists.alpinelinux.org-616ac3bc.rsa.pub",
+      "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+      "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-5243ef4b.rsa.pub",
+      "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-61666e3f.rsa.pub",
+      "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+      "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-5261cecb.rsa.pub",
+      "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/alpine-keys/2.6-r0",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "BLOCKED generated key-data MIT attribution; fixed root COPYING probe 404, no holder fabricated",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+        "sha256": "73867d92083f2f8ab899a26ccda7ef63dfaa0032a938620eda605558958a8041"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+        "sha256": "d11f6b21c61b4274e182eb888883a8ba8acdbf820dcc7a6d82a7d9fc2fd2836d"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+        "sha256": "1bb2a846c0ea4ca9d0e7862f970863857fc33c32f5506098c636a62a726a847b"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
+        "sha256": "ebe717d228555aa58133c202314a451f81e71f174781fd7ff8d8970d6cfa60da"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub",
+        "sha256": "10877cce0a935e46ad88cb79e174a2491680508eccda08e92bf04fb9bf37fbc1"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-5243ef4b.rsa.pub",
+        "sha256": "ebf31683b56410ecc4c00acd9f6e2839e237a3b62b5ae7ef686705c7ba0396a9"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-61666e3f.rsa.pub",
+        "sha256": "128d34d4aec39b0daedea8163cd8dc24dff36fd3d848630ab97eeb1d3084bbb3"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+        "sha256": "9c102bcc376af1498d549b77bdbfa815ae86faa1d2d82f040e616b18ef2df2d4"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-5261cecb.rsa.pub",
+        "sha256": "12f899e55a7691225603d6fb3324940fc51cd7f133e7ead788663c2b7eecb00c"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub",
+        "sha256": "207e4696d3c05f7cb05966aee557307151f1f00217af4143c1bcaf33b8df733f"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-58cbb476.rsa.pub",
+        "sha256": "9a4cd858d9710963848e6d5f555325dc199d1c952b01cf6e64da2c15deedbd97"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-616abc23.rsa.pub",
+        "sha256": "4a095a9daca86da496a3cd9adcd95ee2197fdbeb84638656d469f05a4d740751"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-58e4f17d.rsa.pub",
+        "sha256": "780b3ed41786772cbc7b68136546fa3f897f28a23b30c72dde6225319c44cfff"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-616ac3bc.rsa.pub",
+        "sha256": "0caf5662fde45616d88cfd7021b7bda269a2fcaf311e51c48945a967a609ec0b"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-5e69ca50.rsa.pub",
+        "sha256": "59c01c57b446633249f67c04b115dd6787f4378f183dff2bbf65406df93f176d"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-60ac2099.rsa.pub",
+        "sha256": "db0b49163f07ffba64a5ca198bcf1688610b0bd1f0d8d5afeaf78559d73f2278"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-616db30d.rsa.pub",
+        "sha256": "40a216cbd163f22e5f16a9e0929de7cde221b9cbae8e36aa368b1e128afe0a31"
+      },
+      {
+        "path": "origins/alpine-keys/2.6-r0/inputs/alpine-devel@lists.alpinelinux.org-66ba20fe.rsa.pub",
+        "sha256": "7cf4cb8314e6ccc985b0d7f1aa0c6e0a81e3588f69a41f383af7a63d1ba61793"
+      }
+    ],
+    "recipe_count": 19,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": []
+  },
+  {
+    "origin": "alpine-base",
+    "version": "3.24.2-r0",
+    "aports_commit": "d9d560d5de74ff9a7a73f3c903d6f126a0bf3142",
+    "packages": [
+      "alpine-release"
+    ],
+    "declared_expressions": [
+      "MIT"
+    ],
+    "installed_file_paths": [
+      "etc/alpine-release",
+      "etc/issue",
+      "etc/os-release",
+      "etc/secfixes.d/alpine",
+      "usr/lib/os-release"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/alpine-base/3.24.2-r0",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "BLOCKED generated release-data MIT attribution; source generation is in APKBUILD, root COPYING 404",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [],
+    "recipe_count": 1,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": []
+  },
+  {
+    "origin": "apk-tools",
+    "version": "3.0.8-r0",
+    "aports_commit": "4588b452722bd4800efdc6cce4f6e980e02a997f",
+    "packages": [
+      "apk-tools",
+      "libapk"
+    ],
+    "declared_expressions": [
+      "GPL-2.0-only"
+    ],
+    "installed_file_paths": [
+      "sbin/apk",
+      "usr/lib/libapk.so.3.0.0"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/apk-tools/3.0.8-r0",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "BLOCKED qualified libapk/OpenSSL distribution-basis question; NEEDED/source/grants preserved, no verified exception established",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/apk-tools/3.0.8-r0/inputs/apk-tools-v3.0.8.tar.gz",
+        "sha256": "e81c64a6e7c3806d45d4622c253e757aee970be84048554fa0eed79310e9453e"
+      },
+      {
+        "path": "origins/apk-tools/3.0.8-r0/inputs/repo-hash-sha1.patch",
+        "sha256": "0ef3ecc88a5c627ee9486632bbc26e66dd0073e6a9be0c143b25c6e366162df0"
+      }
+    ],
+    "recipe_count": 2,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/apk-tools/apk-tools-v3.0.8.tar.gz/apk-tools-v3.0.8/LICENSE"
+    ]
+  },
+  {
+    "origin": "bash",
+    "version": "5.3.9-r1",
+    "aports_commit": "1522c3193610902d8493f9790a2755c11f21f26d",
+    "packages": [
+      "bash"
+    ],
+    "declared_expressions": [
+      "GPL-3.0-or-later"
+    ],
+    "installed_file_paths": [
+      "bin/bash",
+      "etc/bash/bashrc",
+      "etc/profile.d/00-bashrc.sh",
+      "usr/lib/bash/accept",
+      "usr/lib/bash/basename",
+      "usr/lib/bash/chmod",
+      "usr/lib/bash/csv",
+      "usr/lib/bash/cut",
+      "usr/lib/bash/dirname",
+      "usr/lib/bash/dsv",
+      "usr/lib/bash/fdflags",
+      "usr/lib/bash/finfo",
+      "usr/lib/bash/fltexpr",
+      "usr/lib/bash/getconf",
+      "usr/lib/bash/head",
+      "usr/lib/bash/id",
+      "usr/lib/bash/kv",
+      "usr/lib/bash/ln",
+      "usr/lib/bash/logname",
+      "usr/lib/bash/mkdir",
+      "usr/lib/bash/mkfifo",
+      "usr/lib/bash/mktemp",
+      "usr/lib/bash/mypid",
+      "usr/lib/bash/pathchk",
+      "usr/lib/bash/print",
+      "usr/lib/bash/printenv",
+      "usr/lib/bash/push",
+      "usr/lib/bash/realpath",
+      "usr/lib/bash/rm",
+      "usr/lib/bash/rmdir",
+      "usr/lib/bash/seq",
+      "usr/lib/bash/setpgid",
+      "usr/lib/bash/sleep",
+      "usr/lib/bash/stat",
+      "usr/lib/bash/strftime",
+      "usr/lib/bash/strptime",
+      "usr/lib/bash/sync",
+      "usr/lib/bash/tee",
+      "usr/lib/bash/truefalse",
+      "usr/lib/bash/tty",
+      "usr/lib/bash/uname",
+      "usr/lib/bash/unlink",
+      "usr/lib/bash/whoami"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/bash/5.3.9-r1",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/bash/5.3.9-r1/inputs/bash-5.3-1.tar.gz",
+        "sha256": "0d5cd86965f869a26cf64f4b71be7b96f90a3ba8b3d74e27e8e9d9d5550f31ba"
+      },
+      {
+        "path": "origins/bash/5.3.9-r1/inputs/bashrc",
+        "sha256": "ff75bd25a858d543a9a42089dccabcd2e27778e786b4bcb35ae2a376201fef03"
+      },
+      {
+        "path": "origins/bash/5.3.9-r1/inputs/bash-noinfo.patch",
+        "sha256": "d821496623974e1930dab5f9c11e82f7d4d92c5d6005a2b28a9da62bc6a0699d"
+      },
+      {
+        "path": "origins/bash/5.3.9-r1/inputs/profile-bashrc.sh",
+        "sha256": "92995ce139ad668bf9e70b9246cee6cdd080942d9a13fdcfbbe1cdaaacdfd9a8"
+      },
+      {
+        "path": "origins/bash/5.3.9-r1/inputs/bash53-001",
+        "sha256": "1f608434364af86b9b45c8b0ea3fb3b165fb830d27697e6cdfc7ac17dee3287f"
+      },
+      {
+        "path": "origins/bash/5.3.9-r1/inputs/bash53-002",
+        "sha256": "e385548a00130765ec7938a56fbdca52447ab41fabc95a25f19ade527e282001"
+      },
+      {
+        "path": "origins/bash/5.3.9-r1/inputs/bash53-003",
+        "sha256": "f245d9c7dc3f5a20d84b53d249334747940936f09dc97e1dcb89fc3ab37d60ed"
+      },
+      {
+        "path": "origins/bash/5.3.9-r1/inputs/bash53-004",
+        "sha256": "9591d245045529f32f0812f94180b9d9ce9023f5a765c039b852e5dfc99747d0"
+      },
+      {
+        "path": "origins/bash/5.3.9-r1/inputs/bash53-005",
+        "sha256": "cca1ef52dbbf433bc98e33269b64b2c814028efe2538be1e2c9a377da90bc99d"
+      },
+      {
+        "path": "origins/bash/5.3.9-r1/inputs/bash53-006",
+        "sha256": "29119addefed8eff91ae37fd51822c31780ee30d4a28376e96002706c995ff10"
+      },
+      {
+        "path": "origins/bash/5.3.9-r1/inputs/bash53-007",
+        "sha256": "c0976bbfffa1453c7cfdd62058f206a318568ff2d690f5d4fa048793fa3eb299"
+      },
+      {
+        "path": "origins/bash/5.3.9-r1/inputs/bash53-008",
+        "sha256": "097cd723cbfb8907674ac32214063a3fd85282657ec5b4e544d2c0f719653fb4"
+      },
+      {
+        "path": "origins/bash/5.3.9-r1/inputs/bash53-009",
+        "sha256": "eee30fe78a4b0cb2fe20e010e00308899cfc613e0774ebb3c8557a1552f24f8c"
+      }
+    ],
+    "recipe_count": 7,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/bash/bash-5.3-1.tar.gz/bash-5.3/COPYING",
+      "notices/original/bash/bash-5.3-1.tar.gz/bash-5.3/lib/readline/COPYING",
+      "notices/original/bash/bash-5.3-1.tar.gz/bash-5.3/examples/shellmath/LICENSE",
+      "notices/original/bash/bash-5.3-1.tar.gz/bash-5.3/tests/COPYRIGHT"
+    ]
+  },
+  {
+    "origin": "busybox",
+    "version": "1.37.0-r31",
+    "aports_commit": "c3ef5d10e6ef6528852c51f0564963e2f8c1be19",
+    "packages": [
+      "busybox",
+      "busybox-binsh",
+      "ssl_client"
+    ],
+    "declared_expressions": [
+      "GPL-2.0-only"
+    ],
+    "installed_file_paths": [
+      "bin/busybox",
+      "bin/sh",
+      "etc/busybox-paths.d/busybox",
+      "etc/logrotate.d/acpid",
+      "etc/network/if-up.d/dad",
+      "etc/securetty",
+      "etc/udhcpc/udhcpc.conf",
+      "usr/bin/ssl_client",
+      "usr/share/udhcpc/default.script"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/busybox/1.37.0-r31",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/busybox-1.37.0.tar.bz2",
+        "sha256": "3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0001-wget-add-header-Accept.patch",
+        "sha256": "0edc53c34e0b7f82efb4010ac417c42c182890088f83944f1fb557ba5826968b"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0002-adduser-default-to-sbin-nologin-as-shell-for-system-.patch",
+        "sha256": "1f7d95849b0cda0a75d608afca994d782f0a67fe0f1cb47578424ebadeb266c7"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0003-ash-add-built-in-BB_ASH_VERSION-variable.patch",
+        "sha256": "9059fe07e7a872ed16e66f9cb711dbfcf4d5d28308f20dd9a6c36956326911c9"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0004-Avoid-redefined-warnings-when-buiding-with-utmps.patch",
+        "sha256": "8ac54787fe6bfeb42a6c13e49b39ac7c61e839c4cea243d273c71ba10f1b4a2c"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0005-libbb-sockaddr2str-ensure-only-printable-characters-.patch",
+        "sha256": "3d16e43c11fa3afeb441c64129071168ce9a7a9e584fc78ccc18bbae99feda87"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0006-modinfo-add-k-option-for-kernel-version.patch",
+        "sha256": "6832669fa413d9a236a22bb4d0519e6cc89771a0ef24abd723afd99ce52e900f"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0007-nologin-Install-applet-to-sbin-instead-of-usr-sbin.patch",
+        "sha256": "3bf06e5cdd1a0d4a0ad541c8a838004fd0c4e46e44ad3af6d146ad2f69967d3b"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0008-pgrep-add-support-for-matching-against-UID-and-RUID.patch",
+        "sha256": "c43b6ede059656adb473481aff2aa29239d232b998f735302e97a324650e77a3"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0009-properly-fix-wget-https-support.patch",
+        "sha256": "4be0a9d28acaa4c117c694a4816fad4a2d3f78e224676dfc2d1407d3ad0dc17a"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0010-fsck-resolve-LABEL-.-UUID-.-spec-to-device.patch",
+        "sha256": "f45615c7a985b30465da5d93a3535404636f45a83cbeefafbd0bcb6b0c86371f"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0011-nslookup-sanitize-all-printed-strings-with-printable.patch",
+        "sha256": "a1f28268047e9e268f9760f3f3c9bf53f41eb5a712e0922f105dd23b96c00dc7"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0012-ash-exec-busybox.static.patch",
+        "sha256": "813555bb69bc9b97ff3d7ec14569eb2763ec16bfd9650bba5f1f08ba5cd4226c"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0013-app-location-for-cpio-vi-and-lspci.patch",
+        "sha256": "7f083b5705dac1cfa80953e32e83aaa65e4234c41a59f1578bfc403a1abf4eed"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0014-udhcpc-set-default-discover-retries-to-5.patch",
+        "sha256": "3e306b052a2df4134de61012de907893aebeb9cd107e9410e81770d60608c41d"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0015-ping-make-ping-work-without-root-privileges.patch",
+        "sha256": "802827589eb1c04f634ba8f69158cf0ba87e41061935ba5047ccc8322bf20f41"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0016-fbsplash-support-console-switching.patch",
+        "sha256": "4db1b0fe9178c1a04f8ea63a9915db86159120398e8bd619c0231afa303472d4"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0017-fbsplash-support-image-and-bar-alignment-and-positio.patch",
+        "sha256": "d128fa633cfad0845d6bd5f0aee634ab9971b2edd6001ad91d99b3c1be8aee91"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0018-depmod-support-generating-kmod-binary-index-files.patch",
+        "sha256": "6817e14f68dae612a91aa7d75e76b1212a5bba8e9cfdff11336e606bdeed98eb"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0019-Add-flag-for-not-following-symlinks-when-recursing.patch",
+        "sha256": "a4f0e598874e0229071c6fe59380cd6c739d68ecbc74e1eef2de76e60ea49030"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0020-udhcpc-Don-t-background-if-n-is-given.patch",
+        "sha256": "3cc2b21429514b57d75e66a48b6e4c2068c931f91e993e8625a8f22d04daad4b"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0021-tests-fix-tarball-creation.patch",
+        "sha256": "dd4c10e0d2a1479d2367cf116e05bda09f0f2921636f65af99428d0cff542412"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0022-tests-musl-doesn-t-seem-to-recognize-UTC0-as-a-timez.patch",
+        "sha256": "ab1f225416915acf048a2cce3571dbbe942ecd7b114492401b9e0634567e633a"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0023-Hackfix-to-disable-HW-acceleration-for-MD5-SHA1-on-x.patch",
+        "sha256": "bb9858725f62c1aec9baeeace4a217a4a216ae8488a4a04e92fc225ef4f063c5"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0024-umount-Implement-O-option-to-unmount-by-mount-option.patch",
+        "sha256": "fe1b1ed4983c26960bf9d88062e52f6f1f2735a54d15234361d2b2c53eef14ce"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0025-find-fix-xdev-depth-and-delete.patch",
+        "sha256": "d88146dbec6996345b825805408a8c855e616decb4ad25555012b37d605c6b62"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0026-awk.c-fix-CVE-2023-42366-bug-15874.patch",
+        "sha256": "34a52455ba3866c43d53558047fa40edba5118218930a3f860d1d343dc7d09a8"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0027-awk-Mark-test-for-handling-of-start-of-word-pattern-.patch",
+        "sha256": "f478b2c38a12fad318b43839f4aa97c6116087d4c986ed6ce11320e19b8409c1"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0028-od-Skip-od-B-on-big-endian.patch",
+        "sha256": "83483a14589224a6f7e7c03883abd8b54d68dc46f00628be59a61ecc68d79067"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0029-ash-reject-unknown-long-options.patch",
+        "sha256": "4ed1b9592b75abb740878804dc8cc48cffc5e6da6cd6d4319a8c35082b6b1a77"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0030-hexdump-Skip-a-single-test-on-big-endian-systems.patch",
+        "sha256": "a03e66c5768d4fa5acb2778943019c1ccc96c9f7f5b8b56206df917c9d28967c"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0031-syslogd-fix-wrong-OPT_locallog-flag-detection.patch",
+        "sha256": "a4b8e95aefd53ac360bfc898f0f08ca7d86ef5178058a3499783a99e37247412"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0032-lineedit-fix-some-tab-completions-written-to-stdout.patch",
+        "sha256": "032a2e416980a21a6dca1b702543b29b675a8ef843998d9c24d31eacb7fc27cb"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0033-lineedit-use-stdout-for-shell-history-builtin.patch",
+        "sha256": "61265873d32d0d0b12c429a736de6c949f0dbcd434e1ead1765bf3fd19cfc084"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0034-adduser-remove-preconfigured-GECOS-full-name-field.patch",
+        "sha256": "b1b62318d5b4550c2a4ae6cad74330bbb9159dacdd8f0617759311d9d977dbbf"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0035-cpio-map-F-to-file-long-option.patch",
+        "sha256": "6a65af49b8497220eb8ef502167d76bf12a30f7cf1a12eb620041e1efd0747b5"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0001-hexdump-fix-regression-with-n4-e-u.patch",
+        "sha256": "c289b3ed7096557846069f6814e063226b2552e6d26a959c9e35116469dddf35"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0001-awk-fix-handling-of-literal-backslashes-in-replaceme.patch",
+        "sha256": "522e48b25b320b854885419f3ee3a092bd58ad2ed111da87a57cafbc8420feae"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0001-tunctl-fix-segfault-on-ioctl-failure.patch",
+        "sha256": "d8488651d7af4450310dce234bc62cf5737a473478f67e298a1ad50c6205a78c"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0001-init-add-support-for-separate-reboot-action.patch",
+        "sha256": "df5b272582ebf19de062341469ade926b1c747278871190855ac0d16c079f519"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0001-blkdiscard-ship-link-to-sbin-instead-of-usr-bin.patch",
+        "sha256": "f490ce643412a33dfd3c92aaaeff501a10c0f78662172d1cf55e5d632b7f8033"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0001-tar-fix-TOCTOU-symlink-race-condition.patch",
+        "sha256": "1a65d0870075fc83d58d75e91a2e518d1bee1898083086fb950281eb79b7d3a8"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0001-netstat-sanitize-process-names.patch",
+        "sha256": "daf4282120acbc4eb1d90721565d2e01c9ddc3eeeabed4c5f5faa04fe3d33dd3"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0001-tar-fix-16018-masking-of-potentially-malicious-tar-cpio-content.patch",
+        "sha256": "8b4262ffbaaa721d3c1d6a2b1deb84a794a99252b1b15e974ec76ccb9eb3c517"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/0001-mount-fix-parsing-proc-mounts-with-long-lines.patch",
+        "sha256": "5971026ad9e4b252370bf4be615f7da6ab146cccc58a7e5cb3f21b92c32ae50d"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/acpid.logrotate",
+        "sha256": "d608a3b7715886b5735def0cc50a6359fd364fac2e0e0a459c588c04be471031"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/busyboxconfig",
+        "sha256": "65b29f6085cd79ab5f032d7e4299534a86c3efad240e78c16186a19bf847fcca"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/busyboxconfig-extras",
+        "sha256": "1d539797a78b17e815acb6afb97e8883fe65d0c094801395c014ac5f7b3a7e98"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/bbsuid.c",
+        "sha256": "99f6275a53a4005d8f03d87e5361699419b33a52b2b2e2fe1c45e90ab6d51f58"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/dad.if-up",
+        "sha256": "2fd20d1bc67d9ee711990002b24f156635a73f56b8935b2f76592938817fa4e7"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/ssl_client.c",
+        "sha256": "f36fb83637a12fe0706f828a3e9a4181ac6ed452b59d5d30fcf4dbe1884b8aed"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/default.script",
+        "sha256": "c7b39bba4d7f1ce05dbdeba7d2fd97b96a8c3c0c1ebc0259f641fb8e1c3827d2"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/udhcpc.conf",
+        "sha256": "5b372209e01cda07c87b8afa6d1ab3d7e8daf18a1f2332d744203a6dc289eb1a"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/securetty",
+        "sha256": "713fcea5109728883b9147e822429133fcc8b5e253afd3c2a197b10cd0bc3b4d"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/acpid-poweroff.sh",
+        "sha256": "745a5f25dd586f7574f5867fdb3d9b0f7cda97224cadc7a178fc72e26b51b7e7"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/acpid.initd",
+        "sha256": "e9a57d04084733e20b57c4f17e94e8d277ef42f2836f33d96be1250e9672b2a8"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/crond.confd",
+        "sha256": "d058d9ed0824f877b4e88158fe25d71ad76fca4b71542c4c6d7991ee2ecd20f8"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/crond.initd",
+        "sha256": "9c7955d5227326ea4a1e55c225606e34d148a831cca3e05b23ad5c58f525c8e0"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/klogd.confd",
+        "sha256": "f6cd63d6e5f384dcb01a4906c9a0b6c5923794380235dfe0d79b48a686b03c5d"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/klogd.initd",
+        "sha256": "855bf399d4c689dcb8c67a1062e02f1f925297eb18e7ac6942219ab84330a547"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/ntpd.confd",
+        "sha256": "4224e5c6b5ffeb815c15f3e9f17ddaa169d4e6b7da169dbd0939fe06dbe8914d"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/ntpd.initd",
+        "sha256": "7c64ee24b972bee7397407955198d3d336c71deb83a784c7e2656709802c0040"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/rdate.confd",
+        "sha256": "521f5171e20a353e68155620ce7c847c53dcfb7c45ab02d7566efd99cff2dbf2"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/rdate.initd",
+        "sha256": "0c6eb4dc269386472f475cf9c549ba53b73aa33f044fbfb3b6bc6dd2574bb341"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/syslog.confd",
+        "sha256": "47b6e2ae625578903f8cf78410a981ab3103cb6de156a853034c57363bf39e0a"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/syslog.initd",
+        "sha256": "f5e471c5bf96a706655b043516403f7aabe2c893f9597e345aa625b6a6375a7f"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/loadkmap.confd",
+        "sha256": "85de66e8a23c60061d8ddf20075ce89ae3cab368a4b995aa863a6e9ec552a0d0"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/loadkmap.initd",
+        "sha256": "99f679902e7addf649a54a5cea0cf9aec63922aa886100419c11184339eed22d"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/watchdog.confd",
+        "sha256": "77f6f9069afdbb477a7e822aa2c7265d64fd22fdd9338bb3beb0cee901d202ce"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/watchdog.initd",
+        "sha256": "8bf9f4caa14f2e0a1ded5f76130bfec07c325e89045e5ba6fc10f890270b5752"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/mdev.initd",
+        "sha256": "754d37775157f138ed8834e041765ee6aed3a14915a783be480d1f34a6d5783d"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/dnsd.initd",
+        "sha256": "4a2b86475c9a3e06729265093cfc71711575089472b68671fe59158999f829c3"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/httpd.initd",
+        "sha256": "834284a025ef92049ffb6b67264591de2da0e61b85226eb48bd2eead52dce860"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/inetd.initd",
+        "sha256": "bc35f55a9cb9930f5ffbde4cd93037b29a384b155a45a9bd1e1c7ea0a9139138"
+      },
+      {
+        "path": "origins/busybox/1.37.0-r31/inputs/udhcpd.initd",
+        "sha256": "5c2d05f2cb2a47847c345881ea41de15afe7d1c10f76f8e3cbbadeb0cba4dc50"
+      }
+    ],
+    "recipe_count": 80,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/busybox/busybox-1.37.0.tar.bz2/busybox-1.37.0/LICENSE",
+      "notices/original/busybox/busybox-1.37.0.tar.bz2/busybox-1.37.0/archival/libarchive/bz/LICENSE"
+    ]
+  },
+  {
+    "origin": "c-ares",
+    "version": "1.34.8-r0",
+    "aports_commit": "138a6bf9dea5974644e48fef4826b7c474f2f7d8",
+    "packages": [
+      "c-ares"
+    ],
+    "declared_expressions": [
+      "MIT"
+    ],
+    "installed_file_paths": [
+      "usr/lib/libcares.so.2",
+      "usr/lib/libcares.so.2.19.7"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/c-ares/1.34.8-r0",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/c-ares/1.34.8-r0/inputs/c-ares-1.34.8.tar.gz",
+        "sha256": "c222b6d681096f9444d2c4863d2c1174019e27cacca0a4a5c114d36dd7d7bf78"
+      }
+    ],
+    "recipe_count": 1,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/c-ares/c-ares-1.34.8.tar.gz/c-ares-1.34.8/LICENSE.md"
+    ]
+  },
+  {
+    "origin": "ca-certificates",
+    "version": "20260909-r0",
+    "aports_commit": "eb7078df3a16d666e8f7723f94bb92e00d4b9236",
+    "packages": [
+      "ca-certificates-bundle"
+    ],
+    "declared_expressions": [
+      "MPL-2.0 AND MIT"
+    ],
+    "installed_file_paths": [
+      "etc/ssl/cert.pem",
+      "etc/ssl/certs/ca-certificates.crt",
+      "etc/ssl1.1/cert.pem",
+      "etc/ssl1.1/certs"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/ca-certificates/20260909-r0",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "MPL certdata and full MPL text retained; only bundle is installed, not c_rehash/update-ca tools. MIT generator headers retained; output attribution still reviewed",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/ca-certificates/20260909-r0/inputs/ca-certificates-20260909.tar.bz2",
+        "sha256": "dc460c535f3833432be4e561d214a5fe816b05ede5a2ade64787e501671cd082"
+      }
+    ],
+    "recipe_count": 3,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/additional/ca-certificates/ca-certificates-20260909/Makefile",
+      "notices/additional/ca-certificates/ca-certificates-20260909/c_rehash.c",
+      "notices/additional/ca-certificates/ca-certificates-20260909/certdata.txt",
+      "notices/additional/ca-certificates/ca-certificates-20260909/split-ca-bundle.sh",
+      "notices/additional/ca-certificates/ca-certificates-20260909/update-ca.c",
+      "notices/additional/MPL-2.0.txt"
+    ]
+  },
+  {
+    "origin": "frr",
+    "version": "10.6.1-r0",
+    "aports_commit": "23a7c9f1a27473a1a8a09ad3433d4a7a5b0fb62c",
+    "packages": [
+      "frr"
+    ],
+    "declared_expressions": [
+      "GPL-2.0-or-later"
+    ],
+    "installed_file_paths": [
+      "etc/frr/daemons",
+      "etc/frr/frr.conf",
+      "etc/frr/support_bundle_commands.conf",
+      "etc/frr/vtysh.conf",
+      "etc/iproute2/rt_protos.d/frr.conf",
+      "usr/bin/mtracebis",
+      "usr/bin/vtysh",
+      "usr/lib/frr/babeld",
+      "usr/lib/frr/bfdd",
+      "usr/lib/frr/bgpd",
+      "usr/lib/frr/eigrpd",
+      "usr/lib/frr/fabricd",
+      "usr/lib/frr/fpm_listener",
+      "usr/lib/frr/frr_babeltrace.py",
+      "usr/lib/frr/frrcommon.sh",
+      "usr/lib/frr/frrinit.sh",
+      "usr/lib/frr/generate_support_bundle.py",
+      "usr/lib/frr/isisd",
+      "usr/lib/frr/ldpd",
+      "usr/lib/frr/libfrr.so.0",
+      "usr/lib/frr/libfrr.so.0.0.0",
+      "usr/lib/frr/libfrrcares.so.0",
+      "usr/lib/frr/libfrrcares.so.0.0.0",
+      "usr/lib/frr/libfrrospfapiclient.so.0",
+      "usr/lib/frr/libfrrospfapiclient.so.0.0.0",
+      "usr/lib/frr/libmgmt_be_nb.so.0",
+      "usr/lib/frr/libmgmt_be_nb.so.0.0.0",
+      "usr/lib/frr/mgmtd",
+      "usr/lib/frr/modules/bgpd_bmp.so",
+      "usr/lib/frr/modules/dplane_fpm_nl.so",
+      "usr/lib/frr/modules/pathd_pcep.so",
+      "usr/lib/frr/modules/zebra_cumulus_mlag.so",
+      "usr/lib/frr/modules/zebra_fpm.so",
+      "usr/lib/frr/nhrpd",
+      "usr/lib/frr/ospf6d",
+      "usr/lib/frr/ospfclient.py",
+      "usr/lib/frr/ospfd",
+      "usr/lib/frr/pathd",
+      "usr/lib/frr/pbrd",
+      "usr/lib/frr/pim6d",
+      "usr/lib/frr/pimd",
+      "usr/lib/frr/pkgconfig/frr.pc",
+      "usr/lib/frr/ripd",
+      "usr/lib/frr/ripngd",
+      "usr/lib/frr/staticd",
+      "usr/lib/frr/vrrpd",
+      "usr/lib/frr/watchfrr",
+      "usr/lib/frr/watchfrr.sh",
+      "usr/lib/frr/zebra",
+      "usr/share/yang/frr-affinity-map.yang",
+      "usr/share/yang/frr-backend.yang",
+      "usr/share/yang/frr-bfdd.yang",
+      "usr/share/yang/frr-bgp-bmp.yang",
+      "usr/share/yang/frr-bgp-common-multiprotocol.yang",
+      "usr/share/yang/frr-bgp-common-structure.yang",
+      "usr/share/yang/frr-bgp-common.yang",
+      "usr/share/yang/frr-bgp-filter.yang",
+      "usr/share/yang/frr-bgp-neighbor.yang",
+      "usr/share/yang/frr-bgp-peer-group.yang",
+      "usr/share/yang/frr-bgp-route-map.yang",
+      "usr/share/yang/frr-bgp-rpki.yang",
+      "usr/share/yang/frr-bgp-types.yang",
+      "usr/share/yang/frr-bgp.yang",
+      "usr/share/yang/frr-deviations-bgp-datacenter.yang",
+      "usr/share/yang/frr-deviations-ietf-key-chain.yang",
+      "usr/share/yang/frr-eigrpd.yang",
+      "usr/share/yang/frr-filter.yang",
+      "usr/share/yang/frr-gmp.yang",
+      "usr/share/yang/frr-host.yang",
+      "usr/share/yang/frr-if-rmap.yang",
+      "usr/share/yang/frr-interface.yang",
+      "usr/share/yang/frr-isisd.yang",
+      "usr/share/yang/frr-logging.yang",
+      "usr/share/yang/frr-module-translator.yang",
+      "usr/share/yang/frr-nexthop.yang",
+      "usr/share/yang/frr-ospf-route-map.yang",
+      "usr/share/yang/frr-ospf6-route-map.yang",
+      "usr/share/yang/frr-ospfd.yang",
+      "usr/share/yang/frr-pathd.yang",
+      "usr/share/yang/frr-pim-candidate.yang",
+      "usr/share/yang/frr-pim-route-map.yang",
+      "usr/share/yang/frr-pim-rp.yang",
+      "usr/share/yang/frr-pim.yang",
+      "usr/share/yang/frr-ripd.yang",
+      "usr/share/yang/frr-ripngd.yang",
+      "usr/share/yang/frr-route-map.yang",
+      "usr/share/yang/frr-route-types.yang",
+      "usr/share/yang/frr-routing.yang",
+      "usr/share/yang/frr-staticd.yang",
+      "usr/share/yang/frr-test-module.yang",
+      "usr/share/yang/frr-vrf.yang",
+      "usr/share/yang/frr-vrrpd.yang",
+      "usr/share/yang/frr-zebra-route-map.yang",
+      "usr/share/yang/frr-zebra.yang",
+      "usr/share/yang/ietf-bgp-types.yang",
+      "usr/share/yang/ietf-interfaces.yang",
+      "usr/share/yang/ietf-key-chain.yang",
+      "usr/share/yang/ietf-netconf-acm.yang",
+      "usr/share/yang/ietf-netconf-with-defaults.yang",
+      "usr/share/yang/ietf-netconf.yang",
+      "usr/share/yang/ietf-routing-types.yang",
+      "usr/share/yang/ietf-srv6-types.yang",
+      "usr/share/yang/ietf-syslog-types.yang"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/frr/10.6.1-r0",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Complete upstream archive plus doc/licenses and manual notice retained; installed code/config/YANG, no manual paths observed. Proposed GPLv3-compatible vtysh/Readline path, not blanket legal clearance",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/frr/10.6.1-r0/inputs/frr-10.6.1.tar.gz",
+        "sha256": "35f2cb4328617261db687e1d4e400c7c491b41b3aa4a109d7da9ebff0cf7e402"
+      },
+      {
+        "path": "origins/frr/10.6.1-r0/inputs/frr.initd",
+        "sha256": "467461385a0edbd2532064c918c5dd12d9c4b28771964f06b2038e6a4420e736"
+      },
+      {
+        "path": "origins/frr/10.6.1-r0/inputs/allow-invalid-nlri-attributes.patch",
+        "sha256": "7a5a0fb2d9fb50de6de449ee65ae25795c42677b47d4b0035d15840613cf62f2"
+      }
+    ],
+    "recipe_count": 4,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/frr/frr-10.6.1.tar.gz/frr-frr-10.6.1/COPYING",
+      "notices/original/frr/frr-10.6.1.tar.gz/frr-frr-10.6.1/debian/copyright",
+      "notices/original/frr/frr-10.6.1.tar.gz/frr-frr-10.6.1/doc/licenses/LicenseRef-Skiplist-BSD-0-Clause",
+      "notices/original/frr/frr-10.6.1.tar.gz/frr-frr-10.6.1/tools/gcc-plugins/debian/copyright",
+      "notices/additional/frr/frr-frr-10.6.1/COPYING",
+      "notices/additional/frr/frr-frr-10.6.1/doc/licenses/BSD-2-Clause",
+      "notices/additional/frr/frr-frr-10.6.1/doc/licenses/BSD-3-Clause",
+      "notices/additional/frr/frr-frr-10.6.1/doc/licenses/GPL-2.0",
+      "notices/additional/frr/frr-frr-10.6.1/doc/licenses/GPL-3.0",
+      "notices/additional/frr/frr-frr-10.6.1/doc/licenses/ISC",
+      "notices/additional/frr/frr-frr-10.6.1/doc/licenses/LGPL-2.1",
+      "notices/additional/frr/frr-frr-10.6.1/doc/licenses/LicenseRef-Skiplist-BSD-0-Clause",
+      "notices/additional/frr/frr-frr-10.6.1/doc/licenses/MIT",
+      "notices/additional/frr/frr-frr-10.6.1/doc/licenses/Unlicense",
+      "notices/additional/frr/frr-frr-10.6.1/doc/user/index.rst",
+      "notices/additional/frr/frr-frr-10.6.1/vtysh/vtysh.c"
+    ]
+  },
+  {
+    "origin": "iproute2",
+    "version": "7.0.0-r0",
+    "aports_commit": "3ee752ad0c8445c8105177cd5cebdd730789bcd8",
+    "packages": [
+      "iproute2",
+      "iproute2-minimal",
+      "iproute2-ss",
+      "iproute2-tc"
+    ],
+    "declared_expressions": [
+      "GPL-2.0-or-later"
+    ],
+    "installed_file_paths": [
+      "sbin/bridge",
+      "sbin/ctstat",
+      "sbin/dpll",
+      "sbin/genl",
+      "sbin/ifstat",
+      "sbin/ip",
+      "sbin/lnstat",
+      "sbin/netshaper",
+      "sbin/nstat",
+      "sbin/routel",
+      "sbin/rtacct",
+      "sbin/rtmon",
+      "sbin/rtstat",
+      "sbin/ss",
+      "sbin/tc",
+      "usr/lib/tc/experimental.dist",
+      "usr/lib/tc/normal.dist",
+      "usr/lib/tc/pareto.dist",
+      "usr/lib/tc/paretonormal.dist",
+      "usr/share/iproute2/bpf_pinning",
+      "usr/share/iproute2/ematch_map",
+      "usr/share/iproute2/group",
+      "usr/share/iproute2/nl_protos",
+      "usr/share/iproute2/rt_dsfield",
+      "usr/share/iproute2/rt_protos",
+      "usr/share/iproute2/rt_realms",
+      "usr/share/iproute2/rt_scopes",
+      "usr/share/iproute2/rt_tables"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/iproute2/7.0.0-r0",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/iproute2/7.0.0-r0/inputs/iproute2-v7.0.0.tar.xz",
+        "sha256": "3d40cffb6219c35de4771f63d3a280ef7e9bb11038eb7c45a47e5538b6fe102f"
+      }
+    ],
+    "recipe_count": 2,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/iproute2/iproute2-v7.0.0.tar.xz/iproute2-v7.0.0/COPYING"
+    ]
+  },
+  {
+    "origin": "json-c",
+    "version": "0.18-r1",
+    "aports_commit": "8e0faa63c91abd41feb359ce5fe4299a88a57ef1",
+    "packages": [
+      "json-c"
+    ],
+    "declared_expressions": [
+      "MIT"
+    ],
+    "installed_file_paths": [
+      "usr/lib/libjson-c.so.5",
+      "usr/lib/libjson-c.so.5.4.0"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/json-c/0.18-r1",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/json-c/0.18-r1/inputs/json-c-0.18.tar.gz",
+        "sha256": "876ab046479166b869afc6896d288183bbc0e5843f141200c677b3e8dfb11724"
+      },
+      {
+        "path": "origins/json-c/0.18-r1/inputs/cmake-version.patch",
+        "sha256": "cb1403d88661628dd615c50c14d4b8fd0657dec77512883306e85eb01c6dc411"
+      }
+    ],
+    "recipe_count": 2,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/json-c/json-c-0.18.tar.gz/json-c-0.18/COPYING"
+    ]
+  },
+  {
+    "origin": "libcap",
+    "version": "2.78-r0",
+    "aports_commit": "0c35848136c4c16a1b1672cb812efa88fffef1c2",
+    "packages": [
+      "libcap2"
+    ],
+    "declared_expressions": [
+      "BSD-3-Clause OR GPL-2.0-only"
+    ],
+    "installed_file_paths": [
+      "usr/lib/libcap.so.2",
+      "usr/lib/libcap.so.2.78",
+      "usr/lib/libpsx.so.2",
+      "usr/lib/libpsx.so.2.78"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/libcap/2.78-r0",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "libcap and libpsx installed; root and psx License expressly permit BSD-3-Clause OR GPL-2.0-only. Proposed BSD branch; original grants/copyright-bearing source retained",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/libcap/2.78-r0/inputs/libcap-2.78.tar.xz",
+        "sha256": "0d621e562fd932ccf67b9660fb018e468a683d7b827541df27813228c996bb11"
+      }
+    ],
+    "recipe_count": 1,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/libcap/libcap-2.78.tar.xz/libcap-2.78/cap/License",
+      "notices/original/libcap/libcap-2.78.tar.xz/libcap-2.78/License",
+      "notices/original/libcap/libcap-2.78.tar.xz/libcap-2.78/pam_cap/License",
+      "notices/original/libcap/libcap-2.78.tar.xz/libcap-2.78/psx/License",
+      "notices/additional/libcap/libcap-2.78/libcap/cap_alloc.c",
+      "notices/additional/libcap/libcap-2.78/License",
+      "notices/additional/libcap/libcap-2.78/psx/License"
+    ]
+  },
+  {
+    "origin": "openssl",
+    "version": "3.5.8-r0",
+    "aports_commit": "013edf8b29199933e8ea34dde460b5584b979042",
+    "packages": [
+      "libcrypto3",
+      "libssl3"
+    ],
+    "declared_expressions": [
+      "Apache-2.0"
+    ],
+    "installed_file_paths": [
+      "etc/ssl/ct_log_list.cnf",
+      "etc/ssl/ct_log_list.cnf.dist",
+      "etc/ssl/openssl.cnf",
+      "etc/ssl/openssl.cnf.dist",
+      "usr/lib/engines-3/afalg.so",
+      "usr/lib/engines-3/capi.so",
+      "usr/lib/engines-3/loader_attic.so",
+      "usr/lib/engines-3/padlock.so",
+      "usr/lib/libcrypto.so.3",
+      "usr/lib/libssl.so.3",
+      "usr/lib/ossl-modules/legacy.so"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/openssl/3.5.8-r0",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/openssl/3.5.8-r0/inputs/openssl-3.5.8.tar.gz",
+        "sha256": "a8f84a39918ec6415ce765d9b429d313ba97b8143169c172e734b9514464f5b2"
+      },
+      {
+        "path": "origins/openssl/3.5.8-r0/inputs/auxv.patch",
+        "sha256": "0b3a36c0f1b3d8e0adcf02c251374ce4d2578b0c9f4b88207bf85c5c1b58c7d8"
+      }
+    ],
+    "recipe_count": 3,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/openssl/openssl-3.5.8.tar.gz/openssl-3.5.8/LICENSE.txt",
+      "notices/original/openssl/openssl-3.5.8.tar.gz/openssl-3.5.8/external/perl/Text-Template-1.56/LICENSE",
+      "notices/original/openssl/openssl-3.5.8.tar.gz/openssl-3.5.8/util/perl/OpenSSL/copyright.pm"
+    ]
+  },
+  {
+    "origin": "elfutils",
+    "version": "0.195-r0",
+    "aports_commit": "8f13294206888f3dd44ed74a8eb3dd9934499e81",
+    "packages": [
+      "libelf"
+    ],
+    "declared_expressions": [
+      "GPL-3.0-or-later AND ( GPL-2.0-or-later OR LGPL-3.0-or-later )"
+    ],
+    "installed_file_paths": [
+      "usr/lib/libelf-0.195.so",
+      "usr/lib/libelf.so.1"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/elfutils/0.195-r0",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Only libelf installed; selected library headers permit LGPL-3.0-or-later OR GPL-2.0-or-later; propose GPL-2.0-or-later, preserve original APK AND/OR expression and all three texts",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/elfutils/0.195-r0/inputs/elfutils-0.195.tar.bz2",
+        "sha256": "37629fdf7f1f3dc2818e138fca2b8094177d6c2d0f701d3bb650a561218dc026"
+      },
+      {
+        "path": "origins/elfutils/0.195-r0/inputs/fix-aarch64_fregs.patch",
+        "sha256": "a5b131c65927da751aae47a476f26e59ce53300777d54aef6c65c1eceef1a12d"
+      },
+      {
+        "path": "origins/elfutils/0.195-r0/inputs/fix-uninitialized.patch",
+        "sha256": "ee94f9ab26049f8100db1b6bfc760454f5a220190a5eb907faee65129ec9e962"
+      },
+      {
+        "path": "origins/elfutils/0.195-r0/inputs/musl-macros.patch",
+        "sha256": "8e3924f08d4af34a45d0059224ea42b7afdc43837d053243e855cdaf295dde67"
+      },
+      {
+        "path": "origins/elfutils/0.195-r0/inputs/musl-asm-ptrace-h.patch",
+        "sha256": "f03d703dc76002413f4cd04e82c1da79365885df65fbd4eb660f1de42ee41ba9"
+      }
+    ],
+    "recipe_count": 5,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/elfutils/elfutils-0.195.tar.bz2/elfutils-0.195/doc/COPYING-GFDL",
+      "notices/original/elfutils/elfutils-0.195.tar.bz2/elfutils-0.195/COPYING-LGPLV3",
+      "notices/original/elfutils/elfutils-0.195.tar.bz2/elfutils-0.195/COPYING-GPLV2",
+      "notices/original/elfutils/elfutils-0.195.tar.bz2/elfutils-0.195/COPYING",
+      "notices/additional/elfutils/elfutils-0.195/libelf/elf_end.c",
+      "notices/additional/elfutils/elfutils-0.195/libelf/elf_begin.c"
+    ]
+  },
+  {
+    "origin": "libmnl",
+    "version": "1.0.5-r2",
+    "aports_commit": "fc95c59998285564fbcb0bfb2443898c62e10171",
+    "packages": [
+      "libmnl"
+    ],
+    "declared_expressions": [
+      "LGPL-2.1-or-later"
+    ],
+    "installed_file_paths": [
+      "usr/lib/libmnl.so.0",
+      "usr/lib/libmnl.so.0.2.0"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/libmnl/1.0.5-r2",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/libmnl/1.0.5-r2/inputs/libmnl-1.0.5.tar.bz2",
+        "sha256": "274b9b919ef3152bfb3da3a13c950dd60d6e2bcd54230ffeca298d03b40d0525"
+      },
+      {
+        "path": "origins/libmnl/1.0.5-r2/inputs/musl-fix-headers.patch",
+        "sha256": "9e66c74e9ef839d6daa2e56697c5e9620e25714a8511ed43763e010b4963c4e2"
+      }
+    ],
+    "recipe_count": 2,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/libmnl/libmnl-1.0.5.tar.bz2/libmnl-1.0.5/COPYING"
+    ]
+  },
+  {
+    "origin": "ncurses",
+    "version": "6.6_p20260516-r0",
+    "aports_commit": "2cee8a7328d061418336ad327b512d96bcd7bc5e",
+    "packages": [
+      "libncursesw",
+      "ncurses-terminfo-base"
+    ],
+    "declared_expressions": [
+      "X11"
+    ],
+    "installed_file_paths": [
+      "etc/terminfo/a/alacritty",
+      "etc/terminfo/a/ansi",
+      "etc/terminfo/d/dumb",
+      "etc/terminfo/g/gnome",
+      "etc/terminfo/g/gnome-256color",
+      "etc/terminfo/k/konsole",
+      "etc/terminfo/k/konsole-256color",
+      "etc/terminfo/k/konsole-linux",
+      "etc/terminfo/l/linux",
+      "etc/terminfo/p/putty",
+      "etc/terminfo/p/putty-256color",
+      "etc/terminfo/r/rxvt",
+      "etc/terminfo/r/rxvt-256color",
+      "etc/terminfo/s/screen",
+      "etc/terminfo/s/screen-256color",
+      "etc/terminfo/s/st-0.6",
+      "etc/terminfo/s/st-0.7",
+      "etc/terminfo/s/st-0.8",
+      "etc/terminfo/s/st-0.8.5",
+      "etc/terminfo/s/st-16color",
+      "etc/terminfo/s/st-256color",
+      "etc/terminfo/s/st-direct",
+      "etc/terminfo/s/sun",
+      "etc/terminfo/t/terminator",
+      "etc/terminfo/t/terminology",
+      "etc/terminfo/t/terminology-0.6.1",
+      "etc/terminfo/t/terminology-1.0.0",
+      "etc/terminfo/t/terminology-1.8.1",
+      "etc/terminfo/t/tmux",
+      "etc/terminfo/t/tmux-256color",
+      "etc/terminfo/v/vt100",
+      "etc/terminfo/v/vt102",
+      "etc/terminfo/v/vt200",
+      "etc/terminfo/v/vt220",
+      "etc/terminfo/v/vt52",
+      "etc/terminfo/v/vte",
+      "etc/terminfo/v/vte-256color",
+      "etc/terminfo/x/xterm",
+      "etc/terminfo/x/xterm-256color",
+      "etc/terminfo/x/xterm-color",
+      "etc/terminfo/x/xterm-xfree86",
+      "usr/lib/libncursesw.so.6",
+      "usr/lib/libncursesw.so.6.6"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/ncurses/6.6_p20260516-r0",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/ncurses/6.6_p20260516-r0/inputs/ncurses-6.6-20260516.tgz",
+        "sha256": "933438009f594f54656c53c7bc347a7e0ff21881700fc3db811086f7a3fd3b60"
+      },
+      {
+        "path": "origins/ncurses/6.6_p20260516-r0/inputs/cleanup-pkgconfig-ldflags.patch",
+        "sha256": "c19b803b176a950935893aaa78e6330044ad4e953c2061ecc884857a0cd8b8a8"
+      }
+    ],
+    "recipe_count": 2,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/ncurses/ncurses-6.6-20260516.tgz/ncurses-6.6-20260516/Ada95/package/debian/copyright",
+      "notices/original/ncurses/ncurses-6.6-20260516.tgz/ncurses-6.6-20260516/package/debian-mingw64/copyright",
+      "notices/original/ncurses/ncurses-6.6-20260516.tgz/ncurses-6.6-20260516/package/debian-mingw/copyright",
+      "notices/original/ncurses/ncurses-6.6-20260516.tgz/ncurses-6.6-20260516/package/debian/copyright",
+      "notices/original/ncurses/ncurses-6.6-20260516.tgz/ncurses-6.6-20260516/test/package/debian-mingw64/copyright",
+      "notices/original/ncurses/ncurses-6.6-20260516.tgz/ncurses-6.6-20260516/test/package/debian-mingw/copyright",
+      "notices/original/ncurses/ncurses-6.6-20260516.tgz/ncurses-6.6-20260516/test/package/debian/copyright",
+      "notices/original/ncurses/ncurses-6.6-20260516.tgz/ncurses-6.6-20260516/COPYING"
+    ]
+  },
+  {
+    "origin": "iptables",
+    "version": "1.8.13-r0",
+    "aports_commit": "8848fb97f5ec1aa887b836cf412d88eaabe312b6",
+    "packages": [
+      "libxtables"
+    ],
+    "declared_expressions": [
+      "GPL-2.0-or-later"
+    ],
+    "installed_file_paths": [
+      "usr/lib/libxtables.so.12",
+      "usr/lib/libxtables.so.12.7.0"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/iptables/1.8.13-r0",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/iptables/1.8.13-r0/inputs/iptables-1.8.13.tar.xz",
+        "sha256": "1afcd33da9e8f913ace6a2126788162e207e26f5d5e29c6573c0e581ffc58b99"
+      },
+      {
+        "path": "origins/iptables/1.8.13-r0/inputs/use-sh-iptables-apply.patch",
+        "sha256": "f77002b25433d98a4299c0bdfa502c0775fce4b9403f14c639f725c08ec34b96"
+      },
+      {
+        "path": "origins/iptables/1.8.13-r0/inputs/iptables.initd",
+        "sha256": "48803a5a092ca1ee48ac9d208aaa38a742f1db21e31f4d7f18ac2298906207e7"
+      },
+      {
+        "path": "origins/iptables/1.8.13-r0/inputs/iptables.confd",
+        "sha256": "421acbcd310f9c51e20e22e59af9452b1ba5d0db33e8960eba0095271060c3db"
+      },
+      {
+        "path": "origins/iptables/1.8.13-r0/inputs/ip6tables.confd",
+        "sha256": "31ef5d759c64afd0ecbcb56b3982ed2bdb5ed9c8553c628c13d4a3b5687118a3"
+      },
+      {
+        "path": "origins/iptables/1.8.13-r0/inputs/ebtables.initd",
+        "sha256": "87302150dcd7ebad4e482816b13dbc108dfd5e7b0b948241db48eb5323e2bd2c"
+      },
+      {
+        "path": "origins/iptables/1.8.13-r0/inputs/ebtables.confd",
+        "sha256": "83e3716eb394682becdac8f810edb062173fc18e76506d8fac2293fda2ba2ffb"
+      }
+    ],
+    "recipe_count": 8,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/iptables/iptables-1.8.13.tar.xz/iptables-1.8.13/COPYING"
+    ]
+  },
+  {
+    "origin": "libyang",
+    "version": "3.13.6-r1",
+    "aports_commit": "a9e2a2dc46f377eb25884f7fea9834492de7f518",
+    "packages": [
+      "libyang"
+    ],
+    "declared_expressions": [
+      "BSD-3-Clause-Clear"
+    ],
+    "installed_file_paths": [
+      "usr/bin/yanglint",
+      "usr/bin/yangre",
+      "usr/lib/libyang.so.3",
+      "usr/lib/libyang.so.3.9.14",
+      "usr/share/yang/modules/libyang/ietf-datastores@2018-02-14.yang",
+      "usr/share/yang/modules/libyang/ietf-inet-types@2013-07-15.yang",
+      "usr/share/yang/modules/libyang/ietf-yang-library@2019-01-04.yang",
+      "usr/share/yang/modules/libyang/ietf-yang-metadata@2016-08-05.yang",
+      "usr/share/yang/modules/libyang/ietf-yang-schema-mount@2019-01-14.yang",
+      "usr/share/yang/modules/libyang/ietf-yang-structure-ext@2020-06-17.yang",
+      "usr/share/yang/modules/libyang/ietf-yang-types@2013-07-15.yang",
+      "usr/share/yang/modules/libyang/yang@2025-01-29.yang"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/libyang/3.13.6-r1",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/libyang/3.13.6-r1/inputs/libyang-3.13.6.tar.gz",
+        "sha256": "5cd5018f39c830f97d70616c003990287ce5e820ae2792763a49e2a1f63af8d6"
+      }
+    ],
+    "recipe_count": 1,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/libyang/libyang-3.13.6.tar.gz/libyang-3.13.6/LICENSE",
+      "notices/original/libyang/libyang-3.13.6.tar.gz/libyang-3.13.6/distro/pkg/deb/copyright",
+      "notices/original/libyang/libyang-3.13.6.tar.gz/libyang-3.13.6/tools/lint/linenoise/LICENSE"
+    ]
+  },
+  {
+    "origin": "musl",
+    "version": "1.2.6-r2",
+    "aports_commit": "f5640d3a10f664c9119720c60515265d3d6f6d01",
+    "packages": [
+      "musl",
+      "musl-utils"
+    ],
+    "declared_expressions": [
+      "MIT",
+      "MIT AND BSD-2-Clause AND GPL-2.0-or-later"
+    ],
+    "installed_file_paths": [
+      "lib/ld-musl-aarch64.so.1",
+      "lib/ld-musl-x86_64.so.1",
+      "lib/libc.musl-aarch64.so.1",
+      "lib/libc.musl-x86_64.so.1",
+      "sbin/ldconfig",
+      "usr/bin/getconf",
+      "usr/bin/getent",
+      "usr/bin/iconv",
+      "usr/bin/ldd"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/musl/1.2.6-r2",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "getconf/getent BSD-2-Clause; iconv GPL-2.0-or-later; ldd generated by APKBUILD. libc MIT with original COPYRIGHT exceptions retained. ldconfig wrapper attribution remains BLOCKED",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/musl/1.2.6-r2/inputs/musl-1.2.6.tar.gz",
+        "sha256": "d585fd3b613c66151fc3249e8ed44f77020cb5e6c1e635a616d3f9f82460512a"
+      },
+      {
+        "path": "origins/musl/1.2.6-r2/inputs/handle-aux-at_base.patch",
+        "sha256": "2a65e03b94217063d72fe998e5fb2e25cd01716078a3ba1b0ab574ab205111e6"
+      },
+      {
+        "path": "origins/musl/1.2.6-r2/inputs/0001-add-stub-for-pthread_mutexattr_setprioceiling.patch",
+        "sha256": "b2067680c66af9eb9f4fdc1fa5d9337a9fd62bdab2c437b416aa97d79eb884ee"
+      },
+      {
+        "path": "origins/musl/1.2.6-r2/inputs/fix-loongarch64-zero-len-extcontext.patch",
+        "sha256": "92c8e965798ed516c15cb2a4e7c4ac45ec1eb68b6abff16c73adff2a3bae1b14"
+      },
+      {
+        "path": "origins/musl/1.2.6-r2/inputs/CVE-2026-6042.patch",
+        "sha256": "1d0be2e72b9d5bd16546b923aa8af861d271322f01644716a81823bec4065c99"
+      },
+      {
+        "path": "origins/musl/1.2.6-r2/inputs/CVE-2026-40200.patch",
+        "sha256": "1ee29f64f9ca8e8ad7c349779d661ff6b52126a27575d3586981357a52c406fb"
+      },
+      {
+        "path": "origins/musl/1.2.6-r2/inputs/ldconfig",
+        "sha256": "7065021e04a5060957b5c6907af671a7028230d91927fb0c25892cadd9312b7c"
+      },
+      {
+        "path": "origins/musl/1.2.6-r2/inputs/__stack_chk_fail_local.c",
+        "sha256": "299a7d75a09de3e2e11e7fb4acc3182e4a14e868093d2f30938fce9bfcff13da"
+      },
+      {
+        "path": "origins/musl/1.2.6-r2/inputs/getconf.c",
+        "sha256": "d87d0cbb3690ae2c5d8cc218349fd8278b93855dd625deaf7ae50e320aad247c"
+      },
+      {
+        "path": "origins/musl/1.2.6-r2/inputs/getent.c",
+        "sha256": "a6171c2db641cdd99c164169d3c5c6ca323617483cedec4cbbe3eb39c5834df0"
+      },
+      {
+        "path": "origins/musl/1.2.6-r2/inputs/iconv.c",
+        "sha256": "f79a2930a2e5bb0624321589edf8b889d1e9b603e01e6b7ae214616605b3fdd7"
+      }
+    ],
+    "recipe_count": 11,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/musl/musl-1.2.6.tar.gz/musl-1.2.6/COPYRIGHT",
+      "notices/additional/musl/getconf.c",
+      "notices/additional/musl/getent.c",
+      "notices/additional/musl/iconv.c",
+      "notices/additional/musl/ldconfig"
+    ]
+  },
+  {
+    "origin": "pcre2",
+    "version": "10.49-r0",
+    "aports_commit": "3d497cbb3217749c4fb85f90f3b6f7908b0c1f95",
+    "packages": [
+      "pcre2"
+    ],
+    "declared_expressions": [
+      "BSD-3-Clause"
+    ],
+    "installed_file_paths": [
+      "usr/lib/libpcre2-8.so.0",
+      "usr/lib/libpcre2-8.so.0.16.1",
+      "usr/lib/libpcre2-posix.so.3",
+      "usr/lib/libpcre2-posix.so.3.0.9"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/pcre2/10.49-r0",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/pcre2/10.49-r0/inputs/pcre2-10.49.tar.bz2",
+        "sha256": "53c156e1ba416a20da8e65395daa132da0d80e76910424caca3fcdae7831d384"
+      }
+    ],
+    "recipe_count": 1,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/pcre2/pcre2-10.49.tar.bz2/pcre2-10.49/COPYING",
+      "notices/original/pcre2/pcre2-10.49.tar.bz2/pcre2-10.49/deps/sljit/LICENSE",
+      "notices/original/pcre2/pcre2-10.49.tar.bz2/pcre2-10.49/cmake/COPYING-CMAKE-SCRIPTS",
+      "notices/original/pcre2/pcre2-10.49.tar.bz2/pcre2-10.49/LICENCE.md"
+    ]
+  },
+  {
+    "origin": "readline",
+    "version": "8.3.3-r1",
+    "aports_commit": "a854c03acdac188901fb012f7acbee70a36e8041",
+    "packages": [
+      "readline"
+    ],
+    "declared_expressions": [
+      "GPL-3.0-or-later"
+    ],
+    "installed_file_paths": [
+      "etc/inputrc",
+      "usr/lib/libreadline.so.8",
+      "usr/lib/libreadline.so.8.3"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/readline/8.3.3-r1",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/readline/8.3.3-r1/inputs/readline-8.3.tar.gz",
+        "sha256": "fe5383204467828cd495ee8d1d3c037a7eba1389c22bc6a041f627976f9061cc"
+      },
+      {
+        "path": "origins/readline/8.3.3-r1/inputs/fix-ncurses-underlinking.patch",
+        "sha256": "4f004abcc9193aea80b4415918120e9dd830c2de99c91bc6a8fd829213df1af0"
+      },
+      {
+        "path": "origins/readline/8.3.3-r1/inputs/inputrc",
+        "sha256": "1372f6d69c3638d63724c6daecf339c82bb9520a77ead2d497cb66e7114e62bb"
+      },
+      {
+        "path": "origins/readline/8.3.3-r1/inputs/readline83-001.patch",
+        "sha256": "21f0a03106dbe697337cd25c70eb0edbaa2bdb6d595b45f83285cdd35bac84de"
+      },
+      {
+        "path": "origins/readline/8.3.3-r1/inputs/readline83-002.patch",
+        "sha256": "e27364396ba9f6debf7cbaaf1a669e2b2854241ae07f7eca74ca8a8ba0c97472"
+      },
+      {
+        "path": "origins/readline/8.3.3-r1/inputs/readline83-003.patch",
+        "sha256": "72dee13601ce38f6746eb15239999a7c56f8e1ff5eb1ec8153a1f213e4acdb29"
+      }
+    ],
+    "recipe_count": 3,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/readline/readline-8.3.tar.gz/readline-8.3/COPYING"
+    ]
+  },
+  {
+    "origin": "pax-utils",
+    "version": "1.3.9-r1",
+    "aports_commit": "c61801eeacb3ffcd9c2025b09e402153bb93fb39",
+    "packages": [
+      "scanelf"
+    ],
+    "declared_expressions": [
+      "GPL-2.0-only"
+    ],
+    "installed_file_paths": [
+      "usr/bin/scanelf"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/pax-utils/1.3.9-r1",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/pax-utils/1.3.9-r1/inputs/pax-utils-1.3.9.tar.xz",
+        "sha256": "7409f246b3c59b3e2d459d2232a6f7374469637ae6cf616c115b8d5830cab840"
+      }
+    ],
+    "recipe_count": 1,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/pax-utils/pax-utils-1.3.9.tar.xz/pax-utils-1.3.9/COPYING"
+    ]
+  },
+  {
+    "origin": "tini",
+    "version": "0.19.0-r3",
+    "aports_commit": "494a61016db8d643534788c47f074935ef2e6035",
+    "packages": [
+      "tini"
+    ],
+    "declared_expressions": [
+      "MIT"
+    ],
+    "installed_file_paths": [
+      "sbin/tini"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/tini/0.19.0-r3",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/tini/0.19.0-r3/inputs/tini-0.19.0.tar.gz",
+        "sha256": "0fd35a7030052acd9f58948d1d900fe1e432ee37103c5561554408bdac6bbf0d"
+      },
+      {
+        "path": "origins/tini/0.19.0-r3/inputs/fix-missing-basename.patch",
+        "sha256": "62ad38286743c37131807928fcf0e631d8be7d8fedb2f4a40d999ede40ca8926"
+      }
+    ],
+    "recipe_count": 2,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/tini/tini-0.19.0.tar.gz/tini-0.19.0/LICENSE"
+    ]
+  },
+  {
+    "origin": "zlib",
+    "version": "1.3.2-r0",
+    "aports_commit": "f248b33b5943c7dc69bf691031d7612ab2e8ed93",
+    "packages": [
+      "zlib"
+    ],
+    "declared_expressions": [
+      "Zlib"
+    ],
+    "installed_file_paths": [
+      "usr/lib/libz.so.1",
+      "usr/lib/libz.so.1.3.2"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/zlib/1.3.2-r0",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Recorded origin inputs, recipes and original notice members retained; no expanded source obligation inferred for permissive grants",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/zlib/1.3.2-r0/inputs/zlib-1.3.2.tar.gz",
+        "sha256": "bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16"
+      }
+    ],
+    "recipe_count": 1,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/zlib/zlib-1.3.2.tar.gz/zlib-1.3.2/LICENSE",
+      "notices/original/zlib/zlib-1.3.2.tar.gz/zlib-1.3.2/contrib/dotzlib/LICENSE_1_0.txt",
+      "notices/original/zlib/zlib-1.3.2.tar.gz/zlib-1.3.2/contrib/minizip/LICENSE.Info-Zip"
+    ]
+  },
+  {
+    "origin": "zstd",
+    "version": "1.5.7-r2",
+    "aports_commit": "3c6e2ee2b16f403d53eab39c4426eb61f003c322",
+    "packages": [
+      "zstd-libs"
+    ],
+    "declared_expressions": [
+      "BSD-3-Clause OR GPL-2.0-or-later"
+    ],
+    "installed_file_paths": [
+      "usr/lib/libzstd.so.1",
+      "usr/lib/libzstd.so.1.5.7"
+    ],
+    "installed_file_hashes": "metadata/distributed-files.json",
+    "local_prefix": "origins/zstd/1.5.7-r2",
+    "material_result": "PASS frozen input/recipe bytes locally present and hashed",
+    "review": "Only shared library installed; zstd.h and xxhash.h expressly allow BSD/GPL alternative. Proposed BSD branch, copyright-bearing headers and LICENSE retained",
+    "distribution_result": "BLOCKED pending final notice/delivery and global applicable-helper review",
+    "sources": [
+      {
+        "path": "origins/zstd/1.5.7-r2/inputs/zstd-1.5.7.tar.gz",
+        "sha256": "37d7284556b20954e56e1ca85b80226768902e2edabd3b649e9e72c0c9012ee3"
+      }
+    ],
+    "recipe_count": 1,
+    "recipe_hashes": "task0004-source-bundle-manifest.json at pinned origin; inside archive metadata/materialization.json",
+    "notice_paths": [
+      "notices/original/zstd/zstd-1.5.7.tar.gz/zstd-1.5.7/COPYING",
+      "notices/original/zstd/zstd-1.5.7.tar.gz/zstd-1.5.7/LICENSE",
+      "notices/original/zstd/zstd-1.5.7.tar.gz/zstd-1.5.7/build/LICENSE",
+      "notices/additional/zstd/zstd-1.5.7/lib/common/xxhash.h",
+      "notices/additional/zstd/zstd-1.5.7/lib/zstd.h"
+    ]
+  }
+]

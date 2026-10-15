@@ -82,18 +82,40 @@ assert recovery["capacity"]["result"] == "FAIL"
 assert all(not recovery[key] for key in ("containers_created", "images_built", "contexts_created"))
 assert recovery["scans"] == {"amd64": "NOT RUN", "arm64": "NOT RUN"}
 assert read("task0004-grype-recovery-schema.json")["result"] == "PASS"
-for name in ["prepublish_inventory", "classify_packaged_findings", "prepare_source_manifest", "collect_notice_texts", "inspect_packaged_linkage", "validate_cyclonedx_schema"]:
+local_bundle = read("task0004-local-bundle.json")
+matrix = read("task0004-origin-distribution-matrix.json")
+facts = read("task0004-license-facts.json")
+assert local_bundle["technical_archive_validation"] == "PASS"
+assert local_bundle["source_legal_completeness"] == "BLOCKED"
+assert local_bundle["publication"] == "NOT AUTHORIZED / LOCAL ONLY"
+assert local_bundle["cve"] == "CVE scan NOT RUN — Owner explicitly omitted"
+assert local_bundle["bytes"] == 112542493 and local_bundle["checked_members"] == 555
+assert local_bundle["checked_members"] == local_bundle["file_records"] + 1
+assert local_bundle["sha256"] == "b0b3e96b6d023485559eb5d348593a2d1356595bf2a41257357bc0012273f1d5"
+assert len(matrix) == 25 and sum(len(o["sources"]) for o in matrix) == 173
+assert sum(o["recipe_count"] for o in matrix) == 180
+for origin in matrix:
+    previous = next(o for o in bundle["origins"] if o["origin"] == origin["origin"])
+    assert origin["aports_commit"] == previous["aports_commit"]
+    assert {s["sha256"] for s in origin["sources"]} == {s["sha256"] for s in previous["source_inputs"]}
+assert len(facts["facts"]) == 23 and len(facts["additional_notices"]) == 29
+assert len(facts["unresolved_attribution_probes"]) == 2
+assert all(g["http"] == 404 for g in facts["unresolved_attribution_probes"])
+assert not any((ROOT / f).exists() for f in ("tests/scan_packaged_frr.py", "tests/preflight_grype_recovery.py", "tests/grype-sandbox/Dockerfile", "tests/grype-sandbox/init.sh"))
+for name in ["prepublish_inventory", "classify_packaged_findings", "prepare_source_manifest", "collect_notice_texts", "inspect_packaged_linkage", "validate_cyclonedx_schema", "stage_source_bundle", "inventory_source_files", "review_source_notices", "assemble_source_bundle"]:
     ast.parse((ROOT / ("tests/" + name + ".py")).read_text())
 print("JSON/package/SBOM/recipe-version/source-sample/License/AST consistency=PASS")
 print("173-input/180-recipe/24-notice/22-candidate/formal-schema-record consistency=PASS")
 print("Grype/DB identity and staging-STOP/cleanup record consistency=PASS; CVEs=NOT RUN")
 print("Historical recovery input/capacity-STOP/schema-record consistency=PASS; CVE scan NOT RUN — Owner explicitly omitted")
+print("Local partial archive/origin matrix/notice-fact/scanner-cancellation record consistency=PASS; legal/delivery=BLOCKED")
 
 helpers = runpy.run_path(str(ROOT / "tests/prepublish_inventory.py"))
 counts = {key: 0 for key in helpers["PATTERNS"]}
 history = subprocess.check_output(["git", "log", "-p", "origin/main", "--", "container", "charts", "tests", "README.md"], cwd=ROOT)
 helpers["check"](history, counts)
 files = ["LICENSE", "THIRD_PARTY_NOTICES.md", "README.md", "docs/publishing-preflight.md", "docs/source-bundle-plan.md", "docs/scanner-approval-proposal.md", "docs/task0004-grype-stop.md", "docs/task0004-grype-recovery.md", "tests/prepublish_inventory.py", "tests/test_prepublish.py", "tests/classify_packaged_findings.py", "tests/prepare_source_manifest.py", "tests/collect_notice_texts.py", "tests/inspect_packaged_linkage.py", "tests/validate_cyclonedx_schema.py"]
+files += ["docs/source-bundle-reconstruction.md", "docs/third-party-distribution-review.md", "tests/stage_source_bundle.py", "tests/inventory_source_files.py", "tests/review_source_notices.py", "tests/assemble_source_bundle.py"]
 for path in [ROOT / f for f in files] + list(EVIDENCE.glob("task0004-*")) + list((ROOT / "licenses/third-party").glob("*.txt")):
     if path.name not in {"task0004-validation.txt", "task0004-continuation-validation.txt"}:
         helpers["check"](path.read_bytes(), counts)

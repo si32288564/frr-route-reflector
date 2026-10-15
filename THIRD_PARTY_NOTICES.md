@@ -13,6 +13,13 @@ finished notice bundle. Complete file-level third-party attribution remains
 NOT VERIFIED; package upstream links alone identify projects, not confirmed legal
 copyright holders. Do not invent attribution names from package maintainers.
 
+Current [per-origin distribution preparation](docs/third-party-distribution-review.md)
+maps actual package file paths to exact local source hashes and selected grants.
+A [real partial local archive](docs/source-bundle-plan.md) now holds original
+notice bytes, FRR license/manual terms, Mozilla MPL material and utility/library
+headers. This advances preparation, not redistribution clearance. CVE scan
+NOT RUN — Owner explicitly omitted; vulnerabilities remain unknown.
+
 ## Exact bundled packages
 
 Observed directly from Docker-save layers of both existing local candidate images:

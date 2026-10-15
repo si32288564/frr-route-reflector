@@ -1,0 +1,396 @@
+{
+  "facts": [
+    {
+      "origin": "apk-tools",
+      "input": "apk-tools-v3.0.8.tar.gz",
+      "member": "apk-tools-v3.0.8/LICENSE",
+      "sha256": "b3c87315aae4c9f276c37168f2655dd8bd990544d7a0bbfb929664155c7ab257",
+      "bytes": 17622
+    },
+    {
+      "origin": "apk-tools",
+      "input": "apk-tools-v3.0.8.tar.gz",
+      "member": "apk-tools-v3.0.8/meson.build",
+      "sha256": "2341c8053b4229d0cfd997d8cdbc6051c91fb887cbb7d8e2a6f3bd1e6e0bed6d",
+      "bytes": 2241
+    },
+    {
+      "origin": "apk-tools",
+      "input": "apk-tools-v3.0.8.tar.gz",
+      "member": "apk-tools-v3.0.8/src/apk_crypto.h",
+      "sha256": "d90ce2f750b470fe19200102a7ad50fd5d825d06c21653e9d0f67b147c4c362a",
+      "bytes": 3216
+    },
+    {
+      "origin": "apk-tools",
+      "input": "apk-tools-v3.0.8.tar.gz",
+      "member": "apk-tools-v3.0.8/src/crypto_openssl.c",
+      "sha256": "9cd400bce6e382fb12c384d3c7152eab04ec82dced8dd0c229c8816eaab45e11",
+      "bytes": 6725
+    },
+    {
+      "origin": "ca-certificates",
+      "input": "ca-certificates-20260909.tar.bz2",
+      "member": "ca-certificates-20260909/Makefile",
+      "sha256": "4e317305a283703ccc79828ebf5728acb3ae1bf8fe3e857ab39496470acaa2db",
+      "bytes": 1583
+    },
+    {
+      "origin": "ca-certificates",
+      "input": "ca-certificates-20260909.tar.bz2",
+      "member": "ca-certificates-20260909/c_rehash.c",
+      "sha256": "a68fedc0edd976b9f35ecfdcb252d80dc12084b1bc4e945be7dc42c437d8b540",
+      "bytes": 9533
+    },
+    {
+      "origin": "ca-certificates",
+      "input": "ca-certificates-20260909.tar.bz2",
+      "member": "ca-certificates-20260909/certdata.txt",
+      "sha256": "beb7e6dfe6499926e52c075c27bcfbe4c957f8609c575b3860273ae2806f63eb",
+      "bytes": 1375050
+    },
+    {
+      "origin": "ca-certificates",
+      "input": "ca-certificates-20260909.tar.bz2",
+      "member": "ca-certificates-20260909/split-ca-bundle.sh",
+      "sha256": "973dbde5636a8c7900704b536a526156ead98acf358f6e7b9869067c4fa8b41c",
+      "bytes": 288
+    },
+    {
+      "origin": "ca-certificates",
+      "input": "ca-certificates-20260909.tar.bz2",
+      "member": "ca-certificates-20260909/update-ca.c",
+      "sha256": "fff6ee69a2f5705e0ae5a0214f0e1fff029b14adef49359160cf9a5c867d5df4",
+      "bytes": 7736
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/COPYING",
+      "sha256": "7bf053957d6c38e39a06a112c60ff35b228d3bd03edbe8c9a03508b051128d16",
+      "bytes": 896
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/doc/user/index.rst",
+      "sha256": "953c4eb42d0294dc6a75bfa9981df53c35086ecb2d3035220c3c11354f7ab822",
+      "bytes": 1794
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/vtysh/vtysh.c",
+      "sha256": "97f7ef3e7848901043c850b85c1d24ddce6573de2d87468416db5c9353ba682d",
+      "bytes": 150865
+    },
+    {
+      "origin": "libcap",
+      "input": "libcap-2.78.tar.xz",
+      "member": "libcap-2.78/libcap/cap_alloc.c",
+      "sha256": "1d2550f778368f6c65d5b26337e5bea79a60fd4ac6d85fb6262cf452e0909ec6",
+      "bytes": 7362
+    },
+    {
+      "origin": "libcap",
+      "input": "libcap-2.78.tar.xz",
+      "member": "libcap-2.78/License",
+      "sha256": "68467e731f4744bd6e0bb69e8df9c3a994e09cd6b203d0c41327ac6d079c581d",
+      "bytes": 20318
+    },
+    {
+      "origin": "libcap",
+      "input": "libcap-2.78.tar.xz",
+      "member": "libcap-2.78/psx/License",
+      "sha256": "279fa656c62857d42952b86a0789b98669ca1cb4b324a8d9e91397c174af4c14",
+      "bytes": 20459
+    },
+    {
+      "origin": "elfutils",
+      "input": "elfutils-0.195.tar.bz2",
+      "member": "elfutils-0.195/libelf/elf_end.c",
+      "sha256": "e0607c42c5a7e78cdf7682cabf220fc9ac89179505a0dc403b908e2d966b57b4",
+      "bytes": 7276
+    },
+    {
+      "origin": "elfutils",
+      "input": "elfutils-0.195.tar.bz2",
+      "member": "elfutils-0.195/libelf/elf_begin.c",
+      "sha256": "dd75dd3d5fbe50896e0fb5e14fd5907daac496e42ef12333237b554e7c7f5753",
+      "bytes": 37980
+    },
+    {
+      "origin": "musl",
+      "path": "origins/musl/1.2.6-r2/inputs/getconf.c",
+      "sha256": "d87d0cbb3690ae2c5d8cc218349fd8278b93855dd625deaf7ae50e320aad247c"
+    },
+    {
+      "origin": "musl",
+      "path": "origins/musl/1.2.6-r2/inputs/getent.c",
+      "sha256": "a6171c2db641cdd99c164169d3c5c6ca323617483cedec4cbbe3eb39c5834df0"
+    },
+    {
+      "origin": "musl",
+      "path": "origins/musl/1.2.6-r2/inputs/iconv.c",
+      "sha256": "f79a2930a2e5bb0624321589edf8b889d1e9b603e01e6b7ae214616605b3fdd7"
+    },
+    {
+      "origin": "musl",
+      "path": "origins/musl/1.2.6-r2/inputs/ldconfig",
+      "sha256": "7065021e04a5060957b5c6907af671a7028230d91927fb0c25892cadd9312b7c"
+    },
+    {
+      "origin": "zstd",
+      "input": "zstd-1.5.7.tar.gz",
+      "member": "zstd-1.5.7/lib/common/xxhash.h",
+      "sha256": "8cb837b21a8fe9a6b9dbcd0961ab16e733bfcbfa9e003f3a496ce07ae80aa8ee",
+      "bytes": 262488
+    },
+    {
+      "origin": "zstd",
+      "input": "zstd-1.5.7.tar.gz",
+      "member": "zstd-1.5.7/lib/zstd.h",
+      "sha256": "9b4bc8245565c98ccfc61c07749928b57e7c0f6fddb0530c4f6aa1971893d88b",
+      "bytes": 181748
+    }
+  ],
+  "additional_notices": [
+    {
+      "origin": "ca-certificates",
+      "input": "ca-certificates-20260909.tar.bz2",
+      "member": "ca-certificates-20260909/Makefile",
+      "sha256": "4e317305a283703ccc79828ebf5728acb3ae1bf8fe3e857ab39496470acaa2db",
+      "bytes": 1583,
+      "bundle_path": "notices/additional/ca-certificates/ca-certificates-20260909/Makefile"
+    },
+    {
+      "origin": "ca-certificates",
+      "input": "ca-certificates-20260909.tar.bz2",
+      "member": "ca-certificates-20260909/c_rehash.c",
+      "sha256": "a68fedc0edd976b9f35ecfdcb252d80dc12084b1bc4e945be7dc42c437d8b540",
+      "bytes": 9533,
+      "bundle_path": "notices/additional/ca-certificates/ca-certificates-20260909/c_rehash.c"
+    },
+    {
+      "origin": "ca-certificates",
+      "input": "ca-certificates-20260909.tar.bz2",
+      "member": "ca-certificates-20260909/certdata.txt",
+      "sha256": "beb7e6dfe6499926e52c075c27bcfbe4c957f8609c575b3860273ae2806f63eb",
+      "bytes": 1375050,
+      "bundle_path": "notices/additional/ca-certificates/ca-certificates-20260909/certdata.txt"
+    },
+    {
+      "origin": "ca-certificates",
+      "input": "ca-certificates-20260909.tar.bz2",
+      "member": "ca-certificates-20260909/split-ca-bundle.sh",
+      "sha256": "973dbde5636a8c7900704b536a526156ead98acf358f6e7b9869067c4fa8b41c",
+      "bytes": 288,
+      "bundle_path": "notices/additional/ca-certificates/ca-certificates-20260909/split-ca-bundle.sh"
+    },
+    {
+      "origin": "ca-certificates",
+      "input": "ca-certificates-20260909.tar.bz2",
+      "member": "ca-certificates-20260909/update-ca.c",
+      "sha256": "fff6ee69a2f5705e0ae5a0214f0e1fff029b14adef49359160cf9a5c867d5df4",
+      "bytes": 7736,
+      "bundle_path": "notices/additional/ca-certificates/ca-certificates-20260909/update-ca.c"
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/COPYING",
+      "sha256": "7bf053957d6c38e39a06a112c60ff35b228d3bd03edbe8c9a03508b051128d16",
+      "bytes": 896,
+      "bundle_path": "notices/additional/frr/frr-frr-10.6.1/COPYING"
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/doc/licenses/BSD-2-Clause",
+      "sha256": "f9e0c21faf738da586281c0beaad3cd56204c19085a10fe05e4d3d7f8b5863d2",
+      "bytes": 1191,
+      "bundle_path": "notices/additional/frr/frr-frr-10.6.1/doc/licenses/BSD-2-Clause"
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/doc/licenses/BSD-3-Clause",
+      "sha256": "aca297b8fd3a43e3bb200f1e2e043c0db6c897325f5ff7f23f7530302a6bf713",
+      "bytes": 1415,
+      "bundle_path": "notices/additional/frr/frr-frr-10.6.1/doc/licenses/BSD-3-Clause"
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/doc/licenses/GPL-2.0",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "bytes": 18092,
+      "bundle_path": "notices/additional/frr/frr-frr-10.6.1/doc/licenses/GPL-2.0"
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/doc/licenses/GPL-3.0",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "bytes": 35147,
+      "bundle_path": "notices/additional/frr/frr-frr-10.6.1/doc/licenses/GPL-3.0"
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/doc/licenses/ISC",
+      "sha256": "6d80da3224cbdcf016ea554e00fc9cd933bd1a3417cb5e5b7abf59f6d126761d",
+      "bytes": 694,
+      "bundle_path": "notices/additional/frr/frr-frr-10.6.1/doc/licenses/ISC"
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/doc/licenses/LGPL-2.1",
+      "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+      "bytes": 26530,
+      "bundle_path": "notices/additional/frr/frr-frr-10.6.1/doc/licenses/LGPL-2.1"
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/doc/licenses/LicenseRef-Skiplist-BSD-0-Clause",
+      "sha256": "2a1124bf8bc60f1f59b67e15e3d261b5d60fcd9674a3eace0a5502fd4287d528",
+      "bytes": 834,
+      "bundle_path": "notices/additional/frr/frr-frr-10.6.1/doc/licenses/LicenseRef-Skiplist-BSD-0-Clause"
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/doc/licenses/MIT",
+      "sha256": "074415b57c6ba1780483d89e55f40dec3ded96c28aaf47d63c486683ba553e7c",
+      "bytes": 1024,
+      "bundle_path": "notices/additional/frr/frr-frr-10.6.1/doc/licenses/MIT"
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/doc/licenses/Unlicense",
+      "sha256": "b5065838cbac452dfc855ba6e6e031481ad2c68406f70d21ead9321374653e6c",
+      "bytes": 1212,
+      "bundle_path": "notices/additional/frr/frr-frr-10.6.1/doc/licenses/Unlicense"
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/doc/user/index.rst",
+      "sha256": "953c4eb42d0294dc6a75bfa9981df53c35086ecb2d3035220c3c11354f7ab822",
+      "bytes": 1794,
+      "bundle_path": "notices/additional/frr/frr-frr-10.6.1/doc/user/index.rst"
+    },
+    {
+      "origin": "frr",
+      "input": "frr-10.6.1.tar.gz",
+      "member": "frr-frr-10.6.1/vtysh/vtysh.c",
+      "sha256": "97f7ef3e7848901043c850b85c1d24ddce6573de2d87468416db5c9353ba682d",
+      "bytes": 150865,
+      "bundle_path": "notices/additional/frr/frr-frr-10.6.1/vtysh/vtysh.c"
+    },
+    {
+      "origin": "libcap",
+      "input": "libcap-2.78.tar.xz",
+      "member": "libcap-2.78/libcap/cap_alloc.c",
+      "sha256": "1d2550f778368f6c65d5b26337e5bea79a60fd4ac6d85fb6262cf452e0909ec6",
+      "bytes": 7362,
+      "bundle_path": "notices/additional/libcap/libcap-2.78/libcap/cap_alloc.c"
+    },
+    {
+      "origin": "libcap",
+      "input": "libcap-2.78.tar.xz",
+      "member": "libcap-2.78/License",
+      "sha256": "68467e731f4744bd6e0bb69e8df9c3a994e09cd6b203d0c41327ac6d079c581d",
+      "bytes": 20318,
+      "bundle_path": "notices/additional/libcap/libcap-2.78/License"
+    },
+    {
+      "origin": "libcap",
+      "input": "libcap-2.78.tar.xz",
+      "member": "libcap-2.78/psx/License",
+      "sha256": "279fa656c62857d42952b86a0789b98669ca1cb4b324a8d9e91397c174af4c14",
+      "bytes": 20459,
+      "bundle_path": "notices/additional/libcap/libcap-2.78/psx/License"
+    },
+    {
+      "origin": "elfutils",
+      "input": "elfutils-0.195.tar.bz2",
+      "member": "elfutils-0.195/libelf/elf_end.c",
+      "sha256": "e0607c42c5a7e78cdf7682cabf220fc9ac89179505a0dc403b908e2d966b57b4",
+      "bytes": 7276,
+      "bundle_path": "notices/additional/elfutils/elfutils-0.195/libelf/elf_end.c"
+    },
+    {
+      "origin": "elfutils",
+      "input": "elfutils-0.195.tar.bz2",
+      "member": "elfutils-0.195/libelf/elf_begin.c",
+      "sha256": "dd75dd3d5fbe50896e0fb5e14fd5907daac496e42ef12333237b554e7c7f5753",
+      "bytes": 37980,
+      "bundle_path": "notices/additional/elfutils/elfutils-0.195/libelf/elf_begin.c"
+    },
+    {
+      "origin": "musl",
+      "sha256": "d87d0cbb3690ae2c5d8cc218349fd8278b93855dd625deaf7ae50e320aad247c",
+      "bytes": 11614,
+      "bundle_path": "notices/additional/musl/getconf.c"
+    },
+    {
+      "origin": "musl",
+      "sha256": "a6171c2db641cdd99c164169d3c5c6ca323617483cedec4cbbe3eb39c5834df0",
+      "bytes": 11656,
+      "bundle_path": "notices/additional/musl/getent.c"
+    },
+    {
+      "origin": "musl",
+      "sha256": "f79a2930a2e5bb0624321589edf8b889d1e9b603e01e6b7ae214616605b3fdd7",
+      "bytes": 2577,
+      "bundle_path": "notices/additional/musl/iconv.c"
+    },
+    {
+      "origin": "musl",
+      "sha256": "7065021e04a5060957b5c6907af671a7028230d91927fb0c25892cadd9312b7c",
+      "bytes": 393,
+      "bundle_path": "notices/additional/musl/ldconfig"
+    },
+    {
+      "origin": "zstd",
+      "input": "zstd-1.5.7.tar.gz",
+      "member": "zstd-1.5.7/lib/common/xxhash.h",
+      "sha256": "8cb837b21a8fe9a6b9dbcd0961ab16e733bfcbfa9e003f3a496ce07ae80aa8ee",
+      "bytes": 262488,
+      "bundle_path": "notices/additional/zstd/zstd-1.5.7/lib/common/xxhash.h"
+    },
+    {
+      "origin": "zstd",
+      "input": "zstd-1.5.7.tar.gz",
+      "member": "zstd-1.5.7/lib/zstd.h",
+      "sha256": "9b4bc8245565c98ccfc61c07749928b57e7c0f6fddb0530c4f6aa1971893d88b",
+      "bytes": 181748,
+      "bundle_path": "notices/additional/zstd/zstd-1.5.7/lib/zstd.h"
+    },
+    {
+      "origin": "ca-certificates",
+      "url": "https://www.mozilla.org/media/MPL/2.0/index.txt",
+      "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+      "bytes": 16726,
+      "bundle_path": "notices/additional/MPL-2.0.txt"
+    }
+  ],
+  "unresolved_attribution_probes": [
+    {
+      "origin": "alpine-keys",
+      "url": "https://raw.githubusercontent.com/alpinelinux/aports/b9f23becced4d7b3ccc0fa0f28530243ccd314a0/COPYING",
+      "http": 404,
+      "gap": "No root COPYING at fixed recipe commit; generated-data attribution unresolved"
+    },
+    {
+      "origin": "alpine-base",
+      "url": "https://raw.githubusercontent.com/alpinelinux/aports/d9d560d5de74ff9a7a73f3c903d6f126a0bf3142/COPYING",
+      "http": 404,
+      "gap": "No root COPYING at fixed recipe commit; generated-data attribution unresolved"
+    }
+  ]
+}
