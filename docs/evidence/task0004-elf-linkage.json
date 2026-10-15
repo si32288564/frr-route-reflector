@@ -1,0 +1,189 @@
+{
+  "method": "existing readelf dynamic-section inspection, no executable launch",
+  "records": [
+    {
+      "image": "frr-task0003:amd64",
+      "path": "sbin/apk",
+      "needed": [
+        "libapk.so.3.0.0",
+        "libz.so.1",
+        "libc.musl-x86_64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:amd64",
+      "path": "usr/bin/vtysh",
+      "needed": [
+        "libfrr.so.0",
+        "libreadline.so.8",
+        "libc.musl-x86_64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:amd64",
+      "path": "usr/lib/frr/bgpd",
+      "needed": [
+        "libfrr.so.0",
+        "libjson-c.so.5",
+        "libc.musl-x86_64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:amd64",
+      "path": "usr/lib/frr/libfrr.so.0.0.0",
+      "needed": [
+        "libcap.so.2",
+        "libyang.so.3",
+        "libjson-c.so.5",
+        "libc.musl-x86_64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:amd64",
+      "path": "usr/lib/frr/mgmtd",
+      "needed": [
+        "libfrr.so.0",
+        "libmgmt_be_nb.so.0",
+        "libyang.so.3",
+        "libc.musl-x86_64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:amd64",
+      "path": "usr/lib/frr/ospfd",
+      "needed": [
+        "libfrr.so.0",
+        "libjson-c.so.5",
+        "libc.musl-x86_64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:amd64",
+      "path": "usr/lib/frr/zebra",
+      "needed": [
+        "libfrr.so.0",
+        "libjson-c.so.5",
+        "libc.musl-x86_64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:amd64",
+      "path": "usr/lib/libapk.so.3.0.0",
+      "needed": [
+        "libssl.so.3",
+        "libcrypto.so.3",
+        "libz.so.1",
+        "libc.musl-x86_64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:amd64",
+      "path": "usr/lib/libelf-0.195.so",
+      "needed": [
+        "libz.so.1",
+        "libzstd.so.1",
+        "libc.musl-x86_64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:amd64",
+      "path": "usr/lib/libreadline.so.8.3",
+      "needed": [
+        "libncursesw.so.6",
+        "libc.musl-x86_64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:arm64",
+      "path": "sbin/apk",
+      "needed": [
+        "libapk.so.3.0.0",
+        "libz.so.1",
+        "libc.musl-aarch64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:arm64",
+      "path": "usr/bin/vtysh",
+      "needed": [
+        "libfrr.so.0",
+        "libreadline.so.8",
+        "libc.musl-aarch64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:arm64",
+      "path": "usr/lib/frr/bgpd",
+      "needed": [
+        "libfrr.so.0",
+        "libjson-c.so.5",
+        "libc.musl-aarch64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:arm64",
+      "path": "usr/lib/frr/libfrr.so.0.0.0",
+      "needed": [
+        "libcap.so.2",
+        "libyang.so.3",
+        "libjson-c.so.5",
+        "libc.musl-aarch64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:arm64",
+      "path": "usr/lib/frr/mgmtd",
+      "needed": [
+        "libfrr.so.0",
+        "libmgmt_be_nb.so.0",
+        "libyang.so.3",
+        "libc.musl-aarch64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:arm64",
+      "path": "usr/lib/frr/ospfd",
+      "needed": [
+        "libfrr.so.0",
+        "libjson-c.so.5",
+        "libc.musl-aarch64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:arm64",
+      "path": "usr/lib/frr/zebra",
+      "needed": [
+        "libfrr.so.0",
+        "libjson-c.so.5",
+        "libc.musl-aarch64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:arm64",
+      "path": "usr/lib/libapk.so.3.0.0",
+      "needed": [
+        "libssl.so.3",
+        "libcrypto.so.3",
+        "libz.so.1",
+        "libc.musl-aarch64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:arm64",
+      "path": "usr/lib/libelf-0.195.so",
+      "needed": [
+        "libz.so.1",
+        "libzstd.so.1",
+        "libc.musl-aarch64.so.1"
+      ]
+    },
+    {
+      "image": "frr-task0003:arm64",
+      "path": "usr/lib/libreadline.so.8.3",
+      "needed": [
+        "libncursesw.so.6",
+        "libc.musl-aarch64.so.1"
+      ]
+    }
+  ]
+}
