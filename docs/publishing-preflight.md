@@ -6,6 +6,7 @@ Date: 2026-10-15 JST. Accepted source base:
 `885e5c97e308b2b1442c378927613b2383dc6408`.
 Authority: [Issue #12 assignment](https://github.com/si32288564/frr-route-reflector/issues/12#issuecomment-6191574930)
 and [Owner rights confirmation](https://github.com/si32288564/frr-route-reflector/issues/12#issuecomment-6191673478).
+Continuation authority: [confirmed destination and finite checks](https://github.com/si32288564/frr-route-reflector/issues/12#issuecomment-6192262441).
 Owner approved `Copyright (c) 2026 si32288564`, MIT for original work, and
 represented no employer/third-party rights conflict. This is not an independent
 legal audit. Third-party code/text retains its own terms; no blanket MIT grant
@@ -18,12 +19,12 @@ is applied to the image, FRR, Alpine or imported material.
 | Original-work rights / MIT LICENSE | PASS, explicit Owner confirmation; standard complete text added |
 | README status | PASS, PR #6 merged / Issue #5 closed verified; stale text corrected |
 | Actual AMD64 + ARM64 APK inventory | PASS, 35 each; versions/expressions/origins/commits compared |
-| Machine-readable APK SBOM | Produced; JSON/component consistency checked; CycloneDX schema and non-APK completeness NOT VERIFIED |
+| Machine-readable APK SBOM | Produced; JSON/component consistency and formal CycloneDX 1.6 schema PASS; non-APK completeness NOT VERIFIED |
 | Fixed source-recipe traceability | PASS, 25 origin recipes HTTP 200; pkgver/pkgrel match installed versions |
-| Selected source SHA512 verification | PASS, FRR tarball/init script/patch and APK upstream tarball only |
+| Source material verification | PASS, 173 recipe-listed input SHA512 and 180 fixed recipe-file identities; not full legal/source-delivery clearance |
 | All corresponding source, notice texts and recipient access | BLOCKED, incomplete/not delivered; do not publish |
 | CVE / independent license scanner | NOT RUN, tooling unavailable on PATH; no CVE severity verdict |
-| Config/history/all-layer limited disclosure heuristic | Executed, two credential-assignment and nine internal-looking-domain candidates per arch; NOT CLEARED |
+| Recorded disclosure candidates | PASS scoped classification: all 22 matches across both arches are unchanged official APK binary static content; not whole-image security clearance |
 | Native AMD64 FRR and G-3 runtime/security acceptance | NOT RUN / BLOCKED, unchanged |
 | Docker Hub index / Push / signing / main merge | NOT RUN, explicitly forbidden in this task |
 
@@ -36,6 +37,26 @@ was not restored. The existing local `.env` remains ignored; its prior local
 `.gitignore` edit is preserved but not included in this task commit.
 
 ## Executed evidence / reproducibility
+
+Continuation commands, using existing Workbox Python/readelf/jsonschema only:
+
+```sh
+timeout 180 python3 tests/classify_packaged_findings.py
+timeout 300 python3 tests/prepare_source_manifest.py
+timeout 180 python3 tests/collect_notice_texts.py
+timeout 90 python3 tests/inspect_packaged_linkage.py
+timeout 90 python3 tests/validate_cyclonedx_schema.py
+python3 tests/test_prepublish.py
+```
+
+These are bounded data/ELF/schema operations, not container startup or scanner
+execution. All final commands exited 0. The first schema request returned HTTP
+403; the corrected finite official-mirror attempt passed. Data-only file
+transfers produced benign tar provenance-xattr warnings; no host settings were
+altered. [Continuation consistency output](evidence/task0004-continuation-validation.txt)
+is separate from the historical first-stage validation. Twenty-four selected
+original legal texts are retained with original-member and stored-file hashes;
+complete file-level attribution/linked-work compliance is still not asserted.
 
 Existing candidates were identified with:
 
@@ -77,9 +98,12 @@ use pipefail and compare with the fixed recipe. HTTP 200 alone is insufficient.
 
 [Selected source checks](evidence/task0004-source-sample-checks.json) record exact
 URLs, sizes and expected/observed SHA512. All four selected downloads matched.
-FRR pre-install and the rest of the package recipe directory still need to be
-retained, even when absent from APKBUILD's explicit source checksum list.
-This sample is not a complete source archive for any proposed whole image.
+That historical sample is preserved. The continuation additionally checked
+173 input files and 180 recipe-directory files, including FRR pre-install,
+without changing the frozen image builds. See [the versioned bundle manifest](evidence/task0004-source-bundle-manifest.json)
+and [itemized licence/source delivery plan](source-bundle-plan.md). This closes
+recipe-listed source availability, not file-level licensing, external helper
+completeness, final archive assembly or recipient delivery.
 
 ## Corresponding-source delivery proposal — NOT implemented
 
@@ -115,10 +139,12 @@ qualified review of its text, recipients, fulfilment cost and durations (not a
 generic promise; GPLv2 3(b) includes at least three years, and GPLv3 options have
 their own conditions). Preserve rollback versions as well as the newest tag.
 
-**Remaining blocker:** full source inputs and legal texts have not been assembled,
-file-level/linkage compliance has not been established, and no durable source
-endpoint is approved/live. All-origin recipes being reachable is useful provenance,
-not permission to push. Ask qualified license review where obligations are unclear.
+**Remaining blocker:** the complete recipient bundle and notice selection are
+not finished. The [itemized STOP list](source-bundle-plan.md) identifies common
+build-helper completeness, generated-data notices, actual linked/alternative
+license questions and delivery custody. Selected source/recipe inputs now have
+verified hashes and selected original legal texts are committed. This is not
+permission to push; seek qualified review of those specific unresolved questions.
 
 ## Security and disclosure limitations
 
@@ -126,24 +152,35 @@ not permission to push. Ask qualified license review where obligations are uncle
 machine; docker-scout was not on Workbox PATH and `docker scout version` returned
 unknown command. Scanner versions/database freshness, CVE counts, severities,
 affected-package remediation and independent license-scan results are **NOT RUN**,
-not zero findings. Owner decision needed: approve a specific isolated scanner
-tool/version/database acquisition, or provide a trusted report against these
-exact digests. No software or scanner container was installed/pulled/launched.
+not zero findings. The continuation rechecked existing Workbox tooling and
+prepared [one pinned Grype v0.120.1 acquisition/DB/isolated-execution proposal](scanner-approval-proposal.md)
+for Owner approval or a trusted same-digest report. No scanner binary/container
+or DB archive was acquired/executed. Existing jsonschema 4.19.2 did validate the
+CycloneDX structure: [formal result](evidence/task0004-cyclonedx-schema.json).
+The canonical schema endpoint returned 403; one finite retry used official
+specification tag 1.6 schema data and recorded its hash. This is not a CVE scan.
 
 The custom offline heuristic scans config, history and all regular layer entries,
 including entries later overwritten, for selected token/private-key/internal-domain
 patterns and credential-file names. It is not a general secret scanner and does
 not decode every format, inspect all encoded content or prove absence of private
 data. Counts are recorded without matching values. No private-key, GitHub-token,
-Docker-PAT or credential-file-path matches were observed. Nine generic
-internal-looking-domain candidates per architecture are also unclassified;
-the heuristic may match ordinary upstream strings such as local-domain syntax.
+Docker-PAT or credential-file-path matches were observed. The nine generic
+internal-looking-domain matches and two credential-assignment matches per
+architecture were subsequently classified by an offline comparison against
+official Alpine HTTPS downloads of the exact apk-tools/frr version/architecture.
+All ten affected ELF files matched those APK payloads byte-for-byte. The 22
+recorded matches are thus upstream static content, false positives for
+project-added private credentials/lab data; no candidate bytes are published.
+See [binary comparison hashes/classification](evidence/task0004-official-binary-comparison.json).
+No independent APK signature verification is claimed by that HTTPS comparison,
+and it does not clear unknown patterns or establish comprehensive image safety.
 It does not include company-specific domain names in the published code.
 Two credential-assignment regex candidates per architecture were located in the
 ELF `/sbin/apk`. They were **not** found verbatim in the checksum-verified APK
-upstream source using the sample comparison; they therefore remain unclassified,
-not confirmed secrets and not cleared false positives. Do not expose their bytes
-in public logs. Publication remains stopped until privately reviewed/cleared.
+upstream source using the historical sample comparison; that source-text nonmatch
+was inconclusive. The exact binary comparison above supersedes its unclassified
+status for these recorded matches only. Do not expose their bytes in public logs.
 An initial comparison helper over-escaped the regex and yielded zero candidates;
 it was corrected and rerun. Only the final two-candidate result is used.
 
@@ -165,13 +202,17 @@ and vulnerability findings before any publication.
 
 ## Docker Hub proposal — no registry mutation
 
-Proposed public target from Owner-entered local settings and earlier discussion:
-`docker.io/si60545107/frr-route-reflector:v0.1.0-lab.1`.
-This is a proposal, not the final exact-target/tag authorization. No `latest`,
+**Owner-CONFIRMED public repository:** `docker.io/si60545107/frr-route-reflector`.
+Its [management page](https://hub.docker.com/repository/docker/si60545107/frr-route-reflector/general)
+is not the OCI image reference. Creation/existence is Owner-confirmed in Issue #12;
+this task does not log in, use tokens or verify registry credentials.
+**Proposed, unapproved tag:** `v0.1.0-lab.1`. No upload/combined index/signing
+authorization or immutable published registry index digest exists. No `latest`,
 stable or production designation. The [Docker Personal page](https://www.docker.com/products/personal/)
 advertises unlimited public repositories, while [Hub usage docs](https://docs.docker.com/docker-hub/usage/pulls/)
 apply pull-rate limits. No paid service is assumed. Exact account entitlement,
-current effective limits and final repository access are NOT VERIFIED here.
+current effective limits and authenticated repository access are NOT VERIFIED here;
+the repository identity itself is confirmed and needs no repeated Owner name check.
 
 After this PR is reviewed/merged and all gates are resolved, a separately approved
 step would package the MIT/third-party notices and accepted matching sources,
@@ -206,7 +247,8 @@ experimental/lab-only, native AMD64/G-3 NOT RUN and security limitations.
 
 Review MIT and the partial inventory/notice/source plan in this new Draft PR.
 Before proceeding, Owner must resolve source custody/delivery and qualified
-license review, authorize a scanner or supply exact-digest scan results, clear
-the disclosure candidates, and separately approve final target/tag/publication
+license review, authorize a scanner or supply exact-digest scan results, retain
+the scoped binary classification without treating it as full security clearance,
+and separately approve final tag/publication
 after accepted documents reach main. This task neither signs nor pushes images,
 logs in to registries, changes Kubernetes/host/network settings nor merges main.

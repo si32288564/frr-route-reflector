@@ -9,8 +9,8 @@ Owner confirmed original-work rights and public attribution in
 **Publication STOP:** this inventory does not yet include all original copyright
 notices/license texts or complete, recipient-accessible corresponding source.
 It is NOT a substitute for those materials and must not be presented as a
-finished notice bundle. Exact third-party copyright attributions remain
-NOT VERIFIED; package upstream links identify projects, not confirmed legal
+finished notice bundle. Complete file-level third-party attribution remains
+NOT VERIFIED; package upstream links alone identify projects, not confirmed legal
 copyright holders. Do not invent attribution names from package maintainers.
 
 ## Exact bundled packages
@@ -28,7 +28,9 @@ APK checksums and binaries are architecture-specific. Full metadata is in
 [the APK CycloneDX inventory](docs/evidence/task0004-apk-sbom.cdx.json)
 contains 70 component instances. This is package-manager-derived SBOM content,
 not a scanner-generated or independently verified bill of all embedded code.
-CycloneDX schema validation has NOT RUN; JSON and component consistency are tested.
+CycloneDX 1.6 formal schema validation subsequently passed with existing
+jsonschema 4.19.2 and the official specification schema; this does not establish
+license compliance or SBOM completeness. See [schema evidence](docs/evidence/task0004-cyclonedx-schema.json).
 
 License expressions below are verbatim APK declarations, including AND/OR and
 parentheses. They are not file-level license conclusions. Applicable exceptions,
@@ -84,7 +86,8 @@ the full expression; do not collapse AND into OR or select an OR branch silently
 - **NOTICE:** retain applicable MIT/BSD/X11/Zlib notices and license terms;
   Apache-2.0 additionally needs its license, applicable NOTICE contents and
   modification attribution. BSD-3-Clause-Clear's terms must not be replaced by
-  ordinary BSD-3-Clause. Required exact texts/notices are NOT VERIFIED.
+  ordinary BSD-3-Clause. Selected original texts are now retained below, but
+  complete per-file notice fulfilment remains NOT VERIFIED.
 - **G2:** GPLv2-compatible fulfilment must include complete corresponding source,
   build/install scripts and distro modifications, plus the GPL and notices.
   GPL-2.0-only and -or-later are distinct. See [GPLv2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
@@ -112,7 +115,14 @@ has additional historical terms. Neither the frr APK license field nor this
 project's MIT license resolves that review.
 
 All 25 origin recipes were reachable at fixed commits with matching pkgver/pkgrel.
-This establishes traceability, not complete source delivery. See
+The continuation verified 173 recipe-listed inputs and 180 recipe files and
+collected selected original legal texts under `licenses/third-party/`. These
+texts retain their original terms, not the project MIT grant. See the
+[text/hash index](docs/evidence/task0004-notice-texts.json) and the
+[versioned source bundle and itemized remaining obligations](docs/source-bundle-plan.md).
+This is useful source preparation, not completed recipient delivery or legal
+clearance. In particular, permissive packages require their applicable notices;
+this record does not impose full-source delivery on all permissive components. See
 [source probes](docs/evidence/task0004-source-recipe-probes.json) and
 [the delivery plan / remaining gates](docs/publishing-preflight.md).
 No installed-path names matching license/COPYING/copyright/NOTICE were observed

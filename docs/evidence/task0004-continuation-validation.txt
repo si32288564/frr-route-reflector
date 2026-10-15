@@ -1,0 +1,8 @@
+Executed: python3 tests/test_prepublish.py
++JSON/package/SBOM/recipe-version/source-sample/License/AST consistency=PASS
+173-input/180-recipe/24-notice/22-candidate/formal-schema-record consistency=PASS
+Limited new-artifact/scoped-source-history heuristic counts={"credential_assignment": 0, "docker_pat": 0, "github_token": 0, "internal_domain": 0, "private_key": 0}
+Formal CycloneDX schema=PASS recorded; legal compliance/CVE scan/native runtime=NOT RUN or BLOCKED
+.env
+git diff --check: exit 0
+Original task0004-validation.txt retained as historical evidence.

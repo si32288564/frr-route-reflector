@@ -1,0 +1,189 @@
+{
+  "method": "HTTPS official version-matched APK payload byte comparison; no candidate bytes disclosed",
+  "comparisons": [
+    {
+      "architecture": "amd64",
+      "image_id": "sha256:dbc288be32f2833223262801f287d4ba1be4594059a9a06001d31b963e2d428a",
+      "package": "apk-tools",
+      "version": "3.0.8-r0",
+      "official_url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/main/x86_64/apk-tools-3.0.8-r0.apk",
+      "download_sha256": "91cb7303b27da01364550daa767b85cbe88fc5f7e37b9adae0f847ec7e0890d9",
+      "package_signature_independently_verified": false,
+      "files": [
+        {
+          "path": "sbin/apk",
+          "image_sha256": "80ac076736f35434f0df4a041578ec8f760eb545a71424fd6b6e1403a8a65312",
+          "official_sha256": "80ac076736f35434f0df4a041578ec8f760eb545a71424fd6b6e1403a8a65312",
+          "byte_equal": true,
+          "candidate_counts": {
+            "private_key": 0,
+            "github_token": 0,
+            "docker_pat": 0,
+            "internal_domain": 0,
+            "credential_assignment": 2
+          },
+          "classification": "unchanged official Alpine binary static content; not project-added confidential data"
+        }
+      ]
+    },
+    {
+      "architecture": "amd64",
+      "image_id": "sha256:dbc288be32f2833223262801f287d4ba1be4594059a9a06001d31b963e2d428a",
+      "package": "frr",
+      "version": "10.6.1-r0",
+      "official_url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/community/x86_64/frr-10.6.1-r0.apk",
+      "download_sha256": "804ee8cef7ab3b7e2f539121a9d1b78172c5dc8eca0cf92eeceb678ca162533a",
+      "package_signature_independently_verified": false,
+      "files": [
+        {
+          "path": "usr/lib/frr/fabricd",
+          "image_sha256": "b3f8aedc5c47aff15351c0a66afad57c7b226b247a275d5cc6d996b3dae99797",
+          "official_sha256": "b3f8aedc5c47aff15351c0a66afad57c7b226b247a275d5cc6d996b3dae99797",
+          "byte_equal": true,
+          "candidate_counts": {
+            "private_key": 0,
+            "github_token": 0,
+            "docker_pat": 0,
+            "internal_domain": 1,
+            "credential_assignment": 0
+          },
+          "classification": "unchanged official Alpine binary static content; not project-added confidential data"
+        },
+        {
+          "path": "usr/lib/frr/isisd",
+          "image_sha256": "9112163c0930f437004a3143b81c95b62b4b92a4309bbcb975421cb6e0a9082a",
+          "official_sha256": "9112163c0930f437004a3143b81c95b62b4b92a4309bbcb975421cb6e0a9082a",
+          "byte_equal": true,
+          "candidate_counts": {
+            "private_key": 0,
+            "github_token": 0,
+            "docker_pat": 0,
+            "internal_domain": 1,
+            "credential_assignment": 0
+          },
+          "classification": "unchanged official Alpine binary static content; not project-added confidential data"
+        },
+        {
+          "path": "usr/lib/frr/libfrr.so.0.0.0",
+          "image_sha256": "d521c20ba2516ac474cb428f2b76ffae38216259e92d39ca42107cebe8d6cf9a",
+          "official_sha256": "d521c20ba2516ac474cb428f2b76ffae38216259e92d39ca42107cebe8d6cf9a",
+          "byte_equal": true,
+          "candidate_counts": {
+            "private_key": 0,
+            "github_token": 0,
+            "docker_pat": 0,
+            "internal_domain": 1,
+            "credential_assignment": 0
+          },
+          "classification": "unchanged official Alpine binary static content; not project-added confidential data"
+        },
+        {
+          "path": "usr/lib/frr/ospfd",
+          "image_sha256": "66f7b981ad6570b1f1227a165a497b1160caeb4bbd11c97f621107908fcd8bd3",
+          "official_sha256": "66f7b981ad6570b1f1227a165a497b1160caeb4bbd11c97f621107908fcd8bd3",
+          "byte_equal": true,
+          "candidate_counts": {
+            "private_key": 0,
+            "github_token": 0,
+            "docker_pat": 0,
+            "internal_domain": 6,
+            "credential_assignment": 0
+          },
+          "classification": "unchanged official Alpine binary static content; not project-added confidential data"
+        }
+      ]
+    },
+    {
+      "architecture": "arm64",
+      "image_id": "sha256:dea86108c2812d9891674e0291af3b59872925e6c462e189a08acf0b3f61f096",
+      "package": "apk-tools",
+      "version": "3.0.8-r0",
+      "official_url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/main/aarch64/apk-tools-3.0.8-r0.apk",
+      "download_sha256": "852609bcd94e7d21b6315636a8bbcd4158aa6645941596a2a396ffe8a56b1c7b",
+      "package_signature_independently_verified": false,
+      "files": [
+        {
+          "path": "sbin/apk",
+          "image_sha256": "304e62b9494b79cef24d621f4538b83496201252e32fce76c7f7e27760594fee",
+          "official_sha256": "304e62b9494b79cef24d621f4538b83496201252e32fce76c7f7e27760594fee",
+          "byte_equal": true,
+          "candidate_counts": {
+            "private_key": 0,
+            "github_token": 0,
+            "docker_pat": 0,
+            "internal_domain": 0,
+            "credential_assignment": 2
+          },
+          "classification": "unchanged official Alpine binary static content; not project-added confidential data"
+        }
+      ]
+    },
+    {
+      "architecture": "arm64",
+      "image_id": "sha256:dea86108c2812d9891674e0291af3b59872925e6c462e189a08acf0b3f61f096",
+      "package": "frr",
+      "version": "10.6.1-r0",
+      "official_url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/community/aarch64/frr-10.6.1-r0.apk",
+      "download_sha256": "70d3cf2ed8620a4e20830d160f0af2b93db40ffbc70f1cddf8e9e60ebaae5179",
+      "package_signature_independently_verified": false,
+      "files": [
+        {
+          "path": "usr/lib/frr/fabricd",
+          "image_sha256": "2636d71bc8bb5de978b9babe901ced5f5ea6cac5425dbba1010cc143002cd70b",
+          "official_sha256": "2636d71bc8bb5de978b9babe901ced5f5ea6cac5425dbba1010cc143002cd70b",
+          "byte_equal": true,
+          "candidate_counts": {
+            "private_key": 0,
+            "github_token": 0,
+            "docker_pat": 0,
+            "internal_domain": 1,
+            "credential_assignment": 0
+          },
+          "classification": "unchanged official Alpine binary static content; not project-added confidential data"
+        },
+        {
+          "path": "usr/lib/frr/isisd",
+          "image_sha256": "1c77024ca99feb72f823dac32b6f1eb6cca537b55975bf58890f648e8f2a523c",
+          "official_sha256": "1c77024ca99feb72f823dac32b6f1eb6cca537b55975bf58890f648e8f2a523c",
+          "byte_equal": true,
+          "candidate_counts": {
+            "private_key": 0,
+            "github_token": 0,
+            "docker_pat": 0,
+            "internal_domain": 1,
+            "credential_assignment": 0
+          },
+          "classification": "unchanged official Alpine binary static content; not project-added confidential data"
+        },
+        {
+          "path": "usr/lib/frr/libfrr.so.0.0.0",
+          "image_sha256": "a00ed4f7797e4dba03bfd3aac5745b5febbd016c971282a0729d17aee6024705",
+          "official_sha256": "a00ed4f7797e4dba03bfd3aac5745b5febbd016c971282a0729d17aee6024705",
+          "byte_equal": true,
+          "candidate_counts": {
+            "private_key": 0,
+            "github_token": 0,
+            "docker_pat": 0,
+            "internal_domain": 1,
+            "credential_assignment": 0
+          },
+          "classification": "unchanged official Alpine binary static content; not project-added confidential data"
+        },
+        {
+          "path": "usr/lib/frr/ospfd",
+          "image_sha256": "477edf8c5ee18cedc74e7294757979737b7e0cf4248466eba5d1717eb7fc5386",
+          "official_sha256": "477edf8c5ee18cedc74e7294757979737b7e0cf4248466eba5d1717eb7fc5386",
+          "byte_equal": true,
+          "candidate_counts": {
+            "private_key": 0,
+            "github_token": 0,
+            "docker_pat": 0,
+            "internal_domain": 6,
+            "credential_assignment": 0
+          },
+          "classification": "unchanged official Alpine binary static content; not project-added confidential data"
+        }
+      ]
+    }
+  ]
+}

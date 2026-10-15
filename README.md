@@ -79,7 +79,7 @@ FRRouting, Alpine packages or dependencies bundled in container images.
 
 See [third-party inventory and notice gaps](THIRD_PARTY_NOTICES.md) and
 [publication preflight / source-delivery proposal](docs/publishing-preflight.md).
-Public distribution is BLOCKED pending corresponding source, complete notices,
+Public container-image distribution is BLOCKED pending corresponding source, complete notices,
 security review and separate Owner authorization after this preparation PR is
 reviewed and merged. A lab-only warning does not waive redistribution duties.
 No internal employer-specific configurations or secrets belong in this repository.
