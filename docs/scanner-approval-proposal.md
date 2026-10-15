@@ -1,5 +1,12 @@
 # One scoped scanner proposal — NOT acquired or executed
 
+**Historical proposal at commit 5414be3.** Owner subsequently approved the
+bounded acquisition/verification in Issue #12 comment 6193027470. The
+[2026-10-15 execution continuation](task0004-grype-stop.md) records verified
+tool/DB acquisition and a pre-start Docker staging STOP; both CVE scans remain
+NOT RUN. The original proposal below is retained as approval history, not a
+statement of current acquisition status.
+
 Issue #12 comment 6192262441 authorizes proposing, not installing/downloading or
 running a new scanner. Existing Workbox syft/trivy/grype probes still returned
 NOT ON PATH. Formal CycloneDX validation used already installed jsonschema

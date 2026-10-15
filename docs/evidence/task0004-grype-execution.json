@@ -1,0 +1,157 @@
+{
+  "started": "2026-10-15T13:32:21.645902+00:00",
+  "checks": {
+    "grype_0.120.1_linux_arm64.tar.gz": "29f47391dc283aa79fcc38e65224cd61f64dec0ecfd0db7074128ebf8ff23514",
+    "grype_0.120.1_checksums.txt": "c25b6095265b44fd9bbb9dbe76aca8daa394c5f0490793d2b52b16be4f5b71b1",
+    "grype_0.120.1_checksums.txt.sigstore.json": "d6e9cd7e0e1c0384eb7f880640c61498388370d4bbf068ed3f84fc1941c511e8",
+    "signature": "PASS",
+    "certificate_identity": "https://github.com/anchore/grype/.github/workflows/release.yaml@refs/heads/main",
+    "grype_binary_sha256": "94afbea0a9b65a3a83b820e622e8ac337e26608c860315208d58dad9a80b25db"
+  },
+  "scans": {
+    "amd64": {
+      "started": "2026-10-15T13:32:34.593516+00:00",
+      "unique_name": "frr-task0004-grype-8d713c2a63f8450fa7854a4f61948f1a",
+      "collision_check": "PASS",
+      "cleanup": {
+        "remove_exit": 0,
+        "absence_inspect_exit": 1,
+        "absent": true
+      }
+    }
+  },
+  "commands": [
+    [
+      "cosign",
+      "verify-blob",
+      "<task-temp>/grype_0.120.1_checksums.txt",
+      "--bundle",
+      "<task-temp>/grype_0.120.1_checksums.txt.sigstore.json",
+      "--certificate-identity",
+      "https://github.com/anchore/grype/.github/workflows/release.yaml@refs/heads/main",
+      "--certificate-oidc-issuer",
+      "https://token.actions.githubusercontent.com"
+    ],
+    [
+      "tar",
+      "--zstd",
+      "-tf",
+      "<task-temp>/db.tar.zst"
+    ],
+    [
+      "tar",
+      "--zstd",
+      "-xf",
+      "<task-temp>/db.tar.zst",
+      "-C",
+      "<task-temp>/payload/db/6",
+      "--no-same-owner",
+      "--no-same-permissions",
+      "vulnerability.db"
+    ],
+    [
+      "docker",
+      "image",
+      "save",
+      "-o",
+      "<task-temp>/payload/amd64.tar",
+      "frr-task0003:amd64"
+    ],
+    [
+      "docker",
+      "image",
+      "save",
+      "-o",
+      "<task-temp>/payload/arm64.tar",
+      "frr-task0003:arm64"
+    ],
+    [
+      "docker",
+      "create",
+      "--pull",
+      "never",
+      "--platform",
+      "linux/arm64",
+      "--name",
+      "frr-task0004-grype-8d713c2a63f8450fa7854a4f61948f1a",
+      "--network",
+      "none",
+      "--user",
+      "65534:65534",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges:true",
+      "--read-only",
+      "--memory",
+      "2g",
+      "--memory-swap",
+      "2g",
+      "--pids-limit",
+      "64",
+      "--tmpfs",
+      "/tmp:rw,noexec,nosuid,nodev,size=536870912,mode=1777",
+      "--env",
+      "HOME=/tmp",
+      "--env",
+      "GRYPE_DB_CACHE_DIR=/work/db",
+      "--env",
+      "GRYPE_DB_AUTO_UPDATE=false",
+      "--env",
+      "GRYPE_CHECK_FOR_APP_UPDATE=false",
+      "--env",
+      "GRYPE_DB_VALIDATE_BY_HASH_ON_START=true",
+      "--env",
+      "GRYPE_DB_VALIDATE_AGE=true",
+      "--env",
+      "GRYPE_DB_MAX_ALLOWED_BUILT_AGE=120h",
+      "--entrypoint",
+      "/work/grype",
+      "alpine:3.24@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6",
+      "docker-archive:/work/amd64.tar",
+      "-o",
+      "json",
+      "--fail-on",
+      "high"
+    ],
+    [
+      "docker",
+      "cp",
+      "<task-temp>/payload/.",
+      "frr-task0004-grype-8d713c2a63f8450fa7854a4f61948f1a:/work"
+    ]
+  ],
+  "database": {
+    "status": "active",
+    "schemaVersion": "v6.1.10",
+    "built": "2026-10-15T06:30:36Z",
+    "path": "vulnerability-db_v6.1.10_2026-10-15T00:29:08Z_1792045836.tar.zst",
+    "checksum": "sha256:2f1597f25b5089e966272b251eb4d1f9977e59d57029af1c8810deb6e5321aa2",
+    "archive_sha256": "2f1597f25b5089e966272b251eb4d1f9977e59d57029af1c8810deb6e5321aa2",
+    "age_seconds_at_check": 25306.306244,
+    "url": "https://grype.anchore.io/databases/v6/vulnerability-db_v6.1.10_2026-10-15T00:29:08Z_1792045836.tar.zst",
+    "sqlite_sha256": "594802efcf4166565db7992f9aa4dd3f3be59bc7f266cbbf49ea0bec0c261cbb",
+    "import_metadata": "absent in publisher archive; not fabricated"
+  },
+  "sandbox_base": {
+    "reference": "alpine:3.24@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6",
+    "id": "sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6",
+    "architecture": "arm64"
+  },
+  "images": {
+    "amd64": {
+      "local_id": "sha256:dbc288be32f2833223262801f287d4ba1be4594059a9a06001d31b963e2d428a",
+      "config_sha256": "7affa7841874770a1072a0e13ba497195434c8c2789b311471a53c8c3ab7a1be",
+      "archive_sha256": "abfcb095a2676ec50312577054c703468ab0993e96dcf40ac29e7e577db8ff42",
+      "archive_bytes": 13080064
+    },
+    "arm64": {
+      "local_id": "sha256:dea86108c2812d9891674e0291af3b59872925e6c462e189a08acf0b3f61f096",
+      "config_sha256": "0bcae28f7ee60b01039bce6e402c89f3e2215859ac1e340ee5a16d8b57b57112",
+      "archive_sha256": "8f89e52603fb10b79ef4958c0bc127d5561c617d0cb70a32f0e698ada6df922b",
+      "archive_bytes": 13630976
+    }
+  },
+  "stop": "Command '['docker', 'cp', '<task-temp>/payload/.', 'frr-task0004-grype-8d713c2a63f8450fa7854a4f61948f1a:/work']' returned non-zero exit status 1.",
+  "ended": "2026-10-15T13:32:34.783108+00:00"
+}
