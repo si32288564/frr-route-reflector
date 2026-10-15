@@ -148,6 +148,14 @@ permission to push; seek qualified review of those specific unresolved questions
 
 ## Security and disclosure limitations
 
+**Recovery after closed/unmerged PR #13:** [Owner authorization 6194375246](https://github.com/si32288564/frr-route-reflector/issues/12#issuecomment-6194375246)
+permits a new proposal PR from accepted main and corrected copy-only staging.
+The [new preflight](task0004-grype-recovery.md) reverified the existing inputs,
+but STOPPED before build/start: the 2,463,731,712-byte DB alone exceeds the
+2 GiB memory limit for tmpfs import/cache. Both CVE scans remain NOT RUN. The
+following staging STOP is historical and retained; its staging permission has
+been superseded, not the publication/legal STOP.
+
 **Latest scanner continuation:** Owner approved Grype v0.120.1 acquisition and
 isolated execution in [Issue #12 comment 6193027470](https://github.com/si32288564/frr-route-reflector/issues/12#issuecomment-6193027470).
 Tool archive/checksum/signature verification and compatible current DB checksum

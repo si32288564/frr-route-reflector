@@ -1,0 +1,37 @@
+2026-10-15 UTC — recovery validation (not scanner execution)
+
+python3 -m py_compile tests/preflight_grype_recovery.py
+exit 0
+sh -n tests/grype-sandbox/init.sh
+exit 0
+
+python3 tests/test_prepublish.py
+JSON/package/SBOM/recipe-version/source-sample/License/AST consistency=PASS
+173-input/180-recipe/24-notice/22-candidate/formal-schema-record consistency=PASS
+Grype/DB identity and staging-STOP/cleanup record consistency=PASS; CVEs=NOT RUN
+Recovery frozen-input/capacity-STOP/schema-record/COPY-only/shell-syntax consistency=PASS; build/scan=NOT RUN
+Limited new-artifact/scoped-source-history heuristic counts={"credential_assignment": 0, "docker_pat": 0, "github_token": 0, "internal_domain": 0, "private_key": 0}
+Formal CycloneDX schema=PASS recorded; legal compliance/CVE scan/native runtime=NOT RUN or BLOCKED
+exit 0
+
+git diff --check
+exit 0
+
+Existing Workbox jsonschema 4.19.2:
+timeout 90 python3 validate_cyclonedx_schema.py
+exit 0; result PASS; errors=[]
+RefResolver deprecation warning observed; no upgrade/install performed.
+Canonical schema HTTP 403; existing official fixed-1.6 mirror fallback PASS.
+Exact schema hash recorded separately in task0004-grype-recovery-schema.json.
+
+Remote preflight:
+python3 preflight_grype_recovery.py <existing-task-temp>
+exit 1; expected capacity STOP, not a vulnerability finding or runtime failure.
+Machine details: task0004-grype-recovery-preflight.json.
+
+Exact previous task container inspect:
+docker container inspect frr-task0004-grype-8d713c2a63f8450fa7854a4f61948f1a
+exit 1; No such container.
+No new scanner container/image/context was created in this attempt.
+No Docker Hub/registry credentials, Kubernetes, target build or main mutation.
+Unrelated local .gitignore and ignored .env remain excluded.
