@@ -1,0 +1,891 @@
+{
+  "started_utc": "2026-10-15T16:02:11.001932+00:00",
+  "commands": [
+    [
+      "docker",
+      "create",
+      "--pull",
+      "never",
+      "--platform",
+      "linux/arm64",
+      "--name",
+      "frr-rr-smoke-ee84834dcd2e4dde93975678080f4e49-rr01",
+      "--label",
+      "rr-smoke-owned=frr-rr-smoke-ee84834dcd2e4dde93975678080f4e49-rr01",
+      "--network",
+      "none",
+      "--group-add",
+      "102",
+      "--memory",
+      "256m",
+      "--memory-swap",
+      "256m",
+      "--pids-limit",
+      "128",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--sysctl",
+      "net.ipv4.ip_forward=0",
+      "--cap-add",
+      "CHOWN",
+      "--cap-add",
+      "SETUID",
+      "--cap-add",
+      "SETGID",
+      "--cap-add",
+      "NET_ADMIN",
+      "--cap-add",
+      "NET_RAW",
+      "--cap-add",
+      "NET_BIND_SERVICE",
+      "--cap-add",
+      "SYS_ADMIN",
+      "--entrypoint",
+      "/bin/sh",
+      "sha256:7acfef1c1e4fdf06c2f5d15383073ba3a9c78c24a52beee8d85da04e8102d47a",
+      "-ec",
+      "ip link add eth0 type dummy; ip link set eth0 up; ip addr add 203.0.113.2/24 dev eth0; ip link add link eth0 name net1 type vlan id 1101; ip link set net1 up; ip addr add 198.51.100.0/31 dev net1; ip link add link eth0 name net2 type vlan id 1102; ip link set net2 up; ip addr add 198.51.100.2/31 dev net2; ip link add link eth0 name net3 type vlan id 1103; ip link set net3 up; ip addr add 198.51.100.4/31 dev net3; ip link add link eth0 name net4 type vlan id 1104; ip link set net4 up; ip addr add 198.51.100.6/31 dev net4; exec /sbin/tini -- /usr/local/bin/entrypoint.sh"
+    ],
+    [
+      "docker",
+      "create",
+      "--pull",
+      "never",
+      "--platform",
+      "linux/arm64",
+      "--name",
+      "frr-rr-smoke-8031a90e4edd4e9a894398824db9cf24-rr02",
+      "--label",
+      "rr-smoke-owned=frr-rr-smoke-8031a90e4edd4e9a894398824db9cf24-rr02",
+      "--network",
+      "none",
+      "--group-add",
+      "102",
+      "--memory",
+      "256m",
+      "--memory-swap",
+      "256m",
+      "--pids-limit",
+      "128",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--sysctl",
+      "net.ipv4.ip_forward=0",
+      "--cap-add",
+      "CHOWN",
+      "--cap-add",
+      "SETUID",
+      "--cap-add",
+      "SETGID",
+      "--cap-add",
+      "NET_ADMIN",
+      "--cap-add",
+      "NET_RAW",
+      "--cap-add",
+      "NET_BIND_SERVICE",
+      "--cap-add",
+      "SYS_ADMIN",
+      "--entrypoint",
+      "/bin/sh",
+      "sha256:7acfef1c1e4fdf06c2f5d15383073ba3a9c78c24a52beee8d85da04e8102d47a",
+      "-ec",
+      "ip link add eth0 type dummy; ip link set eth0 up; ip addr add 203.0.113.3/24 dev eth0; ip link add link eth0 name net1 type vlan id 1105; ip link set net1 up; ip addr add 198.51.100.8/31 dev net1; ip link add link eth0 name net2 type vlan id 1106; ip link set net2 up; ip addr add 198.51.100.10/31 dev net2; ip link add link eth0 name net3 type vlan id 1107; ip link set net3 up; ip addr add 198.51.100.12/31 dev net3; ip link add link eth0 name net4 type vlan id 1108; ip link set net4 up; ip addr add 198.51.100.14/31 dev net4; exec /sbin/tini -- /usr/local/bin/entrypoint.sh"
+    ]
+  ],
+  "routers": [
+    {
+      "name": "rr01",
+      "container": "frr-rr-smoke-ee84834dcd2e4dde93975678080f4e49-rr01",
+      "container_id": "b3859063b90a7f64e3f10a6cd7f5d01c8a626932b1d6bb90489a252294af4a1d",
+      "desired_config_sha256": "d6c87449714e53a8deee61c1a560241ec1d6062c40b85b6beb9466787d7e7a66",
+      "isolation": {
+        "NetworkMode": "none",
+        "PidMode": "",
+        "IpcMode": "private",
+        "Privileged": false,
+        "CapDrop": [
+          "ALL"
+        ],
+        "CapAdd": [
+          "CAP_CHOWN",
+          "CAP_NET_ADMIN",
+          "CAP_NET_BIND_SERVICE",
+          "CAP_NET_RAW",
+          "CAP_SETGID",
+          "CAP_SETUID",
+          "CAP_SYS_ADMIN"
+        ],
+        "SecurityOpt": [
+          "no-new-privileges"
+        ],
+        "Memory": 268435456,
+        "MemorySwap": 268435456,
+        "PidsLimit": 128,
+        "Binds": null,
+        "Devices": []
+      },
+      "mounts": [],
+      "actual_config_sha256": "d6c87449714e53a8deee61c1a560241ec1d6062c40b85b6beb9466787d7e7a66",
+      "running_config": "Building configuration...\n\nCurrent configuration:\n!\nfrr version 10.6.1\nfrr defaults traditional\nhostname b3859063b90a\nlog stdout\nbgp no-rib\nservice integrated-vtysh-config\n!\ninterface lo\n ip ospf area 0.0.0.0\n ip ospf passive\nexit\n!\ninterface net1\n ip ospf area 0.0.0.0\n ip ospf network point-to-point\nexit\n!\ninterface net2\n ip ospf area 0.0.0.0\n ip ospf network point-to-point\nexit\n!\ninterface net3\n ip ospf area 0.0.0.0\n ip ospf network point-to-point\nexit\n!\ninterface net4\n ip ospf area 0.0.0.0\n ip ospf network point-to-point\nexit\n!\nrouter bgp 64512\n bgp router-id 192.0.2.1\n no bgp default ipv4-unicast\n bgp cluster-id 192.0.2.254\n neighbor 192.0.2.11 remote-as 64512\n neighbor 192.0.2.11 update-source 192.0.2.1\n neighbor 192.0.2.12 remote-as 64512\n neighbor 192.0.2.12 update-source 192.0.2.1\n neighbor 192.0.2.13 remote-as 64512\n neighbor 192.0.2.13 update-source 192.0.2.1\n neighbor 192.0.2.14 remote-as 64512\n neighbor 192.0.2.14 update-source 192.0.2.1\n !\n address-family ipv4 unicast\n  neighbor 192.0.2.11 activate\n  neighbor 192.0.2.11 route-reflector-client\n  neighbor 192.0.2.12 activate\n  neighbor 192.0.2.12 route-reflector-client\n  neighbor 192.0.2.13 activate\n  neighbor 192.0.2.13 route-reflector-client\n  neighbor 192.0.2.14 activate\n  neighbor 192.0.2.14 route-reflector-client\n exit-address-family\nexit\n!\nrouter ospf\n ospf router-id 192.0.2.1\n max-metric router-lsa administrative\nexit\n!\nend\n",
+      "forwarding": "0",
+      "bgp_summary": {
+        "routerId": "192.0.2.1",
+        "as": 64512,
+        "vrfId": 0,
+        "vrfName": "default",
+        "tableVersion": 0,
+        "ribCount": 0,
+        "ribMemory": 0,
+        "peerCount": 4,
+        "peerMemory": 67616,
+        "peers": {
+          "192.0.2.11": {
+            "softwareVersion": "n/a",
+            "remoteAs": 64512,
+            "localAs": 64512,
+            "version": 4,
+            "msgRcvd": 0,
+            "msgSent": 0,
+            "tableVersion": 0,
+            "outq": 0,
+            "inq": 0,
+            "peerUptime": "never",
+            "peerUptimeMsec": 0,
+            "pfxRcd": 0,
+            "pfxSnt": 0,
+            "state": "Idle",
+            "peerState": "OK",
+            "connectionsEstablished": 0,
+            "connectionsDropped": 0,
+            "idType": "ipv4"
+          },
+          "192.0.2.12": {
+            "softwareVersion": "n/a",
+            "remoteAs": 64512,
+            "localAs": 64512,
+            "version": 4,
+            "msgRcvd": 0,
+            "msgSent": 0,
+            "tableVersion": 0,
+            "outq": 0,
+            "inq": 0,
+            "peerUptime": "never",
+            "peerUptimeMsec": 0,
+            "pfxRcd": 0,
+            "pfxSnt": 0,
+            "state": "Idle",
+            "peerState": "OK",
+            "connectionsEstablished": 0,
+            "connectionsDropped": 0,
+            "idType": "ipv4"
+          },
+          "192.0.2.13": {
+            "softwareVersion": "n/a",
+            "remoteAs": 64512,
+            "localAs": 64512,
+            "version": 4,
+            "msgRcvd": 0,
+            "msgSent": 0,
+            "tableVersion": 0,
+            "outq": 0,
+            "inq": 0,
+            "peerUptime": "never",
+            "peerUptimeMsec": 0,
+            "pfxRcd": 0,
+            "pfxSnt": 0,
+            "state": "Idle",
+            "peerState": "OK",
+            "connectionsEstablished": 0,
+            "connectionsDropped": 0,
+            "idType": "ipv4"
+          },
+          "192.0.2.14": {
+            "softwareVersion": "n/a",
+            "remoteAs": 64512,
+            "localAs": 64512,
+            "version": 4,
+            "msgRcvd": 0,
+            "msgSent": 0,
+            "tableVersion": 0,
+            "outq": 0,
+            "inq": 0,
+            "peerUptime": "never",
+            "peerUptimeMsec": 0,
+            "pfxRcd": 0,
+            "pfxSnt": 0,
+            "state": "Idle",
+            "peerState": "OK",
+            "connectionsEstablished": 0,
+            "connectionsDropped": 0,
+            "idType": "ipv4"
+          }
+        },
+        "failedPeers": 4,
+        "displayedPeers": 4,
+        "totalPeers": 4,
+        "dynamicPeers": 0,
+        "bestPath": {
+          "multiPathRelax": "false"
+        }
+      },
+      "kernel_routes": [
+        {
+          "dst": "198.51.100.0/31",
+          "dev": "net1",
+          "protocol": "kernel",
+          "scope": "link",
+          "prefsrc": "198.51.100.0",
+          "flags": []
+        },
+        {
+          "dst": "198.51.100.2/31",
+          "dev": "net2",
+          "protocol": "kernel",
+          "scope": "link",
+          "prefsrc": "198.51.100.2",
+          "flags": []
+        },
+        {
+          "dst": "198.51.100.4/31",
+          "dev": "net3",
+          "protocol": "kernel",
+          "scope": "link",
+          "prefsrc": "198.51.100.4",
+          "flags": []
+        },
+        {
+          "dst": "198.51.100.6/31",
+          "dev": "net4",
+          "protocol": "kernel",
+          "scope": "link",
+          "prefsrc": "198.51.100.6",
+          "flags": []
+        },
+        {
+          "dst": "203.0.113.0/24",
+          "dev": "eth0",
+          "protocol": "kernel",
+          "scope": "link",
+          "prefsrc": "203.0.113.2",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "127.0.0.0/8",
+          "dev": "lo",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "127.0.0.1",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "127.0.0.1",
+          "dev": "lo",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "127.0.0.1",
+          "flags": []
+        },
+        {
+          "type": "broadcast",
+          "dst": "127.255.255.255",
+          "dev": "lo",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "link",
+          "prefsrc": "127.0.0.1",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "192.0.2.1",
+          "dev": "lo",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "192.0.2.1",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "198.51.100.0",
+          "dev": "net1",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "198.51.100.0",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "198.51.100.2",
+          "dev": "net2",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "198.51.100.2",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "198.51.100.4",
+          "dev": "net3",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "198.51.100.4",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "198.51.100.6",
+          "dev": "net4",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "198.51.100.6",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "203.0.113.2",
+          "dev": "eth0",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "203.0.113.2",
+          "flags": []
+        },
+        {
+          "type": "broadcast",
+          "dst": "203.0.113.255",
+          "dev": "eth0",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "link",
+          "prefsrc": "203.0.113.2",
+          "flags": []
+        }
+      ],
+      "ospf_neighbors": "\nNeighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL\n\n",
+      "frr_version": "FRRouting 10.6.1 (b3859063b90a) on Linux(7.0.0-31-generic).\nCopyright 1996-2005 Kunihiro Ishiguro, et al.\nconfigured with:\n    '--prefix=/usr' '--localstatedir=/run/frr' '--sbindir=/usr/lib/frr' '--sysconfdir=/etc/frr' '--libdir=/usr/lib/frr' '--with-moduledir=/usr/lib/frr/modules' '--disable-dependency-tracking' '--enable-rpki' '--with-libpam' '--enable-doc' '--enable-doc-html' '--enable-snmp' '--enable-fpm' '--disable-protobuf' '--disable-zeromq' '--enable-ospfapi' '--enable-bgp-vnc' '--enable-multipath=256' '--enable-user=frr' '--enable-group=frr' '--enable-vty-group=frrvty' '--enable-configfile-mask=0640' '--enable-logfile-mask=0640' 'CC=cc' 'CXX=c++' 'PYTHON=python3'\n",
+      "bgpd_process": "Uid:\t100\t100\t100\t100\nGid:\t101\t101\t101\t101\nCapInh:\t0000000000000000\nCapPrm:\t0000000000203400\nCapEff:\t0000000000000000\nCapBnd:\t00000000002034c1\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\n",
+      "startup": "PASS G-2 isolated startup only",
+      "fib_baseline": "No test service prefixes; vacuous without learned BGP routes, NOT a no-rib behavior PASS",
+      "normal_stop_exit": 0,
+      "final_state": {
+        "Running": false,
+        "ExitCode": 0,
+        "OOMKilled": false,
+        "Error": ""
+      },
+      "logs": "2026/10/15 16:02:11 MGMTD: [TKR4Z-MFN07] Backend daemon: zebra registers with mgmtd (client-id: 1)\n2026/10/15 16:02:11 BGP: [T83RR-8SM5G] bgpd 10.6.1 starting: vty@2605, bgp@<all>:179\n2026/10/15 16:02:11 ZEBRA: [V98V0-MTWPF] client 35 says hello and bids fair to announce only bgp routes vrf=0\n2026/10/15 16:02:11 ZEBRA: [V98V0-MTWPF] client 39 says hello and bids fair to announce only vnc routes vrf=0\n2026/10/15 16:02:11 OSPF: [T6R80-M44RP] RI (ospf_router_info_init): Initialize Router Information\n2026/10/15 16:02:11 OSPF: [MBAWE-XHKA3] EXT (ospf_ext_init): Register Extended Link Opaque LSA\n2026/10/15 16:02:11 OSPF: [SW3EZ-RAMP9] EXT (ospf_ext_init): Register Extended Prefix Opaque LSA\n2026/10/15 16:02:11 OSPF: [T83RR-8SM5G] ospfd 10.6.1 starting: vty@2604\n2026/10/15 16:02:11 ZEBRA: [V98V0-MTWPF] client 47 says hello and bids fair to announce only ospf routes vrf=0\n[108|mgmtd] sending configuration\n[109|zebra] sending configuration\n[112|ospfd] sending configuration\n[115|bgpd] sending configuration\n2026/10/15 16:02:11 ZEBRA: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:11 ZEBRA: [G6NKK-8C6DV] end_config: VTY:0xeb42cad8f750, pending SET-CFG: 0\n2026/10/15 16:02:11 MGMTD: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:11 MGMTD: [G6NKK-8C6DV] end_config: VTY:0xf77381560050, pending SET-CFG: 6\n2026/10/15 16:02:11 BGP: [H0A26-CCQCZ] Disabled BGP route installation to RIB (Zebra)\n2026/10/15 16:02:11 BGP: [P3F13-JJN0M] All routes have been withdrawn from RIB (Zebra)\nWaiting for children to finish applying config...\n[129|watchfrr] sending configuration\n2026/10/15 16:02:11 WATCHFRR: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:11 OSPF: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:11 OSPF: [G6NKK-8C6DV] end_config: VTY:0xf9f2e28f4580, pending SET-CFG: 0\n2026/10/15 16:02:11 BGP: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:11 BGP: [G6NKK-8C6DV] end_config: VTY:0xf70ae44e3320, pending SET-CFG: 0\n2026/10/15 16:02:11 WATCHFRR: [QDG3Y-BY5TN] mgmtd state -> up : connect succeeded\n2026/10/15 16:02:11 WATCHFRR: [QDG3Y-BY5TN] zebra state -> up : connect succeeded\n2026/10/15 16:02:11 WATCHFRR: [QDG3Y-BY5TN] bgpd state -> up : connect succeeded\n2026/10/15 16:02:11 WATCHFRR: [QDG3Y-BY5TN] ospfd state -> up : connect succeeded\n2026/10/15 16:02:11 WATCHFRR: [KWE5Q-QNGFC] all daemons up, doing startup-complete notify\n[152|mgmtd] sending configuration\n[153|zebra] sending configuration\n[156|ospfd] sending configuration\n[159|bgpd] sending configuration\n2026/10/15 16:02:12 MGMTD: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:12 MGMTD: [G6NKK-8C6DV] end_config: VTY:0xf77381560190, pending SET-CFG: 6\n2026/10/15 16:02:12 ZEBRA: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:12 ZEBRA: [G6NKK-8C6DV] end_config: VTY:0xeb42cad7d060, pending SET-CFG: 0\nWaiting for children to finish applying config...\n[173|watchfrr] sending configuration\n% No-RIB option is already set, nothing to do here.\n2026/10/15 16:02:12 OSPF: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:12 OSPF: [G6NKK-8C6DV] end_config: VTY:0xf9f2e28d2740, pending SET-CFG: 0\n2026/10/15 16:02:12 WATCHFRR: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:12 BGP: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:12 BGP: [G6NKK-8C6DV] end_config: VTY:0xf70ae441e470, pending SET-CFG: 0\n2026/10/15 16:02:12 ZEBRA: [V98V0-MTWPF] client 54 says hello and bids fair to announce only bgp routes vrf=0\n2026/10/15 16:02:13 WATCHFRR: [NG1AJ-FP2TQ] Terminating on signal\n2026/10/15 16:02:13 BGP: [ZW1GY-R46JE] Terminating on signal\n2026/10/15 16:02:13 ZEBRA: [XVBTQ-5QTVQ] Terminating on signal\n2026/10/15 16:02:13 OSPF: [W9T04-QWK6B] Terminating on signal\n2026/10/15 16:02:13 MGMTD: [J2RAS-MZ95C] Terminating on signal\n2026/10/15 16:02:13 ZEBRA: [X55T4-ZADN1][EC 4043309149] Client 47 'ospf' (session id 0) encountered an error and is shutting down.\n2026/10/15 16:02:13 ZEBRA: [YDZ55-W3VM6] release_daemon_table_chunks: Released 0 table chunks\n2026/10/15 16:02:13 ZEBRA: [JPSA8-5KYEA] client 35 disconnected 0 bgp routes removed from the rib\n2026/10/15 16:02:13 ZEBRA: [S929C-NZR3N] client 35 disconnected 0 bgp nhgs removed from the rib\n2026/10/15 16:02:13 BGP: [YAF85-253AP][EC 100663299] buffer_write: write error on fd 20: Broken pipe\n2026/10/15 16:02:13 BGP: [X6B3Y-6W42R][EC 100663302] zclient_send_message: buffer_write failed to zclient fd 20, closing\n2026/10/15 16:02:13 ZEBRA: [YDZ55-W3VM6] release_daemon_table_chunks: Released 0 table chunks\n2026/10/15 16:02:13 ZEBRA: [JPSA8-5KYEA] client 39 disconnected 0 vnc routes removed from the rib\n2026/10/15 16:02:13 ZEBRA: [S929C-NZR3N] client 39 disconnected 0 vnc nhgs removed from the rib\n2026/10/15 16:02:13 ZEBRA: [YDZ55-W3VM6] release_daemon_table_chunks: Released 0 table chunks\n2026/10/15 16:02:13 ZEBRA: [JPSA8-5KYEA] client 47 disconnected 5 ospf routes removed from the rib\n2026/10/15 16:02:13 ZEBRA: [S929C-NZR3N] client 47 disconnected 0 ospf nhgs removed from the rib\n2026/10/15 16:02:13 ZEBRA: [YDZ55-W3VM6] release_daemon_table_chunks: Released 0 table chunks\n2026/10/15 16:02:13 ZEBRA: [M6GBJ-2NV1J][EC 4043309121] zebra/zebra_ptm.c:1282 failed to find process pid registration\n2026/10/15 16:02:13 ZEBRA: [JPSA8-5KYEA] client 54 disconnected 0 bgp routes removed from the rib\n2026/10/15 16:02:13 ZEBRA: [S929C-NZR3N] client 54 disconnected 0 bgp nhgs removed from the rib\n2026/10/15 16:02:13 ZEBRA: [QS0NJ-H5QKJ] Zebra final shutdown\n"
+    },
+    {
+      "name": "rr02",
+      "container": "frr-rr-smoke-8031a90e4edd4e9a894398824db9cf24-rr02",
+      "container_id": "f27dc190ebadfb79d931e4857398841c5ede2841825e3b5d1ac73c92a5137ccf",
+      "desired_config_sha256": "21cd639ccd0b98cb65504e3022cacd4c04224225d3d008bf2c82eee89dbb9817",
+      "isolation": {
+        "NetworkMode": "none",
+        "PidMode": "",
+        "IpcMode": "private",
+        "Privileged": false,
+        "CapDrop": [
+          "ALL"
+        ],
+        "CapAdd": [
+          "CAP_CHOWN",
+          "CAP_NET_ADMIN",
+          "CAP_NET_BIND_SERVICE",
+          "CAP_NET_RAW",
+          "CAP_SETGID",
+          "CAP_SETUID",
+          "CAP_SYS_ADMIN"
+        ],
+        "SecurityOpt": [
+          "no-new-privileges"
+        ],
+        "Memory": 268435456,
+        "MemorySwap": 268435456,
+        "PidsLimit": 128,
+        "Binds": null,
+        "Devices": []
+      },
+      "mounts": [],
+      "actual_config_sha256": "21cd639ccd0b98cb65504e3022cacd4c04224225d3d008bf2c82eee89dbb9817",
+      "running_config": "Building configuration...\n\nCurrent configuration:\n!\nfrr version 10.6.1\nfrr defaults traditional\nhostname f27dc190ebad\nlog stdout\nbgp no-rib\nservice integrated-vtysh-config\n!\ninterface lo\n ip ospf area 0.0.0.0\n ip ospf passive\nexit\n!\ninterface net1\n ip ospf area 0.0.0.0\n ip ospf network point-to-point\nexit\n!\ninterface net2\n ip ospf area 0.0.0.0\n ip ospf network point-to-point\nexit\n!\ninterface net3\n ip ospf area 0.0.0.0\n ip ospf network point-to-point\nexit\n!\ninterface net4\n ip ospf area 0.0.0.0\n ip ospf network point-to-point\nexit\n!\nrouter bgp 64512\n bgp router-id 192.0.2.2\n no bgp default ipv4-unicast\n bgp cluster-id 192.0.2.254\n neighbor 192.0.2.11 remote-as 64512\n neighbor 192.0.2.11 update-source 192.0.2.2\n neighbor 192.0.2.12 remote-as 64512\n neighbor 192.0.2.12 update-source 192.0.2.2\n neighbor 192.0.2.13 remote-as 64512\n neighbor 192.0.2.13 update-source 192.0.2.2\n neighbor 192.0.2.14 remote-as 64512\n neighbor 192.0.2.14 update-source 192.0.2.2\n !\n address-family ipv4 unicast\n  neighbor 192.0.2.11 activate\n  neighbor 192.0.2.11 route-reflector-client\n  neighbor 192.0.2.12 activate\n  neighbor 192.0.2.12 route-reflector-client\n  neighbor 192.0.2.13 activate\n  neighbor 192.0.2.13 route-reflector-client\n  neighbor 192.0.2.14 activate\n  neighbor 192.0.2.14 route-reflector-client\n exit-address-family\nexit\n!\nrouter ospf\n ospf router-id 192.0.2.2\n max-metric router-lsa administrative\nexit\n!\nend\n",
+      "forwarding": "0",
+      "bgp_summary": {
+        "routerId": "192.0.2.2",
+        "as": 64512,
+        "vrfId": 0,
+        "vrfName": "default",
+        "tableVersion": 0,
+        "ribCount": 0,
+        "ribMemory": 0,
+        "peerCount": 4,
+        "peerMemory": 67616,
+        "peers": {
+          "192.0.2.11": {
+            "softwareVersion": "n/a",
+            "remoteAs": 64512,
+            "localAs": 64512,
+            "version": 4,
+            "msgRcvd": 0,
+            "msgSent": 0,
+            "tableVersion": 0,
+            "outq": 0,
+            "inq": 0,
+            "peerUptime": "never",
+            "peerUptimeMsec": 0,
+            "pfxRcd": 0,
+            "pfxSnt": 0,
+            "state": "Idle",
+            "peerState": "OK",
+            "connectionsEstablished": 0,
+            "connectionsDropped": 0,
+            "idType": "ipv4"
+          },
+          "192.0.2.12": {
+            "softwareVersion": "n/a",
+            "remoteAs": 64512,
+            "localAs": 64512,
+            "version": 4,
+            "msgRcvd": 0,
+            "msgSent": 0,
+            "tableVersion": 0,
+            "outq": 0,
+            "inq": 0,
+            "peerUptime": "never",
+            "peerUptimeMsec": 0,
+            "pfxRcd": 0,
+            "pfxSnt": 0,
+            "state": "Idle",
+            "peerState": "OK",
+            "connectionsEstablished": 0,
+            "connectionsDropped": 0,
+            "idType": "ipv4"
+          },
+          "192.0.2.13": {
+            "softwareVersion": "n/a",
+            "remoteAs": 64512,
+            "localAs": 64512,
+            "version": 4,
+            "msgRcvd": 0,
+            "msgSent": 0,
+            "tableVersion": 0,
+            "outq": 0,
+            "inq": 0,
+            "peerUptime": "never",
+            "peerUptimeMsec": 0,
+            "pfxRcd": 0,
+            "pfxSnt": 0,
+            "state": "Idle",
+            "peerState": "OK",
+            "connectionsEstablished": 0,
+            "connectionsDropped": 0,
+            "idType": "ipv4"
+          },
+          "192.0.2.14": {
+            "softwareVersion": "n/a",
+            "remoteAs": 64512,
+            "localAs": 64512,
+            "version": 4,
+            "msgRcvd": 0,
+            "msgSent": 0,
+            "tableVersion": 0,
+            "outq": 0,
+            "inq": 0,
+            "peerUptime": "never",
+            "peerUptimeMsec": 0,
+            "pfxRcd": 0,
+            "pfxSnt": 0,
+            "state": "Idle",
+            "peerState": "OK",
+            "connectionsEstablished": 0,
+            "connectionsDropped": 0,
+            "idType": "ipv4"
+          }
+        },
+        "failedPeers": 4,
+        "displayedPeers": 4,
+        "totalPeers": 4,
+        "dynamicPeers": 0,
+        "bestPath": {
+          "multiPathRelax": "false"
+        }
+      },
+      "kernel_routes": [
+        {
+          "dst": "198.51.100.8/31",
+          "dev": "net1",
+          "protocol": "kernel",
+          "scope": "link",
+          "prefsrc": "198.51.100.8",
+          "flags": []
+        },
+        {
+          "dst": "198.51.100.10/31",
+          "dev": "net2",
+          "protocol": "kernel",
+          "scope": "link",
+          "prefsrc": "198.51.100.10",
+          "flags": []
+        },
+        {
+          "dst": "198.51.100.12/31",
+          "dev": "net3",
+          "protocol": "kernel",
+          "scope": "link",
+          "prefsrc": "198.51.100.12",
+          "flags": []
+        },
+        {
+          "dst": "198.51.100.14/31",
+          "dev": "net4",
+          "protocol": "kernel",
+          "scope": "link",
+          "prefsrc": "198.51.100.14",
+          "flags": []
+        },
+        {
+          "dst": "203.0.113.0/24",
+          "dev": "eth0",
+          "protocol": "kernel",
+          "scope": "link",
+          "prefsrc": "203.0.113.3",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "127.0.0.0/8",
+          "dev": "lo",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "127.0.0.1",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "127.0.0.1",
+          "dev": "lo",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "127.0.0.1",
+          "flags": []
+        },
+        {
+          "type": "broadcast",
+          "dst": "127.255.255.255",
+          "dev": "lo",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "link",
+          "prefsrc": "127.0.0.1",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "192.0.2.2",
+          "dev": "lo",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "192.0.2.2",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "198.51.100.8",
+          "dev": "net1",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "198.51.100.8",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "198.51.100.10",
+          "dev": "net2",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "198.51.100.10",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "198.51.100.12",
+          "dev": "net3",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "198.51.100.12",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "198.51.100.14",
+          "dev": "net4",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "198.51.100.14",
+          "flags": []
+        },
+        {
+          "type": "local",
+          "dst": "203.0.113.3",
+          "dev": "eth0",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "host",
+          "prefsrc": "203.0.113.3",
+          "flags": []
+        },
+        {
+          "type": "broadcast",
+          "dst": "203.0.113.255",
+          "dev": "eth0",
+          "table": "local",
+          "protocol": "kernel",
+          "scope": "link",
+          "prefsrc": "203.0.113.3",
+          "flags": []
+        }
+      ],
+      "ospf_neighbors": "\nNeighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL\n\n",
+      "frr_version": "FRRouting 10.6.1 (f27dc190ebad) on Linux(7.0.0-31-generic).\nCopyright 1996-2005 Kunihiro Ishiguro, et al.\nconfigured with:\n    '--prefix=/usr' '--localstatedir=/run/frr' '--sbindir=/usr/lib/frr' '--sysconfdir=/etc/frr' '--libdir=/usr/lib/frr' '--with-moduledir=/usr/lib/frr/modules' '--disable-dependency-tracking' '--enable-rpki' '--with-libpam' '--enable-doc' '--enable-doc-html' '--enable-snmp' '--enable-fpm' '--disable-protobuf' '--disable-zeromq' '--enable-ospfapi' '--enable-bgp-vnc' '--enable-multipath=256' '--enable-user=frr' '--enable-group=frr' '--enable-vty-group=frrvty' '--enable-configfile-mask=0640' '--enable-logfile-mask=0640' 'CC=cc' 'CXX=c++' 'PYTHON=python3'\n",
+      "bgpd_process": "Uid:\t100\t100\t100\t100\nGid:\t101\t101\t101\t101\nCapInh:\t0000000000000000\nCapPrm:\t0000000000203400\nCapEff:\t0000000000000000\nCapBnd:\t00000000002034c1\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\n",
+      "startup": "PASS G-2 isolated startup only",
+      "fib_baseline": "No test service prefixes; vacuous without learned BGP routes, NOT a no-rib behavior PASS",
+      "normal_stop_exit": 0,
+      "final_state": {
+        "Running": false,
+        "ExitCode": 0,
+        "OOMKilled": false,
+        "Error": ""
+      },
+      "logs": "2026/10/15 16:02:11 MGMTD: [TKR4Z-MFN07] Backend daemon: zebra registers with mgmtd (client-id: 1)\n2026/10/15 16:02:11 BGP: [T83RR-8SM5G] bgpd 10.6.1 starting: vty@2605, bgp@<all>:179\n2026/10/15 16:02:11 ZEBRA: [V98V0-MTWPF] client 35 says hello and bids fair to announce only bgp routes vrf=0\n2026/10/15 16:02:11 ZEBRA: [V98V0-MTWPF] client 39 says hello and bids fair to announce only vnc routes vrf=0\n2026/10/15 16:02:11 OSPF: [T6R80-M44RP] RI (ospf_router_info_init): Initialize Router Information\n2026/10/15 16:02:11 OSPF: [MBAWE-XHKA3] EXT (ospf_ext_init): Register Extended Link Opaque LSA\n2026/10/15 16:02:11 OSPF: [SW3EZ-RAMP9] EXT (ospf_ext_init): Register Extended Prefix Opaque LSA\n2026/10/15 16:02:11 OSPF: [T83RR-8SM5G] ospfd 10.6.1 starting: vty@2604\n2026/10/15 16:02:11 ZEBRA: [V98V0-MTWPF] client 47 says hello and bids fair to announce only ospf routes vrf=0\n[101|mgmtd] sending configuration\n[102|zebra] sending configuration\n[108|bgpd] sending configuration\n[105|ospfd] sending configuration\n2026/10/15 16:02:11 ZEBRA: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:11 ZEBRA: [G6NKK-8C6DV] end_config: VTY:0xf4b54eb18710, pending SET-CFG: 0\n2026/10/15 16:02:11 MGMTD: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:11 MGMTD: [G6NKK-8C6DV] end_config: VTY:0xfa5907c0a080, pending SET-CFG: 6\n2026/10/15 16:02:11 BGP: [H0A26-CCQCZ] Disabled BGP route installation to RIB (Zebra)\n2026/10/15 16:02:11 BGP: [P3F13-JJN0M] All routes have been withdrawn from RIB (Zebra)\nWaiting for children to finish applying config...\n[122|watchfrr] sending configuration\n2026/10/15 16:02:11 WATCHFRR: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:11 OSPF: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:11 OSPF: [G6NKK-8C6DV] end_config: VTY:0xe475924a4580, pending SET-CFG: 0\n2026/10/15 16:02:11 BGP: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:11 BGP: [G6NKK-8C6DV] end_config: VTY:0xeaeba9a96320, pending SET-CFG: 0\n2026/10/15 16:02:11 WATCHFRR: [QDG3Y-BY5TN] mgmtd state -> up : connect succeeded\n2026/10/15 16:02:11 WATCHFRR: [QDG3Y-BY5TN] zebra state -> up : connect succeeded\n2026/10/15 16:02:11 WATCHFRR: [QDG3Y-BY5TN] bgpd state -> up : connect succeeded\n2026/10/15 16:02:11 WATCHFRR: [QDG3Y-BY5TN] ospfd state -> up : connect succeeded\n2026/10/15 16:02:11 WATCHFRR: [KWE5Q-QNGFC] all daemons up, doing startup-complete notify\n[145|mgmtd] sending configuration\n[152|bgpd] sending configuration\n[149|ospfd] sending configuration\n[146|zebra] sending configuration\n% No-RIB option is already set, nothing to do here.\n2026/10/15 16:02:12 MGMTD: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:12 MGMTD: [G6NKK-8C6DV] end_config: VTY:0xfa5907c0a1c0, pending SET-CFG: 6\n2026/10/15 16:02:12 ZEBRA: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:12 ZEBRA: [G6NKK-8C6DV] end_config: VTY:0xf4b54eb06050, pending SET-CFG: 0\nWaiting for children to finish applying config...\n[166|watchfrr] sending configuration\n2026/10/15 16:02:12 BGP: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:12 BGP: [G6NKK-8C6DV] end_config: VTY:0xeaeba99d1470, pending SET-CFG: 0\n2026/10/15 16:02:12 WATCHFRR: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:12 OSPF: [VTVCM-Y2NW3] Configuration Read in Took: 00:00:00\n2026/10/15 16:02:12 OSPF: [G6NKK-8C6DV] end_config: VTY:0xe47592482750, pending SET-CFG: 0\n2026/10/15 16:02:12 ZEBRA: [V98V0-MTWPF] client 54 says hello and bids fair to announce only bgp routes vrf=0\n2026/10/15 16:02:13 WATCHFRR: [NG1AJ-FP2TQ] Terminating on signal\n2026/10/15 16:02:13 BGP: [ZW1GY-R46JE] Terminating on signal\n2026/10/15 16:02:13 OSPF: [W9T04-QWK6B] Terminating on signal\n2026/10/15 16:02:13 ZEBRA: [XVBTQ-5QTVQ] Terminating on signal\n2026/10/15 16:02:13 MGMTD: [VD0EC-3NZGB] BE-adapter: mgmt_msg_read: got EOF/disconnect on fd 21\n2026/10/15 16:02:13 ZEBRA: [YDZ55-W3VM6] release_daemon_table_chunks: Released 0 table chunks\n2026/10/15 16:02:13 ZEBRA: [JPSA8-5KYEA] client 35 disconnected 0 bgp routes removed from the rib\n2026/10/15 16:02:13 ZEBRA: [S929C-NZR3N] client 35 disconnected 0 bgp nhgs removed from the rib\n2026/10/15 16:02:13 MGMTD: [J2RAS-MZ95C] Terminating on signal\n2026/10/15 16:02:13 ZEBRA: [YDZ55-W3VM6] release_daemon_table_chunks: Released 0 table chunks\n2026/10/15 16:02:13 ZEBRA: [JPSA8-5KYEA] client 39 disconnected 0 vnc routes removed from the rib\n2026/10/15 16:02:13 ZEBRA: [S929C-NZR3N] client 39 disconnected 0 vnc nhgs removed from the rib\n2026/10/15 16:02:13 ZEBRA: [YDZ55-W3VM6] release_daemon_table_chunks: Released 0 table chunks\n2026/10/15 16:02:13 ZEBRA: [JPSA8-5KYEA] client 47 disconnected 5 ospf routes removed from the rib\n2026/10/15 16:02:13 ZEBRA: [S929C-NZR3N] client 47 disconnected 0 ospf nhgs removed from the rib\n2026/10/15 16:02:13 ZEBRA: [YDZ55-W3VM6] release_daemon_table_chunks: Released 0 table chunks\n2026/10/15 16:02:13 ZEBRA: [M6GBJ-2NV1J][EC 4043309121] zebra/zebra_ptm.c:1282 failed to find process pid registration\n2026/10/15 16:02:13 ZEBRA: [JPSA8-5KYEA] client 54 disconnected 0 bgp routes removed from the rib\n2026/10/15 16:02:13 ZEBRA: [S929C-NZR3N] client 54 disconnected 0 bgp nhgs removed from the rib\n2026/10/15 16:02:13 BGP: [YAF85-253AP][EC 100663299] buffer_write: write error on fd 20: Broken pipe\n2026/10/15 16:02:13 BGP: [X6B3Y-6W42R][EC 100663302] zclient_send_message: buffer_write failed to zclient fd 20, closing\n2026/10/15 16:02:13 ZEBRA: [QS0NJ-H5QKJ] Zebra final shutdown\n"
+    }
+  ],
+  "live_reflection": "NOT RUN",
+  "next_hop_updates": "NOT RUN",
+  "learned_route_fib_exclusion": "NOT RUN",
+  "packet_nontransit": "NOT RUN",
+  "rr_loss_with_survivor": "NOT RUN",
+  "g3": "NOT RUN",
+  "fixture": {
+    "source": "accepted-main Helm/example values",
+    "image": "sha256:7acfef1c1e4fdf06c2f5d15383073ba3a9c78c24a52beee8d85da04e8102d47a",
+    "routers": [
+      {
+        "name": "rr01",
+        "loopback": "192.0.2.1/32",
+        "links": [
+          {
+            "client": "client1",
+            "interface": "net1",
+            "vlanId": 1101,
+            "localAddress": "198.51.100.0/31",
+            "remoteAddress": "198.51.100.1"
+          },
+          {
+            "client": "client2",
+            "interface": "net2",
+            "vlanId": 1102,
+            "localAddress": "198.51.100.2/31",
+            "remoteAddress": "198.51.100.3"
+          },
+          {
+            "client": "client3",
+            "interface": "net3",
+            "vlanId": 1103,
+            "localAddress": "198.51.100.4/31",
+            "remoteAddress": "198.51.100.5"
+          },
+          {
+            "client": "client4",
+            "interface": "net4",
+            "vlanId": 1104,
+            "localAddress": "198.51.100.6/31",
+            "remoteAddress": "198.51.100.7"
+          }
+        ],
+        "config": {
+          "frr.conf": "frr defaults traditional\nhostname rr01\nservice integrated-vtysh-config\nlog stdout\ninterface lo\n ip ospf area 0.0.0.0\n ip ospf passive\n!\ninterface net1\n ip ospf network point-to-point\n ip ospf area 0.0.0.0\n!\ninterface net2\n ip ospf network point-to-point\n ip ospf area 0.0.0.0\n!\ninterface net3\n ip ospf network point-to-point\n ip ospf area 0.0.0.0\n!\ninterface net4\n ip ospf network point-to-point\n ip ospf area 0.0.0.0\n!\nrouter ospf\n ospf router-id 192.0.2.1\n max-metric router-lsa administrative\n!\nbgp no-rib\nrouter bgp 64512\n bgp router-id 192.0.2.1\n bgp cluster-id 192.0.2.254\n no bgp default ipv4-unicast\n neighbor 192.0.2.11 remote-as 64512\n neighbor 192.0.2.11 update-source 192.0.2.1\n neighbor 192.0.2.12 remote-as 64512\n neighbor 192.0.2.12 update-source 192.0.2.1\n neighbor 192.0.2.13 remote-as 64512\n neighbor 192.0.2.13 update-source 192.0.2.1\n neighbor 192.0.2.14 remote-as 64512\n neighbor 192.0.2.14 update-source 192.0.2.1\n address-family ipv4 unicast\n  neighbor 192.0.2.11 activate\n  neighbor 192.0.2.11 route-reflector-client\n  neighbor 192.0.2.12 activate\n  neighbor 192.0.2.12 route-reflector-client\n  neighbor 192.0.2.13 activate\n  neighbor 192.0.2.13 route-reflector-client\n  neighbor 192.0.2.14 activate\n  neighbor 192.0.2.14 route-reflector-client\n exit-address-family\n!\n",
+          "loopback": "192.0.2.1/32",
+          "links": "net1 198.51.100.0/31\nnet2 198.51.100.2/31\nnet3 198.51.100.4/31\nnet4 198.51.100.6/31\n"
+        },
+        "config_sha256": "d6c87449714e53a8deee61c1a560241ec1d6062c40b85b6beb9466787d7e7a66",
+        "startup_only_shell": "ip link add eth0 type dummy; ip link set eth0 up; ip addr add 203.0.113.2/24 dev eth0; ip link add link eth0 name net1 type vlan id 1101; ip link set net1 up; ip addr add 198.51.100.0/31 dev net1; ip link add link eth0 name net2 type vlan id 1102; ip link set net2 up; ip addr add 198.51.100.2/31 dev net2; ip link add link eth0 name net3 type vlan id 1103; ip link set net3 up; ip addr add 198.51.100.4/31 dev net3; ip link add link eth0 name net4 type vlan id 1104; ip link set net4 up; ip addr add 198.51.100.6/31 dev net4; exec /sbin/tini -- /usr/local/bin/entrypoint.sh"
+      },
+      {
+        "name": "rr02",
+        "loopback": "192.0.2.2/32",
+        "links": [
+          {
+            "client": "client1",
+            "interface": "net1",
+            "vlanId": 1105,
+            "localAddress": "198.51.100.8/31",
+            "remoteAddress": "198.51.100.9"
+          },
+          {
+            "client": "client2",
+            "interface": "net2",
+            "vlanId": 1106,
+            "localAddress": "198.51.100.10/31",
+            "remoteAddress": "198.51.100.11"
+          },
+          {
+            "client": "client3",
+            "interface": "net3",
+            "vlanId": 1107,
+            "localAddress": "198.51.100.12/31",
+            "remoteAddress": "198.51.100.13"
+          },
+          {
+            "client": "client4",
+            "interface": "net4",
+            "vlanId": 1108,
+            "localAddress": "198.51.100.14/31",
+            "remoteAddress": "198.51.100.15"
+          }
+        ],
+        "config": {
+          "frr.conf": "frr defaults traditional\nhostname rr02\nservice integrated-vtysh-config\nlog stdout\ninterface lo\n ip ospf area 0.0.0.0\n ip ospf passive\n!\ninterface net1\n ip ospf network point-to-point\n ip ospf area 0.0.0.0\n!\ninterface net2\n ip ospf network point-to-point\n ip ospf area 0.0.0.0\n!\ninterface net3\n ip ospf network point-to-point\n ip ospf area 0.0.0.0\n!\ninterface net4\n ip ospf network point-to-point\n ip ospf area 0.0.0.0\n!\nrouter ospf\n ospf router-id 192.0.2.2\n max-metric router-lsa administrative\n!\nbgp no-rib\nrouter bgp 64512\n bgp router-id 192.0.2.2\n bgp cluster-id 192.0.2.254\n no bgp default ipv4-unicast\n neighbor 192.0.2.11 remote-as 64512\n neighbor 192.0.2.11 update-source 192.0.2.2\n neighbor 192.0.2.12 remote-as 64512\n neighbor 192.0.2.12 update-source 192.0.2.2\n neighbor 192.0.2.13 remote-as 64512\n neighbor 192.0.2.13 update-source 192.0.2.2\n neighbor 192.0.2.14 remote-as 64512\n neighbor 192.0.2.14 update-source 192.0.2.2\n address-family ipv4 unicast\n  neighbor 192.0.2.11 activate\n  neighbor 192.0.2.11 route-reflector-client\n  neighbor 192.0.2.12 activate\n  neighbor 192.0.2.12 route-reflector-client\n  neighbor 192.0.2.13 activate\n  neighbor 192.0.2.13 route-reflector-client\n  neighbor 192.0.2.14 activate\n  neighbor 192.0.2.14 route-reflector-client\n exit-address-family\n!\n",
+          "loopback": "192.0.2.2/32",
+          "links": "net1 198.51.100.8/31\nnet2 198.51.100.10/31\nnet3 198.51.100.12/31\nnet4 198.51.100.14/31\n"
+        },
+        "config_sha256": "21cd639ccd0b98cb65504e3022cacd4c04224225d3d008bf2c82eee89dbb9817",
+        "startup_only_shell": "ip link add eth0 type dummy; ip link set eth0 up; ip addr add 203.0.113.3/24 dev eth0; ip link add link eth0 name net1 type vlan id 1105; ip link set net1 up; ip addr add 198.51.100.8/31 dev net1; ip link add link eth0 name net2 type vlan id 1106; ip link set net2 up; ip addr add 198.51.100.10/31 dev net2; ip link add link eth0 name net3 type vlan id 1107; ip link set net3 up; ip addr add 198.51.100.12/31 dev net3; ip link add link eth0 name net4 type vlan id 1108; ip link set net4 up; ip addr add 198.51.100.14/31 dev net4; exec /sbin/tini -- /usr/local/bin/entrypoint.sh"
+      }
+    ],
+    "clients": [
+      {
+        "name": "client1",
+        "loopback": "192.0.2.11/32",
+        "prefix": "198.51.100.200/32",
+        "links": [
+          {
+            "interface": "net1",
+            "vlanId": 1101,
+            "address": "198.51.100.1/31",
+            "rr": "rr01",
+            "rr_interface": "net1"
+          },
+          {
+            "interface": "net2",
+            "vlanId": 1105,
+            "address": "198.51.100.9/31",
+            "rr": "rr02",
+            "rr_interface": "net1"
+          },
+          {
+            "interface": "net3",
+            "vlanId": 1200,
+            "address": "203.0.113.17/29",
+            "role": "client-only transit"
+          },
+          {
+            "interface": "net4",
+            "vlanId": 1201,
+            "address": "203.0.113.32/31",
+            "role": "unconnected padding for existing four-interface entrypoint"
+          }
+        ],
+        "config": "frr defaults traditional\nhostname client1\nservice integrated-vtysh-config\nlog stdout\ninterface lo\n ip ospf area 0.0.0.0\n ip ospf passive\n!\ninterface net1\n ip ospf network point-to-point\n ip ospf area 0.0.0.0\n!\ninterface net2\n ip ospf network point-to-point\n ip ospf area 0.0.0.0\n!\ninterface net3\n ip ospf network broadcast\n ip ospf area 0.0.0.0\n!\nrouter ospf\n ospf router-id 192.0.2.11\n!\nrouter bgp 64512\n bgp router-id 192.0.2.11\n no bgp default ipv4-unicast\n neighbor 192.0.2.1 remote-as 64512\n neighbor 192.0.2.1 update-source 192.0.2.11\n neighbor 192.0.2.2 remote-as 64512\n neighbor 192.0.2.2 update-source 192.0.2.11\n address-family ipv4 unicast\n  network 198.51.100.200/32\n  neighbor 192.0.2.1 activate\n  neighbor 192.0.2.1 next-hop-self\n  neighbor 192.0.2.2 activate\n  neighbor 192.0.2.2 next-hop-self\n exit-address-family\n!\n",
+        "config_sha256": "c953ee2319a4f2fea048c4e20e2d6178359ecfee3e0e6e35847585bf02b76a7c"
+      },
+      {
+        "name": "client2",
+        "loopback": "192.0.2.12/32",
+        "prefix": "198.51.100.201/32",
+        "links": [
+          {
+            "interface": "net1",
+            "vlanId": 1102,
+            "address": "198.51.100.3/31",
+            "rr": "rr01",
+            "rr_interface": "net2"
+          },
+          {
+            "interface": "net2",
+            "vlanId": 1106,
+            "address": "198.51.100.11/31",
+            "rr": "rr02",
+            "rr_interface": "net2"
+          },
+          {
+            "interface": "net3",
+            "vlanId": 1200,
+            "address": "203.0.113.18/29",
+            "role": "client-only transit"
+          },
+          {
+            "interface": "net4",
+            "vlanId": 1202,
+            "address": "203.0.113.34/31",
+            "role": "unconnected padding for existing four-interface entrypoint"
+          }
+        ],
+        "config": "frr defaults traditional\nhostname client2\nservice integrated-vtysh-config\nlog stdout\ninterface lo\n ip ospf area 0.0.0.0\n ip ospf passive\n!\ninterface net1\n ip ospf network point-to-point\n ip ospf area 0.0.0.0\n!\ninterface net2\n ip ospf network point-to-point\n ip ospf area 0.0.0.0\n!\ninterface net3\n ip ospf network broadcast\n ip ospf area 0.0.0.0\n!\nrouter ospf\n ospf router-id 192.0.2.12\n!\nrouter bgp 64512\n bgp router-id 192.0.2.12\n no bgp default ipv4-unicast\n neighbor 192.0.2.1 remote-as 64512\n neighbor 192.0.2.1 update-source 192.0.2.12\n neighbor 192.0.2.2 remote-as 64512\n neighbor 192.0.2.2 update-source 192.0.2.12\n address-family ipv4 unicast\n  network 198.51.100.201/32\n  neighbor 192.0.2.1 activate\n  neighbor 192.0.2.1 next-hop-self\n  neighbor 192.0.2.2 activate\n  neighbor 192.0.2.2 next-hop-self\n exit-address-family\n!\n",
+        "config_sha256": "8cee008e7335ebbadcec9d1c39c0ef9c9eeb479d91536b458cf58893a550d562"
+      }
+    ],
+    "connected_execution": "BLOCKED: new isolated L2 fabric requires Owner approval",
+    "g3": "NOT RUN"
+  },
+  "image": {
+    "id": "sha256:7acfef1c1e4fdf06c2f5d15383073ba3a9c78c24a52beee8d85da04e8102d47a",
+    "architecture": "arm64",
+    "size": 13620747
+  },
+  "tools": {
+    "docker": "29.1.3",
+    "helm": "v3.19.0+g3d8990f"
+  },
+  "client_syntax": [
+    {
+      "client": "client1",
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "scope": "syntax only; client NOT started"
+    },
+    {
+      "client": "client2",
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "scope": "syntax only; client NOT started"
+    }
+  ],
+  "cleanup": [
+    {
+      "name": "frr-rr-smoke-ee84834dcd2e4dde93975678080f4e49-rr01",
+      "remove_exit": 0,
+      "absence_exit": 1,
+      "absent": true
+    },
+    {
+      "name": "frr-rr-smoke-8031a90e4edd4e9a894398824db9cf24-rr02",
+      "remove_exit": 0,
+      "absence_exit": 1,
+      "absent": true
+    }
+  ],
+  "ended_utc": "2026-10-15T16:02:13.541460+00:00"
+}

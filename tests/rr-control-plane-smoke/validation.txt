@@ -1,0 +1,38 @@
+2026-10-16 JST — Issue #9 scope, accepted main 885e5c97e308b2b1442c378927613b2383dc6408.
+
+Read-only Workbox preflight: existing G-2 implementation image is native arm64,
+sha256:7acfef1c1e4fdf06c2f5d15383073ba3a9c78c24a52beee8d85da04e8102d47a, size 13,620,747.
+Docker 29.1.3, Helm v3.19.0+g3d8990f, Python 3.14.4, PyYAML 6.0.3.
+docker network inspect none: driver=null, scope=local, containers=0 at preflight.
+Existing ip/nsenter availability was read only; nsenter was never executed.
+
+Initial static test: FAIL, substring check treated neighbor 192.0.2.11 as
+neighbor 192.0.2.1; corrected to require the following space/exact address token.
+No container was created by this failed static test.
+
+Initial startup collector: FAIL assertion, first-attempt.json retained.
+Docker canonicalizes added capabilities as CAP_CHOWN/etc. Collector expected
+unprefixed CHOWN/etc; equivalent prefix normalization fixed, no capabilities
+changed. Both task containers removed exit 0, exact absence confirmed.
+
+Final Workbox static test:
+python3 tests/rr-control-plane-smoke/test_fixture.py
+PASS deterministic unchanged Helm RR config, four peer/four link retention,
+/31 counterpart/VLAN mapping, client-only transit and no RR-RR BGP peer.
+--connected refuses exit 78 before Docker, no output report/resource created.
+These are static checks, not BGP/OSPF/packet evidence.
+
+Final native ARM64 G-2 startup slice:
+timeout --signal=TERM --kill-after=15 165 python3 tests/rr-control-plane-smoke/startup.py --output <task-temp>/startup-final.json
+exit 0, 2 RR startups/config checks PASS; Client syntax checks exit 0/empty output.
+Sample ip_forward=0 each, bgpd UID/GID=100/101, NoNewPrivs=1, Seccomp=2.
+4 Idle BGP peers each, no learned routes/no OSPF adjacency, no packets tested.
+Normal stop exit 0 each, removal exit 0 each, exact absence inspect exit 1 each.
+Both process snapshots and command/security/config/output details are retained
+in measured-startup.json. No new Docker network or host namespace entry.
+
+Python compilation / final git diff --check: PASS.
+New branch changes only tests/rr-control-plane-smoke/; unrelated .gitignore
+remains uncommitted. PR #14/Issue #12/accepted Container/Chart unchanged.
+Live reflection/NEXT_HOP/learned-route no-rib/packet non-transit: NOT RUN / BLOCKED.
+Connected mode requires Owner approval for the exact proposed communication fabric.
