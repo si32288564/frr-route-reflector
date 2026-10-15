@@ -1,5 +1,10 @@
 # Task 0003 — AMD64 artifact qualification: builder STOP
 
+> Historical step-1 STOP, preserved unchanged below. Owner subsequently
+> authorized the existing Workbox multi-platform build path in Issue #10
+> comment 6183718281. See [artifact-build follow-up](0003-amd64-artifact-build.md)
+> for the new build/static results; native AMD64 runtime remains unqualified.
+
 Codexによる報告:
 
 Date: 2026-10-15 JST. Authority: [Issue #10](https://github.com/si32288564/frr-route-reflector/issues/10),

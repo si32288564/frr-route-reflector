@@ -1,0 +1,54 @@
+{
+  "buildx.build.provenance": {
+    "builder": {
+      "id": ""
+    },
+    "buildType": "https://mobyproject.org/buildkit@v1",
+    "materials": [
+      {
+        "uri": "pkg:docker/alpine@3.24?digest=sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6\u0026platform=linux%2Farm64",
+        "digest": {
+          "sha256": "294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6"
+        }
+      }
+    ],
+    "invocation": {
+      "configSource": {
+        "entryPoint": "Dockerfile"
+      },
+      "parameters": {
+        "frontend": "dockerfile.v0",
+        "args": {
+          "no-cache": ""
+        },
+        "locals": [
+          {
+            "name": "context"
+          },
+          {
+            "name": "dockerfile"
+          }
+        ]
+      },
+      "environment": {
+        "dockerfileVersion": "1.26.0",
+        "platform": "linux/arm64"
+      }
+    }
+  },
+  "buildx.build.ref": "mybuild/mybuild0/lyhai6vslzf8h26u64cx85ijv",
+  "containerimage.descriptor": {
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "digest": "sha256:dea86108c2812d9891674e0291af3b59872925e6c462e189a08acf0b3f61f096",
+    "size": 1238,
+    "annotations": {
+      "org.opencontainers.image.created": "2026-10-15T05:28:41Z"
+    },
+    "platform": {
+      "architecture": "arm64",
+      "os": "linux"
+    }
+  },
+  "containerimage.digest": "sha256:dea86108c2812d9891674e0291af3b59872925e6c462e189a08acf0b3f61f096",
+  "image.name": "docker.io/library/frr-task0003:arm64"
+}
