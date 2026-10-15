@@ -23,7 +23,7 @@ is applied to the image, FRR, Alpine or imported material.
 | Fixed source-recipe traceability | PASS, 25 origin recipes HTTP 200; pkgver/pkgrel match installed versions |
 | Source material verification | PASS, 173 recipe-listed input SHA512 and 180 fixed recipe-file identities; not full legal/source-delivery clearance |
 | All corresponding source, notice texts and recipient access | BLOCKED, incomplete/not delivered; do not publish |
-| CVE / independent license scanner | NOT RUN, tooling unavailable on PATH; no CVE severity verdict |
+| CVE / independent license scanner | CVE NOT RUN / BLOCKED at approved sandbox staging; Grype/DB acquisition verified, see continuation below. Independent license scan NOT RUN |
 | Recorded disclosure candidates | PASS scoped classification: all 22 matches across both arches are unchanged official APK binary static content; not whole-image security clearance |
 | Native AMD64 FRR and G-3 runtime/security acceptance | NOT RUN / BLOCKED, unchanged |
 | Docker Hub index / Push / signing / main merge | NOT RUN, explicitly forbidden in this task |
@@ -147,6 +147,16 @@ verified hashes and selected original legal texts are committed. This is not
 permission to push; seek qualified review of those specific unresolved questions.
 
 ## Security and disclosure limitations
+
+**Latest scanner continuation:** Owner approved Grype v0.120.1 acquisition and
+isolated execution in [Issue #12 comment 6193027470](https://github.com/si32288564/frr-route-reflector/issues/12#issuecomment-6193027470).
+Tool archive/checksum/signature verification and compatible current DB checksum
+checks PASS. Docker refused pre-start `docker cp` into a read-only rootfs; the
+single task container was never started and is confirmed removed. Both
+architecture CVE scans remain NOT RUN; no zero-CVE or security PASS claim.
+See [commands, identities, failure/cleanup and finite next decision](task0004-grype-stop.md).
+The tooling statements in the following paragraph describe the earlier proposal
+stage and are preserved as history, not current acquisition status.
 
 `command -v` found no syft, trivy or grype on Workbox or the local development
 machine; docker-scout was not on Workbox PATH and `docker scout version` returned

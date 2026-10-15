@@ -1,0 +1,21 @@
+2026-10-15 UTC — local offline validation, not scanner execution
+
+python3 -m py_compile tests/scan_packaged_frr.py
+exit 0
+
+python3 tests/test_prepublish.py
+JSON/package/SBOM/recipe-version/source-sample/License/AST consistency=PASS
+173-input/180-recipe/24-notice/22-candidate/formal-schema-record consistency=PASS
+Grype/DB identity and staging-STOP/cleanup record consistency=PASS; CVEs=NOT RUN
+Limited new-artifact/scoped-source-history heuristic counts={"credential_assignment": 0, "docker_pat": 0, "github_token": 0, "internal_domain": 0, "private_key": 0}
+Formal CycloneDX schema=PASS recorded; legal compliance/CVE scan/native runtime=NOT RUN or BLOCKED
+exit 0
+
+git diff --check
+exit 0
+
+Fetched remote main = 885e5c97e308b2b1442c378927613b2383dc6408
+No merge, build, package change, registry publication or Kubernetes change.
+The existing .gitignore edit is outside this commit.
+The prior 173-source/180-recipe/24-notice retrievals were not repeated;
+these local consistency checks read their existing evidence only.
