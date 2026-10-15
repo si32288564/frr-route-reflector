@@ -82,23 +82,18 @@ assert recovery["capacity"]["result"] == "FAIL"
 assert all(not recovery[key] for key in ("containers_created", "images_built", "contexts_created"))
 assert recovery["scans"] == {"amd64": "NOT RUN", "arm64": "NOT RUN"}
 assert read("task0004-grype-recovery-schema.json")["result"] == "PASS"
-instructions = [line.split()[0] for line in (ROOT / "tests/grype-sandbox/Dockerfile").read_text().splitlines()
-                if line.strip() and not line.startswith("#")]
-assert set(instructions) <= {"FROM", "COPY", "ENV", "USER", "ENTRYPOINT"}
-assert instructions.count("FROM") == 1 and instructions.count("COPY") == 3
-subprocess.run(["sh", "-n", str(ROOT / "tests/grype-sandbox/init.sh")], check=True)
-for name in ["prepublish_inventory", "classify_packaged_findings", "prepare_source_manifest", "collect_notice_texts", "inspect_packaged_linkage", "validate_cyclonedx_schema", "scan_packaged_frr", "preflight_grype_recovery"]:
+for name in ["prepublish_inventory", "classify_packaged_findings", "prepare_source_manifest", "collect_notice_texts", "inspect_packaged_linkage", "validate_cyclonedx_schema"]:
     ast.parse((ROOT / ("tests/" + name + ".py")).read_text())
 print("JSON/package/SBOM/recipe-version/source-sample/License/AST consistency=PASS")
 print("173-input/180-recipe/24-notice/22-candidate/formal-schema-record consistency=PASS")
 print("Grype/DB identity and staging-STOP/cleanup record consistency=PASS; CVEs=NOT RUN")
-print("Recovery frozen-input/capacity-STOP/schema-record/COPY-only/shell-syntax consistency=PASS; build/scan=NOT RUN")
+print("Historical recovery input/capacity-STOP/schema-record consistency=PASS; CVE scan NOT RUN — Owner explicitly omitted")
 
 helpers = runpy.run_path(str(ROOT / "tests/prepublish_inventory.py"))
 counts = {key: 0 for key in helpers["PATTERNS"]}
 history = subprocess.check_output(["git", "log", "-p", "origin/main", "--", "container", "charts", "tests", "README.md"], cwd=ROOT)
 helpers["check"](history, counts)
-files = ["LICENSE", "THIRD_PARTY_NOTICES.md", "README.md", "docs/publishing-preflight.md", "docs/source-bundle-plan.md", "docs/scanner-approval-proposal.md", "docs/task0004-grype-stop.md", "docs/task0004-grype-recovery.md", "tests/preflight_grype_recovery.py", "tests/grype-sandbox/Dockerfile", "tests/grype-sandbox/init.sh", "tests/scan_packaged_frr.py", "tests/prepublish_inventory.py", "tests/test_prepublish.py", "tests/classify_packaged_findings.py", "tests/prepare_source_manifest.py", "tests/collect_notice_texts.py", "tests/inspect_packaged_linkage.py", "tests/validate_cyclonedx_schema.py"]
+files = ["LICENSE", "THIRD_PARTY_NOTICES.md", "README.md", "docs/publishing-preflight.md", "docs/source-bundle-plan.md", "docs/scanner-approval-proposal.md", "docs/task0004-grype-stop.md", "docs/task0004-grype-recovery.md", "tests/prepublish_inventory.py", "tests/test_prepublish.py", "tests/classify_packaged_findings.py", "tests/prepare_source_manifest.py", "tests/collect_notice_texts.py", "tests/inspect_packaged_linkage.py", "tests/validate_cyclonedx_schema.py"]
 for path in [ROOT / f for f in files] + list(EVIDENCE.glob("task0004-*")) + list((ROOT / "licenses/third-party").glob("*.txt")):
     if path.name not in {"task0004-validation.txt", "task0004-continuation-validation.txt"}:
         helpers["check"](path.read_bytes(), counts)

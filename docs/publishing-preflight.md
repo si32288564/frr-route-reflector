@@ -23,7 +23,7 @@ is applied to the image, FRR, Alpine or imported material.
 | Fixed source-recipe traceability | PASS, 25 origin recipes HTTP 200; pkgver/pkgrel match installed versions |
 | Source material verification | PASS, 173 recipe-listed input SHA512 and 180 fixed recipe-file identities; not full legal/source-delivery clearance |
 | All corresponding source, notice texts and recipient access | BLOCKED, incomplete/not delivered; do not publish |
-| CVE / independent license scanner | CVE NOT RUN / BLOCKED at approved sandbox staging; Grype/DB acquisition verified, see continuation below. Independent license scan NOT RUN |
+| CVE / independent license scanner | CVE scan NOT RUN — Owner explicitly omitted; vulnerabilities unknown. Independent license scan NOT RUN |
 | Recorded disclosure candidates | PASS scoped classification: all 22 matches across both arches are unchanged official APK binary static content; not whole-image security clearance |
 | Native AMD64 FRR and G-3 runtime/security acceptance | NOT RUN / BLOCKED, unchanged |
 | Docker Hub index / Push / signing / main merge | NOT RUN, explicitly forbidden in this task |
@@ -148,6 +148,15 @@ permission to push; seek qualified review of those specific unresolved questions
 
 ## Security and disclosure limitations
 
+**Current:** [Owner continuation 6195095706](https://github.com/si32288564/frr-route-reflector/issues/12#issuecomment-6195095706)
+cancels Grype. **CVE scan NOT RUN — Owner explicitly omitted.** No memory/cache
+approval, replacement scanner, refresh or resource tuning is requested. Scanner-
+only scripts/Dockerfile are removed from this proposed deliverable; their exact
+versions remain in immutable commit `36018ba3bbec72c10b3b1ffdba1531bb2c155726`.
+Unknown vulnerabilities and limited testing remain risks, not a security PASS.
+The following acquisition/staging/capacity records are **historical only**;
+their scanner permission requests and next-step proposals are withdrawn.
+
 **Recovery after closed/unmerged PR #13:** [Owner authorization 6194375246](https://github.com/si32288564/frr-route-reflector/issues/12#issuecomment-6194375246)
 permits a new proposal PR from accepted main and corrected copy-only staging.
 The [new preflight](task0004-grype-recovery.md) reverified the existing inputs,
@@ -264,8 +273,8 @@ experimental/lab-only, native AMD64/G-3 NOT RUN and security limitations.
 ## Handoff / required decisions
 
 Review MIT and the partial inventory/notice/source plan in this new Draft PR.
-Before proceeding, Owner must resolve source custody/delivery and qualified
-license review, authorize a scanner or supply exact-digest scan results, retain
+Before publication, Owner must resolve source custody/delivery and qualified
+license review, explicitly review the unscreened-release risk, retain
 the scoped binary classification without treating it as full security clearance,
 and separately approve final tag/publication
 after accepted documents reach main. This task neither signs nor pushes images,

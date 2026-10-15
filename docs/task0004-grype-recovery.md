@@ -1,5 +1,11 @@
 # Task 0004 recovery — new proposal branch; DB capacity STOP
 
+**ARCHIVED / CANCELLED:** Issue #12 comments 6194976836 and 6195095706 cancel
+Grype. The memory/cache decision request below is withdrawn, not a current
+publication obligation. Scanner-only scripts were removed; exact historical
+versions remain at commit `36018ba3bbec72c10b3b1ffdba1531bb2c155726`.
+Current status: CVE scan NOT RUN — Owner explicitly omitted.
+
 Codexによる報告:
 
 2026-10-15 UTC. Authority: [Owner recovery authorization 6194375246](https://github.com/si32288564/frr-route-reflector/issues/12#issuecomment-6194375246).

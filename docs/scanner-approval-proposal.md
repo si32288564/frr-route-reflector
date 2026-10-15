@@ -1,5 +1,9 @@
 # One scoped scanner proposal — NOT acquired or executed
 
+**ARCHIVED / CANCELLED:** Owner omitted CVE scanning in Issue #12 comments
+6194976836 and 6195095706. All approval requests below are historical, not
+current obligations. No rerun, replacement scanner or resource change is planned.
+
 **Historical proposal at commit 5414be3.** Owner subsequently approved the
 bounded acquisition/verification in Issue #12 comment 6193027470. The
 [2026-10-15 execution continuation](task0004-grype-stop.md) records verified

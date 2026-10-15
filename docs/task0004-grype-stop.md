@@ -1,5 +1,9 @@
 # Task 0004 — approved Grype acquisition; isolated staging STOP
 
+**ARCHIVED / CANCELLED:** Issue #12 comments 6194976836 and 6195095706 cancel
+Grype. Next-decision requests below are withdrawn, retained only as history.
+Current status: CVE scan NOT RUN — Owner explicitly omitted.
+
 Codexによる報告:
 
 2026-10-15 UTC. Authority: [Owner approval 6193027470](https://github.com/si32288564/frr-route-reflector/issues/12#issuecomment-6193027470).

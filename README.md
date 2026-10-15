@@ -72,6 +72,10 @@ The project is developed publicly with GitHub as the Git source of truth. Archit
 
 ## Usage and licensing
 
+CVE scan NOT RUN — Owner explicitly omitted. Grype work is cancelled; unknown
+vulnerabilities remain a release risk. No alternative scan or security clearance
+is implied. Public binary release still requires separate review/authorization.
+
 Original project scripts, Helm templates, tests and original documentation are
 licensed under the [MIT License](LICENSE), with Owner-confirmed attribution
 `Copyright (c) 2026 si32288564`. This grant does not relicense third-party files,
