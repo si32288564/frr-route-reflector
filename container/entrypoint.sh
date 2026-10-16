@@ -19,10 +19,12 @@ test -r /config/frr.conf
 test -r /config/links
 test -r /config/loopback
 mapfile -t links < /config/links
-test "${#links[@]}" = 4
-test "$(ls /sys/class/net | sort | tr '\n' ' ')" = 'eth0 lo net1 net2 net3 net4 '
+case "${#links[@]}" in 1|4) ;; *) exit 1 ;; esac
+expected=(eth0 lo)
+for ((i=1; i<=${#links[@]}; i++)); do expected+=("net$i"); done
+test "$(ls /sys/class/net | sort | tr '\n' ' ')" = "$(printf '%s\n' "${expected[@]}" | sort | tr '\n' ' ')"
 ip -4 addr show dev eth0 | grep -q 'inet '
-for i in 0 1 2 3; do
+for ((i=0; i<${#links[@]}; i++)); do
   read -r iface address <<< "${links[$i]}"
   test "$iface" = "net$((i+1))"
   ip -d link show dev "$iface" | grep -q 'vlan protocol 802.1Q'

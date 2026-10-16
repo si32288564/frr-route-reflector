@@ -10,7 +10,7 @@ import sys
 
 import yaml
 
-IMAGE = "frr-task0001:implementation"
+IMAGE = "frr-home-dev:single-client" if "--home" in sys.argv else "frr-task0001:implementation"
 signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(SystemExit(124)))
 CAPS = ["CHOWN", "SETUID", "SETGID", "NET_ADMIN", "NET_RAW", "NET_BIND_SERVICE", "SYS_ADMIN"]
 
@@ -20,13 +20,15 @@ def run(*args, check=True):
                           stderr=subprocess.STDOUT, check=check, timeout=45)
 
 
+fixture = "examples/home-documentation-values.json" if "--home" in sys.argv else "examples/documentation-values.json"
 objects = list(yaml.safe_load_all(run("helm", "template", "rr", "charts/frr-route-reflector",
-                                    "-f", "examples/documentation-values.json").stdout))
+                                    "-f", fixture).stdout))
 cm = next(o for o in objects if o and o["kind"] == "ConfigMap")
+link_count = len(cm["data"]["links"].splitlines())
 name = "frr-implementation-" + uuid.uuid4().hex
 setup = "ip link show eth0 >/dev/null 2>&1 || ip link add eth0 type dummy; ip link set eth0 up; ip addr replace 203.0.113.2/24 dev eth0; "
 for i, line in enumerate(cm["data"]["links"].splitlines(), 1):
-    if "--missing-interface" in sys.argv and i == 4:
+    if "--missing-interface" in sys.argv and i == link_count:
         continue
     iface, addr = line.split()
     setup += f"ip link show {iface} >/dev/null 2>&1 || ip link add link eth0 name {iface} type vlan id {1100+i}; ip link set {iface} up; ip addr replace {addr} dev {iface}; "
@@ -86,7 +88,7 @@ try:
         assert "% Unknown" not in result.stdout
     running = run("docker", "exec", name, "vtysh", "-c", "show running-config").stdout
     assert "bgp no-rib" in running and "max-metric router-lsa administrative" in running
-    assert running.count("route-reflector-client") == 4
+    assert running.count("route-reflector-client") == link_count
     assert "next-hop-self" not in running
     assert run("docker", "exec", name, "cat", "/etc/frr/frr.conf").stdout == cm["data"]["frr.conf"]
     assert run("docker", "exec", name, "cat", "/proc/sys/net/ipv4/ip_forward").stdout.strip() == "0"

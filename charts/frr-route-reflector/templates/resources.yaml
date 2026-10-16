@@ -17,7 +17,8 @@ data:
 {{ $cfg | indent 4 }}
   loopback: {{ $rr.loopback | quote }}
   links: |
-{{- range $if := list "net1" "net2" "net3" "net4" }}
+{{- range $i := until (len $root.Values.clients) }}
+{{- $if := printf "net%d" (add1 $i) }}
 {{- range $rr.links }}{{ if eq .interface $if }}
     {{ .interface }} {{ .localAddress }}
 {{- end }}{{ end }}{{ end }}

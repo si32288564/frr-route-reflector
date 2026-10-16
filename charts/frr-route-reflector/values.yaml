@@ -1,4 +1,5 @@
 # Intentionally incomplete: bind the reviewed lab explicitly.
+topology: four-client
 securityProfile: ""
 image: ""
 cluster: {}

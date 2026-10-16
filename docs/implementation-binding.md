@@ -35,9 +35,12 @@ and `/lib/frr` are Pod-private emptyDirs with fsGroup 101; no host mounts.
 at every start. Live vtysh changes are not the configuration source.
 
 The entrypoint owns loopback installation. FRR only advertises that address
-passively. It requires IPv4 eth0 and exactly lo/eth0/net1..net4, four VLAN-type
-links with the expected /31 addresses, then installs the stable /32. The Chart
-restricts Pod secondary interface names to a permutation of net1..net4.
+passively. The default `four-client` topology requires IPv4 eth0 and exactly
+lo/eth0/net1..net4, four VLAN-type links with the expected /31 addresses, then
+installs the stable /32. The explicit `home-single-client` development topology
+requires only lo/eth0/net1 and one VLAN /31 per RR. Both reject phantom interfaces.
+See [the scoped home binding](tasks/0002-home-single-client.md); this does not
+relax the seven-cap profile, forwarding guard or RR-only configuration ownership.
 
 ## Forwarding, health and boundaries
 

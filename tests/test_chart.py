@@ -126,3 +126,55 @@ for label, v in cases:
     assert result.returncode != 0, f"unsafe input accepted: {label}"
     print(f"negative {label}=PASS")
 print(f"lint/schema/determinism/cardinality/mapping=PASS negatives={len(cases)}")
+
+# Explicit bounded home mode; never infer co-location from a shortened peer list.
+home = json.loads(pathlib.Path("examples/home-documentation-values.json").read_text())
+documentation_only(home)
+assert helm(home, lint=True).returncode == 0
+result = helm(home)
+assert result.returncode == 0, result.stderr
+assert result.stdout == helm(home).stdout
+home_objects = [o for o in yaml.safe_load_all(result.stdout) if o]
+assert collections.Counter(o["kind"] for o in home_objects) == {"Pod": 2, "ConfigMap": 2, "NetworkAttachmentDefinition": 2}
+for rr in home["routers"]:
+    name = "rr-" + rr["name"]
+    pod = next(o for o in home_objects if o["kind"] == "Pod" and o["metadata"]["name"] == name)
+    cm = next(o for o in home_objects if o["kind"] == "ConfigMap" and o["metadata"]["name"] == name)
+    assert pod["spec"]["nodeSelector"] == home["routers"][0]["nodeSelector"]
+    attachments = json.loads(pod["metadata"]["annotations"]["k8s.v1.cni.cncf.io/networks"])
+    assert len(attachments) == 1 and attachments[0]["interface"] == "net1"
+    nad = next(o for o in home_objects if o["kind"] == "NetworkAttachmentDefinition" and o["metadata"]["name"] == attachments[0]["name"])
+    config = json.loads(nad["spec"]["config"])
+    link = rr["links"][0]
+    assert config["master"] == rr["vlanMaster"] and config["vlanId"] == link["vlanId"]
+    assert config["ipam"]["addresses"] == [{"address": link["localAddress"]}]
+    assert cm["data"]["links"].splitlines() == [f'net1 {link["localAddress"]}']
+    frr = cm["data"]["frr.conf"]
+    assert frr.count("route-reflector-client") == 1 and "interface net1\n" in frr
+    assert all(f"net{i}" not in frr for i in [2, 3, 4])
+    assert "bgp no-rib" in frr and "max-metric router-lsa administrative" in frr
+    assert not any(x in frr for x in ["next-hop-self", "redistribute", "ipv6", "ospf6"])
+
+home_cases = []
+def home_bad(label, mutate):
+    v = copy.deepcopy(home)
+    mutate(v)
+    home_cases.append((label, v))
+
+home_bad("implicit-home", lambda v: v.pop("topology"))
+home_bad("home-four-mode", lambda v: v.update(topology="four-client"))
+home_bad("unknown-mode", lambda v: v.update(topology="anything"))
+home_bad("home-different-workers", lambda v: v["routers"][1].update(nodeSelector={"kubernetes.io/hostname": "worker-2.example.invalid"}))
+home_bad("home-no-client", lambda v: v["clients"].clear())
+home_bad("home-two-clients", lambda v: v["clients"].append(values["clients"][1]))
+home_bad("home-four-clients", lambda v: v.update(clients=values["clients"]))
+home_bad("home-phantom-interface", lambda v: v["routers"][0]["links"][0].update(interface="net2"))
+home_bad("home-extra-link", lambda v: v["routers"][0]["links"].append(values["routers"][0]["links"][1]))
+home_bad("home-unknown-client", lambda v: v["routers"][0]["links"][0].update(client="client2"))
+home_bad("home-duplicate-vlan", lambda v: v["routers"][1]["links"][0].update(vlanId=1101))
+home_bad("home-overlap", lambda v: v["routers"][1]["links"][0].update(localAddress="198.51.100.1/31"))
+home_bad("home-duplicate-loopback", lambda v: v["routers"][1].update(loopback=v["routers"][0]["loopback"]))
+for label, v in home_cases:
+    assert helm(v).returncode != 0, f"unsafe home input accepted: {label}"
+    print(f"negative {label}=PASS")
+print(f"home lint/determinism/2+2+2/mapping=PASS negatives={len(home_cases)}")

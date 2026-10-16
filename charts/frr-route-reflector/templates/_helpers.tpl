@@ -15,6 +15,7 @@
 {{- define "rr.validate" -}}
 {{- if gt (len .Release.Name) 30 }}{{ fail "release name maximum is 30" }}{{ end -}}
 {{- $v := .Values -}}
+{{- $home := eq $v.topology "home-single-client" -}}
 {{- if ne $v.securityProfile "lab-sysadmin" }}{{ fail "explicit lab-sysadmin profile required" }}{{ end -}}
 {{- $_ := include "rr.ipnum" $v.cluster.clusterId -}}
 {{- $_ := include "rr.unicast" $v.cluster.clusterId -}}
@@ -36,7 +37,7 @@
 {{- $_ := include "rr.unicast" $ip -}}
 {{- if hasKey $ips $ip }}{{ fail "duplicate loopback" }}{{ end -}}{{- $_ := set $ips $ip true -}}
 {{- $node := index .nodeSelector "kubernetes.io/hostname" -}}
-{{- if hasKey $nodes $node }}{{ fail "duplicate Worker binding" }}{{ end -}}{{- $_ := set $nodes $node true -}}
+{{- if and (not $home) (hasKey $nodes $node) }}{{ fail "duplicate Worker binding" }}{{ end -}}{{- $_ := set $nodes $node true -}}
 {{- $pairs := dict -}}{{- $ifs := dict -}}
 {{- range .links -}}
 {{- if or (not (hasKey $names .client)) (hasKey $pairs .client) }}{{ fail "unknown or duplicate client link" }}{{ end -}}{{- $_ := set $pairs .client true -}}
@@ -50,6 +51,7 @@
 {{- end -}}
 {{- end -}}
 {{- end -}}
+{{- if and $home (ne (len $nodes) 1) }}{{ fail "home topology requires one shared Worker" }}{{ end -}}
 {{- range $ip, $_ := $ips -}}{{- if hasKey $nets (toString (div (int64 (include "rr.ipnum" $ip)) 2)) }}{{ fail "loopback overlaps /31" }}{{ end -}}{{- end -}}
 {{- end -}}
 {{- define "rr.config" -}}
@@ -61,7 +63,7 @@ interface lo
  ip ospf area {{ .v.cluster.ospfArea }}
  ip ospf passive
 !
-{{ range sortAlpha (list "net1" "net2" "net3" "net4") }}interface {{ . }}
+{{ $interfaces := list }}{{ range .rr.links }}{{ $interfaces = append $interfaces .interface }}{{ end }}{{ range sortAlpha $interfaces }}interface {{ . }}
  ip ospf network point-to-point
  ip ospf area {{ $.v.cluster.ospfArea }}
 !

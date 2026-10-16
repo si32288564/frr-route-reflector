@@ -37,7 +37,7 @@
     },
     "clients": {
       "type": "array",
-      "minItems": 4,
+      "minItems": 1,
       "maxItems": 4,
       "items": {
         "type": "object",
@@ -99,7 +99,7 @@
           },
           "links": {
             "type": "array",
-            "minItems": 4,
+            "minItems": 1,
             "maxItems": 4,
             "items": {
               "type": "object",
@@ -149,6 +149,12 @@
           "links"
         ]
       }
+    },
+    "topology": {
+      "enum": [
+        "four-client",
+        "home-single-client"
+      ]
     }
   },
   "required": [
@@ -157,5 +163,62 @@
     "cluster",
     "clients",
     "routers"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "topology"
+        ],
+        "properties": {
+          "topology": {
+            "const": "home-single-client"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "clients": {
+            "minItems": 1,
+            "maxItems": 1
+          },
+          "routers": {
+            "items": {
+              "properties": {
+                "links": {
+                  "minItems": 1,
+                  "maxItems": 1,
+                  "items": {
+                    "properties": {
+                      "interface": {
+                        "const": "net1"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "clients": {
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "routers": {
+            "items": {
+              "properties": {
+                "links": {
+                  "minItems": 4,
+                  "maxItems": 4
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   ]
 }

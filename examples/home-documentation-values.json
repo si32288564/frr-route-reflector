@@ -1,0 +1,54 @@
+{
+  "securityProfile": "lab-sysadmin",
+  "image": "example.invalid/frr-route-reflector@sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "cluster": {
+    "bgpAsn": 64512,
+    "clusterId": "192.0.2.254",
+    "ospfArea": "0.0.0.0"
+  },
+  "clients": [
+    {
+      "name": "client1",
+      "loopback": "192.0.2.11/32"
+    }
+  ],
+  "routers": [
+    {
+      "name": "rr01",
+      "routerId": "192.0.2.1",
+      "loopback": "192.0.2.1/32",
+      "nodeSelector": {
+        "kubernetes.io/hostname": "worker-1.example.invalid"
+      },
+      "vlanMaster": "trunk0",
+      "links": [
+        {
+          "client": "client1",
+          "interface": "net1",
+          "vlanId": 1101,
+          "localAddress": "198.51.100.0/31",
+          "remoteAddress": "198.51.100.1"
+        }
+      ]
+    },
+    {
+      "name": "rr02",
+      "routerId": "192.0.2.2",
+      "loopback": "192.0.2.2/32",
+      "nodeSelector": {
+        "kubernetes.io/hostname": "worker-1.example.invalid"
+      },
+      "vlanMaster": "trunk0",
+      "links": [
+        {
+          "client": "client1",
+          "interface": "net1",
+          "vlanId": 1105,
+          "localAddress": "198.51.100.8/31",
+          "remoteAddress": "198.51.100.9"
+        }
+      ]
+    }
+  ],
+  "topology": "home-single-client"
+}
