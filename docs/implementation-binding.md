@@ -8,8 +8,12 @@
 Accepted sources: Implementation Contract, ADR 0010/0011 and PR #6 review
 5526023836. Helm values own all routing identities and mappings. Default values
 are deliberately incomplete; the one positive security profile must be selected.
-Unknown fields are rejected, including custom peers, forwarding policy and FRR
-text. Example values are documentation-only, not an approved deployment plan.
+Unknown fields are rejected, including arbitrary FRR text and forwarding policy.
+The default topology uses the fixed global Client list. The explicit `core`
+option accepts only structured per-RR `neighbors` under
+[ADR 0013](adr/0013-core-ospf-independent-ibgp-neighbors.md), independently of
+its one OSPF VLAN attachment. Example values are documentation-only, not an
+approved deployment plan.
 
 ## Runtime
 
@@ -40,9 +44,10 @@ and `/lib/frr` are Pod-private emptyDirs with fsGroup 101; no host mounts.
 at every start. Live vtysh changes are not the configuration source.
 
 The entrypoint owns loopback installation. FRR only advertises that address
-passively. It requires IPv4 eth0 and exactly lo/eth0/net1..net4, four VLAN-type
-links with the expected /31 addresses, then installs the stable /32. The Chart
-restricts Pod secondary interface names to a permutation of net1..net4.
+passively. It requires IPv4 eth0 and exactly the declared inventory: lo/eth0/net1
+in core mode, or lo/eth0/net1..net4 in default direct-client mode. Each secondary
+is VLAN-type with the expected /31 address. The entrypoint then installs the
+stable /32. Missing/extra interfaces or unsupported counts fail before daemons.
 
 ## Forwarding, health and boundaries
 
@@ -61,12 +66,16 @@ non-zombie processes; watchfrr independently monitors vty responsiveness.
 Health never requires all remote neighbors to be Established/Full.
 
 FRR's `bgp no-rib` is a **global configuration command** in this build, rendered
-before `router bgp`, not in its stanza. Four IPv4 clients share the cluster ASN,
+before `router bgp`, not in its stanza. IPv4 peers share the cluster ASN,
 RR loopback update-source and unchanged NEXT_HOP. Each Cluster ID is explicitly
 derived from that RR's loopback IPv4 without `/32`, not from its Router ID;
 neither shared `cluster.clusterId` nor per-RR `clusterId` is an accepted input.
 OSPF is
-P2P on secondary links with passive loopback and permanent max-metric.
+P2P on secondary links with passive loopback and permanent max-metric. Core
+mode OSPF runs only on net1 toward core. Its IPv4 iBGP peers may be numerous;
+`route-reflector-client` is rendered only for entries explicitly marked true.
+The opposite RR, if explicitly listed, must be a normal non-Client peer. VLANs
+are not created for BGP peers. Default mode retains four direct Client links.
 
 Private Worker/namespace binding, Multus/NAD provisioning, admission and a full
 secondary chain are Owner-owned and unmodified. Chart checksum is audit metadata,

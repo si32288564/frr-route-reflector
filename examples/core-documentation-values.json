@@ -1,0 +1,90 @@
+{
+  "securityProfile": "lab-sysadmin",
+  "image": "example.invalid/frr-route-reflector@sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "cluster": {
+    "bgpAsn": 64512,
+    "ospfArea": "0.0.0.0"
+  },
+  "clients": [],
+  "routers": [
+    {
+      "name": "rr01",
+      "routerId": "192.0.2.1",
+      "loopback": "192.0.2.1/32",
+      "nodeSelector": {
+        "kubernetes.io/hostname": "worker-1.example.invalid"
+      },
+      "vlanMaster": "trunk0",
+      "links": [
+        {
+          "interface": "net1",
+          "vlanId": 1101,
+          "localAddress": "198.51.100.0/31",
+          "remoteAddress": "198.51.100.1"
+        }
+      ],
+      "neighbors": [
+        {
+          "address": "192.0.2.11",
+          "routeReflectorClient": true
+        },
+        {
+          "address": "192.0.2.12",
+          "routeReflectorClient": true
+        },
+        {
+          "address": "192.0.2.13",
+          "routeReflectorClient": true
+        },
+        {
+          "address": "192.0.2.14",
+          "routeReflectorClient": true
+        },
+        {
+          "address": "192.0.2.2",
+          "routeReflectorClient": false
+        }
+      ]
+    },
+    {
+      "name": "rr02",
+      "routerId": "192.0.2.2",
+      "loopback": "192.0.2.2/32",
+      "nodeSelector": {
+        "kubernetes.io/hostname": "worker-2.example.invalid"
+      },
+      "vlanMaster": "trunk0",
+      "links": [
+        {
+          "interface": "net1",
+          "vlanId": 1105,
+          "localAddress": "198.51.100.8/31",
+          "remoteAddress": "198.51.100.9"
+        }
+      ],
+      "neighbors": [
+        {
+          "address": "192.0.2.11",
+          "routeReflectorClient": true
+        },
+        {
+          "address": "192.0.2.12",
+          "routeReflectorClient": true
+        },
+        {
+          "address": "192.0.2.13",
+          "routeReflectorClient": true
+        },
+        {
+          "address": "192.0.2.14",
+          "routeReflectorClient": true
+        },
+        {
+          "address": "192.0.2.1",
+          "routeReflectorClient": false
+        }
+      ]
+    }
+  ],
+  "topology": "core"
+}

@@ -74,3 +74,14 @@ Actual OSPF Full, BGP Established, reflection/attributes, FIB non-installation,
 negative packet transit, failure/recovery remain separate measured acceptance.
 A single RR Client is not proof of reflection to another Client. Keep unexecuted
 runtime/packet tests NOT RUN; do not equate render or image build with G-3 PASS.
+
+## Implementation evidence
+
+[2026-11-24 measured results](../evidence/core-neighbors-20261124.txt) record
+71 rejected-input cases, role/placement/peer-count rendering, byte-identical
+default regression, 12 actual Bash inventory-gate unit cases, ARM64 build and
+FRR syntax-only parsing of both modes. Both ARM64 and AMD64 are required build
+targets. The attempted AMD64 build failed at `/bin/sh` with `exec format error`
+on the ARM64-only backend; AMD64 is **BLOCKED**, not qualified by the ARM64 result.
+No host-wide emulator registration was performed. Live routing, daemon lifecycle,
+Kubernetes and packet acceptance remain **NOT RUN**.

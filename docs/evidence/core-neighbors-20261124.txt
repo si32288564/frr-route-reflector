@@ -1,0 +1,136 @@
+Core OSPF / independent iBGP neighbors — 2026-11-24 JST
+Design: ADR 0013, design commit 44919da.
+Existing development host: aarch64, Docker 29.1.3, Helm v3.22.1+gd6c1a0e,
+Python 3.14.4. No company/home Kubernetes cluster accessed.
+
+STATIC PASS
+Command: python3 tests/test_core_chart.py
+(import executes original test_chart.py regression first)
+Command: python3 tests/test_entrypoint_inventory.py
+File-transfer extended-attribute warnings omitted; measured stdout:
+loopback-derived Cluster ID / Router ID independence / per-RR isolation=PASS
+negative missing-profile=PASS
+negative bad-profile=PASS
+negative too-few-RRs=PASS
+negative too-many-RRs=PASS
+negative too-few-clients=PASS
+negative too-many-clients=PASS
+negative duplicate-RR=PASS
+negative invalid-RR-name=PASS
+negative duplicate-client=PASS
+negative duplicate-routerid=PASS
+negative duplicate-loopback=PASS
+negative client-RR-collision=PASS
+negative duplicate-worker=PASS
+negative missing-link=PASS
+negative duplicate-pair=PASS
+negative unknown-client=PASS
+negative duplicate-vlan=PASS
+negative zero-vlan=PASS
+negative high-vlan=PASS
+negative duplicate-if=PASS
+negative primary-if=PASS
+negative wrong-mask=PASS
+negative invalid-octet=PASS
+negative overlapping-network=PASS
+negative loopback-network-collision=PASS
+negative wrong-remote=PASS
+negative multicast=PASS
+negative per-RR-clusterId=PASS
+negative per-RR-matching-clusterId=PASS
+negative legacy-shared-clusterId=PASS
+negative legacy-matching-clusterId=PASS
+negative missing-loopback=PASS
+negative invalid-loopback=PASS
+negative non32-loopback=PASS
+negative multicast-loopback=PASS
+negative forwarding-policy=PASS
+negative extra-peer=PASS
+negative next-hop-policy=PASS
+negative arbitrary-FRR=PASS
+negative floating-image=PASS
+lint/schema/determinism/cardinality/mapping=PASS negatives=40
+negative core-no-opt-in=PASS
+negative core-unknown-topology=PASS
+negative core-mixed-global-clients=PASS
+negative core-missing-peers=PASS
+negative core-empty-peers=PASS
+negative core-duplicate-peer=PASS
+negative core-self-peer=PASS
+negative core-RR-is-client=PASS
+negative core-missing-role=PASS
+negative core-string-role=PASS
+negative core-no-RR-client=PASS
+negative core-peer-ASN-override=PASS
+negative core-peer-raw-FRR=PASS
+negative core-invalid-peer=PASS
+negative core-multicast-peer=PASS
+negative core-masked-peer=PASS
+negative core-peer-link-overlap=PASS
+negative core-missing-link=PASS
+negative core-extra-link=PASS
+negative core-wrong-interface=PASS
+negative core-mixed-link-client=PASS
+negative core-missing-core-address=PASS
+negative core-wrong-core-address=PASS
+negative core-same-core-address=PASS
+negative core-duplicate-VLAN=PASS
+negative core-duplicate-subnet=PASS
+negative core-duplicate-loopback=PASS
+negative core-shared-ClusterID=PASS
+negative core-implicit-colocation=PASS
+negative core-single-worker-mismatch=PASS
+negative core-unknown-placement=PASS
+Core lint/determinism/2+2+2/peer roles/1,2,5,10 peers/placement/isolation=PASS negatives=31
+Actual entrypoint inventory gate unit cases=PASS count=12
+
+Legacy render compared against main ad07161: byte-identical PASS.
+SHA256 169a4b075100d372b772949a38b6f3f5a91d64f29d0cea879ce031ad488c4444
+Local Bash syntax, Python compilation, diff whitespace and document links PASS.
+
+ARM64 BUILD PASS
+Initial sudo docker build waited in APK acquisition without inherited proxy;
+canceled explicitly (exit130, context canceled). Not reported as success.
+Retry used existing proxy variables, Docker predefined build args only,
+180s external timeout. No Dockerfile ARG/ENV/daemon proxy modification.
+Pinned Alpine/FRR/tini unchanged. Build completed; 35 packages.
+Manifest sha256:658c23d5f2a056a9c8253a8d9b2cfb07e8c5ceecb975b5e5038c8cd428fd4989
+Config sha256:c5436e7db2d77cc9d9d9fb8e1572bcf55d4655dee43fd72c175faf4dbe395f31
+Local Docker index/image inspect:
+{"image_id": "sha256:8ca0dd27728e74099635a72f69f2ee29b9449cb9e408f081c66273d4af9ba459", "architecture": "arm64", "repo_digests": ["frr-core@sha256:8ca0dd27728e74099635a72f69f2ee29b9449cb9e408f081c66273d4af9ba459"], "bytes": 13623283, "proxy_env_or_exact_proxy_value_in_history": false}
+This local index includes build attestation, NOT a published multiarch index.
+No AMD64 artifact or public release is implied.
+Limited proxy check: no proxy env keys in image config and no exact existing
+proxy value in docker history; not an exhaustive all-layer security audit.
+
+ARM64 FRR CONFIG SYNTAX PASS (not daemon startup)
+Each generated frr.conf was passed on stdin to:
+sudo docker run --rm -i --name <unique-task-name> --network none --cap-drop ALL
+ --security-opt no-new-privileges --memory 128m --pids-limit 64
+ --entrypoint /bin/sh frr-core:implementation
+ -c 'exec vtysh -C -f /dev/stdin'
+No host mounts, extra network, privilege, routing daemons or live peers.
+Each process/container externally bounded, finally removed, absence checked.
+{"fixture": "examples/documentation-values.json", "RR": "rr-rr01", "exit": 0, "stdout": "", "stderr": ""}
+{"fixture": "examples/documentation-values.json", "RR": "rr-rr02", "exit": 0, "stdout": "", "stderr": ""}
+{"fixture": "examples/core-documentation-values.json", "RR": "rr-rr01", "exit": 0, "stdout": "", "stderr": ""}
+{"fixture": "examples/core-documentation-values.json", "RR": "rr-rr02", "exit": 0, "stdout": "", "stderr": ""}
+FRR syntax-only / no daemons / no network / all four configs / cleanup: PASS
+
+AMD64 BUILD FAIL / BACKEND BLOCKED
+Owner requires AMD64 (company environment); ARM64 alone is NOT completion.
+Same existing builder, proxy args and 180s timeout, with --platform linux/amd64:
+base image pulled, RUN failed:
+  exec /bin/sh: exec format error
+  process did not complete successfully: exit code: 255
+Docker build exit1. Builder reports linux/arm64 only; x86_64 binfmt/QEMU entry
+not found. No privileged installer, binfmt registration, new builder/VM,
+package install or company environment access performed. Host-wide emulation
+setup needs a bounded Owner-authorized change; do not weaken the Dockerfile or
+claim AMD64/native validation from the ARM64 result.
+
+NOT RUN
+RR daemon startup/OSPF adjacency/BGP sessions/reflection/packet nontransit,
+Kubernetes, restart/recreation/CNI cleanup and migration/rollback.
+AMD64 syntax/emulated runtime/native runtime: NOT RUN.
+No image push, public registry/Release, scanner or live network change.

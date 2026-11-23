@@ -1,4 +1,6 @@
 # Intentionally incomplete: bind the reviewed lab explicitly.
+topology: direct-clients
+placement: distinct-workers
 securityProfile: ""
 image: ""
 cluster: {}

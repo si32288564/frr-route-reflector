@@ -1,5 +1,12 @@
 #!/bin/bash
 set -euo pipefail
+validate_interface_inventory() {
+  local count=$1 actual=$2 i
+  case "$count" in 1|4) ;; *) return 1 ;; esac
+  local expected=(eth0 lo)
+  for ((i=1; i<=count; i++)); do expected+=("net$i"); done
+  test "$actual" = "$(printf '%s\n' "${expected[@]}" | sort | tr '\n' ' ')"
+}
 stop() {
   trap - EXIT TERM INT
   rm -f /run/frr/boot-complete
@@ -19,10 +26,9 @@ test -r /config/frr.conf
 test -r /config/links
 test -r /config/loopback
 mapfile -t links < /config/links
-test "${#links[@]}" = 4
-test "$(ls /sys/class/net | sort | tr '\n' ' ')" = 'eth0 lo net1 net2 net3 net4 '
+validate_interface_inventory "${#links[@]}" "$(ls /sys/class/net | sort | tr '\n' ' ')"
 ip -4 addr show dev eth0 | grep -q 'inet '
-for i in 0 1 2 3; do
+for ((i=0; i<${#links[@]}; i++)); do
   read -r iface address <<< "${links[$i]}"
   test "$iface" = "net$((i+1))"
   ip -d link show dev "$iface" | grep -q 'vlan protocol 802.1Q'

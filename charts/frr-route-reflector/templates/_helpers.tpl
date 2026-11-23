@@ -15,9 +15,12 @@
 {{- define "rr.validate" -}}
 {{- if gt (len .Release.Name) 30 }}{{ fail "release name maximum is 30" }}{{ end -}}
 {{- $v := .Values -}}
+{{- $core := eq $v.topology "core" -}}
 {{- if ne $v.securityProfile "lab-sysadmin" }}{{ fail "explicit lab-sysadmin profile required" }}{{ end -}}
 {{- $_ := include "rr.ipnum" $v.cluster.ospfArea -}}
 {{- $names := dict -}}{{- $ips := dict -}}{{- $ids := dict -}}{{- $nodes := dict -}}{{- $vlans := dict -}}{{- $nets := dict -}}
+{{- $rrloops := dict -}}{{- $peerips := dict -}}
+{{- range $v.routers -}}{{- $_ := set $rrloops (trimSuffix "/32" .loopback) true -}}{{- end -}}
 {{- range $v.clients -}}
 {{- if hasKey $names .name }}{{ fail "duplicate client name" }}{{ end -}}{{- $_ := set $names .name true -}}
 {{- $ip := trimSuffix "/32" .loopback -}}{{- $_ := include "rr.ipnum" $ip -}}
@@ -34,10 +37,13 @@
 {{- $_ := include "rr.unicast" $ip -}}
 {{- if hasKey $ips $ip }}{{ fail "duplicate loopback" }}{{ end -}}{{- $_ := set $ips $ip true -}}
 {{- $node := index .nodeSelector "kubernetes.io/hostname" -}}
-{{- if hasKey $nodes $node }}{{ fail "duplicate Worker binding" }}{{ end -}}{{- $_ := set $nodes $node true -}}
+{{- if and (eq $v.placement "distinct-workers") (hasKey $nodes $node) }}{{ fail "duplicate Worker binding" }}{{ end -}}{{- $_ := set $nodes $node true -}}
+{{- $rrip := $ip -}}
 {{- $pairs := dict -}}{{- $ifs := dict -}}
 {{- range .links -}}
+{{- if not $core -}}
 {{- if or (not (hasKey $names .client)) (hasKey $pairs .client) }}{{ fail "unknown or duplicate client link" }}{{ end -}}{{- $_ := set $pairs .client true -}}
+{{- end -}}
 {{- if hasKey $ifs .interface }}{{ fail "duplicate interface" }}{{ end -}}{{- $_ := set $ifs .interface true -}}
 {{- $vlan := toString .vlanId -}}{{- if hasKey $vlans $vlan }}{{ fail "duplicate VLAN" }}{{ end -}}{{- $_ := set $vlans $vlan true -}}
 {{- $n := int64 (include "rr.ipnum" (trimSuffix "/31" .localAddress)) -}}
@@ -47,10 +53,31 @@
 {{- if or (eq $n $remote) (ne (div $n 2) (div $remote 2)) }}{{ fail "remote endpoint must be opposite /31 member" }}{{ end -}}
 {{- end -}}
 {{- end -}}
+{{- if $core -}}
+{{- $peers := dict -}}
+{{- range .neighbors -}}
+{{- $_ := include "rr.unicast" .address -}}
+{{- if eq .address $rrip }}{{ fail "self iBGP neighbor" }}{{ end -}}
+{{- if hasKey $peers .address }}{{ fail "duplicate iBGP neighbor" }}{{ end -}}
+{{- if and (hasKey $rrloops .address) .routeReflectorClient }}{{ fail "RR neighbor must be a non-Client peer" }}{{ end -}}
+{{- $_ := set $peers .address true -}}{{- $_ := set $peerips .address true -}}
 {{- end -}}
+{{- end -}}
+{{- end -}}
+{{- if and (eq $v.placement "single-worker") (ne (len $nodes) 1) }}{{ fail "single-worker placement requires identical Worker selectors" }}{{ end -}}
 {{- range $ip, $_ := $ips -}}{{- if hasKey $nets (toString (div (int64 (include "rr.ipnum" $ip)) 2)) }}{{ fail "loopback overlaps /31" }}{{ end -}}{{- end -}}
+{{- range $ip, $_ := $peerips -}}{{- if hasKey $nets (toString (div (int64 (include "rr.ipnum" $ip)) 2)) }}{{ fail "BGP loopback neighbor overlaps /31" }}{{ end -}}{{- end -}}
+{{- end -}}
+{{- define "rr.peers" -}}
+{{- if eq .v.topology "core" -}}{{ toJson .rr.neighbors }}
+{{- else -}}
+{{- $peers := list -}}
+{{- range .v.clients -}}{{- $peers = append $peers (dict "address" (trimSuffix "/32" .loopback) "routeReflectorClient" true) -}}{{- end -}}
+{{ toJson $peers }}
+{{- end -}}
 {{- end -}}
 {{- define "rr.config" -}}
+{{- $peers := include "rr.peers" . | fromJsonArray -}}
 frr defaults traditional
 hostname {{ .rr.name }}
 service integrated-vtysh-config
@@ -59,7 +86,7 @@ interface lo
  ip ospf area {{ .v.cluster.ospfArea }}
  ip ospf passive
 !
-{{ range sortAlpha (list "net1" "net2" "net3" "net4") }}interface {{ . }}
+{{ $interfaces := list }}{{ range .rr.links }}{{ $interfaces = append $interfaces .interface }}{{ end }}{{ range sortAlpha $interfaces }}interface {{ . }}
  ip ospf network point-to-point
  ip ospf area {{ $.v.cluster.ospfArea }}
 !
@@ -72,11 +99,11 @@ router bgp {{ .v.cluster.bgpAsn }}
  bgp router-id {{ .rr.routerId }}
  bgp cluster-id {{ trimSuffix "/32" .rr.loopback }}
  no bgp default ipv4-unicast
-{{ range .v.clients }} neighbor {{ trimSuffix "/32" .loopback }} remote-as {{ $.v.cluster.bgpAsn }}
- neighbor {{ trimSuffix "/32" .loopback }} update-source {{ trimSuffix "/32" $.rr.loopback }}
+{{ range $peers }} neighbor {{ .address }} remote-as {{ $.v.cluster.bgpAsn }}
+ neighbor {{ .address }} update-source {{ trimSuffix "/32" $.rr.loopback }}
 {{ end }} address-family ipv4 unicast
-{{ range .v.clients }}  neighbor {{ trimSuffix "/32" .loopback }} activate
-  neighbor {{ trimSuffix "/32" .loopback }} route-reflector-client
-{{ end }} exit-address-family
+{{ range $peers }}  neighbor {{ .address }} activate
+{{ if .routeReflectorClient }}  neighbor {{ .address }} route-reflector-client
+{{ end }}{{ end }} exit-address-family
 !
 {{- end -}}

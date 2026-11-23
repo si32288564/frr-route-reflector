@@ -41,6 +41,61 @@ See [implementation binding](docs/implementation-binding.md),
 
 ## Scope
 
+### Core OSPF with multiple iBGP peers
+
+Select `topology: core` for one `net1` /31 VLAN link from each RR to core
+(two Pods, two ConfigMaps, two NADs). OSPF is P2P on that link and advertises the
+RR loopback passively; core must provide reachability to/from remote loopbacks.
+Each router's independent `neighbors` list may contain multiple IPv4 iBGP peers:
+
+```yaml
+# Excerpt under routers[]; complete documentation fixture linked below.
+neighbors:
+  - address: 192.0.2.11
+    routeReflectorClient: true
+  - address: 192.0.2.12
+    routeReflectorClient: true
+  - address: 192.0.2.2
+    routeReflectorClient: false  # Optional opposite RR, normal iBGP peer.
+```
+
+Addresses above are documentation-only. All remote-as values use
+`cluster.bgpAsn` and update-source is the local RR loopback. `clients` must be
+empty in this mode; no duplicate peer source, per-peer eBGP ASN or raw FRR text.
+At least one RR Client is required; duplicate/self/RR-as-Client peers are rejected.
+Peer count does not change the one core attachment or its OSPF configuration.
+Use [the complete core fixture](examples/core-documentation-values.json) as a
+shape example, **not live IPAM**. Default `placement: distinct-workers` preserves
+fixed separate Workers. Explicit `placement: single-worker` is available only
+for core-mode home development, not Worker redundancy.
+
+Without this opt-in the original four-direct-Client topology is unchanged.
+Core mode requires the updated one-interface-capable entrypoint image; old
+four-interface images will refuse startup. Neither the Chart nor image configures
+core/Client devices or host networking. See [ADR 0013](docs/adr/0013-core-ospf-independent-ibgp-neighbors.md).
+
+On a proxy-only build host, pass its **existing** proxy environment through
+Docker's predefined build arguments; do not add proxy URLs/credentials to the
+Dockerfile, values or Git. For example, when Docker requires sudo:
+
+```sh
+sudo --preserve-env=HTTP_PROXY,HTTPS_PROXY,NO_PROXY,http_proxy,https_proxy,no_proxy \
+  docker build --build-arg HTTP_PROXY --build-arg HTTPS_PROXY --build-arg NO_PROXY \
+  --build-arg http_proxy --build-arg https_proxy --build-arg no_proxy \
+  -t frr-core:implementation container
+```
+
+Both ARM64 and AMD64 are intended targets. An ARM64 build or syntax check is not
+AMD64 qualification. Cross-building the package-install stage on an ARM64 host
+requires a working AMD64 execution backend/emulator; none is silently installed.
+
+```sh
+python3 tests/test_core_chart.py
+python3 tests/test_entrypoint_inventory.py
+helm lint charts/frr-route-reflector -f examples/core-documentation-values.json
+helm template rr charts/frr-route-reflector -f examples/core-documentation-values.json
+```
+
 The initial target is an IPv4-only Route Reflector implemented with FRRouting, deployed as Kubernetes Pods and connected to external networks through Multus. Detailed, accepted requirements and architecture will be maintained under `docs/`; implementation must not infer architecture from this introduction.
 
 ## Design authorities
