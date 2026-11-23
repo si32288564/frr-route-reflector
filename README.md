@@ -10,6 +10,12 @@ Kubernetes deployment, routing and packet/lifecycle acceptance remain NOT RUN.
 
 ## Offline build and checks
 
+Owner-approved ready-filled lab values are available at
+[deploy/lab-values.yaml](deploy/lab-values.yaml), with
+[lab deployment instructions](deploy/README.md). This specific snapshot was
+approved for public disclosure; it does not authorize publication of other
+private configuration or logs. Live deployment acceptance remains NOT RUN.
+
 Run the container build/tests on the authorized Linux container-development host.
 Helm 3, Python 3 and PyYAML are required for tests; they are not runtime dependencies.
 

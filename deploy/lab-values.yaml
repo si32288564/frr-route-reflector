@@ -1,0 +1,49 @@
+# Owner-approved public lab configuration, 2026-11-24 JST.
+# Owner confirmed this snapshot contains no confidential information.
+# This approval covers this values file, not private logs or credentials.
+# Namespace/release: frr-route-reflector / rr (Helm CLI inputs).
+topology: core
+placement: distinct-workers
+securityProfile: lab-sysadmin
+image: docker.io/si60545107/frr-route-reflector@sha256:0a2544a69948f7dcb52218f0d8d335c1fa8dcda4d3843c1a09c5e7cc30a2abcd
+cluster:
+  bgpAsn: 64999
+  ospfArea: "0.0.0.0"
+clients: []
+routers:
+  - name: rr01
+    routerId: 10.240.0.1
+    loopback: 10.240.0.1/32
+    nodeSelector:
+      kubernetes.io/hostname: cnflab-k8s-worker-01
+    vlanMaster: eno3
+    links:
+      - interface: net1
+        vlanId: 501
+        localAddress: 10.240.1.0/31
+        remoteAddress: 10.240.1.1
+    neighbors:
+      - {address: 10.240.0.11, routeReflectorClient: true}
+      - {address: 10.240.0.21, routeReflectorClient: true}
+      - {address: 10.240.0.22, routeReflectorClient: true}
+      - {address: 10.240.0.23, routeReflectorClient: true}
+      - {address: 10.240.0.24, routeReflectorClient: true}
+      - {address: 10.240.0.2, routeReflectorClient: false}
+  - name: rr02
+    routerId: 10.240.0.2
+    loopback: 10.240.0.2/32
+    nodeSelector:
+      kubernetes.io/hostname: cnflab-k8s-worker-02
+    vlanMaster: eno3
+    links:
+      - interface: net1
+        vlanId: 502
+        localAddress: 10.240.1.2/31
+        remoteAddress: 10.240.1.3
+    neighbors:
+      - {address: 10.240.0.11, routeReflectorClient: true}
+      - {address: 10.240.0.21, routeReflectorClient: true}
+      - {address: 10.240.0.22, routeReflectorClient: true}
+      - {address: 10.240.0.23, routeReflectorClient: true}
+      - {address: 10.240.0.24, routeReflectorClient: true}
+      - {address: 10.240.0.1, routeReflectorClient: false}
