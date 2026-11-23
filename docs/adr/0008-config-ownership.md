@@ -11,7 +11,7 @@ The RR Helm release must render two Pods, eight Multus/VLAN NADs and per-RR FRR 
 1. **Helm values are authoritative for all RR routing identities, peers and interfaces.** Templates deterministically derive two per-RR integrated FRR configurations, eight NADs and matching Pod annotations.
 2. Use the FRR **integrated `frr.conf`** convention rather than maintaining parallel daemon-specific configuration sources. Only required FRR services run: zebra, ospfd, bgpd and the distribution's essential supervisor/configuration helpers.
 3. ConfigMaps are the immutable *desired-configuration snapshot*. Runtime `frr.conf` may be copied to a Pod-private writable volume on start if FRR requires it; edits with `vtysh write` must not be accepted as the configuration source and are overwritten on replacement.
-4. The same config sources configure unique RR loopbacks, OSPF P2P interfaces and shared BGP Cluster ID; no separate handwritten peer list is supplied through another template.
+4. The same config sources configure unique RR loopbacks and OSPF P2P interfaces; each BGP Cluster ID is derived from that RR's loopback under [ADR 0012](0012-cluster-id-from-rr-loopback.md). No separate handwritten Cluster ID or peer list is supplied through another template.
 5. Any effective configuration change is a **reviewed new desired snapshot** requiring explicit, controlled Pod restart/replacement. A Helm-rendered annotation or changing a ConfigMap is **not** a built-in live reload mechanism.
 6. The RR Chart never creates or modifies external Clients, Tests or the Client Transit network.
 

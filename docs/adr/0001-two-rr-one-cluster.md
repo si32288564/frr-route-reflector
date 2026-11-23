@@ -1,5 +1,10 @@
 # ADR 0001 — Two RRs, one Route Reflector Cluster ID
 
+> Historical decision retained. [ADR 0012](0012-cluster-id-from-rr-loopback.md)
+> replaces **only** the shared-Cluster-ID choice with derivation from each RR's
+> own loopback under the Owner's 2026-11-24 decision. The original evidence and
+> no-RR-to-RR-peering boundary are unchanged.
+
 - **Authority status:** Proposed on an unmerged PR branch; accepted only after Owner review and merge to `main`.
 - **Context:** Four RR clients must learn each other's distinct IPv4 prefixes. Two RR instances provide redundant reflection.
 - **Decision:** Configure two independent RRs, each peered to all four clients, with the **same Cluster ID**, separate router identities, **no RR-to-RR iBGP**, and **no RR-specific interconnect VLAN**.

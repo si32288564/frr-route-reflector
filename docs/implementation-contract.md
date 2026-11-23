@@ -23,8 +23,8 @@ A minimal semantic model is:
 
 | Object | Required properties | Cardinality |
 |---|---|---|
-| cluster | IPv4 iBGP ASN, Cluster ID, OSPF area | 1 |
-| RR | stable name, Router ID, loopback /32, Node selector, physical master, image selection | 2, distinct |
+| cluster | IPv4 iBGP ASN, OSPF area; no independent Cluster ID input | 1 |
+| RR | stable name, Router ID, loopback /32 (source of derived Cluster ID), Node selector, physical master, image selection | 2, distinct |
 | Client | stable name, BGP neighbor loopback /32, iBGP ASN inherited from cluster | 4, distinct |
 | RR↔Client attachment | RR ref, Client ref, Pod interface name, VLAN ID, local IPv4 /31, OSPF area ref | 8, complete 2×4 product |
 | eBGP/Test/Client Transit | not RR Chart resources; documented external requirements | outside Helm SSOT |
@@ -34,7 +34,6 @@ Example **shape** only, not an accepted lab addressing plan:
 ```yaml
 cluster:
   bgpAsn: 64512
-  clusterId: 192.0.2.254
   ospfArea: 0.0.0.0
 
 clients:
@@ -65,7 +64,8 @@ Required validation:
 - Exactly one RR↔Client link per pair, no missing or duplicated pair.
 - For each Worker, no duplicate `(physical master, VLAN ID)`; in this initial lab the total 8 links are distinct VLAN segments.
 - Unique Pod-facing secondary interface names per RR, no collision with `eth0` or `lo`; all interfaces have syntactically valid names and non-overlapping IPv4 /31 links.
-- /32 loopback addresses do not collide; RR Router IDs distinct; Cluster ID shared; no host-network routing identifiers tied to ephemeral Calico primary Pod IP.
+- /32 loopback addresses do not collide; RR Router IDs are distinct; each Cluster ID equals that RR's loopback IPv4 without `/32`. No host-network routing identifiers are tied to ephemeral Calico primary Pod IP.
+- Reject obsolete `cluster.clusterId` and independently supplied per-RR `clusterId` values, even if they happen to match a loopback. Do not silently ignore old shared-ID input. Loopback is the sole Cluster ID source; migration is explicit removal of the old input, not an override/compatibility switch.
 - VLAN IDs in 1–4094, /31 addresses must actually be /31, and the external client endpoint address must be the opposite member of the pair. Exact remote endpoint values belong in lab binding; validate their declared relation when provided.
 - The FRR configuration and Multus annotations must refer to **the same** interface identifiers, VLANs and loopback/BGP identities; no arbitrary FRR commands inserted through values in v1.
 - Fail template/schema validation on invalid input. JSON Schema alone cannot prove every cross-object uniqueness constraint; use finite Helm template checks and/or deterministic offline rendering tests. Never silently drop an invalid link.
@@ -78,7 +78,7 @@ Required validation:
 - All daemon processes share **the RR Pod network namespace**. No per-peer child Pods and no node-wide FRR.
 - The container startup path must materialize the projected configuration in a **writable, Pod-private runtime directory** if FRR tooling requires mutable configuration/pid/socket files. A read-only ConfigMap file must not be overwritten. The canonical input remains Helm values; runtime files are derived.
 - Start only after Multus has attached four interfaces, the RR's stable loopback /32 is installed in its Pod namespace, and the **non-forwarding safety gate** has been established/verified. The exact loopback creation primitive (FRR `interface lo` or idempotent entrypoint setup) must be proven against the selected FRR and container runtime; only one component may own the address.
-- BGP IPv4-unicast peers use the four Client loopbacks and `update-source` bound to the RR loopback; each peer is `route-reflector-client`. Both RR ConfigMaps use the same Cluster ID. No RR↔RR neighbor, IPv6 BGP, OSPFv3, or test-prefix redistribution into OSPF.
+- BGP IPv4-unicast peers use the four Client loopbacks and `update-source` bound to the RR loopback; each peer is `route-reflector-client`. Each RR ConfigMap explicitly renders `bgp cluster-id` from its **own** loopback IPv4 (without `/32`), independently of its Router ID. No RR↔RR neighbor, IPv6 BGP, OSPFv3, or test-prefix redistribution into OSPF.
 - OSPFv2 is P2P on each of the four Multus link interfaces and advertises the RR loopback /32 as a **passive loopback**. Apply permanent `max-metric router-lsa administrative`. Maintain IGP reachability needed for BGP NEXT_HOP tracking.
 - Apply `bgp no-rib` to avoid pushing BGP service routes into Zebra/kernel FIB. Verify that it still supports client route reflection; if not, STOP with evidence. `bgp no-rib` is *not* the IP forwarding control.
 

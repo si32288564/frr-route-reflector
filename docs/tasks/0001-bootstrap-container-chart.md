@@ -1,5 +1,10 @@
 # Codex task 0001 — Bootstrap container and Helm render
 
+> Historical Task 0001 instructions below retain their original shared-ID
+> requirement. The later Cluster ID policy change is proposed in
+> [ADR 0012](../adr/0012-cluster-id-from-rr-loopback.md); it is not an instruction
+> to rewrite old evidence or migrate code before design acceptance.
+
 > **Authority / state:** Task 0001 was authorized by merged PR #4 and Issue #5. Alpine 3.24 / FRR 10.6.1-r0 passed one authorized SYS_ADMIN-assisted startup diagnostic in Draft PR #6 (commit f7d36f6), **not** a Kubernetes or routing test. Implementation remains **BLOCKED pending an explicit Owner security decision** on proposed ADR 0011; only after its acceptance and merge may Codex adopt the lab-only SYS_ADMIN profile.  
 > **Work location:** Owner's local clone. **Push:** GitHub working branch, Pull Request for Chat + Owner review.  
 > **Architecture sources:** `docs/PROJECT_GOVERNANCE.md`, `docs/requirements.md`, `docs/architecture.md`, `docs/network-design.md`, `docs/acceptance-criteria.md`, `docs/implementation-contract.md`, ADR 0001–0010 (ADR 0010 becomes binding only after the design PR merges).

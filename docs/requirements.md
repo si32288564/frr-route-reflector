@@ -68,7 +68,7 @@ The following make explicit earlier decisions and, for R-041–R-043, further Ar
 
 | ID | Requirement |
 |---|---|
-| R-032 | Configure both RRs with the **same BGP Cluster ID**, but a **distinct BGP Router ID and loopback identity** per RR. |
+| R-032 | Each RR uses its **own loopback IPv4 address (without /32) as its BGP Cluster ID**. RR loopbacks and therefore Cluster IDs are distinct. BGP Router IDs remain explicit, distinct identities; Cluster ID is derived from the loopback, not from Router ID or a separately entered value. |
 | R-033 | Configure **no RR-to-RR iBGP session** and **no RR-specific interconnect VLAN** in this design. Cluster ID does not establish a cluster-control connection or state synchronization. |
 | R-034 | Each RR has **four distinct VLAN-backed /31 secondary interfaces** to the four clients, giving **eight RR-to-client VLANs/links total** across the two Workers. |
 | R-035 | Use the **VLAN CNI plugin through Multus**, without requiring a macvlan/ipvlan layer for the initial one-Pod-per-Worker topology. |
@@ -98,7 +98,7 @@ The following make explicit earlier decisions and, for R-041–R-043, further Ar
 | Topic | Pending decision or fact |
 |---|---|
 | Addressing | RR/Client/Test loopback addresses; link CIDRs; actual VLAN IDs; non-overlap policy. |
-| AS / BGP | Internal ASN, external peer ASNs, cluster ID value, route policies, maximum prefixes, authentication if required. |
+| AS / BGP | Internal ASN, external peer ASNs, route policies, maximum prefixes, authentication if required. Cluster ID is derived from each bound RR loopback under R-032, not independently assigned. |
 | OSPF | Single-area use on RR links and Client Transit is selected; RR max-metric policy is selected. Actual area ID, cost/metric values, link failure convergence and authentication remain to be bound. |
 | Client transit | **Resolved architecturally:** client-only shared IPv4 /29 VLAN, OSPF broadcast; data-plane loss is allowed on failure, but never fallback forwarding through RR. Actual VLAN ID/subnet remain unassigned. |
 | NEXT_HOP | **Resolved architecturally:** Client-side NEXT_HOP becomes that Client's loopback for Test-eBGP-learned routes advertised toward both RRs. Specific FRR command/version and route policy require implementation evidence. |

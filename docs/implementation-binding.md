@@ -1,5 +1,10 @@
 # Task 0001 implementation binding
 
+> This records the existing Task 0001 implementation. [ADR 0012](adr/0012-cluster-id-from-rr-loopback.md)
+> proposes a different Cluster ID policy; code migration is a subsequent step
+> after that design is accepted. The shared-ID implementation described below
+> is not evidence that the new per-loopback policy has been implemented/tested.
+
 Accepted sources: Implementation Contract, ADR 0010/0011 and PR #6 review
 5526023836. Helm values own all routing identities and mappings. Default values
 are deliberately incomplete; the one positive security profile must be selected.

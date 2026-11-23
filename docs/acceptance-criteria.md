@@ -21,7 +21,7 @@ A task that needs an unresolved architecture decision must **STOP** and return a
 
 | ID | Requirement coverage | Evidence / expected result |
 |---|---|---|
-| A-001 | R-001–R-009, R-032, R-033 | FRR config renders 2 RR identities, 1 shared Cluster ID, 4 RR clients per RR, IPv4 unicast, OSPFv2 and **no RR↔RR BGP peer** |
+| A-001 | R-001–R-009, R-032, R-033 | FRR config renders 2 RR identities and 2 distinct Cluster IDs, each equal to that RR's loopback IPv4 without `/32`; 4 RR clients per RR, IPv4 unicast, OSPFv2 and **no RR↔RR BGP peer** |
 | A-002 | R-020–R-025 | Helm renders exactly 2 bare `Pod` objects, each with deterministic distinct Worker assignment; no `Deployment`, `StatefulSet` or hidden RR rescheduling controller |
 | A-003 | R-013–R-019, R-031, R-034–R-035 | Helm renders 8 distinct NADs with VLAN CNI, 4 Multus references per Pod, static /31 link assignment and no conflicting interface mappings |
 | A-004 | R-038 | Given one canonical values input, NAD VLAN/IP/IF definitions and FRR interface references derive consistently; conflicting/invalid input is rejected where enforceable |
@@ -37,6 +37,14 @@ A task that needs an unresolved architecture decision must **STOP** and return a
 
 
 The code stage must include repeatable evidence such as `helm lint`, `helm template`, schema validation, rendered-object checks and FRR configuration validation. Exactly which command validates FRR must be demonstrated against the selected FRR version; do not invent PASS output.
+
+Cluster ID change acceptance ([ADR 0012](adr/0012-cluster-id-from-rr-loopback.md)):
+
+- Render exactly one explicit `bgp cluster-id` per RR, equal to that RR's loopback IPv4; the two IDs differ. A case with Router ID different from loopback must still use the loopback for Cluster ID.
+- Reject legacy shared `cluster.clusterId` and separately supplied per-RR `clusterId`; missing/invalid/duplicate loopbacks remain rejected. No mode silently restores a shared ID.
+- Changing one RR loopback changes only its derived Cluster ID and other declared loopback-dependent artifacts, not the other RR's configuration. Preserve deterministic generation, existing cardinalities, peer mapping and security/non-transit invariants. Apply the same derivation in any separately accepted topology option; this change does not itself accept a new topology.
+- Check generated configuration syntax in the selected FRR build when executed. At routing acceptance, record each RR's actual local Cluster ID and reflected CLUSTER_LIST/ORIGINATOR_ID, with unchanged NEXT_HOP and loop prevention. Static render cannot qualify these live results; one Client alone cannot prove reflection to another Client.
+- Historical shared-ID evidence remains historical and is not rewritten as evidence for the new policy. All new checks are NOT RUN until actually executed.
 
 ## 3. Integrated control-plane tests
 

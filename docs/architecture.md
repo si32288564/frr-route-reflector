@@ -13,7 +13,7 @@ The **RR Helm release** owns the RR Pods, RR-attached Multus NADs, and the RR co
 
 | Entity / set | Cardinality | Role / invariant |
 |---|---:|---|
-| RR CNF | 2 | `RR-01`, `RR-02`; independent route reflection with common Cluster ID |
+| RR CNF | 2 | `RR-01`, `RR-02`; independent route reflection with distinct Cluster IDs derived from their respective loopbacks |
 | Kubernetes Worker | 2 | One RR assigned to each Worker; no automatic cross-Worker relocation |
 | External RR client | 4 | Client 1–4; each has iBGP to both RRs |
 | Test peer | 4 | Test i ↔ Client i via a dedicated eBGP segment; no test-peer OSPF |
@@ -37,13 +37,13 @@ This cardinality is **about different object classes**. One VLAN is not necessar
 ### 3.2 BGP — control plane
 
 - Each RR runs IPv4-unicast iBGP with **all four** RR clients, addressed by stable loopbacks.
-- Both RRs share one **Cluster ID** but use distinct **Router IDs** and loopbacks.
+- Each RR's **Cluster ID** is its own stable loopback IPv4 address, with the `/32` suffix removed. Unique loopbacks imply distinct Cluster IDs. **Router IDs** remain separately configured and distinct; Cluster ID must not be derived from Router ID when it differs from the loopback.
 - Clients are configured as RR clients **on the RR side**. Clients need ordinary iBGP peers to the two RR loopbacks; they do not require a local Cluster ID to join the topology.
 - No RR↔RR iBGP session and no cluster-state synchronization or RR-dedicated VLAN.
 - Reflect accepted client routes without changing BGP NEXT_HOP on the RR.
 - Four external clients originate/redistribute or learn distinct test prefixes and advertise them to both RRs; BGP policies and origin mechanics are detailed design decisions.
 
-**A common Cluster ID is a route-reflection loop-prevention identity, not a Kubernetes-style HA cluster membership protocol.** The two RR instances are independent active-active control-plane peers, not a leader/follower pair.
+**Cluster ID is a route-reflection loop-prevention identity, not a Kubernetes-style HA cluster membership protocol.** This project selects distinct per-RR Cluster IDs; that is an Owner-selected policy, not a claim that BGP universally forbids shared Cluster IDs. The two RR instances remain independent active-active control-plane peers, not a leader/follower pair. [ADR 0012](adr/0012-cluster-id-from-rr-loopback.md) supersedes the earlier shared-ID decision only in this respect.
 
 ### 3.3 Data plane — external to RR
 
@@ -110,7 +110,7 @@ For each `(RR, Client)` relation, the VLAN ID, master, Pod-side interface, /31 a
 | Invariant | Violation example |
 |---|---|
 | I-01: Each logical RR has stable, unique Router ID and loopback | Identity changes with primary Pod IP |
-| I-02: Both RRs share one Cluster ID but operate independently | Addition of implicit cluster heartbeat |
+| I-02: Each RR derives its distinct Cluster ID from its own loopback and operates independently | Shared/manual Cluster ID, derivation from a different Router ID, or implicit cluster heartbeat |
 | I-03: All four clients can peer with both RRs | A client depends on only one RR |
 | I-04: RR may not be IP transit | Client data is forwarded via RR on failure |
 | I-05: OSPF distributes only required underlay reachability | Test service prefixes leaked into IGP |

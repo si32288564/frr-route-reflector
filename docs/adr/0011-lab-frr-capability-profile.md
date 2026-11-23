@@ -42,7 +42,7 @@ The RR is control-plane-only. Neither `SYS_ADMIN` nor `NET_ADMIN` permission cha
 
 1. **Owner acceptance gate:** This ADR and the corresponding Implementation Contract update must merge to `main` before Codex adds a SYS_ADMIN-enabled lab Pod/Helm template.
 2. **Static/runtime gate:** Build the project-owned runtime; generate and validate 2 Pods, 2 ConfigMaps, 8 NADs; test integrated FRR config, expected daemon identities and capability masks, and Kubernetes policy/admission in the **actual approved lab**.
-3. **Routing/non-transit gate:** Prove OSPFv2 P2P, iBGP reflection, shared Cluster ID, loopback NEXT_HOP behavior, `bgp no-rib` and negative transit packet behavior. Mark every unexecuted check NOT RUN.
+3. **Routing/non-transit gate:** Prove OSPFv2 P2P, iBGP reflection, the Cluster ID policy in R-032 (per-RR loopback derivation after [ADR 0012](0012-cluster-id-from-rr-loopback.md) acceptance), loopback NEXT_HOP behavior, `bgp no-rib` and negative transit packet behavior. Mark every unexecuted check NOT RUN.
 4. **Operational/release gate:** Owner separately accepts any broader deployment support or change from this restricted lab boundary, plus formal image scan/SBOM and lifecycle/recovery acceptance.
 
 If a workload demands `privileged`, host networking, altered FRR privilege handling, a blanket namespace policy exception or inability to preserve forwarding=0, **STOP** with reproducible evidence; do not invent alternate architecture.
