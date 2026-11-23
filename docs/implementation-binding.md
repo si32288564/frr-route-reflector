@@ -1,9 +1,9 @@
 # Task 0001 implementation binding
 
-> This records the existing Task 0001 implementation. [ADR 0012](adr/0012-cluster-id-from-rr-loopback.md)
-> proposes a different Cluster ID policy; code migration is a subsequent step
-> after that design is accepted. The shared-ID implementation described below
-> is not evidence that the new per-loopback policy has been implemented/tested.
+> Cluster ID generation was updated under the Owner-approved
+> [ADR 0012](adr/0012-cluster-id-from-rr-loopback.md). Historical Task 0001 runtime
+> evidence used the former shared-ID policy and does not qualify live behavior
+> for the new policy.
 
 Accepted sources: Implementation Contract, ADR 0010/0011 and PR #6 review
 5526023836. Helm values own all routing identities and mappings. Default values
@@ -62,7 +62,10 @@ Health never requires all remote neighbors to be Established/Full.
 
 FRR's `bgp no-rib` is a **global configuration command** in this build, rendered
 before `router bgp`, not in its stanza. Four IPv4 clients share the cluster ASN,
-RR loopback update-source, unchanged NEXT_HOP and common cluster ID; OSPF is
+RR loopback update-source and unchanged NEXT_HOP. Each Cluster ID is explicitly
+derived from that RR's loopback IPv4 without `/32`, not from its Router ID;
+neither shared `cluster.clusterId` nor per-RR `clusterId` is an accepted input.
+OSPF is
 P2P on secondary links with passive loopback and permanent max-metric.
 
 Private Worker/namespace binding, Multus/NAD provisioning, admission and a full

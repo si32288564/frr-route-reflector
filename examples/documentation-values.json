@@ -3,7 +3,6 @@
   "image": "example.invalid/frr-route-reflector@sha256:0000000000000000000000000000000000000000000000000000000000000000",
   "cluster": {
     "bgpAsn": 64512,
-    "clusterId": "192.0.2.254",
     "ospfArea": "0.0.0.0"
   },
   "clients": [

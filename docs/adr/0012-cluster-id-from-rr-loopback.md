@@ -75,6 +75,9 @@ update, not any live migration.
 
 ## Validation status
 
-This change is documentation only. Check document cross-references, scoped diff
-and whitespace. Helm rendering, FRR configuration/runtime, BGP attributes,
+The initial design commit was documentation only. The subsequent implementation
+removes the legacy schema input and derives Cluster ID in the Helm renderer.
+[Static execution evidence](../evidence/cluster-id-loopback-static-20261124.txt)
+records lint/template, derivation, Router ID independence, per-RR isolation and
+40 rejected input cases. FRR CLI configuration/runtime, live BGP attributes,
 Kubernetes and migration/rollback tests for this policy are **NOT RUN**.

@@ -1,7 +1,7 @@
 # Implementation contract — FRR CNF and Helm Chart
 
 > **Authority:** The reviewed `main` version is binding. Changes in this branch are proposed until accepted and merged.  
-> Governing sources: [Governance](PROJECT_GOVERNANCE.md), [requirements](requirements.md), [architecture](architecture.md), [network design](network-design.md), [acceptance criteria](acceptance-criteria.md), and ADRs 0001–0010 (ADR 0010 proposed until merged). This contract **binds their implementation projection**, not a new routing architecture.
+> Governing sources: [Governance](PROJECT_GOVERNANCE.md), [requirements](requirements.md), [architecture](architecture.md), [network design](network-design.md), [acceptance criteria](acceptance-criteria.md), and the accepted ADRs, including [ADR 0012](adr/0012-cluster-id-from-rr-loopback.md) for Cluster ID derivation. This contract **binds their implementation projection**, not a new routing architecture.
 
 ## 1. Explicit implementation boundary
 

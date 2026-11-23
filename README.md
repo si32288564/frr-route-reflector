@@ -26,6 +26,12 @@ python3 tests/test_container.py --drift
 The example uses only RFC 5737 addresses, fake Workers and a non-existent image
 digest. It is **not deployable or an accepted private lab binding**. Defaults
 reject render until a complete input and explicit `lab-sysadmin` choice are given.
+Each RR's BGP Cluster ID is generated from its own `routers[].loopback` IPv4
+without `/32`; do not supply `cluster.clusterId` or `routers[].clusterId`.
+Legacy shared-ID values are rejected rather than ignored. See
+[ADR 0012](docs/adr/0012-cluster-id-from-rr-loopback.md) for the breaking input
+change and controlled migration boundary. Historical shared-ID runtime results
+do not prove live behavior for this policy.
 The drift test requires sudo for nsenter and changes only its disposable Docker
 network namespace; it is never a command to run against Kubernetes or a Worker
 network namespace. Tests use no external peers or host-directory mounts.

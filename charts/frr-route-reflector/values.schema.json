@@ -20,10 +20,6 @@
           "minimum": 1,
           "maximum": 4294967295
         },
-        "clusterId": {
-          "type": "string",
-          "pattern": "^[0-9]{1,3}(\\.[0-9]{1,3}){3}$"
-        },
         "ospfArea": {
           "type": "string",
           "pattern": "^[0-9]{1,3}(\\.[0-9]{1,3}){3}$"
@@ -31,7 +27,6 @@
       },
       "required": [
         "bgpAsn",
-        "clusterId",
         "ospfArea"
       ]
     },

@@ -16,8 +16,6 @@
 {{- if gt (len .Release.Name) 30 }}{{ fail "release name maximum is 30" }}{{ end -}}
 {{- $v := .Values -}}
 {{- if ne $v.securityProfile "lab-sysadmin" }}{{ fail "explicit lab-sysadmin profile required" }}{{ end -}}
-{{- $_ := include "rr.ipnum" $v.cluster.clusterId -}}
-{{- $_ := include "rr.unicast" $v.cluster.clusterId -}}
 {{- $_ := include "rr.ipnum" $v.cluster.ospfArea -}}
 {{- $names := dict -}}{{- $ips := dict -}}{{- $ids := dict -}}{{- $nodes := dict -}}{{- $vlans := dict -}}{{- $nets := dict -}}
 {{- range $v.clients -}}
@@ -72,7 +70,7 @@ interface lo
 bgp no-rib
 router bgp {{ .v.cluster.bgpAsn }}
  bgp router-id {{ .rr.routerId }}
- bgp cluster-id {{ .v.cluster.clusterId }}
+ bgp cluster-id {{ trimSuffix "/32" .rr.loopback }}
  no bgp default ipv4-unicast
 {{ range .v.clients }} neighbor {{ trimSuffix "/32" .loopback }} remote-as {{ $.v.cluster.bgpAsn }}
  neighbor {{ trimSuffix "/32" .loopback }} update-source {{ trimSuffix "/32" $.rr.loopback }}

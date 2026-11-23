@@ -87,6 +87,7 @@ try:
     running = run("docker", "exec", name, "vtysh", "-c", "show running-config").stdout
     assert "bgp no-rib" in running and "max-metric router-lsa administrative" in running
     assert running.count("route-reflector-client") == 4
+    assert f'bgp cluster-id {cm["data"]["loopback"].split("/")[0]}' in running
     assert "next-hop-self" not in running
     assert run("docker", "exec", name, "cat", "/etc/frr/frr.conf").stdout == cm["data"]["frr.conf"]
     assert run("docker", "exec", name, "cat", "/proc/sys/net/ipv4/ip_forward").stdout.strip() == "0"

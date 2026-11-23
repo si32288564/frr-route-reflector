@@ -1,0 +1,56 @@
+Cluster ID loopback derivation — 2026-11-24 JST
+Owner-approved design commit: 55d8e6e (ADR 0012).
+Scope: accepted four-Client main implementation; no closed Home PR imported.
+Command: python3 tests/test_chart.py (existing authorized development host)
+Helm version and measured stdout below. File-transfer metadata warnings omitted.
+
+v3.22.1+gd6c1a0e
+loopback-derived Cluster ID / Router ID independence / per-RR isolation=PASS
+negative missing-profile=PASS
+negative bad-profile=PASS
+negative too-few-RRs=PASS
+negative too-many-RRs=PASS
+negative too-few-clients=PASS
+negative too-many-clients=PASS
+negative duplicate-RR=PASS
+negative invalid-RR-name=PASS
+negative duplicate-client=PASS
+negative duplicate-routerid=PASS
+negative duplicate-loopback=PASS
+negative client-RR-collision=PASS
+negative duplicate-worker=PASS
+negative missing-link=PASS
+negative duplicate-pair=PASS
+negative unknown-client=PASS
+negative duplicate-vlan=PASS
+negative zero-vlan=PASS
+negative high-vlan=PASS
+negative duplicate-if=PASS
+negative primary-if=PASS
+negative wrong-mask=PASS
+negative invalid-octet=PASS
+negative overlapping-network=PASS
+negative loopback-network-collision=PASS
+negative wrong-remote=PASS
+negative multicast=PASS
+negative per-RR-clusterId=PASS
+negative per-RR-matching-clusterId=PASS
+negative legacy-shared-clusterId=PASS
+negative legacy-matching-clusterId=PASS
+negative missing-loopback=PASS
+negative invalid-loopback=PASS
+negative non32-loopback=PASS
+negative multicast-loopback=PASS
+negative forwarding-policy=PASS
+negative extra-peer=PASS
+negative next-hop-policy=PASS
+negative arbitrary-FRR=PASS
+negative floating-image=PASS
+lint/schema/determinism/cardinality/mapping=PASS negatives=40
+
+PASS: git diff --check; Python compilation for both changed test files.
+PASS: changed-document relative-link and change-scope checks (local).
+NOT RUN: FRR CLI configuration validation, container execution, live BGP
+CLUSTER_LIST/ORIGINATOR_ID/NEXT_HOP, Kubernetes, migration/rollback.
+No image build/push, deployment or environment/security changes performed.
+Historical shared-ID evidence remains unchanged.

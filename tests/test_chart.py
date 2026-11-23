@@ -70,6 +70,7 @@ for rr in values["routers"]:
         assert "interface " + link["interface"] in cm["data"]["frr.conf"]
         assert f'{link["interface"]} {link["localAddress"]}' in cm["data"]["links"]
     config = cm["data"]["frr.conf"]
+    assert [line.strip() for line in config.splitlines() if line.strip().startswith("bgp cluster-id ")] == [f'bgp cluster-id {rr["loopback"].split("/")[0]}']
     assert config.count("route-reflector-client") == 4
     for forbidden in ["next-hop-self", "redistribute", "ipv6", "ospf6"]:
         assert forbidden not in config
@@ -78,6 +79,29 @@ for rr in values["routers"]:
         assert f'neighbor {client["loopback"].split("/")[0]} remote-as {values["cluster"]["bgpAsn"]}' in config
     for addr in [rr["routerId"], rr["loopback"].split("/")[0]]:
         assert ipaddress.ip_address(addr).is_global is False
+
+# Cluster ID has one source: the RR loopback, even when Router ID differs.
+different_id = copy.deepcopy(values)
+different_id["routers"][0]["routerId"] = "192.0.2.101"
+different_render = helm(different_id)
+assert different_render.returncode == 0, different_render.stderr
+different_cm = next(o for o in yaml.safe_load_all(different_render.stdout) if o and o["kind"] == "ConfigMap" and o["metadata"]["name"] == "rr-rr01")
+assert " bgp router-id 192.0.2.101\n" in different_cm["data"]["frr.conf"]
+assert " bgp cluster-id 192.0.2.1\n" in different_cm["data"]["frr.conf"]
+assert " bgp cluster-id 192.0.2.101\n" not in different_cm["data"]["frr.conf"]
+
+changed_loopback = copy.deepcopy(values)
+changed_loopback["routers"][0]["loopback"] = "192.0.2.101/32"
+changed_render = helm(changed_loopback)
+assert changed_render.returncode == 0, changed_render.stderr
+changed_objects = [o for o in yaml.safe_load_all(changed_render.stdout) if o]
+changed_cm = next(o for o in changed_objects if o["kind"] == "ConfigMap" and o["metadata"]["name"] == "rr-rr01")
+assert " bgp cluster-id 192.0.2.101\n" in changed_cm["data"]["frr.conf"]
+original_other = next(o for o in objects if o["kind"] == "ConfigMap" and o["metadata"]["name"] == "rr-rr02")
+changed_other = next(o for o in changed_objects if o["kind"] == "ConfigMap" and o["metadata"]["name"] == "rr-rr02")
+assert original_other == changed_other, "RR01 loopback changed RR02 config"
+assert [o for o in objects if o["kind"] == "NetworkAttachmentDefinition"] == [o for o in changed_objects if o["kind"] == "NetworkAttachmentDefinition"]
+print("loopback-derived Cluster ID / Router ID independence / per-RR isolation=PASS")
 
 cases = []
 
@@ -116,6 +140,13 @@ bad("loopback-network-collision", lambda v: v["routers"][0].update(loopback="198
 bad("wrong-remote", lambda v: v["routers"][0]["links"][0].update(remoteAddress="198.51.100.2"))
 bad("multicast", lambda v: v["routers"][0].update(routerId="224.0.0.1"))
 bad("per-RR-clusterId", lambda v: v["routers"][0].update(clusterId="192.0.2.253"))
+bad("per-RR-matching-clusterId", lambda v: v["routers"][0].update(clusterId="192.0.2.1"))
+bad("legacy-shared-clusterId", lambda v: v["cluster"].update(clusterId="192.0.2.254"))
+bad("legacy-matching-clusterId", lambda v: v["cluster"].update(clusterId="192.0.2.1"))
+bad("missing-loopback", lambda v: v["routers"][0].pop("loopback"))
+bad("invalid-loopback", lambda v: v["routers"][0].update(loopback="192.0.2.256/32"))
+bad("non32-loopback", lambda v: v["routers"][0].update(loopback="192.0.2.1/31"))
+bad("multicast-loopback", lambda v: v["routers"][0].update(loopback="224.0.0.1/32"))
 bad("forwarding-policy", lambda v: v.update(ipForward=True))
 bad("extra-peer", lambda v: v["routers"][0].update(neighbors=["192.0.2.2"]))
 bad("next-hop-policy", lambda v: v.update(nextHopSelf=True))
