@@ -11,6 +11,16 @@ The **RR Helm release** owns the RR Pods, RR-attached Multus NADs, and the RR co
 
 ## 2. Logical components and relations
 
+The table and direct RR-to-Client topology below describe the default
+`direct-clients` option. [ADR 0013](adr/0013-core-ospf-independent-ibgp-neighbors.md)
+adds explicit `core`: two RRs, two core-facing /31 links/NADs, OSPF P2P plus
+passive loopback, and per-RR iBGP neighbors independent of VLAN count. External
+Client/core data-plane provisioning is not a Chart resource. An explicitly
+listed RR-to-RR neighbor is a normal non-Client iBGP peer in core mode, not a
+dedicated VLAN or state-synchronization channel. The default no-RR-peer rule is
+unchanged. The core option also permits explicit single-Worker home placement;
+this is not Worker redundancy. All forwarding/security/identity invariants stay.
+
 | Entity / set | Cardinality | Role / invariant |
 |---|---:|---|
 | RR CNF | 2 | `RR-01`, `RR-02`; independent route reflection with distinct Cluster IDs derived from their respective loopbacks |

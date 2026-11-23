@@ -14,6 +14,13 @@ Do not assume that the lab's example ASNs, CIDRs, VLAN IDs, NIC names, external 
 
 ## 2. Accepted-at-discussion design requirements
 
+The fixed four-Client/direct-link topology below remains the default. The
+Owner-approved [core topology extension](adr/0013-core-ospf-independent-ibgp-neighbors.md)
+uses one OSPF /31 core attachment per RR and an independent variable-size iBGP
+neighbor list; it replaces the direct RR-to-Client link/count and no-RR-peer
+assumptions only when explicitly selected. R-027/R-029/R-032 and the non-transit
+and single-configuration-source invariants apply to both topologies.
+
 IDs here retain the numbering used during architecture discussions. This PR proposes their canonical written form; approval of this PR makes them accepted requirements.
 
 ### RR / routing

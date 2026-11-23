@@ -5,6 +5,16 @@
 
 ## 1. Topology and interface sets
 
+The direct-client topology in sections 1–8 is the original default, not the
+mapping for the explicitly selected [core option in ADR 0013](adr/0013-core-ospf-independent-ibgp-neighbors.md).
+In core mode each RR attaches only to its own /31 core link (two distinct VLANs
+total); OSPF advertises its loopback through core. Multiple iBGP sessions use
+loopback endpoints over that underlay, with no 1:1 relation to VLANs. A normal
+RR-to-RR iBGP session may be explicitly configured over the same underlay.
+RR is never the data-plane transit device; the external core/Client fabric owns
+that path. The old client-only /29 is not a new prerequisite or RR attachment
+for core mode. No actual environment VLAN/IP values are assigned by this document.
+
 The external network is composed of **three separate functions**:
 
 1. **RR-to-client control links:** eight physical/logical VLAN-backed IPv4 /31 connections, OSPFv2 P2P on each; iBGP is formed between loopbacks reachable across the IGP.

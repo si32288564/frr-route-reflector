@@ -5,6 +5,15 @@
 
 ## 1. Explicit implementation boundary
 
+For the original default topology, this section's fixed four-Client contract
+continues unchanged. The explicit `core` extension and its complete input,
+placement and acceptance boundary are defined in [ADR 0013](adr/0013-core-ospf-independent-ibgp-neighbors.md):
+2 Pods/2 ConfigMaps/2 NADs, one `net1` /31 core attachment per RR, and a per-RR
+`neighbors` list independent from attachments. It permits an explicitly listed
+non-Client RR peer and explicit same-Worker home placement only in this option.
+Strict schema, RR-only generation, Cluster ID derivation, security/forwarding
+guards and controlled replacement remain common to both options.
+
 Implement **exactly two logical RR CNFs** in the initial lab through **one Helm release**. The Chart owns:
 - 2 directly managed `v1/Pod` resources (one pinned to each Worker).
 - 8 `NetworkAttachmentDefinition` resources (4 independent VLAN CNI links per RR).

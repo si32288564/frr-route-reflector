@@ -19,6 +19,14 @@ A task that needs an unresolved architecture decision must **STOP** and return a
 
 ## 2. Design and static artifact acceptance
 
+The original cardinalities below remain the `direct-clients` regression contract.
+For explicit `core`, apply [ADR 0013](adr/0013-core-ospf-independent-ibgp-neighbors.md):
+2/2/2 resources, one P2P OSPF attachment per RR, and role-checked variable iBGP
+neighbors. Static peer/role/placement rejection and live core-underlay/route/
+non-transit evidence remain separate. Normal RR-to-RR iBGP is permitted only
+when explicitly configured as non-Client in this mode. Do not claim old multi-
+Client/Worker acceptance from a co-located or single-Client setup.
+
 | ID | Requirement coverage | Evidence / expected result |
 |---|---|---|
 | A-001 | R-001–R-009, R-032, R-033 | FRR config renders 2 RR identities and 2 distinct Cluster IDs, each equal to that RR's loopback IPv4 without `/32`; 4 RR clients per RR, IPv4 unicast, OSPFv2 and **no RR↔RR BGP peer** |
