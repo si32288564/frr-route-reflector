@@ -63,6 +63,8 @@ invalid /31 relations, identity/placement collisions and unwanted interfaces.
 Regression-test the default 2/2/8 fixture with byte-identical output to the previous
 main. Runtime requires exactly the declared interfaces (one or four), no phantom
 interfaces; standard daemon/config lifecycle and forwarding guard are unchanged.
+The later Owner-approved [ADR 0014](0014-inactive-tunl0.md) adds only the
+startup exception for a DOWN, administratively inactive, unaddressed tunl0.
 
 Apply the mapping to a new or deliberately migrated values snapshot; do not
 silently shorten old live attachments. Save the old Chart/image/values and use

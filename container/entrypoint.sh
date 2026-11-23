@@ -1,11 +1,28 @@
 #!/bin/bash
 set -euo pipefail
+validate_inactive_tunl0() {
+  local link addresses flags
+  link=$(ip -o link show dev tunl0) || return 1
+  [[ "$link" =~ \<([^\>]*)\> ]] || return 1
+  flags=${BASH_REMATCH[1]}
+  case ",$flags," in *,UP,*) return 1 ;; esac
+  [[ "$link" == *" state DOWN "* ]] || return 1
+  addresses=$(ip -4 -o addr show dev tunl0) || return 1
+  [[ -z "$addresses" ]] || return 1
+  addresses=$(ip -6 -o addr show dev tunl0) || return 1
+  [[ -z "$addresses" ]]
+}
 validate_interface_inventory() {
   local count=$1 actual=$2 i
   case "$count" in 1|4) ;; *) return 1 ;; esac
   local expected=(eth0 lo)
   for ((i=1; i<=count; i++)); do expected+=("net$i"); done
-  test "$actual" = "$(printf '%s\n' "${expected[@]}" | sort | tr '\n' ' ')"
+  if test "$actual" = "$(printf '%s\n' "${expected[@]}" | sort | tr '\n' ' ')"; then
+    return 0
+  fi
+  expected+=(tunl0)
+  test "$actual" = "$(printf '%s\n' "${expected[@]}" | sort | tr '\n' ' ')" || return 1
+  validate_inactive_tunl0
 }
 stop() {
   trap - EXIT TERM INT
@@ -15,8 +32,11 @@ stop() {
     kill -TERM "$watchpid" 2>/dev/null || true
     wait "$watchpid" 2>/dev/null || true
   fi
-  timeout 10 /usr/local/bin/frr-action.sh stop all || true
+  if [ -r /etc/frr/daemons ]; then
+    timeout 10 /usr/local/bin/frr-action.sh stop all || true
+  fi
 }
+trap 'rc=$?; printf "STOP: entrypoint line %s failed (exit %s)\n" "$LINENO" "$rc" >&2' ERR
 trap stop EXIT
 trap 'exit 0' TERM INT
 rm -f /run/frr/boot-complete /run/frr/*.pid /run/frr/*.vty
@@ -26,7 +46,11 @@ test -r /config/frr.conf
 test -r /config/links
 test -r /config/loopback
 mapfile -t links < /config/links
-validate_interface_inventory "${#links[@]}" "$(ls /sys/class/net | sort | tr '\n' ' ')"
+inventory=$(ls /sys/class/net | sort | tr '\n' ' ')
+validate_interface_inventory "${#links[@]}" "$inventory" || {
+  echo "STOP: interface inventory or tunl0 inactivity check failed: $inventory" >&2
+  exit 1
+}
 ip -4 addr show dev eth0 | grep -q 'inet '
 for ((i=0; i<${#links[@]}; i++)); do
   read -r iface address <<< "${links[$i]}"

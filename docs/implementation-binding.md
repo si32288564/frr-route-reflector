@@ -48,6 +48,12 @@ passively. It requires IPv4 eth0 and exactly the declared inventory: lo/eth0/net
 in core mode, or lo/eth0/net1..net4 in default direct-client mode. Each secondary
 is VLAN-type with the expected /31 address. The entrypoint then installs the
 stable /32. Missing/extra interfaces or unsupported counts fail before daemons.
+Under Owner-approved [ADR 0014](adr/0014-inactive-tunl0.md), only an additional
+tunl0 is permitted at startup when its administrative UP flag is absent, link
+state is DOWN, and both IPv4/IPv6 address readbacks are empty. Failed readbacks,
+an active/addressed tunl0, and every other extra interface still fail closed.
+The runtime never changes or uses tunl0; forwarding and required VLAN checks
+remain unchanged.
 
 ## Forwarding, health and boundaries
 
