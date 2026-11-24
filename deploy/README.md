@@ -96,35 +96,14 @@ kubectl create --dry-run=client -n frr-route-reflector \
 使用します。Helm所有情報を保ち、ConfigMap→NAD→Podの順に並べます。
 
 ```sh
-python3 - <<'PY'
-import json
-from pathlib import Path
-text = Path('/tmp/rr-new.json').read_text().lstrip()
-decoder = json.JSONDecoder()
-items = []
-while text:
-    obj, end = decoder.raw_decode(text)
-    items.extend(obj['items'] if obj.get('kind') == 'List' else [obj])
-    text = text[end:].lstrip()
-priority = {'ConfigMap': 0, 'NetworkAttachmentDefinition': 1, 'Pod': 2}
-for rr in ['rr01', 'rr02']:
-    name = 'rr-' + rr
-    selected = [o for o in items if o['metadata']['name'] in [name, name + '-net1']]
-    assert sorted(o['kind'] for o in selected) == sorted(priority)
-    for o in selected:
-        m = o['metadata']
-        m['namespace'] = 'frr-route-reflector'
-        m.setdefault('labels', {})['app.kubernetes.io/managed-by'] = 'Helm'
-        m.setdefault('annotations', {}).update({
-            'meta.helm.sh/release-name': 'rr',
-            'meta.helm.sh/release-namespace': 'frr-route-reflector'})
-    selected.sort(key=lambda o: priority[o['kind']])
-    Path('/tmp/' + rr + '-replacement.json').write_text(json.dumps(
-        {'apiVersion': 'v1', 'kind': 'List', 'items': selected}, indent=2))
-PY
+python3 deploy/prepare-replacement.py
 ```
 
 kubectlの出力が単一Listでも、複数JSONの連続でも処理します。
+このコマンドは`/tmp/rr-new.json`を読み、同じディレクトリに
+`rr01-replacement.json`と`rr02-replacement.json`を作るだけです。
+クラスタへの接続・Pod削除・適用は行いません。PythonコードやREADME抽出の
+手入力は不要です。
 
 最初にRR-01だけ停止します。
 

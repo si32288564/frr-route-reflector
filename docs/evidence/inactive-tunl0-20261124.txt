@@ -69,3 +69,9 @@ replacement Pod was applied. Parser now consumes JSON documents with raw_decode,
 accepting a List or multiple objects. PASS: executing the documented generator
 offline with List, formatted object stream and whitespace-padded stream each
 produces the two expected three-object snapshots with Helm ownership retained.
+
+Usability correction: moved that same preparation into
+deploy/prepare-replacement.py so operators run one short command instead of
+typing Python or extracting README code. PASS: actual script on List and JSON
+stream, resource order/Helm ownership/file mode0600; incomplete input rejects
+before writing either snapshot. It performs no Kubernetes operation.
