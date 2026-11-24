@@ -61,3 +61,11 @@ PASS: new-index lab values render 2/2/2. The documented Python snapshot split
 was executed offline against that render: one RR at a time, exactly three
 objects, ConfigMap/NAD/Pod order, namespace and Helm ownership metadata retained.
 This does not qualify actual delete/CNI cleanup/replacement/Helm upgrade.
+
+Recovery-document correction after Owner execution:
+FAIL: initial parser assumed kubectl emitted one List; the lab kubectl emitted
+concatenated JSON objects and json.loads stopped with Extra data before any
+replacement Pod was applied. Parser now consumes JSON documents with raw_decode,
+accepting a List or multiple objects. PASS: executing the documented generator
+offline with List, formatted object stream and whitespace-padded stream each
+produces the two expected three-object snapshots with Helm ownership retained.

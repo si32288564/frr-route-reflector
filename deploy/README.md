@@ -99,7 +99,13 @@ kubectl create --dry-run=client -n frr-route-reflector \
 python3 - <<'PY'
 import json
 from pathlib import Path
-items = json.loads(Path('/tmp/rr-new.json').read_text())['items']
+text = Path('/tmp/rr-new.json').read_text().lstrip()
+decoder = json.JSONDecoder()
+items = []
+while text:
+    obj, end = decoder.raw_decode(text)
+    items.extend(obj['items'] if obj.get('kind') == 'List' else [obj])
+    text = text[end:].lstrip()
 priority = {'ConfigMap': 0, 'NetworkAttachmentDefinition': 1, 'Pod': 2}
 for rr in ['rr01', 'rr02']:
     name = 'rr-' + rr
@@ -117,6 +123,8 @@ for rr in ['rr01', 'rr02']:
         {'apiVersion': 'v1', 'kind': 'List', 'items': selected}, indent=2))
 PY
 ```
+
+kubectlの出力が単一Listでも、複数JSONの連続でも処理します。
 
 最初にRR-01だけ停止します。
 
