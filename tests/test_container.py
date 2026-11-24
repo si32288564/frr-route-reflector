@@ -1,5 +1,6 @@
 """Disposable namespace implementation test, never touches Kubernetes."""
 import json
+import os
 import pathlib
 import subprocess
 import tempfile
@@ -10,7 +11,7 @@ import sys
 
 import yaml
 
-IMAGE = "frr-core:implementation" if "--core" in sys.argv else "frr-task0001:implementation"
+IMAGE = os.environ.get("FRR_TEST_IMAGE", "frr-core:implementation" if "--core" in sys.argv else "frr-task0001:implementation")
 signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(SystemExit(124)))
 CAPS = ["CHOWN", "SETUID", "SETGID", "NET_ADMIN", "NET_RAW", "NET_BIND_SERVICE", "SYS_ADMIN"]
 
@@ -68,6 +69,7 @@ try:
         print(run("docker", "exec", name, "/bin/sh", "-x", "/usr/local/bin/health.sh", "--starting", check=False).stdout)
     assert ready, "startup/readiness did not pass"
     print("startup=PASS")
+    print(run("docker", "exec", name, "ip", "-br", "addr").stdout)
     syntax = run("docker", "exec", name, "vtysh", "-C", "-f", "/etc/frr/frr.conf")
     print("syntax_command=vtysh -C -f /etc/frr/frr.conf\n" + syntax.stdout)
     assert "Unknown command" not in syntax.stdout

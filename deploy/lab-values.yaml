@@ -5,7 +5,8 @@
 topology: core
 placement: distinct-workers
 securityProfile: lab-sysadmin
-image: docker.io/si60545107/frr-route-reflector@sha256:0a2544a69948f7dcb52218f0d8d335c1fa8dcda4d3843c1a09c5e7cc30a2abcd
+# main-51c49f5: permits only DOWN, unaddressed tunl0 under ADR 0014.
+image: docker.io/si60545107/frr-route-reflector@sha256:1ad4ea463e7ed75837f4478261c8f0857b2cb58f33f31345f3d03fbaa196b80c
 cluster:
   bgpAsn: 64999
   ospfArea: "0.0.0.0"

@@ -1,0 +1,63 @@
+Owner-approved inactive tunl0 startup exception — 2026-11-24 JST
+
+Observed lab failure (Owner-supplied photographs): both RRs CrashLoop after
+initial Helm install. Cleanup reports missing /etc/frr/daemons. A read-only
+inspection of one Pod sandbox shows required primary/VLAN interfaces plus
+DOWN/unaddressed tunl0, correct VLAN/IP, and IPv4 forwarding=0.
+The unmodified Bash inventory function returns 0 for eth0/lo/net1 and 1 for
+eth0/lo/net1/tunl0. This proves an early rejection condition; it does not prove
+that no later startup error exists. No company host or Pod was operated by Codex.
+
+Source: 51c49f5 (container change plus ADR 0014).
+PASS: Bash syntax; actual Bash functions tested locally and on Workbox:
+12 existing inventory cases + 17 tunnel cases. Only tunl0 with no UP flag,
+state DOWN and empty IPv4/IPv6 readbacks is allowed. UP, addressed, malformed,
+failed readbacks, missing interfaces and other extras are rejected.
+PASS: existing Helm core/default regression suite on Workbox:
+40 original negative cases + 31 core negative cases, positive peer/placement
+and deterministic 2/2/2 core rendering. Chart source unchanged.
+
+PASS: AMD64/ARM64 multi-platform build with existing frr-multi BuildKit and
+existing approved daemon/build proxy environment. External timeout240s.
+No Dockerfile proxy literals, host binfmt registration or host package install.
+Base image/package pins unchanged. Build layers use existing package cache.
+OCI index: sha256:1ad4ea463e7ed75837f4478261c8f0857b2cb58f33f31345f3d03fbaa196b80c
+
+PASS: temporary BuildKit validation stages on ARM64 (native) and AMD64 (QEMU),
+RUN --network=none: seven executable Bash-function cases per architecture and
+vtysh -C parsing six generated configurations (default/core/published lab,
+two RRs each). These tests mock ip command readbacks for the tunl0 predicate;
+they are not actual-kernel tunnel-state transition or AMD64 daemon tests.
+
+PASS: existing tests/test_container.py --core on native ARM64, with only an
+environment override selecting the exact new image and added interface logging:
+FRR startup/readiness, config parsing/application, loopback installation,
+forwarding readback0, restart discarding runtime config edits, graceful stop
+exit0, finally container removal exit0. Test command externally bounded150s;
+network none, existing 7-cap set, no-new-privileges, default seccomp,
+memory256MiB/pids128, container-local sysctl ip_forward0, no host mounts.
+Test namespace did not contain tunl0; physical tunl0 acceptance remains for lab
+verification. Stop logs include daemon disconnect/Broken pipe messages; graceful
+container exit and cleanup passed. No external routing peer was attached.
+
+Workbox task directory: /tmp/frr-tunl0-51c49f5
+Logs: chart-tests.log, build.log, build-metadata.json, binary-validation.log,
+runtime-arm64.log. No raw company logs or credentials copied into this evidence.
+
+NOT RUN: native AMD64 FRR daemon lifecycle, repaired Kubernetes startup,
+actual inactive/active/addressed tunl0 kernel-state tests, OSPF Full,
+BGP Established/reflection/NEXT_HOP/FIB/packet nontransit, real CNI lifecycle
+and the documented one-sided replacement/Helm bookkeeping procedure.
+No company host sysctl/CNI/Admission change, new tunnel/network, privilege
+extension or Kubernetes operation performed by Codex.
+
+PASS: Published new tag docker.io/si60545107/frr-route-reflector:main-51c49f5.
+Old main-8b20f60 remains unchanged. Anonymous manifest retrieval matches the new
+OCI index above, with linux/amd64 and linux/arm64 descriptors. Exact approved
+proxy values not present in OCI JSON metadata (limited check, not layer audit).
+Builder stopped after verification. push.log/public-verification.json retained
+in the Workbox task directory. deploy/lab-values.yaml pins the new index.
+PASS: new-index lab values render 2/2/2. The documented Python snapshot split
+was executed offline against that render: one RR at a time, exactly three
+objects, ConfigMap/NAD/Pod order, namespace and Helm ownership metadata retained.
+This does not qualify actual delete/CNI cleanup/replacement/Helm upgrade.

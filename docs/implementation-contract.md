@@ -99,6 +99,11 @@ Every RR Pod:
 - Is `kind: Pod`, explicitly pinned using a distinct **Node selector** that matches exactly one intended Worker in the lab. Do not silently fall back to another Worker if the labeled one disappears.
 - Has `restartPolicy: Always` for container-process crashes but **no** application controller recreating a deleted/evicted Pod.
 - Has one Calico primary `eth0` reserved for ordinary Kubernetes control-plane management (not the FRR's external BGP/OSPF path), and exactly four Multus secondary interfaces named by the release values.
+- Under [ADR 0014](adr/0014-inactive-tunl0.md), startup may additionally observe
+  only tunl0 with no administrative UP flag, state DOWN, and no IPv4/IPv6
+  addresses. It is not a routing attachment and must never be changed or used
+  by the RR. All other unexpected interfaces and failed state readbacks reject
+  startup. The one-link core option retains the same bounded exception.
 - Sets `hostNetwork: false`, disables automatic service-account token mounting, uses dedicated ConfigMap/emptyDir volumes, and does not require a Node hostPath for FRR state.
 - Requests only the Linux capabilities and Pod permissions demonstrated necessary for FRR, packet sockets, stable loopback and namespace-local safety gate. **Neither automatic `SYS_ADMIN` grant nor categorical `SYS_ADMIN` rejection is the policy.** A minimal-profile trial comes first; if required by FRR, a narrowly controlled isolated diagnostic trial with `SYS_ADMIN` may be proposed/evaluated with the Owner's authorization and safeguards. **A release Pod manifest granting `SYS_ADMIN`, `privileged` or expanded host access requires a distinct Owner security approval.** Never silently change the Worker or cluster security policy.
 - Must guard against client-facing operation if `net.ipv4.ip_forward` is not verified as `0` in the **Pod netns**. Do not edit Worker host sysctls or weaken kubelet security policy as a hidden workaround.
