@@ -1,0 +1,65 @@
+Independent Helm releases — 2026-11-26 JST
+Authority: Owner approval in chat, ADR 0015 (design commit 1e0940c).
+Compatibility baseline: a010c41692b8cb42aaef82cf59d7d1426a312f13.
+
+Scope: Chart0.2.0, explicit core releaseMode:single, one router per release,
+common+individual values, operations/migration documentation. releaseMode:pair
+remains the default with existing two-router cardinality and names.
+No container/FRR/security/routing changes, image rebuild/push, Namespace/CNI/
+Admission changes, or live Kubernetes operations were executed.
+
+Environment: existing Workbox, Helm v3.22.1+gd6c1a0e, Python3/PyYAML.
+Task directory: /tmp/frr-single-20261126.gZwYxP.
+Logs: single-tests.log, chart-regression.log, inventory-tests.log.
+Baseline chart copied from the Git tree above; current source/explicit new
+test/values files copied separately. No .env or private files transferred.
+
+PASS: FRR_BASELINE_CHART=baseline/charts/frr-route-reflector
+      python3 tests/test_single_release.py
+- Both actual layered common+individual values lint and deterministically render
+  exactly1 Pod/1 ConfigMap/1 VLAN NAD each, correct release names/references.
+- Supplied per-RR arrays and common image/ASN/area equal the old lab binding.
+- Each generated ConfigMap data map, including exact frr.conf bytes, equals
+  the matching old paired RR. Pod runtime/security spec equals the old RR
+  after changing only its ConfigMap name reference. Boot hash unchanged.
+- NAD contents differ only in the release-specific network name.
+- Both release namespaces/references correct; arbitrary release-name changes
+  rename resources without changing FRR config. Both new releases' resource
+  names are disjoint from each other and from all old rr resources.
+- Common ASN override reaches all peers; default source values unaffected.
+- Supplied profiles also validate together via existing pair mode.
+- 25 negative cases reject invalid mode/topology/cardinality, incomplete layered
+  inputs, invalid local peers/links/image/raw config and pair-level duplicate
+  loopback/Router ID/Worker/VLAN/subnet or RR-as-Client mistakes.
+- Existing rollback snapshot helper exercised offline on both a List and
+  streamed kubectl JSON: old-only names, ConfigMap/NAD/Pod order and old Helm
+  ownership retained. This is not a live rollback test.
+- Old direct-client fixture, core fixture and lab binding produce byte-identical
+  output against baseline chart (all three). Compatibility is not inferred
+  merely from unchanged resource counts.
+
+PASS: python3 tests/test_core_chart.py
+- Executes the existing original40 + core31 rejected-input cases and positive
+  routing-role/placement/peer-count/determinism regressions (71 negative cases).
+PASS: python3 tests/test_entrypoint_inventory.py (12 existing +17 tunl0 cases).
+      Source unchanged. First harness transfer omitted container/entrypoint.sh;
+      that test was not run then. The unchanged file was transferred and the
+      inventory test rerun successfully; no implementation fix was required.
+PASS: helm package charts/frr-route-reflector --destination .
+      Created frr-route-reflector-0.2.0.tgz.
+PASS: helm lint frr-route-reflector-0.2.0.tgz with common+rr01 and common+rr02.
+PASS: schema JSON parsing, changed-document local links and shell syntax,
+      git diff --check and container source unchanged against baseline.
+
+NOT RUN: actual fresh install with --create-namespace, single-release upgrade/
+uninstall, live namespace deletion, pair-to-single migration and rollback,
+Kubernetes/Helm4 compatibility execution, CNI cleanup and lifecycle behavior
+with the new release names. No production-readiness or zero-downtime claim.
+The prior lab routing observations apply to the running paired release; they
+are not substituted for independent-release deployment acceptance.
+
+Limits: a standalone render cannot detect another release's addresses,
+placement or peer roles. Operators must coordinate those inputs. Tests validate
+the delivered pair together; no controller or cluster lookup was introduced.
+Bare Pod ConfigMap updates still do not reload FRR. Changes use explicit
+one-release-at-a-time uninstall/cleanup/reinstall under ADR 0009.

@@ -1,0 +1,20 @@
+# Individual RR input; use after values-common.yaml. Arrays replace, not merge.
+routers:
+  - name: rr01
+    routerId: 10.240.0.1
+    loopback: 10.240.0.1/32
+    nodeSelector:
+      kubernetes.io/hostname: cnflab-k8s-worker-01
+    vlanMaster: eno3
+    links:
+      - interface: net1
+        vlanId: 501
+        localAddress: 10.240.1.0/31
+        remoteAddress: 10.240.1.1
+    neighbors:
+      - {address: 10.240.0.11, routeReflectorClient: true}
+      - {address: 10.240.0.21, routeReflectorClient: true}
+      - {address: 10.240.0.22, routeReflectorClient: true}
+      - {address: 10.240.0.23, routeReflectorClient: true}
+      - {address: 10.240.0.24, routeReflectorClient: true}
+      - {address: 10.240.0.2, routeReflectorClient: false}

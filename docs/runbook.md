@@ -1,5 +1,11 @@
 # Lab operator runbook — proposed, Kubernetes execution NOT RUN
 
+For Owner-approved independent core releases under [ADR 0015](adr/0015-independent-helm-releases.md),
+use [normal Helm operations](../deploy/README.md) and
+[pair-to-single migration](../deploy/MIGRATION.md). The paired-release discussion
+below is retained for compatibility; it does not require manual manifest
+splitting for a fresh single-RR install.
+
 This is a reviewed-input/manual-replacement proposal, not a proven rolling
 upgrade or recovery procedure. Do not deploy until Owner binds the two actual
 Workers, dedicated authorized namespace, image digest and CNI/admission setup.

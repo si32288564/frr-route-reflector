@@ -55,7 +55,7 @@
     },
     "routers": {
       "type": "array",
-      "minItems": 2,
+      "minItems": 1,
       "maxItems": 2,
       "items": {
         "type": "object",
@@ -175,6 +175,9 @@
         ]
       }
     },
+    "releaseMode": {
+      "enum": ["pair", "single"]
+    },
     "topology": {
       "enum": [
         "direct-clients",
@@ -196,6 +199,22 @@
     "routers"
   ],
   "allOf": [
+    {
+      "if": {
+        "required": ["releaseMode"],
+        "properties": {"releaseMode": {"const": "single"}}
+      },
+      "then": {
+        "required": ["topology"],
+        "properties": {
+          "topology": {"const": "core"},
+          "routers": {"minItems": 1, "maxItems": 1}
+        }
+      },
+      "else": {
+        "properties": {"routers": {"minItems": 2, "maxItems": 2}}
+      }
+    },
     {
       "if": {
         "required": [

@@ -10,11 +10,20 @@ Kubernetes deployment, routing and packet/lifecycle acceptance remain NOT RUN.
 
 ## Offline build and checks
 
-Owner-approved ready-filled lab values are available at
-[deploy/lab-values.yaml](deploy/lab-values.yaml), with
-[lab deployment instructions](deploy/README.md). This specific snapshot was
+Owner-approved ready-filled lab values are available as
+[common settings](deploy/values-common.yaml) plus
+[RR-01](deploy/values-rr01.yaml) / [RR-02](deploy/values-rr02.yaml), with
+[independent Helm release instructions](deploy/README.md). These snapshots were
 approved for public disclosure; it does not authorize publication of other
 private configuration or logs. Live deployment acceptance remains NOT RUN.
+
+Use `releaseMode: single` with core topology for one RR per release. The
+compatibility default `releaseMode: pair` preserves existing two-RR inputs and
+resource names, including [the old lab binding](deploy/lab-values.yaml).
+FRR config/image/security are unchanged. See [ADR 0015](docs/adr/0015-independent-helm-releases.md)
+and [staged migration](deploy/MIGRATION.md) before changing a live paired release.
+Namespace creation uses `--create-namespace`; the Chart does not own the shared
+Namespace or modify admission/CNI.
 
 Run the container build/tests on the authorized Linux container-development host.
 Helm 3, Python 3 and PyYAML are required for tests; they are not runtime dependencies.

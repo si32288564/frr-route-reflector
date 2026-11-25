@@ -9,6 +9,12 @@ Accepted sources: Implementation Contract, ADR 0010/0011 and PR #6 review
 5526023836. Helm values own all routing identities and mappings. Default values
 are deliberately incomplete; the one positive security profile must be selected.
 Unknown fields are rejected, including arbitrary FRR text and forwarding policy.
+Under [ADR 0015](adr/0015-independent-helm-releases.md), core inputs may explicitly
+select `releaseMode: single` for one RR per Helm release. Paired inputs remain
+the compatibility default. Common+individual values merge to one validated input;
+the independent release changes resource names/ownership, not FRR boot bytes or
+the runtime specification. Cross-release invariants are deployment input
+responsibilities and are checked together for the supplied profiles.
 The default topology uses the fixed global Client list. The explicit `core`
 option accepts only structured per-RR `neighbors` under
 [ADR 0013](adr/0013-core-ospf-independent-ibgp-neighbors.md), independently of

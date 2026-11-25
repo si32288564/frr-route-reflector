@@ -1,0 +1,11 @@
+# Owner-approved public lab binding, split into releases under ADR 0015.
+# Use this file with exactly one values-rrXX.yaml file per Helm command.
+topology: core
+releaseMode: single
+placement: distinct-workers
+securityProfile: lab-sysadmin
+image: docker.io/si60545107/frr-route-reflector@sha256:1ad4ea463e7ed75837f4478261c8f0857b2cb58f33f31345f3d03fbaa196b80c
+cluster:
+  bgpAsn: 64999
+  ospfArea: "0.0.0.0"
+clients: []

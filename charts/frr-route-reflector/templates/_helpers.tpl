@@ -16,6 +16,11 @@
 {{- if gt (len .Release.Name) 30 }}{{ fail "release name maximum is 30" }}{{ end -}}
 {{- $v := .Values -}}
 {{- $core := eq $v.topology "core" -}}
+{{- if eq $v.releaseMode "single" -}}
+{{- if or (not $core) (ne (len $v.routers) 1) }}{{ fail "single release requires core topology and exactly one RR" }}{{ end -}}
+{{- else -}}
+{{- if ne (len $v.routers) 2 }}{{ fail "pair release requires exactly two RRs" }}{{ end -}}
+{{- end -}}
 {{- if ne $v.securityProfile "lab-sysadmin" }}{{ fail "explicit lab-sysadmin profile required" }}{{ end -}}
 {{- $_ := include "rr.ipnum" $v.cluster.ospfArea -}}
 {{- $names := dict -}}{{- $ips := dict -}}{{- $ids := dict -}}{{- $nodes := dict -}}{{- $vlans := dict -}}{{- $nets := dict -}}
@@ -74,6 +79,13 @@
 {{- $peers := list -}}
 {{- range .v.clients -}}{{- $peers = append $peers (dict "address" (trimSuffix "/32" .loopback) "routeReflectorClient" true) -}}{{- end -}}
 {{ toJson $peers }}
+{{- end -}}
+{{- end -}}
+{{- define "rr.resourceName" -}}
+{{- if eq .root.Values.releaseMode "single" -}}
+{{- .root.Release.Name -}}
+{{- else -}}
+{{- printf "%s-%s" .root.Release.Name .rr.name -}}
 {{- end -}}
 {{- end -}}
 {{- define "rr.config" -}}

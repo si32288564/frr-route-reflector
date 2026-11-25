@@ -1,5 +1,6 @@
 # Intentionally incomplete: bind the reviewed lab explicitly.
 topology: direct-clients
+releaseMode: pair
 placement: distinct-workers
 securityProfile: ""
 image: ""

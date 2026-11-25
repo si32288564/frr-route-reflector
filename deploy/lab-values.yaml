@@ -2,6 +2,8 @@
 # Owner confirmed this snapshot contains no confidential information.
 # This approval covers this values file, not private logs or credentials.
 # Namespace/release: frr-route-reflector / rr (Helm CLI inputs).
+# Compatibility pair binding. Independent releases use values-common.yaml
+# plus exactly one values-rr01.yaml or values-rr02.yaml; see deploy/README.md.
 topology: core
 placement: distinct-workers
 securityProfile: lab-sysadmin

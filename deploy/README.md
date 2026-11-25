@@ -1,145 +1,103 @@
-# ラボ用設定
+# RRごとのHelm管理
 
-Ownerが2026-11-24に機密情報を含まないと確認し、公開を承認した設定は
-[lab-values.yaml](lab-values.yaml)です。今回の承認はこの設定に限り、
-他の私有ファイル・認証情報・未編集ログの公開は含みません。
+1 RR＝1 release。同じChartへ共通valuesとRRごとのvaluesを渡します。
+FRR設定・コンテナ・VLAN・権限は既存構成と同じです。
+稼働中の旧`rr` releaseがある環境では、[移行手順](MIGRATION.md)を先に
+確認してください。同じLoopbackを持つ新旧Podを同時に起動しません。
 
-2 WorkerにRRを各1台、各RRにCore向けVLANを1本作成します。
-Core＋4 ClientをRR Client、相手RRを通常Peerとする設定です。
-初回の実環境配備では、追加tunl0を旧イメージが拒否し両PodがCrashLoopに
-なりました。現在の固定Digestは[ADR 0014](../docs/adr/0014-inactive-tunl0.md)
-の限定修正版（タグ`main-51c49f5`）です。旧タグは変更していません。
-修正版のKubernetes起動・OSPF/BGP・パケット非転送・復旧は未実測です。
+## 設定ファイル
 
-## 取得・静的確認
+| ファイル | 内容 |
+|---|---|
+| [values-common.yaml](values-common.yaml) | 固定イメージDigest、ASN、OSPF Area、securityProfile、単体release指定 |
+| [values-rr01.yaml](values-rr01.yaml) | RR-01のLoopback、Worker、VLAN501、/31、ネイバー |
+| [values-rr02.yaml](values-rr02.yaml) | RR-02のLoopback、Worker、VLAN502、/31、ネイバー |
 
-リポジトリのルートで実行します。
+共通ファイルの後に、対象RRの個別ファイルを1つだけ指定します。
+Helmの配列は置換されるため、rr01/rr02の両個別ファイルを同時指定しません。
+全体で2 RRですが、各releaseは1 Pod・1 ConfigMap・1 NADだけを所有します。
+Pod/ConfigMap名はrelease名、NAD名は`<release>-net1`です。
+
+これらはOwnerが公開可能と確認したラボ設定です。他環境では値を変更し、
+認証情報や未承認の社内情報を公開しないでください。
+
+## 初回install
+
+管理端末で対象クラスタのcontextを確認し、リポジトリルートで実行します。
+CalicoによるPod内forwarding=0、Multus/VLAN/static CNI、eno3のtrunk、
+Admission、WorkerからのイメージPullが成立している環境を前提とします。
+Chartはそれらをインストール・変更しません。
 
 ```sh
-git pull --ff-only
-helm lint ./charts/frr-route-reflector -f deploy/lab-values.yaml
-helm template rr ./charts/frr-route-reflector \
-  -n frr-route-reflector -f deploy/lab-values.yaml > /tmp/rr-rendered.yaml
+helm install rr01 ./charts/frr-route-reflector \
+  -n frr-route-reflector --create-namespace \
+  -f deploy/values-common.yaml -f deploy/values-rr01.yaml --wait --timeout 180s
+
+helm install rr02 ./charts/frr-route-reflector \
+  -n frr-route-reflector --create-namespace \
+  -f deploy/values-common.yaml -f deploy/values-rr02.yaml --wait --timeout 180s
 ```
 
-出力は2 Pod・2 ConfigMap・2 NADです。生成ファイルを手修正せず、
-変更はvaluesへ反映して再生成してください。
+手動Namespace作成、manifest出力・分割・kubectl applyは初回installに不要です。
+`--create-namespace`はNamespaceを作るだけで、Admissionを緩和しません。
+`--wait`の成功はFRR/guardの起動確認で、全ネイバーの接続確認とは別です。
 
-## 初回デプロイ
-
-最初に`kubectl config current-context`で対象ラボを確認します。
-両Workerのhostnameラベル・eno3のVLAN接続、VLAN/static CNI、Workerの
-イメージPull、Calicoの有効delegateの
-`container_settings.allow_ip_forwarding:false`を確認してください。
-管理端末でのDocker Pull成功はWorkerのcontainerdでのPull成功を意味しません。
-
-専用Namespaceがなければ作成し、Admissionを検査します。
+## 状態確認
 
 ```sh
-kubectl get namespace frr-route-reflector
-# NotFoundの場合だけ実行:
-kubectl create namespace frr-route-reflector
-kubectl apply --dry-run=server -n frr-route-reflector -f /tmp/rr-rendered.yaml
-```
-
-現行の`lab-sysadmin`はSYS_ADMIN等を必要とし、Baseline/Restricted PSAでは
-拒否されます。拒否時は停止し、既存の許可条件を確認してください。
-この手順ではAdmission緩和やクラスタ全体のCalico設定変更を行いません。
-Pod内forwardingが1なら起動guardが停止します。host sysctlや追加権限で
-回避しないでください。dry-runだけではCNIの実行結果は確認できません。
-
-前提とdry-runが成立し、同名releaseがない初回に実行します。
-
-```sh
-helm install rr ./charts/frr-route-reflector \
-  -n frr-route-reflector -f deploy/lab-values.yaml --wait --timeout 180s
+helm list -n frr-route-reflector
 kubectl get pods -n frr-route-reflector -o wide
+kubectl exec -n frr-route-reflector rr01 -- cat /proc/sys/net/ipv4/ip_forward
+kubectl exec -n frr-route-reflector rr01 -- vtysh -c 'show ip ospf neighbor'
+kubectl exec -n frr-route-reflector rr01 -- vtysh -c 'show bgp ipv4 unicast summary'
 ```
 
-失敗時は再installせず、`helm status rr -n frr-route-reflector`、
-Podのdescribe/logで切り分けます。ReadyだけでOSPF/BGP成功とは扱いません。
-各Podの`ip_forward=0`、OSPF Full 1隣接、iBGP Established 6ネイバー、
-反映先Clientの経路とNEXT_HOP、RR FIBへのBGP経路非登録を別々に実測します。
-非転送のパケット試験と停止・再生成・cleanupも別途実測が必要です。
+RR-02はPod名を`rr02`に置き換えます。各RRのforwarding=0、CoreとのOSPF Full
+1隣接、Core＋4 Client＋相手RRのiBGP計6セッションを確認します。
+NEXT_HOP維持、FIB非登録、パケット非転送は個別の試験結果として扱います。
 
-Bare Podは削除しても自動再生成されません。更新・復旧は
-[既存runbook](../docs/runbook.md)の片系停止・CNI cleanup確認後の置換方針に従います。
+## 個別撤去・変更
 
-この初回releaseだけを全撤去する場合は以下です。
+RR-01だけを撤去する例です。RR-02の資源は別releaseなので対象外です。
 
 ```sh
-helm uninstall rr -n frr-route-reflector --wait --timeout 120s
+helm uninstall rr01 -n frr-route-reflector --wait --timeout 120s
 ```
 
-両WorkerでPod sandbox終了とCNI cleanupを確認してから再配備してください。
-Namespace・既存bridge・Core/Client設定はこの撤去コマンドの対象外です。
+設定やイメージを変更する場合も、Bare Pod/boot snapshotの仕様は同じです。
+**通常のhelm upgradeだけではFRR設定の再読込を保証しません。** ConfigMapが
+更新されても起動済みFRRへ自動反映されず、一部Podフィールドは変更不能です。
+片系の旧valuesとイメージを保存し、もう片系の実接続を確認した上で対象releaseを
+uninstallし、sandbox終了・CNI cleanup後に新しいvaluesで同じreleaseをinstallします。
+共通valuesを変更しても、両方へ同時適用せず片系ずつ実施します。
+`--force`、独自hook、Controllerによる再起動は追加していません。
+失敗時も対象releaseだけを片付け、cleanup後に保存済みvaluesで再installします。
 
-## 旧イメージで初回installが失敗した場合の片系置換
-
-これは両Podが起動失敗している今回の初期復旧用の手順です。
-無停止アップグレードの実証ではありません。既存の値・release情報・ログを
-保存し、最新のソース一式へ更新します。ZIP展開の場合は`git pull`ではなく
-最新ZIPを別ディレクトリへ展開します。Namespaceや既存releaseは作り直しません。
+## 全撤去
 
 ```sh
-umask 077
-helm get values rr -n frr-route-reflector -a > /tmp/rr-before-values.yaml
-helm get manifest rr -n frr-route-reflector > /tmp/rr-before-manifest.yaml
-helm lint ./charts/frr-route-reflector -f deploy/lab-values.yaml
-helm template rr ./charts/frr-route-reflector \
-  -n frr-route-reflector -f deploy/lab-values.yaml > /tmp/rr-new.yaml
-kubectl create --dry-run=client -n frr-route-reflector \
-  -f /tmp/rr-new.yaml -o json > /tmp/rr-new.json
+helm uninstall rr01 -n frr-route-reflector --wait --timeout 120s
+helm uninstall rr02 -n frr-route-reflector --wait --timeout 120s
+# 両releaseとPod/CNIの撤去確認後、専用Namespaceも不要なら:
+kubectl delete namespace frr-route-reflector
 ```
 
-同じHelm生成結果からRR単位のファイルを作ります。Python3標準ライブラリのみを
-使用します。Helm所有情報を保ち、ConfigMap→NAD→Podの順に並べます。
+Namespaceは共有するため、片系だけを削除するときは残します。
+
+## 検証・互換構成
 
 ```sh
-python3 deploy/prepare-replacement.py
+helm lint ./charts/frr-route-reflector \
+  -f deploy/values-common.yaml -f deploy/values-rr01.yaml
+helm lint ./charts/frr-route-reflector \
+  -f deploy/values-common.yaml -f deploy/values-rr02.yaml
 ```
 
-kubectlの出力が単一Listでも、複数JSONの連続でも処理します。
-このコマンドは`/tmp/rr-new.json`を読み、同じディレクトリに
-`rr01-replacement.json`と`rr02-replacement.json`を作るだけです。
-クラスタへの接続・Pod削除・適用は行いません。PythonコードやREADME抽出の
-手入力は不要です。
+各releaseの検証範囲はその入力だけです。別releaseとのLoopback/Router ID/
+Worker/VLAN/サブネットの重複や、相手RRのClient指定誤りは、2つの入力を
+合わせて確認する必要があります。同梱2プロファイルは開発時にpairモードでも
+検証します。単独Chartが他releaseを探索する機構はありません。
 
-最初にRR-01だけ停止します。
-
-```sh
-kubectl delete pod rr-rr01 -n frr-route-reflector --wait=true --timeout=60s
-```
-
-Worker-01が到達可能で、旧Pod sandbox終了とCNI DEL完了を確認してから
-次へ進みます。不明なまま再生成・force-deleteしません。
-
-```sh
-kubectl apply -n frr-route-reflector -f /tmp/rr01-replacement.json
-kubectl wait -n frr-route-reflector --for=condition=Ready pod/rr-rr01 --timeout=120s
-kubectl exec -n frr-route-reflector rr-rr01 -- cat /proc/sys/net/ipv4/ip_forward
-kubectl exec -n frr-route-reflector rr-rr01 -- vtysh -c 'show ip ospf neighbor'
-```
-
-Readyとforwarding=0を確認し、OSPF状態を記録します。起動失敗ならRR-02は
-触らず、改善された停止ログを確認します。対向Core未設定のOSPF未確立は
-起動成功と区別します。続いてRR-02を同じ順序で置換します。
-
-```sh
-kubectl delete pod rr-rr02 -n frr-route-reflector --wait=true --timeout=60s
-# Worker-02のsandbox終了/CNI DEL確認後:
-kubectl apply -n frr-route-reflector -f /tmp/rr02-replacement.json
-kubectl wait -n frr-route-reflector --for=condition=Ready pod/rr-rr02 --timeout=120s
-kubectl exec -n frr-route-reflector rr-rr02 -- cat /proc/sys/net/ipv4/ip_forward
-```
-
-両Podがレビュー済みrenderと同じ状態になった後、Helmのrelease記録を整合します。
-image/配置/設定を再変更せず、`--force`を使用しません。
-
-```sh
-helm upgrade rr ./charts/frr-route-reflector \
-  -n frr-route-reflector -f deploy/lab-values.yaml --wait --timeout 180s
-```
-
-この片系置換・記録整合の実環境手順は未実測です。旧イメージはtunl0環境で
-起動しない既知不具合があるため、旧Digestへ戻すことを正常復旧とは扱いません。
+既存`lab-values.yaml`と従来のサンプルは互換モード`releaseMode: pair`として
+そのまま使用できます。[旧手順](legacy-pair.md)は履歴・復旧用に残します。
+今回の変更による実環境のinstall/uninstall・移行・rollbackは未実施です。

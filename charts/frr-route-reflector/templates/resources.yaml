@@ -1,7 +1,7 @@
 {{- include "rr.validate" . -}}
 {{- $root := . -}}
 {{- range $rr := .Values.routers }}
-{{- $name := printf "%s-%s" $root.Release.Name $rr.name -}}
+{{- $name := include "rr.resourceName" (dict "root" $root "rr" $rr) -}}
 {{- $cfg := include "rr.config" (dict "rr" $rr "v" $root.Values) -}}
 {{- $attachments := list -}}
 {{- range $link := $rr.links -}}
