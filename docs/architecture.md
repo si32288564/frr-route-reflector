@@ -11,6 +11,11 @@ The **RR Helm release** owns the RR Pods, RR-attached Multus NADs, and the RR co
 
 ## 2. Logical components and relations
 
+[ADR 0015](adr/0015-independent-helm-releases.md) separates the core RR pair
+into independently managed single-RR Helm releases when explicitly requested.
+The system still has two RRs; resource ownership is one RR per release. The
+existing paired release remains compatible. No runtime/routing role changes.
+
 The table and direct RR-to-Client topology below describe the default
 `direct-clients` option. [ADR 0013](adr/0013-core-ospf-independent-ibgp-neighbors.md)
 adds explicit `core`: two RRs, two core-facing /31 links/NADs, OSPF P2P plus

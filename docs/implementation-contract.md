@@ -5,6 +5,13 @@
 
 ## 1. Explicit implementation boundary
 
+[ADR 0015](adr/0015-independent-helm-releases.md) additionally permits explicit
+`releaseMode: single` for core topology: one RR/Pod/ConfigMap/NAD per release,
+two releases for the deployed RR pair. The two-router-per-release contract below
+remains the compatibility default `releaseMode: pair`. Routing/runtime behavior
+is unchanged; cross-release identity/placement consistency belongs to deployment
+inputs, as defined in that ADR.
+
 For the original default topology, this section's fixed four-Client contract
 continues unchanged. The explicit `core` extension and its complete input,
 placement and acceptance boundary are defined in [ADR 0013](adr/0013-core-ospf-independent-ibgp-neighbors.md):

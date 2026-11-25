@@ -19,6 +19,12 @@ A task that needs an unresolved architecture decision must **STOP** and return a
 
 ## 2. Design and static artifact acceptance
 
+For `releaseMode: single`, apply [ADR 0015](adr/0015-independent-helm-releases.md):
+1 Pod/1 ConfigMap/1 NAD per core release, unchanged per-RR FRR/security/runtime
+configuration, independent resource names, validated common+individual inputs,
+pair-level consistency of supplied profiles and compatibility of legacy renders.
+Live install/uninstall and staged migration remain separate evidence gates.
+
 The original cardinalities below remain the `direct-clients` regression contract.
 For explicit `core`, apply [ADR 0013](adr/0013-core-ospf-independent-ibgp-neighbors.md):
 2/2/2 resources, one P2P OSPF attachment per RR, and role-checked variable iBGP
